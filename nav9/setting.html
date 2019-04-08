@@ -58,11 +58,11 @@
         <h1 style="font-size:18px;line-height: 50px;border-bottom:1px solid #dddddd;">网站信息</h1>
         <div>
             <div class="form-group">
-                <button class="btn btn-primary addCompany saveBtn">添加公司</button>
+                <button class="btn btn-primary addCompany">添加公司</button>
             </div>
             <table class="table" style="width: 100%;overflow: hidden;">
                 <thead>
-                    <tr class="active" style="font-size: 18px">
+                    <tr class="active">
                         <td>公司</td>
                         <td>邮编</td>
                         <td>公司坐标</td>
@@ -75,11 +75,11 @@
                 </tbody>
             </table>
             <div class="form-group">
-                    <button class="btn btn-primary addPerson saveBtn">添加人员</button>
+                    <button class="btn btn-primary addPerson">添加人员</button>
                 </div>
             <table class="table" style="margin-top:10px">
                 <thead>
-                    <tr class="active" style="font-size: 18px">
+                    <tr class="active">
                         <td>公司</td>
                         <td>职位</td>
                         <td>姓名</td>
@@ -139,7 +139,7 @@
                     </div>     
                 </div>
                 <div class="form-group flex"  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">       
-                    <div class="col-sm-1" style="margin-top: 1%;margin-right: 22px;">
+                    <div class="col-sm-1" style="margin-top: 1%;">
                         <button class="btn" >取消</button>     
                     </div> 
                     <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
@@ -189,7 +189,7 @@
                     </div>        
                 </div>
                 <div class="form-group flex"  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">       
-                    <div class="col-sm-1" style="margin-top: 1%;margin-right: 22px">
+                    <div class="col-sm-1" style="margin-top: 1%;">
                         <button class="btn" >取消</button>     
                     </div> 
                     <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
@@ -226,8 +226,7 @@ $(document).ready(function(){
         
        
 })
-</script>
-<script>
+
     //处理设置节点下基础设置公司人员添加点击事件触发查询的所有公司信息   
     function list(data){
         $(".s11").html("");
@@ -274,16 +273,17 @@ $(document).ready(function(){
         
     }
      
- //页面初次渲染加载数据      
- var data = window.localStorage.getItem("dxRightsList");  
-        data = JSON.parse(data);    
-        //console.log(data);
-        //页面初次加载渲染页面
-        var url,par;
+ //页面初次渲染加载数据 
+ //页面初次加载渲染页面
+ var url,par;
         // Datetime();
         var appsercet = window.localStorage.getItem("appsercet");
         appsercet = JSON.parse(appsercet);
-        var newAppsercet = appsercet.data;
+        var newAppsercet = appsercet.data;     
+ var data = window.localStorage.getItem("dxRightsList");  
+        data = JSON.parse(data);    
+        //console.log(data);
+        
         //判断是否有添加管理员操作权限     
         // return
         var arr = [];

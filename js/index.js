@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $(document).ready(function () {
+        
         //个人信息四个节点跳转
         $(".p1").click(function () {
             $("#iframe").attr("src", "./UpdatePerson.html");
@@ -17,9 +18,20 @@ $(document).ready(function(){
             $("#iframe").attr("src", "./nav9/setting.html");
             $("#iframe1").attr("src", "./nav9/setting.html");
         })
+        $(".set").click(function(){
+            $("#iframe").attr("src", "./nav9/setting.html");
+            $("#iframe1").attr("src", "./nav9/setting.html"); 
+        })
         //右上角点击退出
         //获取缓存中存入的姓名
+        var user_name = localStorage.getItem("user_name");
+        var user_photo = localStorage.getItem("user_photo");
         var username = localStorage.getItem("username");
+        
+        var truename = localStorage.getItem("true_name");
+
+        $(".himg").attr("src",user_photo);
+        $(".person").html(truename);
         var type = localStorage.getItem("type");
         $(".back").click(function () {
             par = "username=" + username + "&type=" + type + "&method=get.dxWeb.logout"

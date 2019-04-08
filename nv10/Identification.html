@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
 <link rel="stylesheet" type="text/css" href="../css/buind.css">
+<link rel="stylesheet" href="../css/page.css">
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <style>
@@ -24,13 +25,7 @@
 *{ margin:0px; padding:0px;}
 ul{ list-style:none;}
 body{ font-size:12px;}
-/*分页*/
-#pageGro{  height:40px; padding-top:30px;font-size: 14px;}
-#pageGro div,#pageGro div ul li{ font-size:12px; color:#999; line-height:23px; float:left; margin-left:5px;}
-#pageGro div ul li{ width:40px;height: 40px;border-radius: 5px;line-height: 30px; text-align:center; cursor:pointer;margin-left: 10px;}
-#pageGro div ul{width: 300px;}
-#pageGro div ul li.on{ color:#fff; background:#E2302B;}
-#pageGro .pageUp,#pageGro .pageDown{ width:40px;height: 40px; line-height:40px; border:1px solid #999; cursor:pointer;text-align:center;border-radius: 5px;font-size:16px;}
+
 </style>
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
@@ -110,7 +105,7 @@ body{ font-size:12px;}
                 </div>
                 <div class="pageDown">&gt;</div>
                 <button class="btn" style="margin-left: 10px;">10条/页</button>
-                <span  style="margin-left: 10px;">跳转<input type="number" class="btn returnNum" style="width:50px;height:40px;margin:0 10px;">页</span>
+                <span  style="margin-left: 10px;">跳转<input type="number" class="btn returnNum" style="width:60px;margin:0 10px;">页</span>
 
             </div>
         </div>
@@ -190,6 +185,7 @@ body{ font-size:12px;}
             }
         });
     });
+    
     //页面初次渲染加载数据
     var data = window.localStorage.getItem("dxRightsList");    
         data = JSON.parse(data);

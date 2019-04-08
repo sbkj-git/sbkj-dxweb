@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
+       
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +20,12 @@
 <script src="../js/bootstrap-datetimepicker.min.js"></script>
 <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
 <style> 
-.close12{position: absolute;right: -10px;top: -10px;display: none;}   
+.close12{position: absolute;right: -10px;top: -10px;display: none;} 
+.returnBack{font-size: 40px;}  
+.f14{font-size: 14px;}
+.w200center .close12{right: 0px;top: 0px;}
 </style>
+ 
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
         <div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
@@ -46,8 +52,8 @@
                     <input class="btn addColor w200"  value="编辑图片" readonly />
                 </div>
                
-                <div class="col-sm-4" style="position:relative;top:-52%;left:90%;margin-top:5px;font-size:14px;" class="setting1">
-                    <input type="checkbox" value="" name="rember">添加水印
+                <div class="col-sm-4" style="margin-top:5px;font-size:14px;" class="setting1">     
+                    <input type="checkbox" value="" name="rember" class="warmask">添加水印
                     <span style="color:#FF5456;" class="setting">【设置】</span>
                 </div>
             </div>
@@ -60,14 +66,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
-                <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
-                    <li><a href="#" style="color:#8D8D8D;">资源库</a>&nbsp;/&nbsp;</li>
-                    <li><a href="#" style="color:#5A5A5A;">管理文件/</a></li>
-                    <li><a href="#" style="color:#5A5A5A;">新建文件夹一</a></li>
-                </ul>
-            <h1>新建文件夹一</h1>
-        </div> -->
+        <p class="returnBack">&larr;<span class="f14">返回上一级</span></p>
         <div class="flex" style="width: 100%">
             <div class="imgBox1 flex">
 
@@ -93,7 +92,8 @@
                     <label for="name" class="control-label col-sm-3 star rolename" style="text-align: right;line-height: 1.5;">附件上传:</label>
                     <div class=" position" style="height:35px;">
                         <img src="../image/u1986.png" alt="" style="width:15px;height:15px;" class="jt">
-                        <input class="btn" value="上传文件" style="width:100px;height: inherit;" readonly />
+                        <!-- <input class="btn" value="上传文件" style="width:100px;height: inherit;" readonly /> -->
+                        <input type="file" class="watermarkImg" />
                     </div>
                 </div>
                 <div class="form-group flex">
@@ -110,18 +110,26 @@
                 <div class="form-group flex">
                     <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 2;">水印位置:</label>
                     <div class="col-sm-9">
-                        <select name="" id="" class="form-control">
-                            <option value="0">水印位置</option>
-                            <option value="1">上</option>
+                        <select name="" id="" class="form-control postion">
+                            <option value="">水印位置</option>
+                            <option value="center">居中</option>
+                            <option value="right-top">右上角</option>
+                            <option value="right-bottom">右下角</option>
+                            <option value="left-top">左上角</option>
+                            <option value="left-bottom">左下角</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group flex">
                     <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 2;">不透明度:</label>
                     <div class="col-sm-9">
-                        <select name="" id="" class="form-control">
+                        <select name="" id="" class="form-control hyaline">
                             <option value="0">请选择</option>
-                            <option value="1">10%</option>
+                            <option value="0.2">20%</option>
+                            <option value="0.4">40%</option>
+                            <option value="0.6">60%</option>
+                            <option value="0.8">80%</option>
+                            <option value="1.0">100%</option>
                         </select>
                     </div>
                 </div>
@@ -129,7 +137,7 @@
                     <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 2;">示例图片:</label>
                     <div class="col-sm-9">
                         <div style="width: 227px;height: 130px;background-color: #F2F2F2;">
-                            <img src="" alt="">
+                            <img src="" alt="" class="water">
                         </div>
                     </div>
                 </div>
@@ -155,7 +163,7 @@
                 <div class="form-group flex">
                     <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 1.5;">上级文件夹:</label>
                     <div class="col-sm-9">
-                        <select name="" id="" class="form-control fileid">
+                        <select name="" id="" class="form-control fileid filename2">
                             <option value="0" selected>请选择</option>
                             <option value="1">新建文件夹一</option>
                         </select>
@@ -202,201 +210,10 @@
     </div>
 </body>
 </html>
-
 <script src="../js/MD5.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/postSign.js"></script>
 <script src="../js/getRequest.js"></script>
 <script src="../js/resource.js"></script>
-<script type="text/javascript">
-    function changeState(el) {
-        if (el.readOnly) el.checked=el.readOnly=false;
-        else if (!el.checked) el.readOnly=el.indeterminate=true;
-    } 
-    $(document).ready(function(){
-        var url,par;  
-        //页面初次渲染加载数据
-        var data = window.localStorage.getItem("dxRightsList");    
-        data = JSON.parse(data);      
-        var appsercet = window.localStorage.getItem("appsercet");
-        appsercet = JSON.parse(appsercet);
-        var newAppsercet = appsercet.data;
-        //判断是否有操作权限    
-        var arr = [];
-        $.each(data,function(i,item){
-            //console.log(item)
-            if(item.id == 7){
-                arr.push(item)
-            }
-        })
-        console.log(arr[0]);
-        $.each(arr[0].dxRightsList,function(i,item){
-            //console.log(arr[0].dxRightsList)
-            if(item.method === "get.dxWeb.queryFileAll"){
-                url = src+"/"+item.link_path;
-    
-                 //添加图片点击事件
-                $(".newImg").click(function () {
-                    $(".nv91-mask").show();
-                    $(".nv92").show();
-                    $(".fileSure").click(function () { 
-                        var data = addUpdate("get.dxWeb.addFolder");
-                        if (data.msg.code == "200") {
-                            alert("添加成功");
-                            getSign(url,par);
-                        }
-                    })
-                })
-                //请求完成渲染页面 待处理
-                // localStorage.setItem("size","");
-                par = "appsercet="+newAppsercet+"&method=get.dxWeb.libraryList";
-                var list = getSign(url,par);
-                if(list.dxFolderList && list.dxFolderList.length > 0 ){
-                    var str1="";
-                    $.each(list.dxFolderList,function(i,obj){
-                        str1+='<div class="w200center position" data-id="'+obj.id+'" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"'+obj.brand_name+'"</p><img src="../image/close12.png" alt="" style="width: 20px;height:20px;" class="close12"></div>'
-                    })
-                    $(".imgBox1").html(str1)
-                }
-                par = "appsercet="+newAppsercet+"&method="+item.method;
-                var data1 = getSign(url,par);
-                 console.log(data1);
-                if(data1.dxFolderList && data1.dxFolderList.length > 0 ){
-                    var str="";
-                    $.each(data1.dxFolderList,function(i,obj){
-                        str+='<div class="imgHover position" data-id="'+obj.id+'" style="margin-right:40px;"><div class="imgHover2" data-id="'+obj.id+'"><img src="'+obj.img_route+'" alt="" data-id="'+obj.id+'" class="imgHover1"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left:-30;top:0;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n'+i+'" data-name="'+i+'"  data-id="'+obj.id+'" name="radio12"><label for="n'+i+'"  style="color:#8A111A;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99" class="close12" ></div>'
-                    })
-                    $(".imgBox2").html(str);
-                    if( $(".imgBox2").html() == ""){
-
-                    }else{
-                        debugger
-                        var size = localStorage.getItem("size");
-                        if(size ==null || size == ""){
-
-                        }else{
-                            var id = localStorage.getItem("nowId");
-                        var imgHover1 = document.querySelectorAll(".imgHover2");
-                        for (var i = 0; i < imgHover1.length; i++) {
-                            var obj = imgHover1[i];
-                            if (obj.getAttribute("data-id") == id) {
-                                obj.innerHTML = size;
-                            }
-                    }
-                        }
-                        
-                    }
-                        
-                }
-                //通过文件名称获取该名下所有文件夹
-                $("searchName").click(function(){
-                    var val = $(".searchName1").val();
-                    par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll&fileNmae="+val;
-                    var statu = getSign(url,par);
-                    if(statu.msg.code == "200"){
-                        par = "appsercet="+newAppsercet+"&method=get.dxWeb.libraryList";
-                        getSign(url,par);
-                    }
-                })
-                //判断该角色是否有权限操作
-                if(item.dxRightsTwoList.length == 0){
-                    return
-                }
-                else{
-                    $.each(item.dxRightsTwoList,function(i,obj){
-                       //判断该用户是否有上传图片权限
-                        if(obj.method === "get.dxWeb.uploadImgs"){
-                            
-                            $(".addImg").show();
-                            $(".addImg").click(function(){
-                                $(".nv91-mask").show();
-                                $(".nv93").show();
-                                $(".fileSure1").click(function(){
-                                    
-                                    var sign1 = sign("get.dxWeb.uploadImgs");
-                                    var appid = localStorage.getItem("appid");
-                                    var sign2 = sign1.parameter;
-                                    var timestamp = sign1.timestamp;
-                                    var formData = new FormData();
-                                    formData.append("galleryImg",$(".galleryImg")[0].files[0]);
-                                    console.log($(".galleryImg")[0].files[0])
-                                    formData.append("folderId",$(".folderId option:checked").val());
-                                    console.log($(".folderId option:checked").val())
-                                    formData.append("method","get.dxWeb.uploadImgs");
-                                    formData.append("appid",appid);
-                                    formData.append("sign",sign2);
-                                    formData.append("timestamp",timestamp);
-                                    formData.append("appsercet",newAppsercet);
-                                    var data = post(url,formData);
-                                    console.log(data);
-                                })
-                            })
-                        //判断该用户是否有编辑权限
-                        }if(obj.method === "get.dxWeb.editdImgs"){
-                            $(".editImg").show();
-                            $(".editImg").click(function(){
-                                var radio = document.querySelectorAll(".radio12");
-                                for(var i = 0;i<radio.length;i++){
-                                    var obj = radio[i];
-                                 
-                                    if(obj.checked = true){
-                                        debugger
-                                        var value = obj.getAttribute("data-name");
-                                        var id = obj.getAttribute("data-id");
-                                        localStorage.setItem("imgUrl",$(".imgHover1 ").eq(value).attr("src"));
-                                        localStorage.setItem("nowId",id);
-                                        location.href = "./Head_Cut_PC-master/index.html";
-                                    }
-                                }
-                            })
-                        }
-                        //判断该用户是否有删除权限 
-                        if(obj.method === "get.dxWeb.deleteImgs"){
-                            $(".w200h145").each(function(index){
-                                $(this).hover(function(){
-                                    $(".w200center .close12").hide().eq(index).show();
-                                })
-                                $(this).mouseleave(function(){
-                                    $(".w200center .close12").hide();
-                                })
-                            })
-                            $(".search2").each(function(index){
-                                $(this).hover(function(){
-                                    $(".imgHover .close12").hide().eq(index).show();
-                                })
-                                $(this).mouseleave(function(){
-                                    $(".imgHover .close12").hide();
-                                })
-                            })
-                               
-                            }
-                            //判断是否有设置水印
-                          if(obj.method === "get.dxWeb.addWatermark"){
-                                $(".setting1").show();
-                                //添加水印位置请求
-                                //设置按钮点击修改水印页面上出现
-                                $(".setting").click(function(){
-                                    $(".nv91-mask").show();
-                                    $(".nv91").show();
-                                })
-                            }         
-                    })
-                    
-                }
-            }
-        })
-        //展示列表图片引入效果
-        $(".imgHover").each(function (index) {
-         $(this).hover(function () {
-             $(".search2").hide().eq(index).show();
-         })
-         $(this).mouseleave(function () {
-             $(".search2").hide();
-         })
-         $(this).dblclick(function () {
-             location.href = "../nav7/ImgReview.html"
-         })
-     })
-    })
-</script>
+<script src="../js/postFormdata.js"></script>
 

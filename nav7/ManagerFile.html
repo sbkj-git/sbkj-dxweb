@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
 
 
 </head>
-<body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;">
+<body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;padding-left: 50px;">
     <div class="brand">
         <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
             <li><a href="#" style="color:#8D8D8D;">资源库</a>&nbsp;/&nbsp;</li>
@@ -28,12 +29,12 @@
         </ul>
         <h1>管理文件夹</h1>
     </div>
-    <div style="padding:20px;background-color: #fff;padding-left: 50px;">
-        <p class="size">任务列表</p>
+    <div style="padding:20px;background-color: #fff;">
+        <p>任务列表</p>
         <div class="addInput" style="display: none">+添加</div>
         <table class="table" style="width: 100%;overflow: hidden;">
             <thead>
-                <tr style="border-bottom: 1px solid #d8d8d8;background:rgba(243,243,243,1);font-size: 18px;">
+                <tr style="border-bottom: 1px solid #d8d8d8;">
                     <td>
                         文件夹名称
                     </td>
@@ -46,17 +47,16 @@
         </table>
     </div>
     <div class="nv91-mask" >
-            <div class="nv91">
-                <p style="font-size:20px;line-height:50px;border-bottom: 1px solid #dddddd;padding-left: 20px;">添加文件夹</p>
+            <div class="nv91" style="padding:5% 0">
+                <p style="line-height:50px;border-bottom: 1px solid #dddddd;padding-left: 20px;">添加文件夹</p>
                 <form action="" class="form-horizontal" role="form" style="text-align:center;">
-                    <div style="height: 250px">
-                    <div class="form-group  flex" style="padding-top: 30px; ">
+                    <div class="form-group  flex">
                         <label for="name" class="control-label col-sm-3  rolename" style="text-align: right;line-height: 1.5;">文件夹名称:</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control filename" placeholder="" />
                         </div>
                     </div>
-                    <div class="form-group flex" style="padding-top: 20px">
+                    <div class="form-group flex">
                         <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 1.5;">上级文件夹:</label>
                         <div class="col-sm-9">
                             <select name="" id="" class="form-control fileid">
@@ -65,9 +65,8 @@
                             </select>
                         </div>
                     </div>
-                    </div>
                     <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                        <div class="col-sm-2" style="margin-top: 1%;margin-right:-5%;">
+                        <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
                             <button class="btn btn-primary fileSure">确定</button>
                         </div>
                         <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
@@ -98,6 +97,29 @@
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
     $(document).ready(function(){
+           //封装添加修改方法
+ function addUpdate(method,id){
+     debugger
+    var appsercet = window.localStorage.getItem("appsercet");
+    appsercet = JSON.parse(appsercet);
+    var newAppsercet = appsercet.data;
+    var sourceId,brandName,url,result
+    url = src+"/libraryInterface.dx";
+    brandName = $(".filename").val();
+    sourceId = $(".fileid option:checked").val();
+    
+    if(method === "get.dxWeb.updateFolder"){
+        
+        par = "appsercet="+newAppsercet+"&method="+method+"&id="+id+"&brandName="+brandName+"&sourceId="+sourceId;
+    }else if(sourceId == 0){
+        
+        par = "appsercet="+newAppsercet+"&method="+method+"&brandName="+brandName;
+    }else{
+        par = "appsercet="+newAppsercet+"&method="+method+"&brandName="+brandName+"&sourceId="+sourceId;
+    }
+    result = getSign(url,par);
+    return result;
+}
          //初次加载页面获取列表数据
          var url,par,id;      
         var appsercet = window.localStorage.getItem("appsercet");
@@ -114,6 +136,7 @@
                 $(".fileid").html("");
                 var str = "";
                 var str1 = "";
+                debugger
                 str1+="<option value='0' selected>请选择</option>"
                 $.each(list.dxFolderList,function(i,item){
                     str1+="<option value='"+item.id+"' >"+item.brand_name+"</option>"
@@ -150,7 +173,7 @@
                 var obj = li[i]
                 if(data.msg.father_brand_name == "" || data.msg.father_brand_name == null || data.msg.father_brand_name == "--"){
                     li[0].checked = true;
-                }else if(obj[i].value == data.msg.father_brand_name){
+                }else if(obj.value == data.msg.father_brand_name){
                     obj.checked = true;
                 }
             }
@@ -163,6 +186,7 @@
         $(".isDelete").click(function(){
             id = $(this).attr("data-id");
             par = "appsercet="+newAppsercet+"&method=get.dxWeb.daleteFolder&id="+id;
+            debugger
             getSign(url,par);
             var status = getSign(url,par);
             if(status.msg.code == "200"){
@@ -178,4 +202,6 @@
     })
       
 </script>
+<script src="../js/radioAllChoose.js"></script>
+
 

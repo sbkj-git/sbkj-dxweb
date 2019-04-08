@@ -233,7 +233,6 @@ th {
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
-  font-size: 18px;
 }
 
 button {
@@ -888,7 +887,7 @@ pre code {
   .col-sm-10 {
     -ms-flex: 0 0 83.333333%;
     flex: 0 0 83.333333%;
-    /*max-width: 83.333333%;*/
+    max-width: 83.333333%;
   }
   .col-sm-11 {
     -ms-flex: 0 0 91.666667%;
@@ -2364,14 +2363,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  /*background-color: #007bff;*/
+  background-color: #007bff;
   border-color: #007bff;
 }
 
 .btn-primary:hover {
-  color: #ddd;
-  /*background-color: #0069d9;*/
-  /*border-color: #0062cc;*/
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2398,7 +2397,7 @@ fieldset:disabled a.btn {
 
 .btn-secondary {
   color: #fff;
-  /*background-color: #6c757d;*/
+  background-color: #6c757d;
   border-color: #6c757d;
 }
 
@@ -2961,7 +2960,6 @@ input[type="button"].btn-block {
 
 .fade {
   transition: opacity 0.15s linear;
-  background: rgba(127,127,127)
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -2970,9 +2968,9 @@ input[type="button"].btn-block {
   }
 }
 
-/*.fade:not(.show) {*/
-  /*opacity: 0;*/
-/*}*/
+.fade:not(.show) {
+  opacity: 0;
+}
 
 .collapse:not(.show) {
   display: none;
@@ -5449,7 +5447,7 @@ button.close {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 706px;
+    max-width: 500px;
     margin: 1.75rem auto;
   }
   .modal-dialog-centered {

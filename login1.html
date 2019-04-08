@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" href="./css/buind.css">
 </head>
+<script src="./js/remberPass.js"></script>
 <body >
     <div class="banner3">
 
         <div>
-            <div class="banners">
+            <div class="banner">
                 <div class="jx">
                     <img src="./image/l1.png" alt="" >
                     <p >东信在线，让企业运转更高效</p>
@@ -25,21 +26,21 @@
                    
                     <div  class="div">
                         <img src="./image/l2.png" alt="" class="img">
-                        <input type="text"  class="input1 user" placeholder="请输入用户名称">
+                        <input type="text"  class="input1 user" placeholder="请输入用户名称" onblur="GetPwdAndChk()"  id="user"/>
                     </div>
                     <div  class="div">
                         <img src="./image/l3.png" alt="" class="img">
-                        <input type="password"  class="input1 pass" placeholder="请输入用户密码"/>
+                        <input type="password"  class="input1 pass" placeholder="请输入用户密码" id="pass"/>
                     </div>
                     <div style="width: 100%;" class="hide flex div" >
                             <img src="./image/l4.png" alt="" class="img">
                         <input type="text" placeholder="验证码" class="input2 vister"  placeholder="请输入验证码">
                         <button class="qs btn btn-default" >点击获取验证码</button>               
                     </div>
-                    <button class="btnLogin" style="width: 400px;height: 50px">登录</button>
+                    <button class="btnLogin" style="margin-top: 60px;width: 100%" onclick="SetPwdAndChk()">登录</button>
                     
                     <div class="flex remberAcount" >
-                        <div class='checkbox checkbox-primary' style="margin-right:10px"><input type='checkbox' class='styled styled-primary' id="need" aria-label='Single checkbox Two'><label for='need' class='rolen' >记住账号</label></div>
+                        <div class='checkbox checkbox-primary' style="margin-right:10px"><input type='checkbox' class='styled styled-primary' id="need" aria-label='Single checkbox Two' checked/><label for='need' class='rolen' >记住账号</label></div>
                         <span><a  href="./forgetPass.html" class="forgetPass">忘记密码</a></span>
                     </div>
                 </div>
@@ -61,8 +62,10 @@
 <!-- <script src="js/sign.js"></script> -->
 <script src="./js/api.js"></script>
 <script src="./js/getRequest.js"></script>
+
 <script type="text/javascript">
 window.onload = function() {
+    
     function changeState(el) {
         if (el.readOnly) el.checked=el.readOnly=false;
         else if (!el.checked) el.readOnly=el.indeterminate=true;
@@ -114,7 +117,7 @@ window.onload = function() {
                     var data = getSign(log,par);
                     referIndex(data);
                     n++;                        
-                    window.sessionStorage.setItem("n",n)
+                    window.sessionStorage.setItem("n",n);
                     
                     if(x == 3){
                         $(".hide").show();
@@ -259,9 +262,13 @@ function phone(url) {
             localStorage.setItem("appsercet", JSON.stringify({ "data": data.userInfo.appsercet }))
             localStorage.setItem("appid", "dxwebf0a37ed1ae96deef")
             window.localStorage.setItem("dxRightsList", JSON.stringify(data.userInfo.dxRightsList.dxRightsCategoryList));
-            window.location.href = "./index.html"
+            localStorage.setItem("user_name",data.userInfo.user_name);
+            localStorage.setItem("true_name",data.userInfo.true_name);
+            // localStorage.setItem("user_phone",data.userInfo.user_phone || "");
+            localStorage.setItem("user_photo",data.userInfo.user_photo || "");  
+            window.location.href = "./index.html";
         }else{
-            return;
+            alert("用户名或密码错误");
         }
      }
      

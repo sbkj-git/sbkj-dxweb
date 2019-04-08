@@ -16,61 +16,59 @@
 <script src="../js/bootstrap.min.js"></script>
 <!-- <script src="../js/183.js"></script> -->
 <script src="../js/simple.switch.min.js"></script>
-    <style>
-        /*复选框开关按钮切换特效*/
-        .switch_box{
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            max-width: 50px;
-            min-width: 80px;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-flex: 1;
-            -ms-flex: 1;
-            flex: 1;
-        }
-        input[type="checkbox"].switch_1{
-            font-size: 30px;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            width: 3.5em;
-            height: 1.3em;
-            background: #ddd;
-            border-radius: 3em;
+<link rel="stylesheet" href="../css/newPage.css">
+
+<style>
+    .switch {
+            width: 57px;
+            height: 28px;
             position: relative;
-            cursor: pointer;
+            border: 1px solid #dfdfdf;
+            background-color: #fdfdfd;
+            box-shadow: #dfdfdf 0 0 0 0 inset;
+            border-radius: 20px;
+            background-clip: content-box;
+            display: inline-block;
+            -webkit-appearance: none;
+            user-select: none;
             outline: none;
-            -webkit-transition: all .2s ease-in-out;
-            transition: all .2s ease-in-out;
         }
-        input[type="checkbox"].switch_1:checked{
-            background: #0ebeff;
-        }
-        input[type="checkbox"].switch_1:after{
+        .switch:before {
+            content: '';
+            width: 26px;
+            height: 26px;
             position: absolute;
-            content: "";
-            width: 1.5em;
-            height: 1.3em;
-            border-radius: 50%;
-            background: #fff;
-            -webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);
-            box-shadow: 0 0 .25em rgba(0,0,0,.3);
-            -webkit-transform: scale(.7);
-            transform: scale(.7);
+            top: 0;
             left: 0;
-            -webkit-transition: all .2s ease-in-out;
-            transition: all .2s ease-in-out;
+            border-radius: 20px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         }
-        input[type="checkbox"].switch_1:checked:after{
-            left: calc(100% - 1.3em);
+        .switch:checked {
+            border-color: #8A111A;
+            box-shadow: #8A111A 0 0 0 16px inset;
+            background-color: #8A111A;
         }
-    </style>
+        .switch:checked:before {
+            left: 30px;
+        }
+        .switch.switch-anim {
+            transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+        }
+        .switch.switch-anim:before {
+            transition: left 0.3s;
+        }
+        .switch.switch-anim:checked {
+            box-shadow: #8A111A 0 0 0 16px inset;
+            background-color: #8A111A;
+            transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+        }
+        .switch.switch-anim:checked:before {
+            transition: left 0.3s;
+        }
+    .disnone{display: none}
+/* .toDown{display: none;} */
+</style>
 </head>
 <body>
     <div class="brand">
@@ -81,10 +79,24 @@
         <h1>Banner管理</h1>
     </div>
     <div class="nv91-mask" >
-       
+            <div class="nv" style="padding:10px;">
+                    <div class="prompt">
+                        <p style="font-size: 20px;">提示</p>
+                        <img src="" alt=""><span>确认删除</span>
+                        <div class=" flex " style="justify-content: flex-end;box-sizing: border-box;">
+                
+                            <button type="button" class="btn btn-primary roleSure">确定</button>
+                
+                            <button type="button" class="btn  roleRefuse5">取消</button>
+                
+                        </div>
+                    </div>
+                
+                
+                </div>   
             <div class="nv91 p5_0" >
-                <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal textCenter" role="form"  id="form">
-                   
+                <div   class="form-horizontal textCenter" id="form">
+                   <div class="nv91-close">x</div>
                     <div class="form-group  flex needHide">
                         <label for="name" class="control-label col-sm-3 star rolename lh15" >Banner图片:</label>
                         <div class="col-sm-9">
@@ -130,7 +142,7 @@
                        </div>
                     </div>
                     <div class="form-group flex">
-                        <label for="name" class="control-label col-sm-3 lh15" >是否置顶:</label>
+                        <label for="name" class="control-label col-sm-3 lh15" >是否上线:</label>
                         <div class="radio radio-info radio-inline ">
                             <input type="radio" id="b6" value="1" name="state" checked="" class="b6">
                             <label for="b6"> 是 </label>
@@ -140,27 +152,28 @@
                             <label for="b7"> 否 </label>
                         </div>
                     </div>
-                   
+    
                     <div class="form-group flex butto" >
                         <div class="col-sm-2" >
-                            <button class="btn btn-primary BannerSure banner aveBtn" style="margin-top: 7px;">确定</button>
+                            <button type="button" class="btn btn-primary BannerSure" >确定</button>
                         </div>
                         <div class="col-sm-2 mar12" >
-                            <button class="btn  BannerRefuse banner">取消</button>
+                            <button type="button" class="btn  BannerRefuse1">取消</button>
                         </div>
                     </div>
                 
-                </form>
+                </div>
             </div>
+           
         </div>
-        
+       
    <div class="col-sm-10 col-sm-pull-1">
     <div class="flex w100 pb2">
-        <span  class="col-sm-1 pr2" style="padding-left: 23px">筛选查询</span>
+        <span  class="col-sm-1 pr2">筛选查询</span>
         <div class="col-sm-3 flex">   
               <label for="name" class="control-label lh15 mr5" >位置:</label>
               <div>
-                  <select class="form-control location" style="width: 260px;">
+                  <select class="form-control location">
                       <option checked>全部</option>
                       <option>2</option>
                       <option>3</option>
@@ -171,9 +184,15 @@
         </div>
       <div class="col-sm-4 flex textRight">
             <label for="name" class="control-label lh15 mr5" >到期时间:</label>
-            <div class="position col-sm-9">
-                <input type="text" class="form-control" id="nowdate" />
-                <span style="font-family: iconfont;position: absolute;right: 5%;top:0;font-size: 24px;" id="datetimepicker1">&#xe73a;</span>
+            <div class="position col-sm-12 flex">
+                
+                    <input type="text" class=" form-control start1" />
+               
+             
+                    <input type="text" class="form-control end1"/>
+              
+                <button class="btn sec1">查询</button>
+                <!-- <span style="font-family: iconfont;position: absolute;right: 5%;top:0;font-size: 24px;" >&#xe73a;</span> -->
             </div>
     </div>  
     <div class="col-sm-4 flex textRight" >
@@ -182,8 +201,8 @@
             <span  class="bannerName1 icon" >&#xe615;</span>
         </div>     
     </div>
-        <div class="b_list" style="padding-left: 31px;">
-            <p class="pr2">任务列表</p>
+        <div class="b_list">
+            <p>任务列表</p>
         </div> 
         <div class="addInput">+添加</div>
         <table class="table w100" >
@@ -195,6 +214,7 @@
                     </td>
                     <td>Banner名称</td>
                     <td>Banner位置</td>
+                    <td>置顶</td>
                     <td>时间</td>
                     <td>上线/下线</td>
                     <td>点击次数</td>
@@ -213,6 +233,7 @@
                     <span style="display: block;"> 结束时间：2019-02-16  14:03:12</span>
                     </td>
                     <td>
+                            
                         <input type="checkbox" class="checkbox" checked>
                         <script>
                             $(".checkbox").simpleSwitch({
@@ -222,29 +243,14 @@
                        </td>
                     <td>100</td>
                     
-                    <td class='color_FF5456'>
-                        <span class="b1">删除</span>&nbsp;
-                        <span class="b1">置顶</span>&nbsp;
-                        <span class="b1">编辑</span>&nbsp;
-                    </td>
+                    <td class='color_FF5456'><span class="b1">删除</span>&nbsp;<span class="b1">置顶</span>&nbsp;<span class="b1">编辑</span>&nbsp;</td>
                 </tr>
             </tbody>
         </table>
-        <div class="paging flex"  style="justify-content: flex-end;width: 100%;margin-top: 1%">
-            <div class="col-sm-9">
-                <ul class="pageList flex " style="justify-content: flex-end;width: 100%" >
-                    <li>&lt;</li>
-                    <li class="colorActive">1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>&gt;</li>
-                    <li class="age">10条/页</li>
-                    <li>跳至<input type="number" class="btn ages" style="width:50px;height:30px;border-radius:5px;">页</li>
-                </ul>
+        <div class="paging flex " style="width:100%;justify-content: flex-end;" >
+                <div id="pagination2" class="pagination"></div>
+
             </div>
-        </div>
    </div>
     </div>
    <footer class="footer">
@@ -272,6 +278,8 @@
 <script src="../js/postSign.js"></script>
 <script src="../js/getRequest.js"></script>
 <script src="../js/bannermanager.js"></script>
+<script src="../js/newPage.js"></script>
+
 
 
 

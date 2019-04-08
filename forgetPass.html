@@ -51,7 +51,7 @@
             <div class="form-group flex">
                 <label for="" class="" style="text-align: right;line-height: 2;font-size: 16px;width: 100px;">手机号码:</label>
                 <div class="col-sm-9">
-                    <input type="number" required class="form-control" placeholder="请输入登录手机号" />
+                    <input type="number" required class="form-control phone1" placeholder="请输入登录手机号" />
                 </div>
             </div>
             <div class="form-group flex">
@@ -60,7 +60,7 @@
                     <input type="number" required class="form-control" placeholder="请输入短信验证码" />
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-primary">获取验证码</button>
+                    <button class="btn btn-primary code">获取验证码</button>
                 </div>
             </div>
             <div class="form-group flex" style="justify-content: center;margin-top: 30%;">
@@ -83,10 +83,17 @@
 <script>
      
      var url,par;
-    url = src + "/logInterface.dx";
+    url = noapi + "/adminLoginInterface.dx";
     var appsercet = window.localStorage.getItem("appsercet");
     appsercet = JSON.parse(appsercet);
-    var newAppsercet = appsercet.data;  
+    var newAppsercet = appsercet.data;
+    $(".code").click(function(){
+        var mobile = $("phone1").val();
+        par = "method=get.dxWeb.adminLogin&username="+username
+        par = "appsercet="+newAppsercet+"method=get.dxWeb.sendCode&mobile="+mobile;
+        var data = getSign(url,par);
+        console.log(data)
+    })  
 $(".nextStep").click(function(){
     $(".span2").addClass("bagActive");
     //判断手机号验证码是否准确

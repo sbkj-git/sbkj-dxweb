@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="../css/buind.css">
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../css/newPage.css">
 <style>
 .table th, .table td{vertical-align: middle;}
 .isLook{display: none;}
@@ -32,7 +33,7 @@
             <div class="form-group flex justify" style="padding-bottom: 2%;">
                     <div class="flex" style="width: 50%;">
                         <div class="" style="text-align: center;margin-right: 3%;">
-                            <button class="btn btn-primary addText saveBtn">添加文档</button>
+                            <button class="btn btn-primary addText">添加文档</button>
                         </div>
                         <div class="" style="text-align: center;margin-right: 3%;">
                             <button class="btn Delete">删除选中</button>
@@ -59,8 +60,8 @@
                         <tr style="border-bottom: 1px solid #d8d8d8;">
                             <td class="position">
                                 <div class="radio radio-info radio-inline">
-                                    <input type="radio" id="m3" value="option1" name="radioInline" checked="">
-                                    <label for="m3"> 文档管理 </label>
+                                    <input type="radio" id="man5" value="" name="radio6" >
+                                    <label for="man5"> 文档管理 </label>
                                 </div>
                             </td>
                             <td>文档分类</td>
@@ -89,23 +90,12 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="paging flex justify"  >
-                    <div style="color:#929292;font-size: 14px;padding-left: 20px;">共<span>400</span>条数据&nbsp;第<span>1</span>/<span>80</span>页</div>
-                    <div style="width:50%;">
-                        <ul class="pageList flex " style="width:auto;justify-content: flex-end;">
-                            <li>&lt;</li>
-                            <li class="colorActive">1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
-                            <li>&gt;</li>
-                            <li>10条/页</li>
-                            <li>跳至<input type="number" class="btn" style="width:50px;height:30px;border-radius:5px;">页</li>
-                        </ul>
-                    </div>
-                </div>
+                
     </div>
+</div>
+<div class="paging flex " style="width:100%;justify-content: flex-end;" >
+    <div id="pagination5" class="pagination"></div>
+
 </div>
    <footer class="footer">
         <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
@@ -119,239 +109,10 @@
 <script src="../js/MD5.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/getRequest.js"></script>
-<script type="text/javascript">
-    function changeState(el) {
-        if (el.readOnly) el.checked=el.readOnly=false;
-        else if (!el.checked) el.readOnly=el.indeterminate=true;
-    }
-   //按照发布时间排序
-   var ul = $(".ul_sort ul");
-    var lis = [];
+<script src="../js/newPage.js"></script>
+<script src="../js/managertext4.js"></script>
+<script src="../js/radioAllChoose.js"></script>
 
-    lis = $(".ul_sort ul li");
-    var ux = [];
-    //循环提取时间，并调用排序方法进行排序
-    for (var i=0; i<lis.length; i++){
-        var tmp = {};
-        tmp.dom = lis.eq(i);
-        tmp.date = new Date(lis.eq(i).find("span").eq(0).html().replace(/-/g,'/'));
-        ux.push(tmp);
-    }
-    //数组排序，支持年的比较
-    ux.sort(function(a,b){
-       var myDate = new Date();
-       var year = myDate.getYear();
-       if(a.date.getYear < year && b.date.getYear == year){
-          return true;
-       }
-       return b.date - a.date;
-    });
-    //移除原先顺序错乱的li内容
-    $('.ul_sort ul li').remove();
-    //重新填写排序好的内容
-    for (var i=0; i<ux.length; i++){
-       ul.append(ux[i].dom);
-    }
-    //获取分类列表
-    url = src + "/skillInterface.dx";
-    var appsercet = window.localStorage.getItem("appsercet");
-        appsercet = JSON.parse(appsercet);
-        var newAppsercet = appsercet.data;
-    par="appsercet="+newAppsercet+"&method=get.dxWeb.cateAllList";
-    
-    var data = getSign(url,par);
-    type(data);
-    function type(data){
-       if (data.dxWebList) {
-        $(".changeSelect12").html("");
-           if (data.dxWebList.length > 0) {
-               var str = "";
-               str+="<option value='0' selected data-id='0'>请选择</option>";
-               $.each(data.dxWebList, function (i, obj) {
-                   str += "<option data-id='" + obj.cate_id + "'>" + obj.cate_name + "</option>"
-               })
-               $(".changeSelect12").html(str);
-           }
-       }
-        
-    }
-    //通过文章标题查看列表
-    $(".titleText13").click(function () {
-            var title1 = $(".titleText3").val();
-            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.skillList&title=" + title1;
-            var data = getSign(url, par);
-            
-            if(data.msg && data.msg.code == "10"){
-                $(".textList").html("");
-            }else{
-                renderTable(data);
-                judgePower();
-            }
-        })
-        //通过类别id查看列表
-        var cateId;
-        var changeSelect = document.querySelectorAll(".changeSelect12 option");
-        $(".changeSelect12").change(function () {
-            debugger
-            var cateId = $(".changeSelect12 option:checked").attr("data-id");
-            if(cateId == 0){
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.skillList";
-                var data = getSign(url, par);
-                renderTable(data);
-                judgePower();
-            } else {
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.skillList&cateId=" + cateId;
-                var data = getSign(url, par);
-                if (data.msg && data.msg.code == "200") {
-                    $(".textList").html("");
-                } else {
-                    renderTable(data);
-                    judgePower();
-                }
-            }
-            
-        })      
-        //时间函数调用
-    //页面初次渲染加载数据
-        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.skillList" ;
-        var data = getSign(url, par);
-        renderTable(data);
-        judgePower();
-        console.log(data);
-        
-
-        //删除函数封装
-         function deleteText() {
-                var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
-                var IdList;
-                var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
-                for (var i = 0; i < inputs.length; i++) {
-                    var obj = inputs[i];
-                    if (obj.type == 'checkbox') {
-                        checkboxArray.push(obj);
-                    }
-                }
-                IdList = new Array();
-                for (var i = 0; i < checkboxArray.length; i++) {
-                    if (checkboxArray[i].checked) {
-                        IdList.push(checkboxArray[i].getAttribute("data-id"));
-                    }
-                }
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteSkill&IdList=" + IdList;
-                
-                var data = getSign(url, par);
-                if (data.msg.code == "200") {
-                    alert("删除成功");
-                }
-            }
-  //渲染表格
-    function renderTable(data) {
-        if (data.dxWebList && data.dxWebList.length > 0) {
-            $(".textList").html("");
-            var str = "";
-            $.each(data.dxWebList, function (i, item) {
-                str += '<tr style="border-bottom: 1px solid #d8d8d8;">';
-                str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.id + '"   aria-label="Single checkbox Two" data-id="' + item.id + '"><label for="' + item.id + '">' + item.title + '</label></div></td><td>"' + item.cate_id + '"</td><td>' + item.author + '</td><td>' + item.browse + '</td>';
-                if (item.is_ups == 1) {
-                    str += "<td>&#10003;</td>";
-                } else {
-                    str += "<td>&#10007;</td>"
-                }
-                str += '<td>' + item.release_time + '</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.id + '">删除</span>&nbsp;&nbsp;<span data-id="' + item.id + '" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.id + '">编辑</span></td>'
-                str += "</tr>";
-            })
-            $(".textList").html(str);
-        }
-    }
-//页面权限判断函数封装
-    function judgePower() {
-        //页面初次加载渲染页面
-        var data = window.localStorage.getItem("dxRightsList");    
-        data = JSON.parse(data);  
-        var url, par;
-        url = src +"/skillInterface.dx"
-        var appsercet = window.localStorage.getItem("appsercet");
-        appsercet = JSON.parse(appsercet);
-        var newAppsercet = appsercet.data;
-        //判断是否有添加管理员操作权限
-        var arr = [];
-
-        $.each(data, function (i, item) {
-            //console.log(item)
-            if (item.id == 4) {
-                arr.push(item)
-            }
-        })
-        console.log(arr[0]);
-        $.each(arr[0].dxRightsList, function (i, item) {
-            if (item.method === "get.dxWeb.skillList") {
-                //判断该角色是否有权限操作
-                if (item.dxRightsTwoList.length == 0) {
-                    return
-                }
-                else {
-                    $.each(item.dxRightsTwoList, function (i, obj) {
-                        //判断该用户是否有添加权限
-                        if (obj.method === "get.dxWeb.addSkill") {
-                            $(".addText").show();
-                            $(".addText").click(function () {
-                                localStorage.setItem("method", "get.dxWeb.addSkill");
-                                localStorage.setItem("url", "/skillInterface.dx");
-                                location.href = "../nav2/AddText.html";
-                            })
-
-                        }
-                        //判断该用户是否有删除权限 
-                        if (obj.method === "get.dxWeb.deleteSkill") {
-                            $(".Delete").show();
-                            $(".isDelete").show();
-                            $(".Delete").click(function () {
-                                deleteText();
-                            })
-                            $(".isDelete").click(function () {
-                                deleteText();
-                            })
-
-                            //判断是否有查看权限
-                        } if (obj.method === "get.dxWeb.skillDetails") {
-                            //查看文章详情
-                            $(".isLook").show();
-                            $(".isLook").click(function () {
-                                var id = $(this).attr("data-id");
-                                debugger
-                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.skillDetails&articleId=" + id;
-                                var data = getSign(url, par);
-                                localStorage.setItem("textDetail", JSON.stringify(data));
-                                localStorage.setItem("method", "get.dxWeb.skillDetails");
-                                console.log(data);
-                                location.href = "../nav2/AddText.html"
-                            })
-                        }
-                        //判断是否有编辑权限
-                        if (obj.method === "get.dxWeb.updateSkill") {
-                            $(".isEdit").show();
-                            $(".isEdit").click(function () {
-                                debugger
-                                var id = $(this).attr("data-id");
-                                var par = "appsercet=" + newAppsercet + "&method=get.dxWeb.skillDetails&articleId=" + id;
-                                var data = getSign(url, par);
-                                localStorage.setItem("textDetail", JSON.stringify(data));
-                                localStorage.setItem("method", "get.dxWeb.updateSkill");
-                                location.href = "../nav2/AddText.html";
-                            })
-
-                        }
-
-
-                    })
-
-                }
-            }
-
-        })
-
-    }
-</script>
 
 
 

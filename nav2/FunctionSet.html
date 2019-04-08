@@ -26,16 +26,16 @@
 </head>
 <body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;">
     <div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
-            <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;padding-left: 33px">
+            <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
             <li><a href="#" style="color:#8D8D8D;" class="title">网站运营</a>&nbsp;/&nbsp;</li>
             <li><a href="#" style="color:#5A5A5A;">功能设置</a></li>
         </ul>
-        <h1 class="font">功能设置</h1>
+        <h1>功能设置</h1>
     </div>
    <div class="p5070">
      <div style="width:100%;background-color:#fff;padding: 40px 20px;box-sizing:border-box;">
         <div class="col-sm-12 flex" style="margin-bottom:70px;">
-            <span style="font-size: 20px;">文章浏览数:</span>
+            <span>文章浏览数:</span>
             <div class="radio radio-info radio-inline">
                 <input type="radio" id="f6" value="1" name="f6" checked="">
                 <label for="f6"> 开启 </label>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="col-sm-12 flex" style="padding:2% 0">
-            <span style="padding-left:2%;font-size: 20px">赞赏:</span>
+            <span style="padding-left:2%">赞赏:</span>
             <div class="radio radio-info radio-inline">
                 <input type="radio" id="f8" value="1" name="f7" checked="">
                 <label for="f8"> 开启 </label>
@@ -55,22 +55,34 @@
             <div class="radio radio-info radio-inline">
                 <input type="radio" id="f9" value="2" name="f7" checked="">
                 <label for="f9"> 关闭 </label>
-        
-            </div>
-            <div>
-                <img src="./image/u706.png" alt="" data-hint="提示信息" style="width: 30px;height:30px;" class="hint--bottom">
             </div>
         
         </div>
         <div class="flex" style="justify-content: center;">
-            <button class="btn btn-primary saveBtn banner" style="margin-right: 2%;">保存</button>
-            <button class="btn banner">取消</button>
+            <button class="btn btn-primary saveBtn" style="margin-right: 2%;">保存</button>
+            <button class="btn">取消</button>
         
         </div>
     </div>
    
    </div>
-  
+   <div class="nv91-mask" >
+        <div class="nv" style="padding:10px;">
+                <div class="prompt">
+                    <p style="font-size: 20px;">提示</p>
+                    <img src="" alt=""><span>确认删除</span>
+                    <div class=" flex " style="justify-content: flex-end;box-sizing: border-box;">
+            
+                        <button type="button" class="btn btn-primary roleSure">确定</button>
+            
+                        <button type="button" class="btn  roleRefuse5">取消</button>
+            
+                    </div>
+                </div>
+            
+            
+            </div>
+    </div>
    <footer class="footer">
         <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
          </p>
@@ -82,63 +94,9 @@
 </html>
 
 <script src="../js/MD5.js"></script>
-<script src="../js/sign.js"></script>
 <script src="../js/api.js"></script>
-<script type="text/javascript">
-    function changeState(el) {
-        if (el.readOnly) el.checked=el.readOnly=false;
-        else if (!el.checked) el.readOnly=el.indeterminate=true;
-    }
-  $(document).ready(function(){
-    var appsercet = window.localStorage.getItem("appsercet");
-    var title = window.localStorage.getItem("title");
-    var src1 = window.localStorage.getItem("url");
-     console.log(src1)
-    var browse = window.localStorage.getItem("browse");
-    var praise = window.localStorage.getItem("praise");
-    $(".title").html(title);
-    appsercet = JSON.parse(appsercet); 
-    var newAppsercet = appsercet.data;
-    url = src+"/adminInterface.dx";
-    var src2,type;
-    src2 = "get.dxWeb.querysetup"
-    var browseRadio = document.querySelectorAll("input[name='f6']");
-    
-    if(browse == 1){
-        browseRadio[0].checked = true;
-    }else{
-        browseRadio[1].checked = true; 
-    }
-    var praiseRadio = document.querySelectorAll("input[name='f7']");
-    
-    if(praise == 1){
-        praiseRadio[0].checked = true;
-    }else{
-        praiseRadio[1].checked = true; 
-    }
-    if(src1 === "get.dxWeb.websetup" || src1 === "get.dxWeb.qsetup"){
-        type = 1;
-        par="appsercet="+newAppsercet+"&method="+src2+"&type="+type            
-        logsgin(url,par);
-    }
-     if(src1 === "get.dxWeb.tesetup" || src1 === "get.dxWeb.helpsetup"){
-        type = 2;
-        par="appsercet="+newAppsercet+"&method="+src2+"&type="+type            
-        logsgin(url,par);
-    }
-    
-    $(".saveBtn").click(function(){
-          var browse,praise
-          browse = $("input[name='f6']:checked").val();
-          praise = $("input[name='f7']:checked").val();
-          console.log(browse,praise)
-        
-        par="appsercet="+newAppsercet+"&method="+src1+"&browse="+browse+"&praise="+praise 
-                
-        logsgin(url,par);
-        alert("保存成功")
-      })
-  })
-      
-</script>
+<script src="../js/getRequest.js"></script>
+<script src="../js/functionSet.js"></script>
+
+
 
