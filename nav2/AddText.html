@@ -43,6 +43,13 @@
             bottom: 0%;
             margin: auto;
         }
+        .files{
+            position: relative;
+            left: -55px;
+            top: 31px;
+            /* bottom: 0%; */
+            margin: auto;
+        }
     </style>
     <script>
         $(function(){
@@ -57,8 +64,8 @@
 <body class="bgf3">
 <div class="brand h135" >
     <ul class="breadcrumb f14">
-        <li><a href="#" color="color_8d">网站运营</a>&nbsp;/&nbsp;</li>
-        <li><a href="#" color="color_5a">添加文章</a></li>
+        <li><a href="#" color="color_8d" class="color">网站运营</a>&nbsp;/&nbsp;</li>
+        <li><a href="#" color="color_5a" class="color">添加文章</a></li>
     </ul>
     <h1>添加文章</h1>
 </div>
@@ -223,16 +230,16 @@
                 <div class="flex col-sm-12 justify mb30">
                     <div class="flex wauto">
                         <div class="addImg position" >
-                            <img src="../image/u1986.png" alt=""  class="jt w30">
+                            <img src="../image/u1986.png" alt=""  class="files w30">
                             <input class="btn addColor w200"  value="直接上传"   readonly />
                         </div>
-                        <div class="col-sm-4" style="margin-top:5px;font-size:14px;" class="setting1">
+                        <div class="col-sm-4" style="margin-top: 20px;font-size: 14px;margin-left: 40px;" class="setting1">
                             <input type="checkbox" value="" name="rember" class="checkbox">添加水印
                             <span style="color:#FF5456;" class="setting">【设置】</span>
                         </div>
                     </div>
 
-                    <div class="flex flexend" >
+                    <div class="flex flexend" style="padding-top: 30px;">
                         <div class="flex textRight">
                             <div class="position">
                                 <input type="text" class="form-control searchName1" placeholder="搜索所有文件" />

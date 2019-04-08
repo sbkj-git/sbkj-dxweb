@@ -1,5 +1,16 @@
+.color{
+    color: #959595;
+    text-decoration: none;
+    font-size: 14px;
+}
 /*  s 首页样式开始 */
-.main-sidebar{position: absolute;top: 0;left: 0;height: 100%;min-height: 100%;/* width: 230px; */z-index: 810;background-color: #8A111A;
+.main-sidebar{
+    position: absolute;
+    /*top: 0;*/
+    left: 0;
+    height: 100%;
+    max-height: 94%;
+    /* width: 230px; */z-index: 810;background-color: #8A111A;
 }
 .selectDown{color: #fff; display: none;justify-content: space-between;z-index: 99;padding:20px 0 40px 0;background: #8A111A;}
 .selectDown li{text-align: center;font-size: 16px;line-height: 50px;}
@@ -18,14 +29,19 @@ iframe::-webkit-scrollbar { width: 0px;height: 0px;
 .person{width:60px;color: #222222;font-size: 20px;}
 .w20{width:20px;height:13px;display: inline-block;vertical-align: middle;}
 .w160{width:160px;height:249px;position: absolute;top: 60px;left: 0;}
-.w30{width: 30px;height:33px;display: block;}
-.ml30{margin-left: 30px;}
+.w30{width: 30px;height:30px;display: block;}
+.back{width: 30px;height:33px;display: block;margin-left: 0px;}
+/*.ml30{margin-left: 30px;}*/
 .nhide{width: 18%;}
-.w18{width:18%;padding-top: 60px;}
+.w18{width:18%;
+    /*padding-top: 60px;*/
+}
 .w100{width: 100%;}
 .nav-main{width:70px;display: none;padding-top: 80px;}
 .remove1{padding:70px 0 0 70px;width: 100%;box-sizing: border-box;}
-.remove2{padding:50px 0;width: 82%;box-sizing: border-box;}
+.remove2{
+    /*padding:50px 0;*/
+    width: 82%;box-sizing: border-box;}
 /*e 首页样式结束 */
 
 
@@ -46,7 +62,7 @@ iframe::-webkit-scrollbar { width: 0px;height: 0px;
 .changeFlex{width:100%;justify-content: space-between}
 .f16{font-size: 24px;border-bottom: 1px solid #dddddd;padding: 1% 0;width: 100%;color:#939393;}
 .w100_{width:100px}
-.icon{font-family: iconfont;position: absolute;right: 4%;top:0;font-size: 24px;}
+.icon{font-family: iconfont;position: absolute;right: 4%;top:0;font-size: 24px;color: #ccc}
 .w50_{width:50%;}
 .authorAbstract,.detailsKeyWord,.detailsDescribe{height: 100px;}
 .w24h14{width:20px;height:14px;}
@@ -114,9 +130,9 @@ a{color:#8D8D8D;}
 .footer{padding: 2%;width: 100%;margin-top: 10%;}
 .footer p{text-align: center;}
 .nv91,.nv92,.nv93{width: 706px;height:500px;left: 0;right:0;top:0;bottom: 0;margin:auto;border:1px solid #EBEBEB;background-color: #fff;position: absolute;display: none;z-index: 9999;overflow-y: scroll;border-radius: 10px;}
-.nv91::-webkit-scrollbar{display: none};
-.nv92::-webkit-scrollbar{display: none};
-.nv93::-webkit-scrollbar{display: none};
+.nv91::-webkit-scrollbar{display: none}
+.nv92::-webkit-scrollbar{display: none}
+.nv93::-webkit-scrollbar{display: none}
 .nv91 h1,.nv92 h1,.nv93 h1{font-size: 18px!important;padding-left: 20px;font-weight: normal;line-height: 50px;border-bottom:1px solid #dddddd;font-weight: normal;}
 .position{position: relative;}
 .star::before{content:"*";color: #FF6600;font-size: 14px;}
@@ -268,7 +284,7 @@ ul{
 /* s 第七节点下管理文件开始 */
 .addImg,.editImg,.setting1{display: none;}
 .w200{width:180px;height: 50px;display: block;font-size: 16px;text-align: center}
-.w30{width: 20px;height: 20px;}
+/*.w30{width: 20px;height: 20px;}*/
 .fr80{margin-right: 80px;}
 .fr100{margin: 0 100px;}
 .w200h145{width:100px;height:76px}

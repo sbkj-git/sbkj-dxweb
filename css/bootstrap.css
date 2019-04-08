@@ -167,10 +167,10 @@ a {
   -webkit-text-decoration-skip: objects;
 }
 
-a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
+/*a:hover {*/
+  /*color: #0056b3;*/
+  /*text-decoration: underline;*/
+/*}*/
 
 a:not([href]):not([tabindex]) {
   color: inherit;
@@ -1524,7 +1524,7 @@ pre code {
 .table th,
 .table td {
   padding: 0.75rem;
-  vertical-align: top;
+  /*vertical-align: top;*/
   border-top: 1px solid #dee2e6;
 }
 
