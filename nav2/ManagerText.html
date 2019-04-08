@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>管理文章</title>
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/setting.css">
+    <link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+<link rel="stylesheet" type="text/css" href="../css/buind.css">
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<style>
+.table th, .table td{vertical-align: middle;}
+.isLook{display: none;}
+</style>
+</head>
+<body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
+        <div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
+            <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
+            <li><a href="#" style="color:#8D8D8D;">网站运营</a>&nbsp;/&nbsp;</li>
+            <li><a href="#" style="color:#5A5A5A;">管理文章</a></li>
+        </ul>
+        <h1>管理文章</h1>
+    </div>
+   <div class="" style="margin-top:50px;padding: 0 70px;width: 100%;box-sizing: border-box;">
+    <div style="width: 100%;background-color: #fff;padding:40px 20px;box-sizing: border-box;">
+        <div class="form-group flex justify" style="padding-bottom: 2%;">
+            <div class="flex" style="width: 50%;">
+                <div class="" style="text-align: center;margin-right: 3%;">
+                    <button class="btn btn-primary Add saveBtn">添加文章</button>
+                </div>
+                <div class="" style="text-align: center;">
+                    <button class="btn Delete">删除选中</button>
+                </div>
+            </div>
+            <div class="flex" style="width: 50%;text-align: right;justify-content: flex-end;">
+                <div class="" style="width: 350px;">
+                    <div class="position">
+                        <input type="text" class="form-control banner" placeholder="请输入文章标题" />
+                        <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="banner1">&#xe615;</span>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        <table class="table" style="width: 100%;overflow: hidden;">
+            <thead>
+                <tr style="border-bottom: 1px solid #d8d8d8;">
+                    <td class="position" style="text-align: left">
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" id="m1" value="option1" name="radioInline" checked="">
+                            <label for="m1"> 文章名称 </label>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>文章作者</td>
+                    <td>置顶</td>
+                    <td>发布时间<img src="../image/u2372.png" alt=""
+                            style="display: inline-block;vertical-align: middle;width: 10px;height:18;margin-left: 1%;"></td>
+                    <td style="font-weight: 600;">操作</td>
+                </tr>
+            </thead>
+            <tbody class="textList">
+                <tr style="border-bottom: 1px solid #d8d8d8;">
+                    <td style="text-align: left">
+                        <div class="checkbox checkbox-primary">
+                            <input type="checkbox" class="styled styled-primary" id="singleCheckbox3" value="option2"
+                                checked="false" aria-label="Single checkbox Two">
+                            <label for="singleCheckbox3">这是文章名称</label>
+                        </div>
+                    </td>
+                    <td><img src="../image/u2382.png" alt="" style="width: 80px;height:56px;display: table-column;vertical-align: middle;"></td>
+                    <td>路人甲</td>
+                    <td>&#10005; &#10007;</td>
+                    <td>2019-02-20 11:40:08</td>
+                    <td style="color:#FF5456;"><span class="b1">编辑</span>&nbsp;<span class="b1">删除</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="paging flex justify">
+            <div style="color:#929292;font-size: 14px;padding-left: 20px;">
+                共<span>400</span>条数据&nbsp;第<span>1</span>/<span>80</span>页</div>
+            <div style="width:50%;">
+                <ul class="pageList flex " style="width:auto;justify-content: flex-end;">
+                    <li>&lt;</li>
+                    <li class="colorActive">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>&gt;</li>
+                    <li>10条/页</li>
+                    <li>跳至<input type="number" class="btn" style="width:50px;height:30px;border-radius:5px;">页</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        
+   </div>
+
+   <footer class="footer">
+        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+         </p>
+        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+         
+         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    </footer>
+</body>
+</html>
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/MD5.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/getRequest.js"></script>
+<script type="text/javascript">
+    function changeState(el) {
+        if (el.readOnly) el.checked=el.readOnly=false;
+        else if (!el.checked) el.readOnly=el.indeterminate=true;
+    }
+   //按照发布时间排序
+   var ul = $(".ul_sort ul");
+    var lis = [];
+
+    lis = $(".ul_sort ul li");
+    var ux = [];
+    //循环提取时间，并调用排序方法进行排序
+    for (var i=0; i<lis.length; i++){
+        var tmp = {};
+        tmp.dom = lis.eq(i);
+        tmp.date = new Date(lis.eq(i).find("span").eq(0).html().replace(/-/g,'/'));
+        ux.push(tmp);
+    }
+    //数组排序，支持年的比较
+    ux.sort(function(a,b){
+       var myDate = new Date();
+       var year = myDate.getYear();
+       if(a.date.getYear < year && b.date.getYear == year){
+          return true;
+       }
+       return b.date - a.date;
+    });
+    //移除原先顺序错乱的li内容
+    $('.ul_sort ul li').remove();
+    //重新填写排序好的内容
+    for (var i=0; i<ux.length; i++){
+       ul.append(ux[i].dom);
+    }
+    //封装渲染数据方法
+    function bannerList1(data) {
+            if (data.dxWebList.length > 0) {
+                var str = "";
+                $.each(data.dxWebList, function (i, item) {
+                    str += '<tr style="border-bottom: 1px solid #d8d8d8;">';
+                    str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.id + '"   aria-label="Single checkbox Two" data-id="' + item.id + '"><label for="' + item.id + '">' + item.title + '</label></div></td><td><img src="' + item.small_img + '" alt="" style="width: 82px;height:56px;display: table-column;vertical-align: middle;"></td><td>' + item.author + '</td>';
+                    if (item.is_ups == 1) {
+                        str += "<td>&#10003;</td>";
+                    } else {
+                        str += "<td>&#10007;</td>"
+                    }
+                    str += '<td>' + item.create_time + '</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.id + '">删除</span>&nbsp;&nbsp;<span data-id="' + item.id + '" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.id + '">编辑</span></td>'
+                    str += "</tr>";
+                })
+                $(".textList").append(str);
+            }
+        };
+    //页面初次渲染加载数据
+    var data = window.localStorage.getItem("dxRightsList");    
+        data = JSON.parse(data);  
+     //页面初次加载渲染页面
+     var url,par;      
+        var appsercet = window.localStorage.getItem("appsercet");
+        appsercet = JSON.parse(appsercet);
+        var newAppsercet = appsercet.data;
+        //判断是否有添加管理员操作权限
+        var arr = [];
+        $.each(data,function(i,item){
+            //console.log(item)
+            if(item.id == 2){
+                arr.push(item)
+            }
+        })
+        console.log(arr[0]);
+        $.each(arr[0].dxRightsList,function(i,item){
+            //console.log(arr[0].dxRightsList)
+            if(item.method === "get.dxWeb.webOperationList"){
+                url = src+"/"+item.link_path;
+                par = "appsercet="+newAppsercet+"&method="+item.method;
+                
+                var data = getSign(url,par);
+                console.log(data);
+                bannerList1(data);
+                 //通过banner名称查询
+                $(".banner1").click(function(){
+                    var title = $(".banner").val();
+                    par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList&title="+title;
+                    var bannerList = getSign(url,par);
+                    bannerList1(bannerList)
+                   
+                })
+                //判断该角色是否有权限操作
+                if(item.dxRightsTwoList.length == 0){
+                    return
+                }
+                else{
+                    $.each(item.dxRightsTwoList,function(i,obj){
+                       //判断该用户是否有添加权限
+                        if(obj.method === "get.dxWeb.addWebOperation"){
+                          $(".Add").show();
+                          $(".Add").click(function(){
+                              debugger
+                            localStorage.setItem("method","get.dxWeb.addWebOperation");
+                            location.href = "./AddText.html";
+                          })
+                          
+                            }
+                        //判断该用户是否有删除权限 
+                        if(obj.method === "get.dxWeb.deleteWebOperation"){
+                            $(".Delete").show();
+                            $(".isDelete").show();
+                            $(".Delete").click(function(){
+                                deleteText();
+                            })
+                            $(".isDelete").click(function(){
+                                deleteText();                               
+                            })
+                           
+                            //判断是否有查看权限
+                        }if(obj.method === "get.dxWeb.webOperationDetails"){
+                              //查看文章详情
+                             $(".isLook").show();
+                            $(".isLook").click(function(){
+                                var id = $(this).attr("data-id");
+                                par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationDetails&articleId="+id;
+                                var data = getSign(url,par);
+                                
+                                localStorage.setItem("textDetail",JSON.stringify(data) );
+                                console.log(data); 
+                                location.href = "./LookText.html"
+                            })
+                            
+                              
+                               
+                            }  
+                            //判断是否有编辑权限
+                           if(obj.method === "get.dxWeb.updateWebOperation"){
+                                  
+                            $(".isEdit").show();
+                              $(".isEdit").click(function(){
+                               
+                                  var id = $(this).attr("data-id");
+                                  par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationDetails&articleId="+id;
+                                var data = getSign(url,par);
+                                localStorage.setItem("textDetail",JSON.stringify(data));
+                                localStorage.setItem("method","get.dxWeb.updateWebOperation");
+                                location.href = "./AddText.html";
+                              })
+                                }   
+                                          
+                                          
+                    })
+                    
+                }
+            }
+           
+
+        })
+       //删除函数封装
+        function deleteText() {
+            var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
+            var IdList;
+            var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+            for (var i = 0; i < inputs.length; i++) {
+                var obj = inputs[i];
+                if (obj.type == 'checkbox') {
+                    checkboxArray.push(obj);
+                }
+            }
+            IdList = new Array();
+            for (var i = 0; i < checkboxArray.length; i++) {
+                if (checkboxArray[i].checked) {
+                    IdList.push(checkboxArray[i].getAttribute("data-id"));
+                }
+            }
+            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteWebOperation&IdList=" + IdList;
+
+            var data = getSign(url, par);
+            if (data.msg.code == "200") {
+                location.reload();
+            }
+        }
+</script>
+

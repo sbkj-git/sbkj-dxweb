@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>添加文章</title>
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/dataSelect.css" />
+    <link rel="stylesheet" href="../css/setting.css">
+    <link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+<link rel="stylesheet" type="text/css" href="../css/buind.css">
+<script src="../js/jquery-1.10.2.min.js"></script>
+
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/dataSelect.js"></script>
+<link href="./dist/summernote.css" rel="stylesheet"/>
+<script src="./dist/summernote.js"></script>
+<script src="./dist/lang/summernote-zh-CN.js"></script>    <!-- 中文-->
+
+</head>
+<body class="bgf3">
+    <div class="brand h135" >
+        <ul class="breadcrumb f14">
+                <li><a href="#" color="color_8d">网站运营</a>&nbsp;/&nbsp;</li>
+                <li><a href="#" color="color_5a">添加文章</a></li>
+            </ul>
+        <h1>添加文章</h1>
+    </div>
+   <form class="box p70"  enctype="multipart/form-data">
+        <div class="white">
+            <div class="flex column changeFlex" >
+                <h1 class="f16">常规内容</h1>
+                <div class="form-group flex w100 content" >
+                    <label for="name" class="control-label l22 changeTitle"
+                        >文章标题:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control title" placeholder="限制标题字数28字" maxlength="28" />
+                    </div>
+                </div>
+                <div class="form-group flex w100" >
+                    <label for="name" class="control-label l22"
+                       >发布日期:</label>
+                    <div class="position col-sm-4">
+                        <input type="text" id="date" class="form-control releaseTime">
+                        <span class="icon"
+                            >&#xe73a;</span>
+                    </div>
+            
+                </div>
+                <div class="form-group flex show1 w50_" >
+                        <label for="name" class="control-label l22 changeTitle1" >文档分类:</label>
+                        <div class="col-sm-8">
+                            <select name="" id="" class="form-control changeSelect" ><option selected="selected" value="0" data-id="1">--请选择-- </option>
+                                <option value="1" data-id="1">c</option>
+                                <option value="2" data-id="1">c</option>
+                                <option value="3" data-id="1">c</option>
+                            </select>
+                        </div>
+                </div>
+
+                <!--<div class="form-group flex show2 w50_" >-->
+                        <!--<label for="name" class="control-label l22" >问题分类:</label>-->
+                        <!--<div class="col-sm-9">-->
+                            <!--<select name="" id="" class="form-control changeSelectTwo"><option selected="selected" value="0" data-id="1">&#45;&#45;请选择&#45;&#45; </option>-->
+                                <!--<option value="1" data-id="1">c</option>-->
+                                <!--<option value="2" data-id="1">c</option>-->
+                                <!--<option value="3" data-id="1">c</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                <!--</div>-->
+                <!-- //富文本 -->
+                <div class="form-group flex col-sm-12 w100">
+                        <div class="summernote"></div>
+
+                </div>
+                <h1  class="ceshi f16">高级设置</h1>
+                <div class="form-group flex w100" >
+                    <label for="name" class="control-label w160lh22 content"
+                        >来源:</label>
+                    <div class="col-sm-4 content">
+                        <input type="text" class="form-control source" />
+                    </div>
+                </div>
+                <div class="form-group flex w100" >
+                    <label for="name" class="control-label w160lh22"
+                       >作者:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control author" />
+                    </div>
+                </div>
+                <div class="form-group flex w100" >
+                    <label for="name" class="control-label w160lh22"
+                       >文章摘要:</label>
+                    <div class="col-sm-4">
+                        <textarea type="text" class="form-control authorAbstract" ></textarea>
+                    </div>
+                </div>
+                <div class="form-group flex w100" >
+                    <label for="name" class="control-label w160lh22"
+                        >浏览数:</label>
+                    <div class="col-sm-4">
+                        <input class="btn upBrowse w100_"  placeholder="0"/>
+                        <span class="ml10"><a href="" class="resetNum">【重置】</a></span>
+                    </div>
+                </div>
+                <div class="form-group flex w100" >
+                    <label for="name" class="control-label w160lh22"
+                        >正文头图:</label>
+                    <div class="col-sm-4 position addPhone">
+                        <img src="../image/photo.png" alt=""  class="jt w24h14">
+                        <input class="btn addColor w100_" value="添加图片"  readonly />
+                    </div>
+                    <p  class="col-sm-12 pl18">支持扩展名.jpg.png
+                    </p>
+                </div>
+                <div class="flex form-group w100" >
+                    <span class="w160lh22" style="text-align: right;"> 列表缩略图:</span>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" id="ad8" value="1" name="recommended" class="add1">
+                        <label for="ad8"> 与正文头图一致 </label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" id="ad9" value="2" name="recommended" class="add1">
+                        <label for="ad9"> 自定义 </label>
+                    </div>
+                    <div class="col-sm-12 custom">
+                        <div class="col-sm-4 position addPhone" >
+                            <img src="../image/photo.png" alt=""  class="jt w24h14">
+                            <input class="btn addColor w100_" value="添加图片"  readonly />
+                        </div>
+                        <p  class="col-sm-12 pl18">
+                            支持扩展名.jpg.png</p>
+                    </div>
+                </div>
+                <h1 class="f16">搜索优化</h1>
+                <div class="form-group flex w100" >
+                    <label for="name" class="control-label w160lh22 content"
+                       >文章浏览器标题:</label>
+                    <div class="col-sm-4 content">
+                        <input type="text" class="form-control browserTitle" />
+                    </div>
+                </div>
+                <div class="form-group flex w100" >
+                    <label for="name" class="control-label w160lh22"
+                       >文章详情关键词:</label>
+                    <div class="col-sm-4">
+                        <textarea class="form-control detailsKeyWord" ></textarea>
+                    </div>
+                    <div class="col-sm-12 ml160" >多个关键词用英文逗号","隔开
+                    </div>
+                </div>
+                <div class="form-group flex" style="width:100%;">
+                    <label for="name" class="control-label w160lh22"
+                        >文章详情页描述:</label>
+                    <div class="col-sm-4">
+                        <textarea class="form-control detailsDescribe" ></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="flex message1">
+                <button class="btn btn-primary addMessage saveBtn banner">保存</button>
+                <button class="btn banner">取消</button>
+            
+            </div>
+        </div>
+   </form>
+   <div class="nv91-mask" >
+       
+        <div class="nv91">
+                <div class="nv91_box">
+                        <div class="w100">
+                        <p class="f18p10"> 添加图片-资源库<span class="f14pl10">只能添加jpg,jpeg,bmp,png,gif, 免费版大小不超过1MB</span>
+                                </p>
+                        <div class="flex col-sm-12 justify mb30">
+                            <div class="flex wauto">
+                                <div class="addImg position" >
+                                    <img src="../image/u1986.png" alt=""  class="jt w30">
+                                    <input class="btn addColor w200"  value="直接上传"   readonly />
+                                </div>
+                                <div class="newImg position" >
+                                    <img src="../image/u1986.png" alt=""  class="jt w30">
+                                    <input class="btn addColor w200"  value="新建文件夹"  readonly  />
+                                </div>
+                                
+                                <div class="editImg position">
+                                    <img src="../image/u1986.png" alt=""  class="jt w30">
+                                    <input class="btn addColor w200"  value="编辑图片" readonly />
+                                </div>
+                                <!-- <div class="col-sm-4" style="margin-top:5px;font-size:14px;" class="setting1">     
+                                    <input type="checkbox" value="" name="rember">添加水印
+                                    <span style="color:#FF5456;" class="setting">【设置】</span>
+                                </div> -->
+                            </div>
+                            
+                            <div class="flex flexend" >
+                                <div class="flex textRight">
+                                    <div class="position">
+                                        <input type="text" class="form-control searchName1" placeholder="搜索所有文件" />
+                                        <span class="icon" class="searchName">&#xe615;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="w200center">
+                                <img src="../image/file.png" alt="" class="w200h145">
+                                <p>新建文件夹一</p>
+                                <!-- //删除图片 -->
+                                <img src="" alt="">
+                            </div>
+                            
+                            <div  class="w200center m050">
+                                <img src="../image/file.png" alt="" class="w200h145">
+                                新建文件夹一
+                            </div>
+                            <div class="fr80 w200center">
+                                <img src="../image/file.png" alt="" class="w200h145">
+                                新建文件夹一
+                            </div>
+                            <div class="imgHover ">
+                                <img src="../image/fileimg.png" alt="" >
+                                <div  class="search2"><p class="ff_icon">&#xe615;</p></div>
+                            </div>
+                           
+                            <div class="fr100 imgHover ">
+                                
+                                <img src="../image/fileimg.png" alt="" >
+                                <div  class="search2">
+                                        <p class="ff_icon">&#xe615;</p>
+                                    </div>
+                            </div>
+                            <div class="imgHover ">     
+                                <img src="../image/fileimg.png" alt="">
+                                <div  class="search2">
+                                        <p class="ff_icon">&#xe615;</p>
+                                    </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div> 
+        </div>
+    </div>
+   <footer class="footer">
+        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+         </p>
+        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+         
+         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    </footer>
+</body>
+</html>
+
+<script src="../js/MD5.js"></script>
+<script src="../js/postSign.js"></script>
+<script src="../js/getRequest.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/addtext.js"></script>
+
+
+    
+

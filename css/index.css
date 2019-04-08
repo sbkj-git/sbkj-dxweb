@@ -1,0 +1,335 @@
+/*  s 首页样式开始 */
+.main-sidebar{position: absolute;top: 0;left: 0;height: 100%;min-height: 100%;/* width: 230px; */z-index: 810;background-color: #8A111A;
+ }
+ /*.selectDown{color: #fff; display: none;justify-content: space-between;z-index: 99;padding:20px 0 40px 0;background: #8A111A;}*/
+ .selectDown li{text-align: center;font-size: 20px;line-height: 50px;}
+ .selectDown li:hover{background: #6F0300;}
+.selectDown{
+    display: none;
+    margin-top: 30px;
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 9px 1px;
+    border: 1px solid #d3d3d3;
+    background: #fff;
+    margin-left: 20px;
+    width: 156px;
+    height: 250px;
+    padding-top: 26px;
+}
+
+.saveBtn{
+    background: #E2302B;
+    color: #fff;
+}
+
+iframe::-webkit-scrollbar { width: 0px;height: 0px;
+}
+.topHeader{height:70px;z-index:9999;box-shadow: 1px 1px 10px #868686;background-color: #fff;position: absolute;left: 0;top: 0;justify-content: space-between;box-sizing: border-box;padding:0 35px;}
+.hidenow{display: none;}
+.h52{height:52px;width: 246px;}
+  .bread{height:21px;width: 30px;margin:20px}
+  .h70{height: 70px;}
+  .mt10{justify-content: flex-end;margin-top:10px;}
+  .h_inherit{height:inherit;}
+  .w24{width: 24px;height:24px;display: inline-block;vertical-align: middle;}
+  .person{width:60px;color: #222222;font-size: 20px;}
+  .w20{width:20px;height:13px;display: inline-block;vertical-align: middle;}
+  .w160{width:160px;height:249px;position: absolute;top: 60px;left: 0;}
+  .w30{width: 30px;height:33px;display: block;}
+  /*.ml30{margin-left: 30px;}*/
+  .nhide{width: 18%;}
+  .w18{width:18%;padding-top: 60px;}
+  .w100{width: 100%;}
+  .nav-main{width:70px;display: none;padding-top: 80px;}
+  .remove1{padding:70px 0 0 70px;width: 100%;box-sizing: border-box;}
+  .remove2{
+      /*padding:50px 0;*/
+      width: 82%;box-sizing: border-box;}
+/*e 首页样式结束 */
+
+
+/* s 添加文章节点样式 */
+.tz-datepicker {width: 240px;}
+/*.show1,.show2{display: none;}*/
+.content{padding-top: 30px}
+.note-popover .popover-content{display: none;}
+.box{box-sizing: border-box;width:100%;}
+.white{background-color: #fff;width: 100%;padding: 40px 20px;box-sizing: border-box;}
+.l22{line-height: 2.2;font-size: 18px;padding-left: 10px;}
+.w160lh22{text-align: right;line-height: 2.2;font-size: 18px;width: 160px;text-align: right;}
+.bgf3{background-color:#f3f3f3;width: inherit;box-sizing: border-box;}
+.h135{background-color:#fff!important;height:135px;}
+.f14{font-size: 14px;margin:25px 0;}
+.color_8d{color: #8D8D8D};
+.color_5a{color: #5A5A5A}
+.p70{padding:0 70px;}
+.changeFlex{width:100%;justify-content: space-between}
+.f16{font-size: 24px;border-bottom: 1px solid #dddddd;padding: 1% 0;width: 100%;color:#222;}
+.w100_{width:100px}
+.icon{font-family: iconfont;position: absolute;
+    right: 5%;
+    top:0;font-size: 24px;}
+.w50_{width:50%;}
+.authorAbstract,.detailsKeyWord,.detailsDescribe{height: 100px;}
+.w24h14{width:20px;height:14px;}
+.pl18{
+    /*padding-left:18%;*/
+    padding-left:14%;
+    color:#959595;box-sizing: border-box;font-size: 12px}
+/*.addPhone{margin-left: 15%}*/
+.ml160{margin-left:160px;color:#A1A1A1;font-size:12px;}
+.message1{justify-content: center;}
+.addMessage{margin-right: 2%;}
+ .nv91{padding:10px;width: 80%;background-color: #f3f3f3;}
+ .nv91_box{padding: 0 20px;width: 100%;box-sizing: border-box;}
+  .f18p10{font-size: 18px;border-bottom: 1px solid #dddddd;padding-bottom: 10px;}
+   .f14pl10{font-size: 14px;padding-left: 10px;}
+  .mb30{box-sizing: border-box;margin-bottom: 30px;}
+.wauto{width:auto}
+/*.addImg{height:33px;width: 100px;}*/
+.newImg{height:33px;margin: 0 20px;display: block;}
+.editImg{height:33px;width: 100px;display: block;}
+.flexend{justify-content: flex-end;}
+.textRight{text-align: right;}
+.w340{width:340px;}
+ .m050{margin:0 50px;}
+  .ff_icon{font-family:iconfont;}
+/* e 添加文章节点样式 */
+
+
+/* s 网站运营节点下管理banner节点开始 */
+.toTop{display: none;}
+.fff14{background-color:#fff;font-size: 14px;}
+.p5_0{padding:5% 0}
+.textCenter{text-align:center;}
+.lh15{text-align: right;
+    /*line-height: 1.5;*/
+    line-height: 2.5;
+}
+.hideFile{display:none;height:0;}
+.slideImg{text-align: center;display: none;}
+.updateimg{height:50px;width: 100px;display: block;margin:0 auto;border: 1px solid #dddddd;padding:2px;}
+.butto{border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;}
+.mar12{margin:1% 2% 0 0}
+.mt2{margin-top: 2%;}
+.pb2{padding-bottom: 2%;
+margin-top: 30px;}
+/*.pr2{padding-right:2%;}*/
+.mr5{margin-right: 5px;}
+.w80_{width: 80%}
+.b_list{font-size: 16px;padding: 5% 0 1%;}
+.bb{border-bottom: 1px solid #d8d8d8;}
+.weight600{font-weight: 600;}
+.w50h50{width: 50px;height:50px;}
+.color_FF5456{color:#FF5456;}
+/* e 网站运营节点下管理banner节点结束 */
+
+
+/* s nav1下第一个选项卡 */
+.brand{
+    border-top: 1px solid #dddddd;border-bottom: 1px solid #dddddd;
+    padding: 10px;
+}
+.text-center{text-align: center;margin-right: 2%;}
+.breadcrumb{padding:0;}
+a{color:#8D8D8D;}
+.brand h1{font-size: 24px;font-weight: normal;padding-left: 31px;}
+/* 注意此处active需要修改 冲突 */
+/* .active{background-color:#FAFAFA;} */
+/*e  nav1下第一个选项卡 */
+
+
+/* s  nav9下基础设置选项卡 */
+.footer{padding: 2%;width: 100%;margin-top: 10%;}
+.footer p{text-align: center;}
+.nv91,.nv92,.nv93{width: 706px;height:500px;left: 0;right:0;top:0;bottom: 0;margin:auto;border:1px solid #EBEBEB;background-color: #fff;position: absolute;display: none;z-index: 9999;overflow-y: scroll;border-radius: 10px;}
+.nv91::-webkit-scrollbar{display: none};
+.nv92::-webkit-scrollbar{display: none};
+.nv93::-webkit-scrollbar{display: none};
+.nv91 h1,.nv92 h1,.nv93 h1{font-size: 18px!important;padding-left: 20px;font-weight: normal;line-height: 50px;border-bottom:1px solid #dddddd;font-weight: normal;}
+.position{position: relative;}
+.star::before{content:"*";color: #FF6600;font-size: 14px;}
+/*  e nav9下基础设置选项卡 */
+
+
+/* s nav9下管理角色选项卡 */
+.nv91-close,.nv92-close{font-size: 24px;position: absolute;right: 5px;top: 0;bottom:0;margin:auto;color:#999999;}
+.btn{border: 1px solid #d8d8d8;}
+.btn-primary{
+    /*background: rgb(24,144,255);*/
+    background-color: #FF5456;
+    /*color:#ddd;*/
+}
+.add::before{content:"+"}
+.pageList{display: flex;}
+.pageList li{
+    /*width: 40px;*/
+    height: 40px;
+    border-radius: 5px;
+    padding:5px 15px;font-size: 16px;color:#fff;text-align: center;border:1px solid #dddddd;margin-right: 2%;color:#5A5A5A;}
+.colorActive{background-color: #FF5456;color:#fff!important; }
+.pageList li:last-child{
+    border: none;
+}
+.ages{
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+}
+.age{
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+}
+/* e nav9下管理角色选项卡 */
+
+
+/* s nav9下管理操作员选项卡 */
+.openBtn,.closeBtn{position: absolute;right: 1%;top: 0;}
+.closeBtn{display: none;}
+/* e nav9下管理操作员选项卡 */
+
+
+/* s 投诉予反馈页面 */
+.chooseCard{width: 100%;border-bottom: 1px solid #dddddd;}
+.chooseCard li{line-height: 50px;font-size: 14px;padding: 0 2%;}
+.chooseActive{color: #FF5456;border-bottom: 1px solid #FF5456;}
+.addInput{font-size: 14px;width: 100%;text-align: center;line-height: 30px;border: 1px dashed #dddddd;border-radius: 10px;margin: 1% 0;}
+/* e 投诉予反馈页面 */
+
+
+/* s  总遮罩层 */
+.nv91-mask,.nv91-mask3{width: 100vw;height: 100vh;background:rgba(0,0,0,0.5);position: fixed;left: 0;top: 0;display: none;z-index: 9999;}
+.nv91-mask2{display: none;}
+.nv91-mask3{background: rgba(0, 0, 0, 0.6)}
+/* e 总遮罩层 */
+
+
+/* s   nav2下添加文章 */
+.jt{position: absolute;left: 18px;
+    top: -8px;bottom: 0%;margin:auto;}
+.addColor:hover{background-color: #FF5456;color:#fff;}
+.addColor{color:#888888;}
+.custom{height:0;display: none;}
+/* e   nav2下添加文章 */
+
+
+/* s 角色管理权限 */
+.qx{width:100%;line-height: 1.5;}
+/* e 角色管理权限 */
+
+
+/*s  nv1下网络概况 */
+i{font-style: normal;list-style: none;}
+.margin30{margin:25px 0 15px 0;}
+.nextImg{width: 30px;height: 30px;position: absolute;top: 0;right: 0;}
+.custor{color:#787A7D;font-size: 16px;display: block;}
+.breadcrumb{background-color: #fff!important;padding-left: 33px;}
+.li33{width:33%;background-color:#fff;border-radius: 10px;}
+.w36{width: 36%;padding:60px 0;justify-content: space-between;box-sizing: border-box;}
+.bag1{background-color: #FF5456;}
+.bag2{background-color: #985AFF;}
+.bag3{background-color: #FFB449;}
+.bag1,.bag2,.bag3{border-top-left-radius: 10px;border-bottom-left-radius:10px; }
+.data{display:block;width: 100%;padding-left: 30px;box-sizing: border-box;}
+.mainBox{width: 100%;height:400px;padding:0 70px;}
+#main{margin-top: 50px;box-sizing: border-box;background-color: #fff;width: inherit;height: inherit;}
+.www{width:47%;position: relative;height:400px;background-color: #fff;box-sizing: border-box;padding: 50px 30px 170px 30px;}
+.ED6264{width:100%;font-size: 12px;color:#959595;height:35px;border-bottom: 1px dashed #E8E8E8;}
+.FF5456{color: #FF5456;}
+/* s nv1网络概况 */
+
+
+/* s 第二节点下添加文章发布日期选择 */
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+#schedule-box{
+    width: 320px;
+    margin: 0 auto;
+    padding: 35px 20px;
+    font-size: 13px;
+}
+.schedule-hd{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+.today{
+    flex: 1;
+    text-align: center;
+}
+.ul-box{
+    overflow: hidden;
+}
+.ul-box > li{
+    float: left;
+    width: 14.28%;
+    text-align: center;
+    padding: 5px 0;
+}
+.other-month{
+    color: #999999;
+}
+.current-month{
+    color: #333333;
+}
+.today-style{
+    border-radius: 50%;
+    background: #58d321;
+}
+.arrow{
+    cursor: pointer;
+}
+.dayStyle{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+}
+.current-month > .dayStyle:hover{
+    background: #00BDFF;
+    color: #ffffff;
+}
+.today-flag{
+    background: #00C2B1;
+    color: #fff;
+}
+.boxshaw{
+    box-shadow: 2px 2px 15px 2px #e3e3e3;
+}
+.selected-style {
+    background: #00BDFF;
+    color: #ffffff;
+}
+#h3Ele{
+    text-align: center;
+    padding: 10px;
+}
+/* e 第二节点下添加文章发布日期选择 */
+
+/* s 第七节点下管理文件开始 */
+.addImg,.editImg,.setting1{display: none;}
+    .w200{width:180px;height: 50px;display: block;font-size: 16px;text-align: center}
+    .w30{width: 20px;height: 20px;}
+    .fr80{margin-right: 80px;}
+    .fr100{margin: 0 100px;}
+    .w200h145{width:100px;height:76px}
+    .w200center{width: 100px;text-align: center;}
+    .search2 p{width:20px;height:20px;border:1px solid #fff;position: absolute;left: 0;right: 0;bottom: 0;top: 0;margin: auto;z-index: 100;border-radius: 5px;color: #fff;}
+    .search2{width: 80px;height: 80px;position: absolute;left: 0;top: 0;z-index: 99;display: none;}
+    /* .imgHover{width: 80px;height: 80px;position: relative;}
+    .imgHover img{width: 100%;height: 100%;display: block;} */
+    .imgHover{width: 80px;height: 80px;position: relative;overflow: hidden;}
+    .imgHover img{width: 100%;height: 100%;display: block;}
+    .imgHover:hover .search2{background-color: rgba(0, 0, 0, 0.6) }
+/* e 第七节点下管理文件结束 */
+
+

@@ -1,0 +1,13 @@
+
+    .banner{background: url("/image/banner.png") no-repeat;background-size: 100% 100%;}
+.login{width: 491px;height:441px;border-radius: 20px;box-shadow: 0 0 10px 1px #333;position: absolute;top: 164px;right: 200px;background:rgba(174, 224, 254, 0.8);box-sizing: border-box;padding: 40px 80px 0 80px;}
+.login h1{font-weight: normal;font-size: 38px;}
+.login div{position: relative;height:50px;}
+.login .input1,.login .input2{
+    font-size: 18px;line-height: 50px;background-color: #DDF0F8;border-radius: 5px;padding-left: 30px;width: 100%;
+}
+.login img{position: absolute;left: 3px;top: 0;bottom: 0;margin:auto;width: 24px;height: 24px;}
+.login .input2{width: 50%;}
+.login button{width: 100%;line-height: 50px;background-color: #4292F2;text-align: center;color: #fff;font-size: 24px;border-radius: 5px;}
+
+

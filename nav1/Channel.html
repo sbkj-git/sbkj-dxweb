@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>渠道统计</title>
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/setting.css">
+    <link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+<link rel="stylesheet" type="text/css" href="../css/buind.css">
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/echarts.js"></script>
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<style>
+.btn-default{border:1px solid #D9D9D9;}
+.p24{font-size:24px;font-weight: 600;}
+.btn-nowClick{border: 1px solid #FF5456;color:#FF5456;}
+.rightLine li{border-right: 1px solid #dddddd;width: 20%;text-align: center;}
+.rightLine li:nth-last-child(1){border:none;}
+.rightLine{padding: 60px 0 50px 0px;border-bottom: 1px solid #dddddd;margin-bottom: 40px;}
+.span28 span,.span50 span{width:33%;text-align: center;display: block;float: left;}
+.td16{width:46%;text-align: center;line-height: 100px;font-size: 16px;}
+td{font-size: 16px;text-align: center;}
+.span50 span{width: 50%;}
+
+
+</style>
+</head>
+<body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
+    <div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
+        <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
+            <li><a href="#">统计/</a></li>
+            <li><a href="#">渠道统计</a></li>
+        </ul>
+        <h1>渠道统计</h1>
+    </div>
+  
+    <div style="background-color:#fff;width:100%;margin-bottom: 50px;height:200px;">  
+        <div class="form-group flex" style="width: 100%;justify-content: space-between;border-bottom: 1px dashed #D4D4D4;line-height: 100px;box-sizing: border-box;padding: 0 100px 0 30px;height: 100px;">
+            <div class="flex" style="width:50%">
+                <div class="text-center">
+                    <span style="line-height: 2;">快速查看:</span>
+                 </div>
+                 <div class="text-center" >
+                     <button class="btn ">今日</button>
+                 </div>
+                 <div class="text-center">
+                     <button class="btn ">昨日</button>
+                 </div>
+                 <div class="text-center" >
+                     <button class="btn btn-primary">最近7日</button>
+                 </div>
+                 <div class="text-center" >
+                     <button class="btn ">最近30日</button>
+                 </div>
+
+            </div>
+            
+            <div class="col-sm-1" style="text-align: center;float: right;">
+                <span style="font-size:14px;color:#FF5456;">收起</span>
+            </div>
+        </div >
+        <div class="form-group flex" style="width: 100%;justify-content: space-between;">
+                <div class="flex" style="width:50%;margin-top: 20px;">
+                    <div class="text-center col-sm-1">
+                        <span style="line-height: 2;">设备:</span>
+                     </div>
+                     <div class="btn-group">
+                        <button type="button" class="btn btn-nowClick" >全部 </button>
+                        <button type="button" class="btn btn-default">计算机 2</button>
+                        <button type="button" class="btn btn-default">移动设备 3</button>
+                    </div>
+                    <div class="text-center col-sm-1">
+                        <span style="line-height: 2;">访客:</span>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-nowClick" >全部 </button>
+                        <button type="button" class="btn btn-default">新访客 </button>
+                        <button type="button" class="btn btn-default">就访客 </button>
+                    </div>                   
+                </div> 
+        </div >
+    </div>
+    <div  style="width:100%;box-sizing: border-box;padding:0 70px;">
+        <div style="background-color: #fff;width:100%;padding-bottom: 50px;">
+            <ul class="flex justify rightLine">
+                <li>
+                    <p style="font-size:18px;">浏览次数PV<img src="../image/u706.png" style="width:30px;height:30px;" /></p>
+                    <p class="p24">0</p>
+                </li>
+                <li>
+                    <p style="font-size:18px;">独立访客UV<img src="../image/u706.png" style="width:30px;height:30px;" /></p>
+                    <p class="p24">0</p>
+                </li>
+                <li>
+                    <p style="font-size:18px;">IP<img src="../image/u706.png" style="width:30px;height:30px;" /></p>
+                    <p class="p24">0</p>
+                </li>
+                <li>
+                    <p style="font-size:18px;">跳出率<img src="../image/u706.png" style="width:30px;height:30px;" /></p>
+                    <p class="p24">0</p>
+                </li>
+                <li>
+                    <p style="font-size:18px;">平均访问时长<img src="../image/u706.png" style="width:30px;height:30px;" /></p>
+                    <p class="p24">0</p>
+                </li>
+            </ul>
+            <div class="col-sm-12 flex">
+                <label for="" class="label-control" style="padding:0 20px;line-height:2;">指标:</label>
+                <select name="" id="" class="form-control col-sm-2">
+                    <option value="0" selected>请选择</option>
+                    <option value="1" selected>1</option>
+                    <option value="2" selected>2</option>
+                    <option value="2" selected>3</option>
+                </select>
+            </div>
+            <div class="flex">
+                <div id="main2" style="width: 100%;height:400px;" class="col-sm-3"></div>
+                <div id="main3" style="width: 100%;height:400px;" class="col-sm-9"></div>
+            </div>
+        </div>
+     
+     <table class='table table-bordered' style="margin-top:50px;background-color:#fff;">
+         <thead>
+             <tr>
+                <td class="td16">来源类型</td>
+                <td style="width:28%;">
+                    <p style="border-bottom: 1px solid #dddddd;text-align: center;line-height:50px;">网站基础指标</p>
+                    <div class="span28 flex" style="line-height:50px;">
+                        <span > 浏览量(PV)</span>
+                        <span >访问数(UV)</span>
+                        <span >IP数</span>
+                    </div>                  
+                </td>
+                <td>
+                    <p style="border-bottom: 1px solid #dddddd;text-align: center;line-height:50px;">流量质量指标</p>
+                    <div class="span50 flex" style="line-height:50px;">
+                        <span>跳出率</span><span >平均访问时长</span>
+                    </div>          
+                </td>   
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>外部链接</td>
+                 <td class="span28 "><span >5</span><span >256</span><span >114</span></td>
+                 <td class="span50 "><span >5</span><span >256</span></td>
+             </tr>
+             <tr>
+                <td>搜索引擎</td>
+                <td class="span28 "><span >5</span><span >256</span><span >114</span></td>
+                <td class="span50 "><span >5</span><span >256</span></td>
+            </tr>
+            <tr>
+                <td>直接访问</td>
+                <td class="span28 "><span >5</span><span >256</span><span >114</span></td>
+                <td class="span50 "><span >5</span><span >256</span></td>
+            </tr>
+            <tr>
+                <td>当前汇总</td>
+                <td class="span28 "><span >5</span><span >256</span><span >114</span></td>
+                <td class="span50 "><span >5</span><span >256</span></td>
+            </tr>
+         </tbody>
+     </table>
+   </div>
+  
+   <footer class="footer">
+        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+         </p>
+        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+         
+         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    </footer>
+</body>
+</html>
+<script src="../js/MD5.js"></script>
+<script src="../js/sign.js"></script>
+<script src="../js/api.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#demo').daterangepicker({
+            "startDate": "03-13-2019",
+            "endDate": "03-19-2019"
+        }, function (start, end, label) {
+            console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+        });
+        updateConfig();
+        function updateConfig() {
+            var options = {};
+            if ($('#ranges').is(':checked')) {
+              option.ranges = {
+                    '今日': [moment(), moment()],
+                    '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '最近7日': [moment().subtract(6, 'days'), moment()],
+                    '最近30日': [moment().subtract(29, 'days'), moment()],
+                    '本月': [moment().startOf('month'), moment().endOf('month')],
+                    '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+                // startDate: moment().subtract(29, 'days'),
+                // endDate: moment()
+            }
+            $('#demo').click(function () {
+                $(".daterangepicker").show();
+            })
+            $('#config-demo').daterangepicker(options, function (start, end, label) {
+                
+                $('#config-demo').val(start.format('YYYY-MM-DD') + "~" + end.format('YYYY-MM-DD'))
+            }).click();
+        }
+    });
+</script>
+<script type="text/javascript">
+    function changeState(el) {
+        if (el.readOnly) el.checked=el.readOnly=false;
+        else if (!el.checked) el.readOnly=el.indeterminate=true;
+    }
+</script>
+<script>
+    var myChart = echarts.init(document.getElementById('main2'));
+option = {
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'left',
+        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+    },
+    series: [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:[
+                {value:335, name:'直接访问'},
+                {value:310, name:'邮件营销'},
+                {value:234, name:'联盟广告'},
+                {value:135, name:'视频广告'},
+                {value:1548, name:'搜索引擎'}
+            ]
+        }
+    ]
+};
+myChart.setOption(option);
+
+</script>
+<script>
+var myChart = echarts.init(document.getElementById('main3'));
+option = {
+    title: {
+        text: '折线图堆叠'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一','周二','周三','周四','周五','周六','周日']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'邮件营销',
+            type:'line',
+            stack: '总量',
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'联盟广告',
+            type:'line',
+            stack: '总量',
+            data:[220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name:'视频广告',
+            type:'line',
+            stack: '总量',
+            data:[150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name:'直接访问',
+            type:'line',
+            stack: '总量',
+            data:[320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name:'搜索引擎',
+            type:'line',
+            stack: '总量',
+            data:[820, 932, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+};
+myChart.setOption(option);
+
+</script>
+

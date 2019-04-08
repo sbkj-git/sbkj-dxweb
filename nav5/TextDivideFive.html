@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文档分类</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="stylesheet" href="../css/setting.css">
+    <link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+<link rel="stylesheet" type="text/css" href="../css/buind.css">
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<style>
+.table th, .table td{vertical-align: middle;}
+
+</style>
+</head>
+<body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
+        <div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
+            <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
+            <li><a href="#" style="color:#8D8D8D;">Q&A文档</a>&nbsp;/&nbsp;</li>
+            <li><a href="#" style="color:#5A5A5A;">文档分类</a></li>
+        </ul>
+        <h1>文档分类</h1>
+    </div>
+   <div class="" style="margin-top:50px;padding: 0 70px;width: 100%;box-sizing: border-box;">
+    <div style="width: 100%;background-color: #fff;padding:40px 20px;box-sizing: border-box;">
+        <div class="form-group flex justify" style="padding-bottom: 2%;">
+            <div class="flex" style="width: 50%;">
+                <div class="" style="text-align: center;margin-right: 3%;">
+                    <button class="btn addText btn-primary saveBtn">添加分类</button>
+                </div>
+                <div class="" style="text-align: center;">
+                    <button class="btn Delete">删除选中</button>
+                </div>
+            </div>
+            <div class="flex" style="width: 50%;text-align: right;">
+                <div class="col-sm-8" style="margin-left: 25%;">
+                    <div class="position">
+                        <input type="text" class="form-control" placeholder="请输入分类名称" />
+                        <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;">&#xe615;</span>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        <table class="table" style="width: 100%;overflow: hidden;">
+            <thead>
+                <tr style="border-bottom: 1px solid #d8d8d8;">
+                    <td class="position">
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" id="md1" value="option1" name="radioInline" checked="">
+                            <label for="md1">对应产品
+                            </label>
+                        </div>
+                    </td>
+                    <td>问题分类</td>
+                    <td>包含问题数量 </td>
+                    <td style="font-weight: 600;">操作</td>
+                </tr>
+            </thead>
+            <tbody class="textList">
+                <tr style="border-bottom: 1px solid #d8d8d8;">
+                    <td>
+                        <div class="checkbox checkbox-primary">
+                            <input type="checkbox" class="styled styled-primary" id="md2" value="" checked="false"
+                                aria-label="Single checkbox Two">
+                            <label for="md2" style="height: 40px;width: auto;">
+                                <div class="imgBoder">
+                                    <img src="../image/u2611.png" alt="">
+                                </div>
+                                <span style="font-size: 16px;line-height: 40px;">平台小号</span>
+                            </label>
+        
+        
+                        </div>
+                    </td>
+                    <td style="line-height: 40px;">文档分类一</td>
+                    <td style="line-height: 40px;">100</td>
+                    <td style="color:#FF5456;line-height: 40px;"><span class="b1">删除</span>&nbsp;<span class="b1">编辑</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="paging flex justify">
+            <div style="color:#929292;font-size: 14px;padding-left: 20px;">
+                共<span>400</span>条数据&nbsp;第<span>1</span>/<span>80</span>页</div>
+            <div style="width:50%;">
+                <ul class="pageList flex " style="width:auto;justify-content: flex-end;">
+                    <li>&lt;</li>
+                    <li class="colorActive">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>&gt;</li>
+                    <li>10条/页</li>
+                    <li>跳至<input type="number" class="btn" style="width:50px;height:30px;border-radius:5px;">页</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+   </div>
+   <div class="nv91-mask">
+        <div class="nv91">
+            <h4 class="position" style="height:80px;padding-top: 30px;border-bottom: 1px solid #ddd">添加修改分类<div class="nv91-close">&#10005;</div>
+            </h4>
+            <form action="" class="form-horizontal" role="form" style="text-align:center;">
+                <div class="form-group flex" style="padding: 20px">
+                    <label for="name" class="control-label col-sm-3" style="text-align: left;line-height: 1.5;">选择类型:</label>
+                    <div class="radio radio-info radio-inline ">
+                        <input type="radio" id="type1" value="1" name="type2"  class="status">
+                        <label for="type1"> 创建产品 </label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" id="type2" value="2" name="type2"  class="status">
+                        <label for="type2"> 创建分类 </label>
+                    </div>
+                </div>
+                <div class="c2 " style="display:block">
+                    <div class="form-group  flex">
+                        <label for="name" class="control-label col-sm-2"
+                            style="text-align: right;line-height: 2;font-size: 16px;">产品名称:</label>
+                        <div class="col-sm-9">
+                            <input type="next" class="form-control cateName" placeholder="" />
+                        </div>
+                    </div>
+                    <div class="form-group flex" style="width:100%;">
+                        <label for="name" class="control-label col-sm-2"
+                            style="text-align: right;line-height: 2.2;font-size: 16px;">上传ICON:</label>
+                        <div class="col-sm-4 position">
+                            <img src="../image/u1986.png" alt="" style="width:15px;height:15px;" class="jt">
+                            <input class="btn addColor webImg2" value="上传文件" style="width:100px;" type="file" />
+                        </div>
+                        <p style="padding-left:18%;color:#959595;box-sizing: border-box;font-size: 12px" class="col-sm-12">支持扩展名.jpg.png</p>
+                    </div>
+                </div>
+                <div class="c2 " style="display: none;">
+                    <div class="form-group  flex" style="justify-content: center">
+                        <label for="" class="control-label col-sm-2 " style="text-align: right;line-height: 2;">选择产品:</label>
+                        <div class="col-sm-9">
+                            <select class="form-control cateId" >
+                                <option selected="selected" value="0">--请选择-- </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group  flex">
+                        <label for="name" class="control-label col-sm-2"
+                                style="text-align: right;line-height: 2;font-size: 16px;">分类名称:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control cateName1" placeholder="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group flex" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                    <div class="col-sm-2" style="margin-top: 1%;text-align: right;">
+                        <button class="btn">取消</button>
+                    </div>
+                    <div class="col-sm-2" style="margin-top: 1%;text-align: left;">
+                        <button class="btn btn-primary addType">确定</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+   <footer class="footer">
+        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+         </p>
+        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+         
+         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    </footer>
+</body>
+</html>
+
+<script src="../js/MD5.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/postSign.js"></script>
+<script src="../js/getRequest.js"></script>
+<script type="text/javascript">
+    function changeState(el) {
+        if (el.readOnly) el.checked=el.readOnly=false;
+        else if (!el.checked) el.readOnly=el.indeterminate=true;
+    }
+    //弹框关闭事件
+    $(".nv91-close").click(function(){
+        $(".nv91-mask").fadeOut();
+        $(".nv91").hide();
+    });
+    //弹框内选项卡事件
+    var radio = document.querySelectorAll(".status");
+    $(".status").click(function(){
+        for (var i = 0; i < radio.length; i++) {
+            if (radio[0].checked) {
+               $(".c2").eq(0).show();
+               $(".c2").eq(1).hide();
+
+            } else {
+                $(".c2").eq(0).hide();
+                $(".c2").eq(1).show();
+            }
+
+        }
+                  
+    })
+    
+   //按照发布时间排序
+   var ul = $(".ul_sort ul");
+    var lis = [];
+
+    lis = $(".ul_sort ul li");
+    var ux = [];
+    //循环提取时间，并调用排序方法进行排序
+    for (var i=0; i<lis.length; i++){
+        var tmp = {};
+        tmp.dom = lis.eq(i);
+        tmp.date = new Date(lis.eq(i).find("span").eq(0).html().replace(/-/g,'/'));
+        ux.push(tmp);
+    }
+    //数组排序，支持年的比较
+    ux.sort(function(a,b){
+       var myDate = new Date();
+       var year = myDate.getYear();
+       if(a.date.getYear < year && b.date.getYear == year){
+          return true;
+       }
+       return b.date - a.date;
+    });
+    //移除原先顺序错乱的li内容
+    $('.ul_sort ul li').remove();
+    //重新填写排序好的内容
+    for (var i=0; i<ux.length; i++){
+       ul.append(ux[i].dom);
+    }
+    $(document).ready(function(){
+        
+    })
+    //页面初次渲染加载数据
+    var data = window.localStorage.getItem("dxRightsList");    
+        data = JSON.parse(data);  
+     //页面初次加载渲染页面
+     var url,par,sign,timestamp;      
+        var appsercet = window.localStorage.getItem("appsercet");
+        appsercet = JSON.parse(appsercet);
+        var newAppsercet = appsercet.data;
+        var appid = localStorage.getItem("appid");
+        //判断是否有添加管理员操作权限
+        var arr = [];
+        $.each(data,function(i,item){
+            //console.log(item)
+            if(item.id == 5){
+                arr.push(item)
+            }
+        })
+        
+        console.log(arr[0]);
+        $.each(arr[0].dxRightsList,function(i,item){
+            //console.log(arr[0].dxRightsList)
+            if(item.method === "get.dxWeb.cateTwoList"){
+                
+                url = src+"/"+item.link_path;
+                par = "appsercet="+newAppsercet+"&method="+item.method;
+                // par = "appsercet="+newAppsercet+"&method=get.dxWeb.cateAllList";
+                
+                var data = getSign(url,par);
+                console.log(data);
+                if(data.dxWebList.length>0){
+                    var str = "";
+                    $(".textList").html("");
+                    $.each(data.dxWebList,function(i,item){
+                        str+='<tr style="border-bottom: 1px solid #d8d8d8;">';
+                            str+='<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="'+item.cate_id+'"   aria-label="Single checkbox Two" data-id="'+item.id+'"><label for="'+item.cate_id+'">'+item.classify_name+'</label></div></td><td>"'+item.product_name+'"</td><td>"'+item.problem_sum+'"</td>';
+                           
+                            str+='<td style="color:#FF5456;"><span class="isDelete" data-id="'+item.id+'">删除</span>&nbsp;&nbsp;<span data-id="'+item.id+'" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="'+item.id+'">编辑</span></td>'
+                        str+="</tr>";
+                    })
+                    $(".textList").html(str);
+                }
+                console.log(data);
+                //判断该角色是否有权限操作
+                if(item.dxRightsTwoList.length == 0){
+                    return
+                }
+                else{
+                    $.each(item.dxRightsTwoList,function(i,obj){
+                       //判断该用户是否有添加权限
+                        if(obj.method === "get.dxWeb.addCate"){
+                            $(".addText").show();
+                            $(".addText").click(function(){
+                            //添加分类事件
+                                $(".nv91-mask").show();
+                                $(".nv91").show();
+                                $(".addType").click(function () {
+                                    debugger
+                                    
+                                    var radio = document.querySelectorAll(".status");
+                                        for (var i = 0; i < radio.length; i++) {
+                                            if (radio[0].checked) {
+                                                debugger
+                                                var data = sign("get.dxWeb.addCate");
+                                                var formData = new FormData();
+                                                var appid = localStorage.getItem("appid");
+                                                var appsercet = localStorage.getItem("appsercet");
+                                                appsercet = JSON.parse(appsercet);
+                                                appsercet = appsercet.data;
+                                                formData.append("appid", appid);
+                                                formData.append("appsercet", appsercet);
+                                                console.log(data)
+                                                var sign1 = data.parameter;
+                                                var timeStamp = data.timestamp;
+                                                formData.append("method", "get.dxWeb.addCate");
+                                                formData.append("sign", sign1);
+                                                formData.append("timestamp", timeStamp);
+                                                formData.append("cateName", $(".cateName").val());
+                                                formData.append("webImg2", $(".webImg2")[0].files[0]);
+                                                var data = post(url, formData);
+                                                if (data.msg.code == "200") {
+                                                    alert("添加成功");
+                                                }
+                                            } else {
+                                                var data = sign("get.dxWeb.addTwoCate");
+                                                var formData = new FormData();
+                                                var appid = localStorage.getItem("appid");
+                                                var appsercet = localStorage.getItem("appsercet");
+                                                appsercet = JSON.parse(appsercet);
+                                                appsercet = appsercet.data;
+                                                formData.append("appid", appid);
+                                                formData.append("appsercet", appsercet);
+                                                var sign1 = data.parameter;
+                                                var timeStamp = data.timestamp;
+                                                formData.append("method", "get.dxWeb.addTwoCate");
+
+                                                formData.append("sign", sign1);
+                                                formData.append("timestamp", timeStamp);
+                                                formData.append("cateName", $(".cateName1").val());
+                                                formData.append("webImg2", $(".cateId option:checked").val());
+                                                var data = post(url, formData);
+                                                if (data.msg.code == "200") {
+                                                    alert("添加成功");
+                                                }
+                                            }
+
+                                        }
+                                   
+                                
+                                    
+                                })
+                          })
+                          
+                            }
+                        //判断该用户是否有删除权限 
+                        if(obj.method === "get.dxWeb.deleteCate"){
+                            $(".Delete").show();
+                            $(".isDelete").show();
+                            $(".Delete").click(function(){
+                                deleteText();
+                            })
+                            $(".isDelete").click(function(){
+                                deleteText();                               
+                            })
+                           
+                            //判断是否有查看权限
+                        }if(obj.method === "get.dxWeb.cateDetails"){
+                              //查看文章详情
+                             $(".isLook").show();
+                            $(".isLook").click(function(){
+                                var id = $(this).attr("data-id");
+                                par = "appsercet="+newAppsercet+"&method=get.dxWeb.cateDetails&articleId="+id;
+                                var data = getSign(url,par);
+                                localStorage.setItem("textDetail",JSON.stringify(data));
+                                console.log(data); 
+                                location.href = "./LookText.html"
+                            })  
+                            }  
+                            //判断是否有编辑权限
+                           if(obj.method === "get.dxWeb.updateCate"){
+                            $(".isEdit").show();
+                         $(".isEdit").click(function(){
+                            var id = $(this).attr("data-id");
+                               var par = "appsercet="+appsercet+"&method=get.dxWeb.cateDetails&articleId="+id;
+                               var data = getSign(url,par);
+                               localStorage.setItem("textDetail",JSON.stringify(data));
+                               localStorage.setItem("method","get.dxWeb.updateCate");
+                               location.href = "../nav2/AddText.html";
+                         })      
+
+                                }   
+                                          
+                                          
+                    })
+                    
+                }
+            }
+            //删除函数封装
+            function deleteText() {
+                var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
+                var IdList;
+                var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+                for (var i = 0; i < inputs.length; i++) {
+                    var obj = inputs[i];
+                    if (obj.type == 'checkbox') {
+                        checkboxArray.push(obj);
+                    }
+                }
+                IdList = new Array();
+                for (var i = 0; i < checkboxArray.length; i++) {
+                    if (checkboxArray[i].checked) {
+                        IdList.push(checkboxArray[i].getAttribute("data-id"));
+                    }
+                }
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteWebOperation&IdList=" + IdList;
+                
+                var data = getSign(url, par);
+                if (data.msg.code == "200") {
+                    alert("删除成功");
+                }
+            }
+
+        })
+       
+</script>
+
+

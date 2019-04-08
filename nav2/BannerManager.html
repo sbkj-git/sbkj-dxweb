@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Banner管理</title>
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/setting.css">
+    <link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+<link rel="stylesheet" type="text/css" href="../css/buind.css">
+<link rel="stylesheet" href="../css/simple.switch.three.css">
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<!-- <script src="../js/183.js"></script> -->
+<script src="../js/simple.switch.min.js"></script>
+    <style>
+        /*复选框开关按钮切换特效*/
+        .switch_box{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            max-width: 50px;
+            min-width: 80px;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+        }
+        input[type="checkbox"].switch_1{
+            font-size: 30px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 3.5em;
+            height: 1.3em;
+            background: #ddd;
+            border-radius: 3em;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+        input[type="checkbox"].switch_1:checked{
+            background: #0ebeff;
+        }
+        input[type="checkbox"].switch_1:after{
+            position: absolute;
+            content: "";
+            width: 1.5em;
+            height: 1.3em;
+            border-radius: 50%;
+            background: #fff;
+            -webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);
+            box-shadow: 0 0 .25em rgba(0,0,0,.3);
+            -webkit-transform: scale(.7);
+            transform: scale(.7);
+            left: 0;
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+        input[type="checkbox"].switch_1:checked:after{
+            left: calc(100% - 1.3em);
+        }
+    </style>
+</head>
+<body>
+    <div class="brand">
+        <ul class="breadcrumb fff14">
+            <li><a href="#" class="color_8d">网站运营</a>&nbsp;/&nbsp;</li>
+            <li><a href="#" class="color_5a">Banner管理</a></li>
+        </ul>
+        <h1>Banner管理</h1>
+    </div>
+    <div class="nv91-mask" >
+       
+            <div class="nv91 p5_0" >
+                <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal textCenter" role="form"  id="form">
+                   
+                    <div class="form-group  flex needHide">
+                        <label for="name" class="control-label col-sm-3 star rolename lh15" >Banner图片:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control upload1" placeholder="请选择上传图片" />
+                            <input type="file" class="hideFile" id='fileUpload' name="picimg"/>
+                           
+                        </div>
+                    </div>
+                    <div class="form-group  flex slideImg"  >
+                        <label for="name" class="control-label col-sm-3  lh15" >Banner图片:</label>
+                        <img src="" alt=""  class='updateimg'>
+                    </div>
+                    <div class="form-group  flex">
+                        <label for="name" class="control-label col-sm-3  lh15" >Banner图片名称:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control bannerName" placeholder=" 请填写上传图片名称" />
+                        </div>
+                    </div>
+                    <div class="form-group  flex">
+                        <label for="name" class="control-label col-sm-3 lh15 " >公司链接地址:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control url" placeholder="请输入公司链接地址"  />
+                        </div>
+                    </div>
+                    <div class="form-group  flex">
+                        <label for="name" class="control-label col-sm-3  lh15" >Banner位置:</label>
+                        <div class="col-sm-9">
+                            <select  id="" class="form-control  cateId" >
+                                <option value="0" selected>--请选择--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group  flex">
+                        <label for="name" class="control-label col-sm-3  lh15" >开始时间:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="startTime" class="form-control  start " placeholder="请选择开始时间" />
+                        </div>
+                    </div>
+                    <div class="form-group  flex">
+                        <label for="name" class="control-label col-sm-3  lh15" >结束时间:</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="endTime" class="form-control  end" placeholder="请选择结束时间" />
+                       </div>
+                    </div>
+                    <div class="form-group flex">
+                        <label for="name" class="control-label col-sm-3 lh15" >是否置顶:</label>
+                        <div class="radio radio-info radio-inline ">
+                            <input type="radio" id="b6" value="1" name="state" checked="" class="b6">
+                            <label for="b6"> 是 </label>
+                        </div>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" id="b7" value="2" name="state" checked="" class="b6">
+                            <label for="b7"> 否 </label>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group flex butto" >
+                        <div class="col-sm-2" >
+                            <button class="btn btn-primary BannerSure banner aveBtn" style="margin-top: 7px;">确定</button>
+                        </div>
+                        <div class="col-sm-2 mar12" >
+                            <button class="btn  BannerRefuse banner">取消</button>
+                        </div>
+                    </div>
+                
+                </form>
+            </div>
+        </div>
+        
+   <div class="col-sm-10 col-sm-pull-1">
+    <div class="flex w100 pb2">
+        <span  class="col-sm-1 pr2" style="padding-left: 23px">筛选查询</span>
+        <div class="col-sm-3 flex">   
+              <label for="name" class="control-label lh15 mr5" >位置:</label>
+              <div>
+                  <select class="form-control location" style="width: 260px;">
+                      <option checked>全部</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                  </select>
+              </div> 
+        </div>
+      <div class="col-sm-4 flex textRight">
+            <label for="name" class="control-label lh15 mr5" >到期时间:</label>
+            <div class="position col-sm-9">
+                <input type="text" class="form-control" id="nowdate" />
+                <span style="font-family: iconfont;position: absolute;right: 5%;top:0;font-size: 24px;" id="datetimepicker1">&#xe73a;</span>
+            </div>
+    </div>  
+    <div class="col-sm-4 flex textRight" >
+        <div class="position col-sm-9">
+            <input type="text" class="form-control bannerName12" placeholder="请输入banner名称"/>
+            <span  class="bannerName1 icon" >&#xe615;</span>
+        </div>     
+    </div>
+        <div class="b_list" style="padding-left: 31px;">
+            <p class="pr2">任务列表</p>
+        </div> 
+        <div class="addInput">+添加</div>
+        <table class="table w100" >
+            <thead>
+    
+                <tr class="bb">
+                    <td class="position">
+                        Banner图片
+                    </td>
+                    <td>Banner名称</td>
+                    <td>Banner位置</td>
+                    <td>时间</td>
+                    <td>上线/下线</td>
+                    <td>点击次数</td>
+                    <td class="weight600">操作</td>
+                </tr>
+            </thead>
+            <tbody class="bannerList">
+                  
+                <tr class="bb color_8d" >
+                    <td>
+                        <img src="../image/u2611.png" alt="" class="w50h50">
+                    </td>
+                    <td> 这是Banner名称，用于在后台区分</td>
+                    <td>Web端首页</td>
+                    <td><span style="display: block;">开始时间：2019-01-16  14:03:12 </span>
+                    <span style="display: block;"> 结束时间：2019-02-16  14:03:12</span>
+                    </td>
+                    <td>
+                        <input type="checkbox" class="checkbox" checked>
+                        <script>
+                            $(".checkbox").simpleSwitch({
+                                "theme": "FlatCircular"
+                            });
+                        </script>
+                       </td>
+                    <td>100</td>
+                    
+                    <td class='color_FF5456'>
+                        <span class="b1">删除</span>&nbsp;
+                        <span class="b1">置顶</span>&nbsp;
+                        <span class="b1">编辑</span>&nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="paging flex"  style="justify-content: flex-end;width: 100%;margin-top: 1%">
+            <div class="col-sm-9">
+                <ul class="pageList flex " style="justify-content: flex-end;width: 100%" >
+                    <li>&lt;</li>
+                    <li class="colorActive">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>&gt;</li>
+                    <li class="age">10条/页</li>
+                    <li>跳至<input type="number" class="btn ages" style="width:50px;height:30px;border-radius:5px;">页</li>
+                </ul>
+            </div>
+        </div>
+   </div>
+    </div>
+   <footer class="footer">
+        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+         </p>
+        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+         
+         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    </footer>
+</body>
+</html>
+<script>
+    // var length = $(".checkbox").length;
+    // for(var i = 0;i < length;i++){
+    //     $(".checkbox").eq(i).simpleSwitch({
+    //         "theme": "FlatCircular"
+    //     });
+    // }
+   
+</script>
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/MD5.js"></script>
+<script src="../js/sign.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/postSign.js"></script>
+<script src="../js/getRequest.js"></script>
+<script src="../js/bannermanager.js"></script>
+
+
+
