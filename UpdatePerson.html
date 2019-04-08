@@ -9,45 +9,45 @@
     <link rel="stylesheet" href="./css/loginOne.css">
     <title>修改个人资料</title>
     <style>
-    
-    
+        .border{width: 150px;height: 150px;border: 1px solid #cccccc;position: relative;text-align: center;line-height: 150px;font-size: 40px;background-color: #F0F0F0;}
+
     </style>
 </head>
 <body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;">
-    <div class="col-sm-6" style="margin:113px auto;">
-        <h1 style="text-align: center;font-size: 18px;">修改个人资料</h1>
-        <div class="col-sm-12 hiddenStep" style="margin-top: 6%;">
-            <div class="form-group flex">
-                <label for="" class="user" >姓名:</label>
-                <div class="col-sm-9">
-                    <input type="text" required class="form-control username" placeholder="请输入姓名"   />
-                </div>
-            </div>
-            <div class="form-group flex">
-                <label for="" class="phone" >电话:</label>
-                <div class="col-sm-9">
-                    <input type="number" required class="form-control phone1" placeholder="请输入电话"  />
-                </div>
-            </div>
-            <div class="form-group flex">
-                <label for="" class="" style="text-align: right;line-height: 2;font-size: 16px;width: 100px;">上传头像:</label>
-                <div class="col-sm-9 flex">
-                    <div class="border border1">+</div>
-                    <input type="file" id="disnone" />
-                    <div class="border" style="margin-left:20px;" ><img src="" alt="" id="review"></div>
-                </div>
-            </div>
-            <div class="form-group flex" style="justify-content: center;margin-top: 60px;">
-                <button class="btn btn-primary updateNews">修改信息</button>
+<div class="col-sm-6" style="margin:113px auto;">
+    <h1 style="text-align: center;font-size: 24px;">修改个人资料</h1>
+    <div class="col-sm-12 hiddenStep" style="margin-top: 6%;">
+        <div class="form-group flex">
+            <label for="" class="user" style="text-align: right;line-height: 2;font-size: 18px;width: 100px;">姓名:</label>
+            <div class="col-sm-9">
+                <input type="text" required class="form-control username" placeholder="请输入姓名"   />
             </div>
         </div>
+        <div class="form-group flex">
+            <label for="" class="phone" style="text-align: right;line-height: 2;font-size: 18px;width: 100px;">电话:</label>
+            <div class="col-sm-9">
+                <input type="number" required class="form-control phone1" placeholder="请输入电话"  />
+            </div>
+        </div>
+        <div class="form-group flex">
+            <label for="" class="" style="text-align: right;line-height: 2;font-size: 18px;width: 100px;">上传头像:</label>
+            <div class="col-sm-9 flex">
+                <div class="border border1">+</div>
+                <input type="file" id="disnone" />
+                <div class="border" style="margin-left:20px;" ><img src="" alt="" id="review"></div>
+            </div>
+        </div>
+        <div class="form-group flex" style="justify-content: center;margin-top: 60px;">
+            <button class="btn btn-primary updateNews">修改信息</button>
+        </div>
     </div>
-    <footer class="footer">
-        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-        </p>
-        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-        <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
-    </footer>
+</div>
+<footer class="footer">
+    <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    </p>
+    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+</footer>
 </body>
 </html>
 <script src="./js/jquery.1.11.1.js"></script>
@@ -59,11 +59,11 @@
 <script src="./js/postFormdata.js"></script>
 <script>
     $(document).ready(function(){
-       
+
         // 刚进入页面的时候从缓存中获取用户信息进行页面渲染
-         // 定义请求地址
-         var url,par;
-        url = src + "/adminInterface.dx";      
+        // 定义请求地址
+        var url,par;
+        url = src + "/adminInterface.dx";
         var appsercet = window.localStorage.getItem("appsercet");
         appsercet = JSON.parse(appsercet);
         var newAppsercet = appsercet.data;
@@ -71,107 +71,107 @@
         var data = getSign(url,par);
         debugger
         console.log(data);
-       
+
         $(".username").val(data.userInfo.true_name);
         $(".phone1").val(data.userInfo.modile_phone);
         $("#review").attr("src",data.userInfo.user_photo);
         //更改头像时进行替换
         $(".border1").click(function(){
             $("#disnone").click();
-           
+
         });
         $('#disnone').on('change',function(){
             debugger
-        var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
-            fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
-            imgBase64 = '',      //存储图片的imgBase64
-            fileObj = document.getElementById('disnone').files[0]; //上传文件的对象,要这样写才行，用jquery写法获取不到对象
-            
-        // 检查是否是图片
-        if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
-            alert('上传错误,文件格式必须为：png/jpg/jpeg');
-            return;  
-        }
- 
-        // 调用函数，对图片进行压缩
-        compress(fileObj,function(imgBase64){
-            imgBase64 = imgBase64;    //存储转换的base64编码
-            $('#review').attr('src',imgBase64); //显示预览图片
-        });
-    });
- 
-     // 不对图片进行压缩，直接转成base64
-    function directTurnIntoBase64(fileObj,callback){
-        var r = new FileReader();
-        // 转成base64
-        r.onload = function(){
-           //变成字符串
-            imgBase64 = r.result;
-            console.log(imgBase64);
-            callback(imgBase64);
-        }
-        r.readAsDataURL(fileObj);    //转成Base64格式
-    }
- 
-       // 对图片进行压缩
-    function compress(fileObj, callback) { 
-        debugger
-        if ( typeof (FileReader) === 'undefined') {  
-            console.log("当前浏览器内核不支持base64图标压缩");  
-            //调用上传方式不压缩  
-            directTurnIntoBase64(fileObj,callback);
-        } else {  
-            try {    
-                var reader = new FileReader();  
-                reader.onload = function (e) {  
-                    var image = $('<img/>');  
-                    image.load(function(){  
-                        square = 700,   //定义画布的大小，也就是图片压缩之后的像素
-                        canvas = document.createElement('canvas'), 
-                        context = canvas.getContext('2d'),
-                        imageWidth = 0,    //压缩图片的大小
-                        imageHeight = 0, 
-                        offsetX = 0, 
-                        offsetY = 0,
-                        data = ''; 
- 
-                        canvas.width = square;  
-                        canvas.height = square; 
-                        context.clearRect(0, 0, square, square);   
- 
-                        if (this.width > this.height) {  
-                            imageWidth = Math.round(square * this.width / this.height);  
-                            imageHeight = square;  
-                            offsetX = - Math.round((imageWidth - square) / 2);  
-                        } else {  
-                            imageHeight = Math.round(square * this.height / this.width);  
-                            imageWidth = square;  
-                            offsetY = - Math.round((imageHeight - square) / 2);  
-                        }  
-                        context.drawImage(this, offsetX, offsetY, imageWidth, imageHeight);  
-                        var data = canvas.toDataURL('image/jpeg');  
-                        //压缩完成执行回调  
-                         callback(data);  
-                    });  
-                    image.attr('src', e.target.result);  
-                };  
-                reader.readAsDataURL(fileObj);  
-            }catch(e){  
-                console.log("压缩失败!");  
-                //调用直接上传方式  不压缩 
-                directTurnIntoBase64(fileObj,callback); 
-            }  
-        }
-    }
+            var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
+                fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
+                imgBase64 = '',      //存储图片的imgBase64
+                fileObj = document.getElementById('disnone').files[0]; //上传文件的对象,要这样写才行，用jquery写法获取不到对象
 
-       
+            // 检查是否是图片
+            if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
+                alert('上传错误,文件格式必须为：png/jpg/jpeg');
+                return;
+            }
+
+            // 调用函数，对图片进行压缩
+            compress(fileObj,function(imgBase64){
+                imgBase64 = imgBase64;    //存储转换的base64编码
+                $('#review').attr('src',imgBase64); //显示预览图片
+            });
+        });
+
+        // 不对图片进行压缩，直接转成base64
+        function directTurnIntoBase64(fileObj,callback){
+            var r = new FileReader();
+            // 转成base64
+            r.onload = function(){
+                //变成字符串
+                imgBase64 = r.result;
+                console.log(imgBase64);
+                callback(imgBase64);
+            }
+            r.readAsDataURL(fileObj);    //转成Base64格式
+        }
+
+        // 对图片进行压缩
+        function compress(fileObj, callback) {
+            debugger
+            if ( typeof (FileReader) === 'undefined') {
+                console.log("当前浏览器内核不支持base64图标压缩");
+                //调用上传方式不压缩
+                directTurnIntoBase64(fileObj,callback);
+            } else {
+                try {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var image = $('<img/>');
+                        image.load(function(){
+                            square = 700,   //定义画布的大小，也就是图片压缩之后的像素
+                                canvas = document.createElement('canvas'),
+                                context = canvas.getContext('2d'),
+                                imageWidth = 0,    //压缩图片的大小
+                                imageHeight = 0,
+                                offsetX = 0,
+                                offsetY = 0,
+                                data = '';
+
+                            canvas.width = square;
+                            canvas.height = square;
+                            context.clearRect(0, 0, square, square);
+
+                            if (this.width > this.height) {
+                                imageWidth = Math.round(square * this.width / this.height);
+                                imageHeight = square;
+                                offsetX = - Math.round((imageWidth - square) / 2);
+                            } else {
+                                imageHeight = Math.round(square * this.height / this.width);
+                                imageWidth = square;
+                                offsetY = - Math.round((imageHeight - square) / 2);
+                            }
+                            context.drawImage(this, offsetX, offsetY, imageWidth, imageHeight);
+                            var data = canvas.toDataURL('image/jpeg');
+                            //压缩完成执行回调
+                            callback(data);
+                        });
+                        image.attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(fileObj);
+                }catch(e){
+                    console.log("压缩失败!");
+                    //调用直接上传方式  不压缩
+                    directTurnIntoBase64(fileObj,callback);
+                }
+            }
+        }
+
+
         // var userId = localStorage.getItem("userId");
-        $(".updateNews").click(function(){  
+        $(".updateNews").click(function(){
             debugger
             //调用之前封装的formdata传签名参数密钥的方法
             var formData = postFormdata("get.dxWeb.userUpdateCenter");
             var trueName = $(".username").val();
-            var modilePhone = $(".phone1").val();   
+            var modilePhone = $(".phone1").val();
             formData.append("trueName", trueName);
             formData.append("modilePhone", modilePhone);
             // formData.append("userId", userId);
@@ -181,14 +181,14 @@
             debugger
             console.log(data)
             if (data.msg.code == "200") {
-               alert("修改成功");
+                alert("修改成功");
                 debugger
                 localStorage.setItem("user_name",$(".username").val());
                 localStorage.setItem("user_phone",$(".phone1").val());
                 localStorage.setItem("user_photo",$("#review").attr("src"));
                 window.parent.location.href='./index.html';
-                
+
             }
         })
-    })   
+    })
 </script>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,79 +9,81 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-<link rel="stylesheet" type="text/css" href="../css/buind.css">
-<script src="../js/jquery-1.10.2.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-<script src="../js/moment-with-locales.js"></script>
-<script src="../js/bootstrap-datetimepicker.min.js"></script>
-<script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/buind.css">
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="../js/moment-with-locales.js"></script>
+    <script src="../js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
 
 
 </head>
-<body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;padding-left: 50px;">
-    <div class="brand">
-        <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
-            <li><a href="#" style="color:#8D8D8D;">资源库</a>&nbsp;/&nbsp;</li>
-            <li><a href="#" style="color:#5A5A5A;">管理文件夹</a></li>
-        </ul>
-        <h1>管理文件夹</h1>
-    </div>
-    <div style="padding:20px;background-color: #fff;">
-        <p>任务列表</p>
-        <div class="addInput" style="display: none">+添加</div>
-        <table class="table" style="width: 100%;overflow: hidden;">
-            <thead>
-                <tr style="border-bottom: 1px solid #d8d8d8;">
-                    <td>
-                        文件夹名称
-                    </td>
-                    <td>父级文件夹</td>
-                    <td style="font-weight: 600;">操作</td>
-                </tr>
-            </thead>
-            <tbody class="bannerList">
-            </tbody>
-        </table>
-    </div>
-    <div class="nv91-mask" >
-            <div class="nv91" style="padding:5% 0">
-                <p style="line-height:50px;border-bottom: 1px solid #dddddd;padding-left: 20px;">添加文件夹</p>
-                <form action="" class="form-horizontal" role="form" style="text-align:center;">
-                    <div class="form-group  flex">
-                        <label for="name" class="control-label col-sm-3  rolename" style="text-align: right;line-height: 1.5;">文件夹名称:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control filename" placeholder="" />
-                        </div>
+<body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;">
+<div class="brand">
+    <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
+        <li><a href="#" style="color:#8D8D8D;">资源库</a>&nbsp;/&nbsp;</li>
+        <li><a href="#" style="color:#5A5A5A;">管理文件夹</a></li>
+    </ul>
+    <h1>管理文件夹</h1>
+</div>
+<div style="padding:20px;background-color: #fff;padding-left: 50px;">
+    <p class="size">任务列表</p>
+    <div class="addInput" style="display: none">+添加</div>
+    <table class="table" style="width: 100%;overflow: hidden;">
+        <thead>
+        <tr style="border-bottom: 1px solid #d8d8d8;background:rgba(243,243,243,1);font-size: 18px;">
+            <td>
+                文件夹名称
+            </td>
+            <td>父级文件夹</td>
+            <td style="font-weight: 600;">操作</td>
+        </tr>
+        </thead>
+        <tbody class="bannerList">
+        </tbody>
+    </table>
+</div>
+<div class="nv91-mask" >
+    <div class="nv91">
+        <p style="font-size:20px;line-height:50px;border-bottom: 1px solid #dddddd;padding-left: 20px;">添加文件夹</p>
+        <form action="" class="form-horizontal" role="form" style="text-align:center;">
+            <div style="height: 250px">
+                <div class="form-group  flex" style="padding-top: 30px; ">
+                    <label for="name" class="control-label col-sm-3  rolename" style="text-align: right;line-height: 1.5;">文件夹名称:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control filename" placeholder="" />
                     </div>
-                    <div class="form-group flex">
-                        <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 1.5;">上级文件夹:</label>
-                        <div class="col-sm-9">
-                            <select name="" id="" class="form-control fileid">
-                                <option value="0" selected>请选择</option>
-                                <option value="1">新建文件夹一</option>
-                            </select>
-                        </div>
+                </div>
+                <div class="form-group flex" style="padding-top: 20px">
+                    <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 1.5;">上级文件夹:</label>
+                    <div class="col-sm-9">
+                        <select name="" id="" class="form-control fileid">
+                            <option value="0" selected>请选择</option>
+                            <option value="1">新建文件夹一</option>
+                        </select>
                     </div>
-                    <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                        <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                            <button class="btn btn-primary fileSure">确定</button>
-                        </div>
-                        <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                            <button class="btn  fileRefuse">取消</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
-   <footer class="footer">
-        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-         </p>
-        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-         
-         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
-    </footer>
+            <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                <div class="col-sm-2" style="margin-top: 1%;margin-right:-5%;">
+                    <button class="btn btn-primary fileSure">确定</button>
+                </div>
+                <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
+                    <button class="btn  fileRefuse">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<footer class="footer">
+    <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    </p>
+    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+
+    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+</footer>
 </body>
 </html>
 <script src="../js/MD5.js"></script>
@@ -97,37 +98,37 @@
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
     $(document).ready(function(){
-           //封装添加修改方法
- function addUpdate(method,id){
-     debugger
-    var appsercet = window.localStorage.getItem("appsercet");
-    appsercet = JSON.parse(appsercet);
-    var newAppsercet = appsercet.data;
-    var sourceId,brandName,url,result
-    url = src+"/libraryInterface.dx";
-    brandName = $(".filename").val();
-    sourceId = $(".fileid option:checked").val();
-    
-    if(method === "get.dxWeb.updateFolder"){
-        
-        par = "appsercet="+newAppsercet+"&method="+method+"&id="+id+"&brandName="+brandName+"&sourceId="+sourceId;
-    }else if(sourceId == 0){
-        
-        par = "appsercet="+newAppsercet+"&method="+method+"&brandName="+brandName;
-    }else{
-        par = "appsercet="+newAppsercet+"&method="+method+"&brandName="+brandName+"&sourceId="+sourceId;
-    }
-    result = getSign(url,par);
-    return result;
-}
-         //初次加载页面获取列表数据
-         var url,par,id;      
+        //封装添加修改方法
+        function addUpdate(method,id){
+            debugger
+            var appsercet = window.localStorage.getItem("appsercet");
+            appsercet = JSON.parse(appsercet);
+            var newAppsercet = appsercet.data;
+            var sourceId,brandName,url,result
+            url = src+"/libraryInterface.dx";
+            brandName = $(".filename").val();
+            sourceId = $(".fileid option:checked").val();
+
+            if(method === "get.dxWeb.updateFolder"){
+
+                par = "appsercet="+newAppsercet+"&method="+method+"&id="+id+"&brandName="+brandName+"&sourceId="+sourceId;
+            }else if(sourceId == 0){
+
+                par = "appsercet="+newAppsercet+"&method="+method+"&brandName="+brandName;
+            }else{
+                par = "appsercet="+newAppsercet+"&method="+method+"&brandName="+brandName+"&sourceId="+sourceId;
+            }
+            result = getSign(url,par);
+            return result;
+        }
+        //初次加载页面获取列表数据
+        var url,par,id;
         var appsercet = window.localStorage.getItem("appsercet");
         appsercet = JSON.parse(appsercet);
         var newAppsercet = appsercet.data;
-         url = src+"/libraryInterface.dx";
-         //初次渲染页面方法封装
-         function render(){
+        url = src+"/libraryInterface.dx";
+        //初次渲染页面方法封装
+        function render(){
             par = "appsercet="+newAppsercet+"&method=get.dxWeb.libraryList";
             var list = getSign(url,par);
             console.log(list);
@@ -145,11 +146,11 @@
                 $(".bannerList").html(str);
                 $(".fileid").html(str1);
             }
-         }
-         render();
+        }
+        render();
         //判断是否有添加删除编辑查看属性 
-        judgeStatus(7,"get.dxWeb.libraryList"); 
-       
+        judgeStatus(7,"get.dxWeb.libraryList");
+
         //添加按钮点击事件
         $(".addInput").click(function(){
             $(".nv91-mask").show();
@@ -160,12 +161,12 @@
         })
         //修改文件夹
         $(".isEdit").click(function(){
-           id = $(this).attr("data-id");
+            id = $(this).attr("data-id");
             $(".nv91-mask").show();
             $(".nv91").show();
             par = "appsercet="+newAppsercet+"&method=get.dxWeb.getFolder&id="+id;
             var data = getSign(url,par);
-            
+
             console.log(data)
             $(".filename").val(data.msg.brand_name);
             var li = document.querySelectorAll(".fileid option");
@@ -177,11 +178,11 @@
                     obj.checked = true;
                 }
             }
-            
+
             $(".fileSure").click(function(){
                 addUpdate("get.dxWeb.updateFolder",id);
-            }) 
-        })  
+            })
+        })
         //删除文件夹
         $(".isDelete").click(function(){
             id = $(this).attr("data-id");
@@ -190,17 +191,17 @@
             getSign(url,par);
             var status = getSign(url,par);
             if(status.msg.code == "200"){
-                
+
                 render();
-                judgeStatus(7,"get.dxWeb.libraryList"); 
-               
+                judgeStatus(7,"get.dxWeb.libraryList");
+
             }
         })
-       
-        
-        
+
+
+
     })
-      
+
 </script>
 <script src="../js/radioAllChoose.js"></script>
 

@@ -9,203 +9,203 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-<link rel="stylesheet" type="text/css" href="../css/buind.css">
-<script src="../js/jquery-1.10.2.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-<script src="../js/moment-with-locales.js"></script>
-<script src="../js/bootstrap-datetimepicker.min.js"></script>
-<script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/buind.css">
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="../js/moment-with-locales.js"></script>
+    <script src="../js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
 
-<style>
-.delete2,.edit2,.edits,.addCompany,.addPerson{display: none;}
-</style>
+    <style>
+        .delete2,.edit2,.edits,.addCompany,.addPerson{display: none;}
+    </style>
 </head>
 <body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;padding-left: 50px;">
-    <div class="brand">
-        <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
-            <li><a href="#">设置/</a></li>
-            <li><a href="#">基础设置</a></li>
-        </ul>
-        <h1>基础设置</h1>
-    </div>
+<div class="brand">
+    <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
+        <li><a href="#">设置/</a></li>
+        <li><a href="#">基础设置</a></li>
+    </ul>
+    <h1>基础设置</h1>
+</div>
 
-        <h1 style="font-size:18px;line-height: 50px;border-bottom:1px solid #dddddd;">手机网站</h1>
-        <div class="form-group flex">
-            <label for="name" class="control-label col-sm-2" style="line-height: 1.5;">手机网站:</label>
-            <div class="radio radio-info radio-inline">
-                <input type="radio" id="st1" value="" name="st1" checked="">
-                <label for="st1" style="font-size: 14px;"> 开启 </label>
-            </div>
-            <div class="radio radio-info radio-inline">
-                <input type="radio" id="st2" value="" name="st1" checked="">
-                <label for="st2" style="font-size: 14px;"> 关闭 </label>
-            </div>
-        </div>
-        <div class="form-group flex">
-            <label for="name" class="control-label col-sm-2" style="line-height: 1.5;">手机访问:</label>
-            <div class="radio radio-info radio-inline">
-                <input type="radio" id="st3" value="" name="st2" checked="">
-                <label for="st3" style="font-size: 14px;"> 显示手机版 </label>
-            </div>
-            <div class="radio radio-info radio-inline">
-                <input type="radio" id="st4" value="" name="st2" checked="">
-                <label for="st4" style="font-size: 14px;"> 显示电脑板 </label>
-            </div> 
+<h1 style="font-size:18px;line-height: 50px;border-bottom:1px solid #dddddd;">手机网站</h1>
+<div class="form-group flex">
+    <label for="name" class="control-label col-sm-2" style="line-height: 1.5;">手机网站:</label>
+    <div class="radio radio-info radio-inline">
+        <input type="radio" id="st1" value="" name="st1" checked="">
+        <label for="st1" style="font-size: 14px;"> 开启 </label>
     </div>
+    <div class="radio radio-info radio-inline">
+        <input type="radio" id="st2" value="" name="st1" checked="">
+        <label for="st2" style="font-size: 14px;"> 关闭 </label>
+    </div>
+</div>
+<div class="form-group flex">
+    <label for="name" class="control-label col-sm-2" style="line-height: 1.5;">手机访问:</label>
+    <div class="radio radio-info radio-inline">
+        <input type="radio" id="st3" value="" name="st2" checked="">
+        <label for="st3" style="font-size: 14px;"> 显示手机版 </label>
+    </div>
+    <div class="radio radio-info radio-inline">
+        <input type="radio" id="st4" value="" name="st2" checked="">
+        <label for="st4" style="font-size: 14px;"> 显示电脑板 </label>
+    </div>
+</div>
+<div>
+    <h1 style="font-size:18px;line-height: 50px;border-bottom:1px solid #dddddd;">网站信息</h1>
     <div>
-        <h1 style="font-size:18px;line-height: 50px;border-bottom:1px solid #dddddd;">网站信息</h1>
-        <div>
-            <div class="form-group">
-                <button class="btn btn-primary addCompany">添加公司</button>
-            </div>
-            <table class="table" style="width: 100%;overflow: hidden;">
-                <thead>
-                    <tr class="active">
-                        <td>公司</td>
-                        <td>邮编</td>
-                        <td>公司坐标</td>
-                        <td>公司地址</td>
-                        <td style="font-weight: 600;">操作</td>
-                    </tr>
-                </thead>
-                <tbody class="company1">
-                   
-                </tbody>
-            </table>
-            <div class="form-group">
-                    <button class="btn btn-primary addPerson">添加人员</button>
-                </div>
-            <table class="table" style="margin-top:10px">
-                <thead>
-                    <tr class="active">
-                        <td>公司</td>
-                        <td>职位</td>
-                        <td>姓名</td>
-                        <td>电话</td>
-                        <td>邮箱</td>
-                        <td style="font-weight: 600;">操作</td>
-                    </tr>
-                </thead>
-                <tbody class="company2">
-                    
-                </tbody>
-            </table>
-        </div>   
-    </div>
-    <div class="nv91-mask3">
-        <div class="nv91">
-            <h1>公司信息</h1>
-            <form action="" class="form-horizontal" role="form">
-                <div class="form-group flex " >       
-                    <label for="name" class="control-label col-sm-2 star" style="text-align: right;line-height: 1.5;">公司：</label>
-                    <!-- <div class="col-sm-10">
-                        <select class="form-control s1">
-                            <option checked value="0">请选择</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>         -->
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control s1" placeholder="请输入公司名称"/>
-                    </div> 
-                </div>
-                <div class="form-group  flex" >       
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">邮编:</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control s2" placeholder="请输入公司邮编"/>
-                    </div>        
-                </div>
-                <div class="form-group flex" >       
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">地理位置:</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control s3" placeholder="地理经度"/>
-                    </div> 
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control s4" placeholder="地理纬度"/>
-                    </div> 
-                    <div class="col-sm-4">
-                        <button class="btn input12" ><a href="./map.html">选择坐标</a></button>
-
-                    </div>        
-                </div>
-                <div class="form-group flex" >       
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">公司地址:</label>
-                    <div class="col-sm-10">
-                        <textarea type="number" class="form-control s6" style="height:100px;"></textarea>
-                    </div>     
-                </div>
-                <div class="form-group flex"  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">       
-                    <div class="col-sm-1" style="margin-top: 1%;">
-                        <button class="btn" >取消</button>     
-                    </div> 
-                    <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
-                        <button class="btn btn-primary sure11" >确定</button>     
-                    </div> 
-                </div>
-            </form>
+        <div class="form-group">
+            <button class="btn btn-primary addCompany saveBtn">添加公司</button>
         </div>
+        <table class="table" style="width: 100%;overflow: hidden;">
+            <thead>
+            <tr class="active" style="font-size: 18px">
+                <td>公司</td>
+                <td>邮编</td>
+                <td>公司坐标</td>
+                <td>公司地址</td>
+                <td style="font-weight: 600;">操作</td>
+            </tr>
+            </thead>
+            <tbody class="company1">
+
+            </tbody>
+        </table>
+        <div class="form-group">
+            <button class="btn btn-primary addPerson saveBtn">添加人员</button>
+        </div>
+        <table class="table" style="margin-top:10px">
+            <thead>
+            <tr class="active" style="font-size: 18px">
+                <td>公司</td>
+                <td>职位</td>
+                <td>姓名</td>
+                <td>电话</td>
+                <td>邮箱</td>
+                <td style="font-weight: 600;">操作</td>
+            </tr>
+            </thead>
+            <tbody class="company2">
+
+            </tbody>
+        </table>
     </div>
-    <div class="nv92" >
-            <h1>公司信息</h1>
-            <form action="" class="form-horizontal" role="form">
-                <div class="form-group flex " >       
-                    <label for="name" class="control-label col-sm-2 star" style="text-align: right;line-height: 1.5;">公司：</label>
-                    <div class="col-sm-10 ">
-                        <select class="form-control s11">
-                            <option checked>北京公司</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>        
+</div>
+<div class="nv91-mask3">
+    <div class="nv91">
+        <h1>公司信息</h1>
+        <form action="" class="form-horizontal" role="form">
+            <div class="form-group flex " >
+                <label for="name" class="control-label col-sm-2 star" style="text-align: right;line-height: 1.5;">公司：</label>
+                <!-- <div class="col-sm-10">
+                    <select class="form-control s1">
+                        <option checked value="0">请选择</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>         -->
+                <div class="col-sm-10">
+                    <input type="text" class="form-control s1" placeholder="请输入公司名称"/>
                 </div>
-                <div class="form-group  flex" >       
-                        <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">职位:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control s12" placeholder="请输入公司职位"/>
-                        </div>        
+            </div>
+            <div class="form-group  flex" >
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">邮编:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control s2" placeholder="请输入公司邮编"/>
                 </div>
-                <div class="form-group  flex" >       
-                        <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">姓名:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control s13" placeholder="请输入姓名"/>
-                        </div>        
+            </div>
+            <div class="form-group flex" >
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">地理位置:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control s3" placeholder="地理经度"/>
                 </div>
-                <div class="form-group  flex" >       
-                        <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">电话:</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control s14" placeholder="请输入电话"/>
-                        </div>        
-                    </div>
-                <div class="form-group  flex" >       
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">邮箱:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control s15" placeholder="请输入邮箱"/>
-                    </div>        
+                <div class="col-sm-3">
+                    <input type="text" class="form-control s4" placeholder="地理纬度"/>
                 </div>
-                <div class="form-group flex"  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">       
-                    <div class="col-sm-1" style="margin-top: 1%;">
-                        <button class="btn" >取消</button>     
-                    </div> 
-                    <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
-                        <button class="btn btn-primary sure2" >确定</button>     
-                    </div> 
+                <div class="col-sm-4">
+                    <button class="btn input12" ><a href="./map.html">选择坐标</a></button>
+
                 </div>
-            </form>
-        </div>   
-   <footer class="footer">
-       <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-        </p>
-       <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-        
-        <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
-   </footer>
-  
+            </div>
+            <div class="form-group flex" >
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">公司地址:</label>
+                <div class="col-sm-10">
+                    <textarea type="number" class="form-control s6" style="height:100px;"></textarea>
+                </div>
+            </div>
+            <div class="form-group flex"  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                <div class="col-sm-1" style="margin-top: 1%;margin-right: 22px;">
+                    <button class="btn" >取消</button>
+                </div>
+                <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
+                    <button class="btn btn-primary sure11" >确定</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="nv92" >
+    <h1>公司信息</h1>
+    <form action="" class="form-horizontal" role="form">
+        <div class="form-group flex " >
+            <label for="name" class="control-label col-sm-2 star" style="text-align: right;line-height: 1.5;">公司：</label>
+            <div class="col-sm-10 ">
+                <select class="form-control s11">
+                    <option checked>北京公司</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group  flex" >
+            <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">职位:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control s12" placeholder="请输入公司职位"/>
+            </div>
+        </div>
+        <div class="form-group  flex" >
+            <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">姓名:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control s13" placeholder="请输入姓名"/>
+            </div>
+        </div>
+        <div class="form-group  flex" >
+            <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">电话:</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control s14" placeholder="请输入电话"/>
+            </div>
+        </div>
+        <div class="form-group  flex" >
+            <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">邮箱:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control s15" placeholder="请输入邮箱"/>
+            </div>
+        </div>
+        <div class="form-group flex"  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+            <div class="col-sm-1" style="margin-top: 1%;margin-right: 22px">
+                <button class="btn" >取消</button>
+            </div>
+            <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
+                <button class="btn btn-primary sure2" >确定</button>
+            </div>
+        </div>
+    </form>
+</div>
+<footer class="footer">
+    <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    </p>
+    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+
+    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+</footer>
+
 </body>
 </html>
 <script src="../js/MD5.js"></script>
@@ -213,19 +213,19 @@
 <script src="../js/getRequest.js"></script>
 <script src="../js/api.js"></script>
 <script>
-$(document).ready(function(){
-    // judge(href = "../login1.html");
-    //页面初次加载渲染页面
-   
-    var url,par;
-    // Datetime();
-    var appsercet = window.localStorage.getItem("appsercet");
-    appsercet = JSON.parse(appsercet);
-    var newAppsercet = appsercet.data;
-    var id;   
-        
-       
-})
+    $(document).ready(function(){
+        // judge(href = "../login1.html");
+        //页面初次加载渲染页面
+
+        var url,par;
+        // Datetime();
+        var appsercet = window.localStorage.getItem("appsercet");
+        appsercet = JSON.parse(appsercet);
+        var newAppsercet = appsercet.data;
+        var id;
+
+
+    })
 
     //处理设置节点下基础设置公司人员添加点击事件触发查询的所有公司信息   
     function list(data){
@@ -239,7 +239,7 @@ $(document).ready(function(){
         }
     }
     //封装添加公司职工修改公司职工方法
-     function see(method,url){
+    function see(method,url){
         var corporateName, corporateWeb,lat,lnt,  address,corporateId,position,username,modilePhone,email;
         //公司信息
         corporateName = $(".s1").val();
@@ -254,86 +254,86 @@ $(document).ready(function(){
         modilePhone = $(".s14").val();
         email = $(".s15").val();
         if(method === "get.dxWeb.addCompanyWeb"){
-            
+
             par = "appsercet=" + newAppsercet + "&method=" + method + "&corporateName=" + corporateName + "&corporateWeb=" + corporateWeb + "&lat=" + lat + "&lnt=" + lnt + "&address=" + address;
         }
         else if(method === "get.dxWeb.updateCompanyWeb"){
             par = "appsercet=" + newAppsercet + "&method=" + method + "&corporateName=" + corporateName + "&corporateWeb=" + corporateWeb + "&lat=" + lat + "&lnt=" + lnt + "&address=" + address+"&id="+id;
         }else if(method === "get.dxWeb.updateCompanyStaff"){
-            
+
             par = "appsercet=" + newAppsercet + "&method=" + method + "&corporateId=" + corporateId + "&position=" + position + "&username=" + username + "&modilePhone=" + modilePhone + "&email=" + email+"&id="+id;
-             
+
         }else if(method === "get.dxWeb.addCompanyStaff"){
-            
+
             par = "appsercet=" + newAppsercet + "&method=" + method + "&corporateId=" + corporateId + "&position=" + position + "&username=" + username + "&modilePhone=" + modilePhone + "&email=" + email;
         }
-        
+
         var  data = getSign(url, par);
         console.log(data);
-        
+
     }
-     
- //页面初次渲染加载数据 
- //页面初次加载渲染页面
- var url,par;
-        // Datetime();
-        var appsercet = window.localStorage.getItem("appsercet");
-        appsercet = JSON.parse(appsercet);
-        var newAppsercet = appsercet.data;     
- var data = window.localStorage.getItem("dxRightsList");  
-        data = JSON.parse(data);    
-        //console.log(data);
-        
-        //判断是否有添加管理员操作权限     
-        // return
-        var arr = [];
-        $.each(data,function(i,item){
-            //console.log(item)
-            if(item.id == 9){
-                arr.push(item)
+
+    //页面初次渲染加载数据
+    //页面初次加载渲染页面
+    var url,par;
+    // Datetime();
+    var appsercet = window.localStorage.getItem("appsercet");
+    appsercet = JSON.parse(appsercet);
+    var newAppsercet = appsercet.data;
+    var data = window.localStorage.getItem("dxRightsList");
+    data = JSON.parse(data);
+    //console.log(data);
+
+    //判断是否有添加管理员操作权限
+    // return
+    var arr = [];
+    $.each(data,function(i,item){
+        //console.log(item)
+        if(item.id == 9){
+            arr.push(item)
+        }
+    })
+    //console.log(arr[0]);
+
+    $.each(arr[0].dxRightsList,function(i,item){
+        //console.log(arr[0].dxRightsList)
+        if(item.method === "get.dxWeb.basics"){
+            url = src+"/"+item.link_path;
+            par = "appsercet="+newAppsercet+"&method="+item.method;
+            var data = getSign(url,par);
+            console.log(data);
+            var company1 = "";
+            $.each(data.dxbasics.dxcompanywebList, function (i, item) {
+                company1 += "<tr>";
+                company1 += "<td>" + item.corporate_name + "</td><td>" + item.corporate_web + "</td><td>" + item.lat + "," + item.lnt + "</td><td>" + item.ip_addr + "<td style='color:#FF5456;' data-id='" + item.id + "' class='edits'>编辑</td>";
+                company1 += "/<tr >"
+            });
+            $(".company1").append(company1)
+            var company2 = "";
+            $.each(data.dxbasics.dxCompanyStaffList, function (i, item) {
+                company2 += "<tr >";
+                company2 += "<td>" + item.corporate_name + "</td><td>" + item.position + "</td><td>" + item.username + "</td><td>" + item.modile_phone + "</td><td>" + item.email + "<td style='color:#FF5456;'><span data-id='" + item.id + "' class='edit2'>编辑</span><span data-id='" + item.id + "' class='delete2'>删除</span></td>";
+                company2 += "/<tr >";
+            })
+            $(".company2").append(company2);
+            //判断该角色是否有权限操作
+            if(item.dxRightsTwoList.length == 0){
+                return
             }
-        })
-        //console.log(arr[0]);
-       
-        $.each(arr[0].dxRightsList,function(i,item){
-            //console.log(arr[0].dxRightsList)
-            if(item.method === "get.dxWeb.basics"){
-                url = src+"/"+item.link_path;
-                par = "appsercet="+newAppsercet+"&method="+item.method;
-                var data = getSign(url,par);
-                console.log(data);
-                var company1 = "";
-                $.each(data.dxbasics.dxcompanywebList, function (i, item) {
-                    company1 += "<tr>";
-                    company1 += "<td>" + item.corporate_name + "</td><td>" + item.corporate_web + "</td><td>" + item.lat + "," + item.lnt + "</td><td>" + item.ip_addr + "<td style='color:#FF5456;' data-id='" + item.id + "' class='edits'>编辑</td>";
-                    company1 += "/<tr >"
-                });
-                $(".company1").append(company1)
-                var company2 = "";
-                $.each(data.dxbasics.dxCompanyStaffList, function (i, item) {
-                    company2 += "<tr >";
-                    company2 += "<td>" + item.corporate_name + "</td><td>" + item.position + "</td><td>" + item.username + "</td><td>" + item.modile_phone + "</td><td>" + item.email + "<td style='color:#FF5456;'><span data-id='" + item.id + "' class='edit2'>编辑</span><span data-id='" + item.id + "' class='delete2'>删除</span></td>";
-                    company2 += "/<tr >";
-                })
-                $(".company2").append(company2);
-                //判断该角色是否有权限操作
-                if(item.dxRightsTwoList.length == 0){
-                    return
-                }
-                else{                 
-                    $.each(item.dxRightsTwoList,function(i,obj){
-                       //判断该用户是否有添加管理员权限
-                        if(obj.method === "get.dxWeb.addCompanyWeb"){  
-                            
-                            $(".addCompany").show();
-                            $(".addCompany").click(function () {
-                                $(".nv91-mask3").show();
-                                $(".nv91").show();
-                                $(".sure11").click(function () {
-                                    
-                                    see("get.dxWeb.addCompanyWeb", url)
-                                })
-                                 //将添加信息暂时存放在缓存中  用于地图返回渲染
+            else{
+                $.each(item.dxRightsTwoList,function(i,obj){
+                    //判断该用户是否有添加管理员权限
+                    if(obj.method === "get.dxWeb.addCompanyWeb"){
+
+                        $(".addCompany").show();
+                        $(".addCompany").click(function () {
+                            $(".nv91-mask3").show();
+                            $(".nv91").show();
+                            $(".sure11").click(function () {
+
+                                see("get.dxWeb.addCompanyWeb", url)
+                            })
+                            //将添加信息暂时存放在缓存中  用于地图返回渲染
                             $(".s1").blur(function () {
                                 localStorage.setItem("s1", $(this).val());
                             })
@@ -343,137 +343,137 @@ $(document).ready(function(){
                             $(".s6").blur(function () {
                                 localStorage.setItem("address", $(this).text());
                             })
-                        })      
-                             //点击选择经度纬度后返回原来页面获取之前写入的数据
+                        })
+                        //点击选择经度纬度后返回原来页面获取之前写入的数据
 
-                            var return1 = localStorage.getItem("return1");
-                            if (return1 == "yes") {
-                                var lnt = localStorage.getItem("lnt");
-                                var lat = localStorage.getItem("lat");
-                                var s1 = localStorage.getItem("s1");
-                                var s2 = localStorage.getItem("s2");
-                                var address = localStorage.getItem("address");
-                                if (lnt && lat) {
+                        var return1 = localStorage.getItem("return1");
+                        if (return1 == "yes") {
+                            var lnt = localStorage.getItem("lnt");
+                            var lat = localStorage.getItem("lat");
+                            var s1 = localStorage.getItem("s1");
+                            var s2 = localStorage.getItem("s2");
+                            var address = localStorage.getItem("address");
+                            if (lnt && lat) {
 
-                                    $(".nv91-mask3").show();
-                                    $(".nv91").show();
-                                    $(".s3").val(lat);
-                                    $(".s4").val(lnt);
-                                    if (s1) {
-                                        $(".s1").val(s1);
-                                    }
-                                    if (s2) {
-                                        $(".s2").val(s2);
-                                    }
-                                    if (address) {
-                                        $(".s6").val(address);
-                                    }
-                                    localStorage.setItem("s1", "");
-                                    localStorage.setItem("s2", "");
-                                    localStorage.setItem("address", "");
-                                    localStorage.setItem("lnt", "");
-                                    localStorage.setItem("lat", "");
-                                }
-                                // $(".sure11").click(function () {
-                                //     
-                                //     see("get.dxWeb.addCompanyWeb", url)
-                                // })
-                            }
-                        }
-                       
-                            //判断是否有编辑权限
-                           if(obj.method === "get.dxWeb.updateCompanyWeb"){
-                            $(".edits").show();
-                            $(".edits").click(function () {
-                                id = $(this).attr("data-id");
                                 $(".nv91-mask3").show();
                                 $(".nv91").show();
-                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getCompanyWeb&id=" + id;
-
-                                var data = getSign(url, par);
-
-                                //处理设置节点下基础设置公司信息详情渲染
-                                if (data.msg.code == "200") {
-                                    var x = data.dxCompanyWeb
-                                    $(".s1").val(x.corporate_name);
-                                    $(".s2").val(x.corporate_web);
-                                    $(".s3").val(x.lat);
-                                    $(".s4").val(x.lnt);
-                                    $(".s6").val(x.address);
-
+                                $(".s3").val(lat);
+                                $(".s4").val(lnt);
+                                if (s1) {
+                                    $(".s1").val(s1);
                                 }
-                                $(".sure11").click(function () {
-                                    
-                                    see("get.dxWeb.updateCompanyWeb", url)
-                                })
+                                if (s2) {
+                                    $(".s2").val(s2);
+                                }
+                                if (address) {
+                                    $(".s6").val(address);
+                                }
+                                localStorage.setItem("s1", "");
+                                localStorage.setItem("s2", "");
+                                localStorage.setItem("address", "");
+                                localStorage.setItem("lnt", "");
+                                localStorage.setItem("lat", "");
+                            }
+                            // $(".sure11").click(function () {
+                            //
+                            //     see("get.dxWeb.addCompanyWeb", url)
+                            // })
+                        }
+                    }
+
+                    //判断是否有编辑权限
+                    if(obj.method === "get.dxWeb.updateCompanyWeb"){
+                        $(".edits").show();
+                        $(".edits").click(function () {
+                            id = $(this).attr("data-id");
+                            $(".nv91-mask3").show();
+                            $(".nv91").show();
+                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getCompanyWeb&id=" + id;
+
+                            var data = getSign(url, par);
+
+                            //处理设置节点下基础设置公司信息详情渲染
+                            if (data.msg.code == "200") {
+                                var x = data.dxCompanyWeb
+                                $(".s1").val(x.corporate_name);
+                                $(".s2").val(x.corporate_web);
+                                $(".s3").val(x.lat);
+                                $(".s4").val(x.lnt);
+                                $(".s6").val(x.address);
+
+                            }
+                            $(".sure11").click(function () {
+
+                                see("get.dxWeb.updateCompanyWeb", url)
                             })
+                        })
 
-                        } 
-                        //判断是否有添加职工权限
-                        if(obj.method === "get.dxWeb.addCompanyStaff"){
-                            $(".addPerson").show();
-                            $(".addPerson").click(function () {
-                                $(".nv91-mask3").show();
-                                $(".nv92").show();
+                    }
+                    //判断是否有添加职工权限
+                    if(obj.method === "get.dxWeb.addCompanyStaff"){
+                        $(".addPerson").show();
+                        $(".addPerson").click(function () {
+                            $(".nv91-mask3").show();
+                            $(".nv92").show();
 
-                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.listCompanyWeb";
-                                var data = getSign(url, par);
-                                list(data);
-                                $(".sure2").click(function () {
-                                    see("get.dxWeb.addCompanyStaff", url)
-                                })
+                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.listCompanyWeb";
+                            var data = getSign(url, par);
+                            list(data);
+                            $(".sure2").click(function () {
+                                see("get.dxWeb.addCompanyStaff", url)
                             })
-                        }    
-                          //判断是否有编辑员工权限
-                          if (obj.method === "get.dxWeb.updateCompanyStaff") {
-                            $(".edit2").show();
-                            $(".edit2").click(function () {
-                                id = $(this).attr("data-id");
-                                $(".nv91-mask3").show();
-                                $(".nv92").show();
+                        })
+                    }
+                    //判断是否有编辑员工权限
+                    if (obj.method === "get.dxWeb.updateCompanyStaff") {
+                        $(".edit2").show();
+                        $(".edit2").click(function () {
+                            id = $(this).attr("data-id");
+                            $(".nv91-mask3").show();
+                            $(".nv92").show();
 
-                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.listCompanyWeb";
-                                var data = getSign(url, par);
-                                list(data);
-                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getCompanyStaff&id=" + id;
-                                var data = getSign(url, par);
-                                //处理设置节点下基础设置公司人员详情渲染
-                                if (data.msg.code == "200") {
-                                    var y = data.dxCompanyStaff;
-                                    var s11 = document.querySelectorAll(".s11 option");
-                                    for (var i = 0; i < s11.length; i++) {
-                                        var obj = s11[i];
-                                        console.log(obj.innerHTML)
-                                        if (obj.innerHTML === y.corporate_name) {
-                                            obj.selected = true;
-                                        }
+                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.listCompanyWeb";
+                            var data = getSign(url, par);
+                            list(data);
+                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getCompanyStaff&id=" + id;
+                            var data = getSign(url, par);
+                            //处理设置节点下基础设置公司人员详情渲染
+                            if (data.msg.code == "200") {
+                                var y = data.dxCompanyStaff;
+                                var s11 = document.querySelectorAll(".s11 option");
+                                for (var i = 0; i < s11.length; i++) {
+                                    var obj = s11[i];
+                                    console.log(obj.innerHTML)
+                                    if (obj.innerHTML === y.corporate_name) {
+                                        obj.selected = true;
                                     }
-                                    $(".s12").val(y.username);
-                                    $(".s13").val(y.position);
-                                    $(".s14").val(y.modile_phone);
-                                    $(".s15").val(y.email);
                                 }
-                                $(".sure2").click(function () {
-                                    see("get.dxWeb.updateCompanyStaff", url)
-                                })
+                                $(".s12").val(y.username);
+                                $(".s13").val(y.position);
+                                $(".s14").val(y.modile_phone);
+                                $(".s15").val(y.email);
+                            }
+                            $(".sure2").click(function () {
+                                see("get.dxWeb.updateCompanyStaff", url)
                             })
-                           
+                        })
 
-                        }  
-                        //判断是否有删除员工权限
-                        if(obj.method === "get.dxWeb.deleteCompanyStaff"){
-                            $(".delete2").show();
-                            $(".delete2").click(function () {
-                                var id = $(this).attr("data-id");
-                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteCompanyStaff&id=" + id;
 
-                                getSign(url, par);
-                                location.reload()
-                            })
-                        }                
-                    })                   
-                }
+                    }
+                    //判断是否有删除员工权限
+                    if(obj.method === "get.dxWeb.deleteCompanyStaff"){
+                        $(".delete2").show();
+                        $(".delete2").click(function () {
+                            var id = $(this).attr("data-id");
+                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteCompanyStaff&id=" + id;
+
+                            getSign(url, par);
+                            location.reload()
+                        })
+                    }
+                })
             }
-        })
-       
+        }
+    })
+
 </script>

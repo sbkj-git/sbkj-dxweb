@@ -1,10 +1,22 @@
 /*分页*/
 #pageGro{  height:40px; padding-top:30px;font-size: 14px;}
 #pageGro div,#pageGro div ul li{ font-size:12px; color:#999; line-height:23px; float:left; margin-left:5px;}
-#pageGro div ul li{ width:40px; text-align:center; cursor:pointer;margin-left: 10px;}
+#pageGro div ul li{
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 10px;
+    height: 40px;
+    line-height: 30px;
+    border-radius: 5px;
+}
 #pageGro div ul{width: 300px;}
 #pageGro div ul li.on{ color:#fff; background:#E2302B;}
-#pageGro .pageUp,#pageGro .pageDown{ width:40px; line-height:30px; border:1px solid #999; cursor:pointer;text-align:center;border-radius: 10px;font-size:16px;}
+#pageGro .pageUp,#pageGro .pageDown{ width:40px;  border:1px solid #999; cursor:pointer;text-align:center;font-size:16px;
+    height: 40px;
+    line-height: 35px;
+    border-radius: 5px;
+}
 .justityc{justify-content: space-between;}
 .f14mt30{font-size:14px;margin-top:30px;}
 .ml10{margin-left: 10px;}

@@ -9,81 +9,81 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-<link rel="stylesheet" type="text/css" href="../css/buind.css">
-<script src="../js/jquery-1.10.2.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-<script src="../js/moment-with-locales.js"></script>
-<script src="../js/bootstrap-datetimepicker.min.js"></script>
-<script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
-<link rel="stylesheet" href="../css/paging.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/buind.css">
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="../js/moment-with-locales.js"></script>
+    <script src="../js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" href="../css/paging.css">
 
 </head>
 <body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;padding-left: 50px;">
-    <div class="brand">
-        <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
-            <li><a href="#">设置/</a></li>
-            <li><a href="#">操作日志</a></li>
-        </ul>
-        <h1>操作日志</h1>
-    </div>
-   <div class="col-sm-10 col-sm-pull-1" style="margin-top: 2%;">
-      <div class="flex" style="width:100%;padding-bottom: 2%;">
-          <span style="" class="col-sm-2">筛选查询</span>
-          <div class="col-sm-3 flex">   
-                <label for="name" class="control-label" style="text-align: right;line-height: 1.5;margin-right: 5px;">员工:</label>
-                <div style="width: 80%">
-                    <select class="form-control manRole">
-                        <option checked value="0">--请选择--</option>
-                    </select>
-                </div>
-                
-          </div>
-        <div class="col-sm-4 flex " style="text-align: right;">
-                <label for="name" class="control-label" style="text-align: right;line-height: 1.5;margin-right: 5px;">到期时间:</label>
-                <div class="position">
-                    <input type="text" class="form-control" id="nowdate1" />
-                    <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" id="datetimepicker1">&#xe73a;</span>
-                </div>               
-            </div>  
-            <div class="col-sm-3 flex " style="text-align: right;">
-                <div class="position">
-                    <input type="text" class="form-control sensoperation" placeholder="请输入敏感操作" />
-                    <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="searvh">&#xe615;</span>
-                </div> 
-            </div>   
-      </div>
-        <table class="table" style="width: 100%;overflow: hidden;">
-            <thead>
-                <tr style="border-bottom: 1px solid #d8d8d8;">
-                    <th >
-                       员工账号
-                        </th>
-                    <th>敏感操作</th>
-                    <th>操作详情</th>
-                    <th>操作时间</th>
-                    <th>员工IP</th>
-                </tr>
-            </thead>
-            <tbody class="log">
-                
-            </tbody>
-        </table>
-        <div class="paging flex " style="width:100%;justify-content: flex-end;" >
-            <div style="color:#929292;font-size: 18px;padding-left: 20px;line-height: 1.8;color:#5A5A5A;">总共<span class="total"></span>个项目</div>
-           
-            <div class="box" id="box" style="width:auto;justify-content: flex-end;"></div>
+<div class="brand">
+    <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
+        <li><a href="#">设置/</a></li>
+        <li><a href="#">操作日志</a></li>
+    </ul>
+    <h1>操作日志</h1>
+</div>
+<div class="col-sm-10 col-sm-pull-1" style="margin-top: 2%;">
+    <div class="flex" style="width:100%;padding-bottom: 2%;">
+        <span style="" class="col-sm-2">筛选查询</span>
+        <div class="col-sm-3 flex">
+            <label for="name" class="control-label" style="text-align: right;line-height: 1.5;margin-right: 5px;">员工:</label>
+            <div style="width: 80%">
+                <select class="form-control manRole">
+                    <option checked value="0">--请选择--</option>
+                </select>
+            </div>
+
         </div>
-   </div>
-  
-   <footer class="footer">
-        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-         </p>
-        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-         
-         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
-    </footer>
+        <div class="col-sm-4 flex " style="text-align: right;">
+            <label for="name" class="control-label" style="text-align: right;line-height: 1.5;margin-right: 5px;">到期时间:</label>
+            <div class="position">
+                <input type="text" class="form-control" id="nowdate1" />
+                <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" id="datetimepicker1">&#xe73a;</span>
+            </div>
+        </div>
+        <div class="col-sm-3 flex " style="text-align: right;">
+            <div class="position">
+                <input type="text" class="form-control sensoperation" placeholder="请输入敏感操作" />
+                <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="searvh">&#xe615;</span>
+            </div>
+        </div>
+    </div>
+    <table class="table" style="width: 100%;overflow: hidden;">
+        <thead>
+        <tr style="border-bottom: 1px solid #d8d8d8;">
+            <th >
+                员工账号
+            </th>
+            <th>敏感操作</th>
+            <th>操作详情</th>
+            <th>操作时间</th>
+            <th>员工IP</th>
+        </tr>
+        </thead>
+        <tbody class="log">
+
+        </tbody>
+    </table>
+    <div class="paging flex " style="width:100%;justify-content: flex-end;" >
+        <div style="color:#929292;font-size: 18px;padding-left: 20px;line-height: 1.8;color:#5A5A5A;">总共<span class="total"></span>个项目</div>
+
+        <div class="box" id="box" style="width:auto;justify-content: flex-end;"></div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    </p>
+    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+
+    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+</footer>
 </body>
 </html>
 <script src="../js/MD5.js"></script>
@@ -96,9 +96,9 @@
         if (el.readOnly) el.checked=el.readOnly=false;
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
-    $(document).ready(function(){    
+    $(document).ready(function(){
         var url,par,url2;
-       
+
         var appsercet = window.localStorage.getItem("appsercet");
         appsercet = JSON.parse(appsercet);
         var newAppsercet = appsercet.data;
@@ -110,7 +110,7 @@
         logsgin(url2,par);
         //请求全部管理员
         par = "appsercet="+newAppsercet+"&method=get.dxWeb.userList"
-        
+
         logsgin(url,par);
         var page = sessionStorage.getItem("pageInfo");
         pageInfo = JSON.parse(page)
@@ -123,28 +123,28 @@
             var val = $(".manRole option:checked").val();
             var htm = $(".manRole option:checked").html();
             use = htm;
-             par = "appsercet="+newAppsercet+"&method=get.dxWeb.logList&username="+use;
-             
+            par = "appsercet="+newAppsercet+"&method=get.dxWeb.logList&username="+use;
+
             logsgin(url2,par);
             if(val == 0){
                 par = "appsercet="+newAppsercet+"&method=get.dxWeb.logList";
                 logsgin(url2,par);
             }
         })
-       $(".sensoperation").blur(function(){
-        sensoperation = $(this).val()
-        //console.log(sensoperation)
-       })
-       $(".searvh").click(function(){
-           //console.log(sensoperation)
-        par = "appsercet="+newAppsercet+"&method=get.dxWeb.logList&sensoperation="+sensoperation;
-        logsgin(url2,par);  
-       })
+        $(".sensoperation").blur(function(){
+            sensoperation = $(this).val()
+            //console.log(sensoperation)
+        })
+        $(".searvh").click(function(){
+            //console.log(sensoperation)
+            par = "appsercet="+newAppsercet+"&method=get.dxWeb.logList&sensoperation="+sensoperation;
+            logsgin(url2,par);
+        })
         //下面页数点击的时候请求不同页面
-    //   分页
-    pagenow(url2,"get.dxWeb.logList");
-        
-       
+        //   分页
+        pagenow(url2,"get.dxWeb.logList");
+
+
     })
 </script>
 

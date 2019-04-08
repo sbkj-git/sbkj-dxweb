@@ -9,123 +9,123 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-<link rel="stylesheet" type="text/css" href="../css/buind.css">
-<script src="../js/jquery.1.11.1.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../css/paging.css">
-<script src="../js/paging.js"></script>
-<style>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/buind.css">
+    <script src="../js/jquery.1.11.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/paging.css">
+    <script src="../js/paging.js"></script>
+    <style>
 
-.item{width: 100%;
-    text-align: left;
-   /* background-color: #fff; */
-    padding: 0;
-    height: 30px;
-    line-height: 30px;}
-</style>
+        .item{width: 100%;
+            text-align: left;
+            /* background-color: #fff; */
+            padding: 0;
+            height: 30px;
+            line-height: 30px;}
+    </style>
 </head>
 <body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;">
-    <div class="brand">
-        <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
-            <li><a href="#">设置/</a></li>
-            <li><a href="#">管理角色</a></li>
-        </ul>
-        <h1>管理角色</h1>
-    </div>
-   <div style="width: 1700px;">
-        <div class="col-sm-10 col-sm-pull-1" style="margin-top: 2%;padding-left: 50px;">
-                <div class="form-group flex" style="padding-bottom: 2%;">
-                    <div class="col-sm-2" style="text-align: center;">
-                        <button class="btn btn-primary add" style="display: none;">添加新角色</button>
-                    </div>
-                    <div class="col-sm-1 " style="text-align: center;" >
-                        <button class="btn qy" style="display: none;">启用</button>
-                    </div>
-                    <div class="col-sm-1 " style="text-align: center;">
-                        <button class="btn jy" style="display: none;">禁用</button>
-                    </div>
-                    <div class="col-sm-1 " style="text-align: center;">
-                        <button class="btn delete" style="display: none;">删除</button>
-                    </div>
-                </div>
-                <table class="table" style="width: 100%;overflow: hidden;">
-                    <thead>
-                        <tr style="border-bottom: 1px solid #d8d8d8;">
-                            <td class="position">
-                                <div class="radio radio-info radio-inline">
-                                    <input type="radio" id="inlineRadio1" value="" name="" checked="">
-                                    <label for="inlineRadio1"> 角色名称 </label>
-                                </div>
-                                </td>
-                            <td>操作员数量</td>
-                            <td>状态</td>
-                            <td style="font-weight: 600;">操作</td>
-                        </tr>
-                    </thead>
-                
-                    <tbody class="manager1">
-                              
-                    </tbody>
-                </table>
-                
-                <div class="paging flex justify"  >
-                    <div style="color:#929292;font-size: 14px;padding-left: 20px;">共<span class="total"></span>条数据&nbsp;第<span class="current">1</span>/<span class="pagenum">80</span>页</div>
-                    <div style="width:60%;">
-                        <div class="box" id="box" style="width:auto;justify-content: flex-end;"></div>
-                    </div>
-                </div>
-           </div>
-           <div class="nv91-mask" >
-                <div class="nv91" style="padding:5% 0">
-                    <form action="" class="form-horizontal" role="form" style="text-align:center;">
-                        <div class="form-group  flex">
-                            <label for="name" class="control-label col-sm-3 star rolename" style="text-align: right;line-height: 1.5;">角色名称:</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control role1" placeholder="" required />
-                            </div>
-                        </div>
-                        <div class="form-group flex">
-                            <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 1.5;">角色状态:</label>
-                            <div class="radio radio-info radio-inline ">
-                                <input type="radio" id="o1" value="1" name="o1" checked="" class="status">
-                                <label for="o1"> 启用 </label>
-                            </div>
-                            <div class="radio radio-info radio-inline">
-                                <input type="radio" id="o2" value="2" name="o1" checked="" class="status">
-                                <label for="o2"> 禁用 </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-9" style="margin-left: 12.5%;">
-                            <p >用户可以在此角色权限的基础上附加其他权限</p>
-                        </div>
-                        <div class="form-group flex" >
-                            <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 2;">可用权限:</label>
-                            <ul class="list-group col-sm-9 qx">
-                    
-                            </ul>
-                        </div>
-                        <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                            <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                                <button class="btn btn-primary roleSure">确定</button>
-                            </div>
-                            <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                                <button class="btn  roleRefuse">取消</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<div class="brand">
+    <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
+        <li><a href="#">设置/</a></li>
+        <li><a href="#">管理角色</a></li>
+    </ul>
+    <h1>管理角色</h1>
+</div>
+<div style="width: 1700px;">
+    <div class="col-sm-10 col-sm-pull-1" style="margin-top: 2%;padding-left: 50px;">
+        <div class="form-group flex" style="padding-bottom: 2%;">
+            <div class="col-sm-2" style="text-align: center;">
+                <button class="btn btn-primary add" style="display: none;">添加新角色</button>
             </div>
-           <footer class="footer">
-                <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-                 </p>
-                <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-                 
-                 <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
-            </footer>
+            <div class="col-sm-1 " style="text-align: center;" >
+                <button class="btn qy" style="background:#fff;height:40px;width:100px;display: none;">启用</button>
+            </div>
+            <div class="col-sm-1 " style="text-align: center;">
+                <button class="btn jy" style="background:#fff;height:40px;width:100px;display: none;">禁用</button>
+            </div>
+            <div class="col-sm-1 " style="text-align: center;">
+                <button class="btn delete" style="background:#fff;height:40px;width:100px;display: none;">删除</button>
+            </div>
+        </div>
+        <table class="table" style="width: 100%;overflow: hidden;">
+            <thead>
+            <tr style="border-bottom: 1px solid #d8d8d8;">
+                <td class="position">
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" id="inlineRadio1" value="" name="" checked="">
+                        <label for="inlineRadio1"> 角色名称 </label>
+                    </div>
+                </td>
+                <td>操作员数量</td>
+                <td>状态</td>
+                <td style="font-weight: 600;">操作</td>
+            </tr>
+            </thead>
+
+            <tbody class="manager1">
+
+            </tbody>
+        </table>
+
+        <div class="paging flex justify"  >
+            <div style="color:#929292;font-size: 14px;padding-left: 20px;">共<span class="total"></span>条数据&nbsp;第<span class="current">1</span>/<span class="pagenum">80</span>页</div>
+            <div style="width:60%;">
+                <div class="box" id="box" style="width:auto;justify-content: flex-end;"></div>
+            </div>
+        </div>
     </div>
-   
-  
+    <div class="nv91-mask" >
+        <div class="nv91" style="padding:5% 0">
+            <form action="" class="form-horizontal" role="form" style="text-align:center;">
+                <div class="form-group  flex">
+                    <label for="name" class="control-label col-sm-3 star rolename" style="text-align: right;line-height: 1.5;">角色名称:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control role1" placeholder="" required />
+                    </div>
+                </div>
+                <div class="form-group flex">
+                    <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 1.5;">角色状态:</label>
+                    <div class="radio radio-info radio-inline ">
+                        <input type="radio" id="o1" value="1" name="o1" checked="" class="status">
+                        <label for="o1"> 启用 </label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" id="o2" value="2" name="o1" checked="" class="status">
+                        <label for="o2"> 禁用 </label>
+                    </div>
+                </div>
+                <div class="col-sm-9" style="margin-left: 12.5%;">
+                    <p >用户可以在此角色权限的基础上附加其他权限</p>
+                </div>
+                <div class="form-group flex" >
+                    <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 2;">可用权限:</label>
+                    <ul class="list-group col-sm-9 qx">
+
+                    </ul>
+                </div>
+                <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                    <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
+                        <button class="btn btn-primary roleSure">确定</button>
+                    </div>
+                    <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
+                        <button class="btn  roleRefuse">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+        </p>
+        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+
+        <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    </footer>
+</div>
+
+
 
 </body>
 </html>
@@ -146,16 +146,16 @@
         //     }
         // })
         //页面初次渲染加载数据
-        var data = window.localStorage.getItem("dxRightsList");    
-        data = JSON.parse(data);      
+        var data = window.localStorage.getItem("dxRightsList");
+        data = JSON.parse(data);
         //console.log(data);
         //页面初次加载渲染页面
-        var url,par;      
+        var url,par;
         var appsercet = window.localStorage.getItem("appsercet");
         appsercet = JSON.parse(appsercet);
         var newAppsercet = appsercet.data;
         //判断是否有添加管理员操作权限
-     
+
         var arr = [];
         $.each(data,function(i,item){
             //console.log(item)
@@ -178,64 +178,64 @@
                 }
                 else{
                     $.each(item.dxRightsTwoList,function(i,obj){
-                       //判断该用户是否有添加管理员权限
+                        //判断该用户是否有添加管理员权限
                         if(obj.method === "get.dxWeb.addManagementRole"){
-                            
+
                             $(".add").show();
-                            $(".add").click(function(){                              
-                                add();                             
+                            $(".add").click(function(){
+                                add();
                                 url = src+"/adminInterface.dx";
                                 par = "appsercet="+newAppsercet+"&method=get.dxWeb.leftMenuAll";
                                 logsgin(url,par);
-                                var status,rightsIds,roleName    
-                            $(".role1").blur(function(){
-                                roleName = $(this).val()
-                            })
-                            $(".roleSure").click(function(){
-                               
-                                var inputs = document.querySelectorAll(".roleLis input");//获取所有的input标签对象
-                                var radio = document.querySelectorAll(".status ");
-                                var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
-                                for (var i = 0; i < inputs.length; i++) {
-                                    var obj = inputs[i];
-                                    if (obj.type == 'checkbox' && obj.className=='item2') {
-                                        checkboxArray.push(obj);
+                                var status,rightsIds,roleName
+                                $(".role1").blur(function(){
+                                    roleName = $(this).val()
+                                })
+                                $(".roleSure").click(function(){
+
+                                    var inputs = document.querySelectorAll(".roleLis input");//获取所有的input标签对象
+                                    var radio = document.querySelectorAll(".status ");
+                                    var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+                                    for (var i = 0; i < inputs.length; i++) {
+                                        var obj = inputs[i];
+                                        if (obj.type == 'checkbox' && obj.className=='item2') {
+                                            checkboxArray.push(obj);
+                                        }
                                     }
-                                }
-                                var rightsIds = new Array();
-                               
-                                for (var i = 0; i < radio.length; i++) {
-                                    if (radio[0].checked){
-                                        status = 1;
-                                    }else{
-                                        status = 2;
+                                    var rightsIds = new Array();
+
+                                    for (var i = 0; i < radio.length; i++) {
+                                        if (radio[0].checked){
+                                            status = 1;
+                                        }else{
+                                            status = 2;
+                                        }
+
                                     }
-                                    
-                                }
-                                for (var i = 0; i < checkboxArray.length; i++) {
-                                    if (checkboxArray[i].checked)
-                                    rightsIds.push(checkboxArray[i].value);
-                                }
-                                
-                                url = src+"/adminInterface.dx";
-                                par = "appsercet="+newAppsercet+"&method=get.dxWeb.addManagementRole&roleName="+roleName+"&status="+status+"&rightsIds="+rightsIds;                         
-                                logsgin(url,par);
-                               location.reload()     
-                                                         
+                                    for (var i = 0; i < checkboxArray.length; i++) {
+                                        if (checkboxArray[i].checked)
+                                            rightsIds.push(checkboxArray[i].value);
+                                    }
+
+                                    url = src+"/adminInterface.dx";
+                                    par = "appsercet="+newAppsercet+"&method=get.dxWeb.addManagementRole&roleName="+roleName+"&status="+status+"&rightsIds="+rightsIds;
+                                    logsgin(url,par);
+                                    location.reload()
+
+                                })
+                                $(".roleRefuse").click(function(){
+                                    $(".nv91-mask").fadeOut();
+                                    $(".nv91").hide();
+                                })
                             })
-                            $(".roleRefuse").click(function(){
-                                $(".nv91-mask").fadeOut();
-                                $(".nv91").hide();
-                            })                             
-                            })
-                           
-                            }
+
+                        }
                         //判断该用户是否有启用或禁用权限
-                       if(obj.method === "get.dxWeb.isEnableOrProhibit"){
+                        if(obj.method === "get.dxWeb.isEnableOrProhibit"){
                             $(".qy").show();
-                            $(".jy").show();                         
+                            $(".jy").show();
                             $(".qy").click(function(){
-                                open("get.dxWeb.isEnableOrProhibit", 1)                    
+                                open("get.dxWeb.isEnableOrProhibit", 1)
                             })
                             $(".jy").click(function(){
                                 open("get.dxWeb.isEnableOrProhibit",2)
@@ -243,42 +243,42 @@
                         }
                         //判断该用户是否有删除权限 
                         if(obj.method === "get.dxWeb.deleteManagementRole"){
-                     
-                                $(".delete").show();
-                                $(".isDelete").show();               
-                                $(".delete").click(function(){
-                                   
-                                    deleteM("get.dxWeb.deleteManagementRole");
-                                   
-                                })
-                                $(".isDelete").click(function(){
-                                    deleteM("get.dxWeb.deleteManagementRole");
-                                })
-                            }
-                            //判断是否有查看权限
-                          if(obj.method === "get.dxWeb.roleDetailse"){
-                                $(".isEdit").show()
-                                $(".botto").hide();
-                                
-                                edit("get.dxWeb.roleDetails","get.dxWeb.updateManagementRole")
-                               
-                            }  
-                            //判断是否有编辑权限
-                           if(obj.method === "get.dxWeb.updateManagementRole"){
-                                    $(".botto").show()
-                                   
-                                }   
-                                          
-                                          
+
+                            $(".delete").show();
+                            $(".isDelete").show();
+                            $(".delete").click(function(){
+
+                                deleteM("get.dxWeb.deleteManagementRole");
+
+                            })
+                            $(".isDelete").click(function(){
+                                deleteM("get.dxWeb.deleteManagementRole");
+                            })
+                        }
+                        //判断是否有查看权限
+                        if(obj.method === "get.dxWeb.roleDetailse"){
+                            $(".isEdit").show()
+                            $(".botto").hide();
+
+                            edit("get.dxWeb.roleDetails","get.dxWeb.updateManagementRole")
+
+                        }
+                        //判断是否有编辑权限
+                        if(obj.method === "get.dxWeb.updateManagementRole"){
+                            $(".botto").show()
+
+                        }
+
+
                     })
-                    
+
                 }
             }
         })
-       
+
         //底部页码
         getPage();
-       
+
     }
 </script>
 

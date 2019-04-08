@@ -9,238 +9,238 @@
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/setting.css">
     <link rel="stylesheet" href="./css/index.css">
-<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-<link rel="stylesheet" type="text/css" href="./css/buind.css">
-<link rel="stylesheet" href="./js/js/daterangepicker.css">
-<link rel="stylesheet" href="./css/page.css">
-<style>
-.lookType,.details{display: none;}
-</style>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="./css/buind.css">
+    <link rel="stylesheet" href="./js/js/daterangepicker.css">
+    <link rel="stylesheet" href="./css/page.css">
+    <style>
+        .lookType,.details{display: none;}
+    </style>
 </head>
 <body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;padding-left: 50px;">
-    <div class="brand">
-        <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
-            <li><a href="#" style="color:#8D8D8D;">设置</a>&nbsp;/&nbsp;</li>
-            <li><a href="#" style="color:#5A5A5A;">操作日志</a></li>
-        </ul>
-        <h1>操作日志</h1>
-    </div>
-    <ul class="chooseCard flex">
-        <li class="chooseActive">管理反馈内容</li>
-        <li class="lookType">功能设置</li>
+<div class="brand">
+    <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
+        <li><a href="#" style="color:#8D8D8D;">设置</a>&nbsp;/&nbsp;</li>
+        <li><a href="#" style="color:#5A5A5A;">操作日志</a></li>
     </ul>
-   <div class="col-sm-10 col-sm-pull-1" style="margin-top: 2%;">
-        <div class="choose1">
-            <div class="flex" style="width:100%;padding-bottom: 2%;">
-                <div class="col-sm-3">
-                    <button class="btn-primary btn export" style="margin-right: 1%;">导出反馈</button>
-                    <button class="btn isDelete">删除反馈</button>
-                </div>
-                <div class="col-sm-6 flex " style="text-align: right;">
-                    <label for="name" class="control-label" style="text-align: right;line-height: 1.5;margin-right: 5px;">反馈时间:</label>
-                    <div class="position">
-                        <input type="text" class="form-control" id="nowdate" />
-                        <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" id="datetimepicker1">&#xe73a;</span>
-                    </div>
-            
-                </div>
-                <div class="col-sm-3 flex " style="text-align: right;">
-                    <div class="position">
-                        <input type="text" class="form-control content" placeholder="请输入姓名、反馈内容" />
-                        <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="openContent">&#xe615;</span>
-                    </div>
-            
-                </div>
+    <h1>操作日志</h1>
+</div>
+<ul class="chooseCard flex">
+    <li class="chooseActive">管理反馈内容</li>
+    <li class="lookType">功能设置</li>
+</ul>
+<div class="col-sm-10 col-sm-pull-1" style="margin-top: 2%;">
+    <div class="choose1">
+        <div class="flex" style="width:100%;padding-bottom: 2%;">
+            <div class="col-sm-3">
+                <button class="btn-primary btn export" style="margin-right: 1%;">导出反馈</button>
+                <button class="btn isDelete">删除反馈</button>
             </div>
-            <table class="table" style="width: 100%;overflow: hidden;">
-                <thead>
-                    <tr style="border-bottom: 1px solid #d8d8d8;">
-                        <td class="position">
-                            <div class="radio radio-info radio-inline">
-                                <input type="radio" id="tall" name="tall1" class="tall">
-                                <label for="tall"> 类型 </label>
-                            </div>
-                        </td>
-                        <td>反馈内容</td>
-                        <td>IP</td>
-                        <td>反馈时间</td>
-                        <td style="font-weight: 600;">操作</td>
-                    </tr>
-                </thead>
-                <tbody class="feedback">
-                   
-                </tbody>
-            </table>
-           
-            <div class=" flex w100" >
-                <div  class="f14mt30">
-                    <span>共<i class="totalCount">100</i>条数据</span>
-                    <span>第<i class="nowNum">1</i>/<i class="pagenumber">80</i>页</span>
+            <div class="col-sm-6 flex " style="text-align: right;">
+                <label for="name" class="control-label" style="text-align: right;line-height: 1.5;margin-right: 5px;">反馈时间:</label>
+                <div class="position">
+                    <input type="text" class="form-control" id="nowdate" />
+                    <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" id="datetimepicker1">&#xe73a;</span>
                 </div>
-                <div id="pageGro">     
-                    <div class="pageUp">&lt;</div>
-                    <div class="pageList">
-                    <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    </ul>
-                    </div>
-                    <div class="pageDown">&gt;</div>
-                    <button class="btn ml10" >10条/页</button>
-                    <span  style="margin-left: 10px;">跳转<input type="number" class="btn returnNum w60ml10" >页</span>
-    
+
+            </div>
+            <div class="col-sm-3 flex " style="text-align: right;">
+                <div class="position">
+                    <input type="text" class="form-control content" placeholder="请输入姓名、反馈内容" />
+                    <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="openContent">&#xe615;</span>
                 </div>
+
             </div>
         </div>
-        <div class="choose1 " style="display: none!important;">
-          <div class="col-sm-12 flex" style="border-bottom:1px solid #dddddd;padding-bottom: 2%;;">
-              <span>验证码:</span>
-                <div class="radio radio-info radio-inline">
-                        <input type="radio" id="f1" value="option1" name="radioInline" checked="" class="validate">
-                        <label for="f1"> 必填 </label>
-                </div>
-                <div class="radio radio-info radio-inline">
-                        <input type="radio" id="f2" value="option1" name="radioInline" checked="" class="validate">
-                        <label for="f2"> 防刷保护 </label>
-                        
-                </div>
-                <div>
-                     <img src="./image/u706.png" alt="" data-hint="提示信息" style="width: 30px;height:30px;"  class="hint--bottom">
-                </div>
-               
-          </div>
-          <div class="addInput">+添加</div>
-         <table class="table" style="width: 100%;overflow: hidden;">
+        <table class="table" style="width: 100%;overflow: hidden;">
             <thead>
-                <tr >
-                    <td>留言项名称</td>
-                    <td>类型</td>
-                    <td>显示</td>
-                    <td>必填</td>
-                    <td style="font-weight: 600;">操作</td>
-                </tr>
+            <tr style="border-bottom: 1px solid #d8d8d8;">
+                <td class="position">
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" id="tall" name="tall1" class="tall">
+                        <label for="tall"> 类型 </label>
+                    </div>
+                </td>
+                <td>反馈内容</td>
+                <td>IP</td>
+                <td>反馈时间</td>
+                <td style="font-weight: 600;">操作</td>
+            </tr>
+            </thead>
+            <tbody class="feedback">
+
+            </tbody>
+        </table>
+
+        <div class=" flex w100" >
+            <div  class="f14mt30">
+                <span>共<i class="totalCount">100</i>条数据</span>
+                <span>第<i class="nowNum">1</i>/<i class="pagenumber">80</i>页</span>
+            </div>
+            <div id="pageGro">
+                <div class="pageUp">&lt;</div>
+                <div class="pageList">
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                    </ul>
+                </div>
+                <div class="pageDown">&gt;</div>
+                <button class="btn ml10" >10条/页</button>
+                <span  style="margin-left: 10px;">跳转<input type="number" class="btn returnNum w60ml10" >页</span>
+
+            </div>
+        </div>
+    </div>
+    <div class="choose1 " style="display: none!important;">
+        <div class="col-sm-12 flex" style="border-bottom:1px solid #dddddd;padding-bottom: 2%;;">
+            <span>验证码:</span>
+            <div class="radio radio-info radio-inline">
+                <input type="radio" id="f1" value="option1" name="radioInline" checked="" class="validate">
+                <label for="f1"> 必填 </label>
+            </div>
+            <div class="radio radio-info radio-inline">
+                <input type="radio" id="f2" value="option1" name="radioInline" checked="" class="validate">
+                <label for="f2"> 防刷保护 </label>
+
+            </div>
+            <div>
+                <img src="./image/u706.png" alt="" data-hint="提示信息" style="width: 30px;height:30px;"  class="hint--bottom">
+            </div>
+
+        </div>
+        <div class="addInput">+添加</div>
+        <table class="table" style="width: 100%;overflow: hidden;">
+            <thead>
+            <tr >
+                <td>留言项名称</td>
+                <td>类型</td>
+                <td>显示</td>
+                <td>必填</td>
+                <td style="font-weight: 600;">操作</td>
+            </tr>
             </thead>
             <tbody class="double">
-                
+
             </tbody>
-         </table>
-         <div class="flex" style="justify-content: center;">
+        </table>
+        <div class="flex" style="justify-content: center;">
             <button class="btn btn-primary" style="margin-right: 2%;">保存</button>
             <button class="btn">取消</button>
- 
+
         </div>
-        </div>
-       
-   </div>
-   <div class="nv91-mask">
-        <div class="nv91">
-            <h1 class="position">添加留言项<div class="nv91-close">&#10005;</div>
-            </h1>
-            <form action="" class="form-horizontal" role="form">
-                <div class="form-group  flex">
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">新项名称：:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control newProject" placeholder="请输入新项名称" />
-                    </div>
+    </div>
+
+</div>
+<div class="nv91-mask">
+    <div class="nv91">
+        <h1 class="position">添加留言项<div class="nv91-close">&#10005;</div>
+        </h1>
+        <form action="" class="form-horizontal" role="form">
+            <div class="form-group  flex">
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">新项名称：:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control newProject" placeholder="请输入新项名称" />
                 </div>
-                <div class="form-group flex">
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">类型:</label>
-                    <div class="radio radio-info radio-inline">
-                        <input type="radio" id="f3" value="" name="state" class="state">
-                        <label for="f3"> 文本框 </label>
-                    </div>
-                    <div class="radio radio-info radio-inline">
-                        <input type="radio" id="f4" value="" name="state" class="state">
-                        <label for="f4"> 复选框 </label>
-                    </div>
+            </div>
+            <div class="form-group flex">
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">类型:</label>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" id="f3" value="" name="state" class="state">
+                    <label for="f3"> 文本框 </label>
                 </div>
-                <div class="form-group flex">
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">是否显示:</label>
-                    <div class="radio radio-info radio-inline">
-                        <input type="radio" id="f5" value="" name="state1" class="state1">
-                        <label for="f5"> 是 </label>
-                    </div>
-                    <div class="radio radio-info radio-inline">
-                        <input type="radio" id="f6" value="" name="state1" class="state1">
-                        <label for="f6"> 否 </label>
-                    </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" id="f4" value="" name="state" class="state">
+                    <label for="f4"> 复选框 </label>
                 </div>
-                <div class="form-group flex">
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">是否必填:</label>
-                    <div class="radio radio-info radio-inline">
-                        <input type="radio" id="f7" value="" name="state2" class="state2">
-                        <label for="f7"> 是 </label>
-                    </div>
-                    <div class="radio radio-info radio-inline">
-                        <input type="radio" id="f8" value="" name="state2" class="state2">
-                        <label for="f8"> 否 </label>
-                    </div>
+            </div>
+            <div class="form-group flex">
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">是否显示:</label>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" id="f5" value="" name="state1" class="state1">
+                    <label for="f5"> 是 </label>
                 </div>
-                <div class="form-group flex" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                    <div class="col-sm-1" style="margin-top: 1%;">
-                        <button class="btn">取消</button>
-                    </div>
-                    <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
-                        <button class="btn btn-primary addProject">确定</button>
-                    </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" id="f6" value="" name="state1" class="state1">
+                    <label for="f6"> 否 </label>
                 </div>
-            </form>
-        </div>
-        <div class="nv92">
-            <h1 class="position">反馈详情<div class="nv92-close">&#10005;</div>
-            </h1>
-            <form action="" class="form-horizontal" role="form">
-                <div class="form-group  flex">
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">姓名:</label>
-                    <div class="col-sm-10">
-                        <span class="re1">李大仁</span>
-                    </div>
+            </div>
+            <div class="form-group flex">
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">是否必填:</label>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" id="f7" value="" name="state2" class="state2">
+                    <label for="f7"> 是 </label>
                 </div>
-                <div class="form-group  flex">
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">邮箱:</label>
-                    <div class="col-sm-10">
-                        <span class="re2">13111111111@163.com</span>
-                    </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" id="f8" value="" name="state2" class="state2">
+                    <label for="f8"> 否 </label>
                 </div>
-                <div class="form-group  flex">
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">电话:</label>
-                    <div class="col-sm-10">
-                        <span class="re3">13111111111</span>
-                    </div>
+            </div>
+            <div class="form-group flex" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                <div class="col-sm-1" style="margin-top: 1%;">
+                    <button class="btn">取消</button>
                 </div>
-                <div class="form-group  flex">
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">类型:</label>
-                    <div class="col-sm-10">
-                        <span class="re4">类型</span>
-                    </div>
+                <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
+                    <button class="btn btn-primary addProject">确定</button>
                 </div>
-                <div class="form-group  flex">
-                    <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">反馈内容:</label>
-                    <div class="col-sm-10">
-                        <span class="re5">反馈内容</span>
-                    </div>
+            </div>
+        </form>
+    </div>
+    <div class="nv92">
+        <h1 class="position">反馈详情<div class="nv92-close">&#10005;</div>
+        </h1>
+        <form action="" class="form-horizontal" role="form">
+            <div class="form-group  flex">
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">姓名:</label>
+                <div class="col-sm-10">
+                    <span class="re1">李大仁</span>
                 </div>
-                <div class="form-group flex" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                    <div class="col-sm-1" style="margin-top: 1%;">
-                        <button class="btn">取消</button>
-                    </div>
-                    <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
-                        <button class="btn btn-primary nav2-sure">确定</button>
-                    </div>
+            </div>
+            <div class="form-group  flex">
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">邮箱:</label>
+                <div class="col-sm-10">
+                    <span class="re2">13111111111@163.com</span>
                 </div>
-            </form>
-        </div>
-   </div>
-   <footer class="footer">
-        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-         </p>
-        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-         
-         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
-    </footer>
+            </div>
+            <div class="form-group  flex">
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">电话:</label>
+                <div class="col-sm-10">
+                    <span class="re3">13111111111</span>
+                </div>
+            </div>
+            <div class="form-group  flex">
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">类型:</label>
+                <div class="col-sm-10">
+                    <span class="re4">类型</span>
+                </div>
+            </div>
+            <div class="form-group  flex">
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">反馈内容:</label>
+                <div class="col-sm-10">
+                    <span class="re5">反馈内容</span>
+                </div>
+            </div>
+            <div class="form-group flex" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                <div class="col-sm-1" style="margin-top: 1%;">
+                    <button class="btn">取消</button>
+                </div>
+                <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
+                    <button class="btn btn-primary nav2-sure">确定</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<footer class="footer">
+    <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    </p>
+    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+
+    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+</footer>
 </body>
 </html>
 <script src="./js/jquery-1.10.2.min.js"></script>
