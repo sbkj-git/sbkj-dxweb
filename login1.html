@@ -11,6 +11,10 @@
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" href="./css/buind.css">
     <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
         .checkbox label::after {
             display: inline-block;
             position: absolute;
@@ -44,7 +48,7 @@
 </head>
 <script src="./js/remberPass.js"></script>
 <body id="body">
-<div class="banner3" style="height: 100%">
+<div class="banner3" style="height: 100%" >
 
     <div>
         <div class="banners">
@@ -79,7 +83,7 @@
             </div>
         </div>
     </div>
-    <footer class="footer" style="    position: absolute;bottom: 0px;">
+    <footer class="footer" style=" position: absolute;bottom: 0px;">
         <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
         </p>
         <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
@@ -98,7 +102,7 @@
     window.onload = function () {
         var height = document.documentElement.clientHeight;
         $("#body").height(height);
-
+        $(".login").height(height/1.75);
         function changeState(el) {
             if (el.readOnly) el.checked = el.readOnly = false;
             else if (!el.checked) el.readOnly = el.indeterminate = true;
