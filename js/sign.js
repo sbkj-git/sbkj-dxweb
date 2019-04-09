@@ -35,7 +35,16 @@ function logsgin(url,par){
                         console.log(data)
                        data = JSON.parse(data)
                        console.log(data);
+                       //处理功能设计下页面初次渲染单选按钮选择 
+                       if(data.msg){
+                           if(data.msg.browse_state){
+                            localStorage.setItem("browse",data.msg.browse_state);
+                            if(data.msg.praise_state){
+                                localStorage.setItem("praise",data.msg.praise_state);
+                                }
+                           }
                        
+                       }
                        //处理设置节点下基础设置公司信息详情渲染
                        if(data.dxCompanyWeb){
                            var x = data.dxCompanyWeb

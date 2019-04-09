@@ -7132,10 +7132,11 @@
 
       var dmRegExp = /.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
       var dmMatch = url.match(dmRegExp);
-      var youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_([A-Za-z0-9]*)==*\.html/;
 
-      // var youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.html/;
+      var youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_([A-Za-z0-9]*)==*\.html/;
+      // var youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_([a-zA-Z0-9]*)(_.*)?(\.html)(\?.*)?/;
       var youkuMatch = url.match(youkuRegExp);
+      // XNDA4MTM0NTkyNA
 
       var qqRegExp = /\/\/v\.qq\.com.*?vid=(.+)/;
       var qqMatch = url.match(qqRegExp);
@@ -7187,7 +7188,6 @@
             .attr('frameborder', 0)
             .attr('height', '498')
             .attr('width', '510')
-            // .attr('src', '//player.youku.com/embed/' + youkuMatch[1]);
             .attr('src', 'http://player.youku.com/embed/' + youkuMatch[1]);
       } else if ((qqMatch && qqMatch[1].length) || (qqMatch2 && qqMatch2[2].length)) {
         var vid = ((qqMatch && qqMatch[1].length) ? qqMatch[1]:qqMatch2[2]);
