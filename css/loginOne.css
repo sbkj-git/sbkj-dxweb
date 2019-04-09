@@ -1,7 +1,7 @@
 /* login1.css */
 .hide{display: none;}
 .banner3{
-    background: url("../image/login.jpg") no-repeat;
+    background: url("../image/login.png") no-repeat;
     background-size: 100% 100%;
     padding:1px
 }
