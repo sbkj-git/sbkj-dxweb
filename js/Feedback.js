@@ -31,6 +31,7 @@ $(document).ready(function(){
                         checkboxArray.push(obj);
                     }
                 }
+                
                IdList = new Array();
                 for (var i = 0; i < checkboxArray.length; i++) {
                     if (checkboxArray[i].checked)
@@ -38,7 +39,10 @@ $(document).ready(function(){
                 }
                 url = noapi + "/dxExportComplaint.dx";
                 par = "IdList="+IdList;
-                var data = getSign(url,par);
+                
+                console.log(url+"?"+par);
+                $(".export1").attr("href",url+"?"+par).click();
+                // var data = getSign(url,par);
             })
     
 
@@ -55,12 +59,72 @@ data = JSON.parse(data);
     var currentPage   = window.localStorage.getItem("pageNow1")
     par = "appsercet=" + newAppsercet + "&method=get.dxWeb.feedbackList&currentPage="+currentPage;     
             var data2 = getSign(url, par);
-            console.log(data2)
-            pageCount = Math.ceil(data2.pageInfo.totalRows/10);
-            $(".nowNum").html(currentPage);
-            $(".pagenumber").html(pageCount)
-            $(".totalCount").html(data2.pageInfo.totalRows);
-            render1(data2);
+            console.log(data2);
+            render(data2);
+            pageChange("get.dxWeb.feedbackList",data2,"pagination10");
+            function pageChange(method,data2,pagination){
+                var appsercet = window.localStorage.getItem("appsercet");
+                    appsercet = JSON.parse(appsercet);
+                    var newAppsercet = appsercet.data;
+                    var pageCount,pageN;
+                    if(data2.pageInfo&&data2.pageInfo.totalRows){
+                        pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+                    }else{
+                        pageCount == 0;
+                    }
+                    if(data2.pageInfo&&data2.pageInfo.totalRows){
+                        pageN = data2.pageInfo.totalRows;
+                    }else{
+                        pageN == 0;
+                    }
+                    if(data2.pageInfo&&data2.pageInfo.totalRows){
+                        new Page({
+                            id: pagination,
+                            pageTotal: pageCount, //必填,总页数
+                            pageAmount: 10,  //每页多少条
+                            dataTotal: pageN, //总共多少条数据
+                            curPage:1, //初始页码,不填默认为1
+                            pageSize: 5, //分页个数,不填默认为5
+                            showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                            showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                            getPage: function (page) {
+                                //获取当前页数
+                               console.log(page);
+                            }
+                        })
+                    }else{
+                        pageN == 0;
+                    }
+                    //初次加载页面数据
+                   
+                    $(document).on("click", ".pageItem", function () {
+                        
+                        currentPage = $(this).html();
+                        localStorage.setItem("pageNow1", currentPage)
+                        par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
+                        var bannerList = getSign(url, par);
+                        render(bannerList);
+                    })
+                    var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
+                    var ret = document.querySelector(".returnPage");
+                    $(".returnPage").blur(function () {
+                        
+                        var value = $(this).html();
+                        if (!re.test(value)) {
+                            alert("请输入数字");
+            
+                            return false;
+                        } else {
+                            currentPage = value;
+                            par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
+            
+                            var data2 = getSign(url, par);
+                            render(data2);
+                            $(this).val("");
+                        }
+                    })
+            }
+            
             //通过用户名查找
             $(".openContent").click(function(){
                 var content = $(".content").val();
@@ -70,7 +134,7 @@ data = JSON.parse(data);
                     par = "appsercet=" + newAppsercet + "&method=get.dxWeb.feedbackList&content="+content;
                     
                     var data2 = getSign(url, par);
-                    render1(data2);
+                    render(data2);
                     
                 }
             })
@@ -84,14 +148,15 @@ data = JSON.parse(data);
             var validate = document.querySelectorAll(".validate");//获取所有的input标签对象 
             var url = src + "/adminInterface.dx";
             par = "appsercet="+newAppsercet+"&method=get.dxWeb.querysetup&type=6";
+            debugger
             var data = getSign(url,par); 
             console.log(data);
             var obj = validate[0];
             var obj1 = validate[0];
             if(obj = data.msg.validate){
-                obj.checked = true;
+                obj.checked == true;
             }else{
-                obj1.checked = true;
+                obj1.checked == true;
             }
             ////修改投诉和反馈功能设置
             $(".validate").change(function () {
@@ -102,7 +167,7 @@ data = JSON.parse(data);
                     }
                     var url = src + "/adminInterface.dx";
                     par = "appsercet=" + newAppsercet + "&method=get.dxWeb.validate&validate=" + validate;
-
+                    debugger
                     var data = getSign(url, par);
                     console.log(data)
                 })
@@ -118,7 +183,7 @@ data = JSON.parse(data);
                     obj.checked = true;
                 }
             }
-    function render1(data2){
+    function render(data2){
         if (data2.dxComplaintCateList.length > 0) {
             var str="";
             $(".feedback").html("");
@@ -131,8 +196,7 @@ data = JSON.parse(data);
             judgePower();
         }
     }
-//分页
-page("get.dxWeb.feedbackList");
+
 //判断权限
 function judgePower(){
     //页面初次渲染加载数据
@@ -202,7 +266,7 @@ data = JSON.parse(data);
                             par = "IdList="+IdList+"&method=get.dxWeb.deleteFfeedback&appsercet="+newAppsercet;
                             var data = getSign(url,par);
                             if(data.msg.code == "200"){
-                                location.reload();
+                                // get.dxWeb.deleteDxComplaintCate
                             }
                        })                   
                             }
@@ -251,22 +315,23 @@ data = JSON.parse(data);
                             $(".nv91-mask").fadeIn();
                             $(".nv91").show();
                             $(".addProject").click(function(){
+                                debugger
                                 var cateName,state
                                 cateName = $(".newProject").val();
                                 var state  = document.querySelectorAll(".state");
-                                if(state[0].checked = true){
+                                if(state[0].checked ==true){
                                     state = 1;
                                 }else{
                                     state = 2;
                                 }
                                 var state1  = document.querySelectorAll(".state1");
-                                if(state1[0].checked = true){
+                                if(state1[0].checked == true){
                                     state1 = 1;
                                 }else{
                                     state1 = 2;
                                 }
                                 var state2  = document.querySelectorAll(".state2");
-                                if(state2[0].checked = true){
+                                if(state2[0].checked == true){
                                     state2 = 1;
                                 }else{
                                     state2 = 0;
@@ -276,7 +341,7 @@ data = JSON.parse(data);
                                 par = "appsercet="+newAppsercet+"&cateName="+cateName+"&state="+state+"&method=get.dxWeb.addDxComplaintCate&mustFill="+state1+"&enabled="+state2;
                                 
                                 var data = getSign(url,par);
-                                return;
+                               debugger
                                 if(data.msg.code == "200"){
                                     // 添加成功
                                     location.reload();
@@ -292,11 +357,13 @@ data = JSON.parse(data);
                            var id = $(this).attr("data-id");
                            url = src+"/complaintInterface.dx";
                         par = "appsercet="+newAppsercet+"&method=get.dxWeb.deleteDxComplaintCate&cateId="+id;
-                        
+                        debugger
                         var data = getSign(url,par);
-                        if(data.mag.code === "200"){
+                        if(data.msg.code === "10"){
                             alert("删除成功");
-                            location.reload();
+                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.dxComplaintCateList";
+                            var bannerList = getSign(url, par);
+                            render(bannerList);
                         }
                        })
                        

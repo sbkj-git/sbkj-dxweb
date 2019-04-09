@@ -1,7 +1,7 @@
 
 //get请求签名
 function logsgin(url,par){ 
-   
+   debugger
     if(url && par){
         var appid="dxwebf0a37ed1ae96deef";
         var accessKey="eU5cO72vwSW3avZdaHpWpKJdT5iEubXu";

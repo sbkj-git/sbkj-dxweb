@@ -18,21 +18,51 @@
                     } else {
                         str += "<td>&#10007;</td>"
                     }
-                    str += '<td>' + item.release_time + '</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.id + '">删除</span>&nbsp;&nbsp;<span data-id="' + item.id + '" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.id + '">编辑</span></td>'
-                    //     if (item.is_ups == 1) {
-                    //     str+="&nbsp;&nbsp;<span class='toDown' data-id='" + item.id + "'>取消置顶</span></td>";
-                    // } else {
-                    //     str+="&nbsp;&nbsp;<span class='toTop ' data-id='" + item.id + "'>置顶</span>&nbsp;</td>";
-                    // }
+                    str += '<td>' + item.release_time + '</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.id + '">删除</span>&nbsp;&nbsp;<span data-id="' + item.id + '" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.id + '">编辑</span>'
+                        if (item.is_ups == 1) {
+                        str+="&nbsp;&nbsp;<span class='toDown' data-id='" + item.id + "'>取消置顶</span></td>";
+                    } else {
+                        str+="&nbsp;&nbsp;<span class='toTop ' data-id='" + item.id + "'>置顶</span>&nbsp;</td>";
+                    }
                     str += "</tr>";
                 })
                 $(".textList").html(str);
                 judgePower();
+                $(".toTop").unbind('click').bind("click",function(){ 
+              
+                    var index = $(this).index();
+                    
+                    var id = $(this).attr("data-id");
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateHelp&isUP=1";
+                  
+                    var statu = getSign(url, par);
+        
+                    if (statu.msg.code == "200") {
+                        alert("置顶成功");
+                        // $(".toTop").eq(index).hide();
+                        location.reload();
+        
+                    }
+                })
+                $(".toDown").unbind('click').bind("click",function(){ 
+                    
+                    var id = $(this).attr("data-id");
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateHelp&isUP=2";
+                   
+                    var statu = getSign(url, par);
+                    if (statu.msg.code == "200") {
+                        alert("取消置顶成功");
+                        // $(".toDown").eq(index).hide();
+                        location.reload();
+        
+                    }
+                })
               
             }       
              }
            
         }
+       
          //初次加载页面渲染表格数据
         var appsercet = window.localStorage.getItem("appsercet");
         appsercet = JSON.parse(appsercet);
@@ -48,25 +78,39 @@
             var appsercet = window.localStorage.getItem("appsercet");
                 appsercet = JSON.parse(appsercet);
                 var newAppsercet = appsercet.data;
-            var pageCount = Math.ceil(data2.pageInfo.totalRows/10);
-                     new Page({
-                         id: pagination,
-                         pageTotal: pageCount, //必填,总页数
-                         pageAmount: 10,  //每页多少条
-                         dataTotal: data2.pageInfo.totalRows, //总共多少条数据
-                         curPage:1, //初始页码,不填默认为1
-                         pageSize: 5, //分页个数,不填默认为5
-                         showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
-                         showSkipInputFlag:true, //是否支持跳转,不填默认不显示
-                         getPage: function (page) {
-                             //获取当前页数
-                            console.log(page);
-                         }
-                     })
+                var pageCount,pageN;
+                if(data2.pageInfo&&data2.pageInfo.totalRows){
+                    pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+                }else{
+                    pageCount == 0;
+                }
+                if(data2.pageInfo&&data2.pageInfo.totalRows){
+                    pageN = data2.pageInfo.totalRows;
+                }else{
+                    pageN == 0;
+                }
+                if(data2.pageInfo&&data2.pageInfo.totalRows){
+                    new Page({
+                        id: pagination,
+                        pageTotal: pageCount, //必填,总页数
+                        pageAmount: 10,  //每页多少条
+                        dataTotal: pageN, //总共多少条数据
+                        curPage:1, //初始页码,不填默认为1
+                        pageSize: 5, //分页个数,不填默认为5
+                        showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                        showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                        getPage: function (page) {
+                            //获取当前页数
+                           console.log(page);
+                        }
+                    })
+                }else{
+                    pageN == 0;
+                }
                 //初次加载页面数据
                
                 $(document).on("click", ".pageItem", function () {
-                    debugger
+                    
                     currentPage = $(this).html();
                     localStorage.setItem("pageNow1", currentPage)
                     par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
@@ -76,8 +120,9 @@
                 var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
                 var ret = document.querySelector(".returnPage");
                 $(".returnPage").blur(function () {
-                    debugger
-                    var value = $(this).val();
+                    
+                    var value = $(this).html();
+
                     if (!re.test(value)) {
                         alert("请输入数字");
         
@@ -217,6 +262,7 @@
                                var data = getSign(url,par);
                                localStorage.setItem("textDetail",JSON.stringify(data));
                                localStorage.setItem("method","get.dxWeb.helpDetails");
+                               localStorage.setItem("url","/helpInterface.dx");
                                location.href = "../nav2/AddText.html";
                            });
 

@@ -90,7 +90,7 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
     render(data2);
     pageChange("get.dxWeb.cateTwoList",data2,"pagination8");
         function pageChange(method,data2,pagination){
-            debugger
+            
             var appsercet = window.localStorage.getItem("appsercet");
                 appsercet = JSON.parse(appsercet);
                 var newAppsercet = appsercet.data;
@@ -112,7 +112,7 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
                 //初次加载页面数据
                
                 $(document).on("click", ".pageItem", function () {
-                    debugger
+                    
                     currentPage = $(this).html();
                     localStorage.setItem("pageNow1", currentPage)
                     par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
@@ -122,8 +122,9 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
                 var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
                 var ret = document.querySelector(".returnPage");
                 $(".returnPage").blur(function () {
-                    debugger
-                    var value = $(this).val();
+                    
+                    var value = $(this).html();
+
                     if (!re.test(value)) {
                         alert("请输入数字");
         
@@ -140,7 +141,7 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
         }
     //通过分类方法名请求列表
     $(".classifyName").click(function(){
-        debugger
+        
        var  classifyName = $(".classifyName1").val();
        par = "appsercet="+newAppsercet+"&method=get.dxWeb.cateTwoList&classifyName="+classifyName;
        
@@ -189,7 +190,7 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
                                 $(".addText").show();
                                 $(".addText").click(function () {
                                     //添加分类事件
-                                    debugger
+                                    
                                     $(".nv91-mask").show();
                                     $(".nv91").show();
                                     $(".go").click(function () {
@@ -229,7 +230,7 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
                             }
                             //判断是否有编辑权限
                             if (obj.method === "get.dxWeb.updateCate") {
-                                debugger
+                                
                                 $(".isEdit").show();
                                 $(".isEdit").click(function () {
                                     var id = $(this).attr("data-id");
@@ -339,7 +340,7 @@ function addorup(method,method2,pid,id){
     var radio = document.querySelectorAll(".status");
             for (var i = 0; i < radio.length; i++) {
                 if (radio[0].checked) {
-                    debugger
+                    
                     var formData = postFormdata(method)
                     if(method === "get.dxWeb.updateCate"){
                         formData.append("cateId", pid);   
@@ -358,7 +359,7 @@ function addorup(method,method2,pid,id){
                         alert("添加成功");
                     }
                 } else {
-                    debugger
+                    
                     var formData = postFormdata(method2);
                     if(method2 === "get.dxWeb.updateTwoCate"){
                         formData.append("cateId", id);

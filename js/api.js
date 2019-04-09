@@ -1,7 +1,7 @@
 // var src = "http://localhost:8082/dongxin-network-admin/api";
 // var src = "http://192.168.8.102:8082/dongxin-network-admin/api";
 var src = "http://47.105.116.237:8001/dongxin-network-admin/api";
-// var src = "http://192.168.8.109:8082/dongxin-network-admin/api";
+// var src = "http://192.168.8.104:8082/dongxin-network-admin/api";
 var noapi = "http://47.105.116.237:8001/dongxin-network-admin"
 // var noapi = "http://192.168.8.109:8082/dongxin-network-admin"
 

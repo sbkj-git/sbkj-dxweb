@@ -22,7 +22,7 @@ function pageChange(method,data2,pagination){
         //初次加载页面数据
        
         $(document).on("click", ".pageItem", function () {
-            debugger
+            
             currentPage = $(this).html();
             localStorage.setItem("pageNow1", currentPage)
             par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
@@ -32,8 +32,9 @@ function pageChange(method,data2,pagination){
         var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
         var ret = document.querySelector(".returnPage");
         $(".returnPage").blur(function () {
-            debugger
-            var value = $(this).val();
+            
+            var value = $(this).html();
+
             if (!re.test(value)) {
                 alert("请输入数字");
 

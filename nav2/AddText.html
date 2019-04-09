@@ -29,7 +29,7 @@
         .imgcov,.imgcov1,.imgcov2{width: 100px;height: 100px;}
         .imgcov:hover,.imgcov1:hover,.imgcov2:hover{background: rgba(0, 0, 0, 0.6);}
         .rigntop,.rigntop1,.rigntop2{position: absolute;right: 0;top: 0;display: none;}
-        .addimg{
+        .addimg,.addimg1{
             position: relative;
             left: 33px;
             /* top: -40px; */
@@ -69,7 +69,7 @@
     </ul>
     <h1>添加文章</h1>
 </div>
-<form class="box p70"  enctype="multipart/form-data">
+<form class="box p70 resetInput" id="resetInput"  enctype="multipart/form-data">
     <div class="white">
         <div class="flex column changeFlex" >
             <h1 class="f16">常规内容</h1>
@@ -229,14 +229,11 @@
                 </p>
                 <div class="flex col-sm-12 justify mb30">
                     <div class="flex wauto">
-                        <div class="addImg position" >
+                        <!-- <div class="addImg1 position" >
                             <img src="../image/u1986.png" alt=""  class="files w30">
                             <input class="btn addColor w200"  value="直接上传"   readonly />
-                        </div>
-                        <div class="col-sm-4" style="margin-top: 20px;font-size: 14px;margin-left: 40px;" class="setting1">
-                            <input type="checkbox" value="" name="rember" class="checkbox">添加水印
-                            <span style="color:#FF5456;" class="setting">【设置】</span>
-                        </div>
+                        </div> -->
+                        
                     </div>
 
                     <div class="flex flexend" style="padding-top: 30px;">
@@ -248,17 +245,52 @@
                         </div>
                     </div>
                 </div>
+                <p class="returnBack">&larr;<span class="f14">返回上一级</span></p>
                 <div class="flex" style="width: 100%">
                     <div class="imgBox1 flex">
 
                     </div>
-                    <div class="imgBox2 flex">
-
-                    </div>
+                   
 
                 </div>
             </div>
         </div>
+    </div>
+    <div class="nv92">
+        <div class="nv91-close">x</div>
+            <div class="nv91_box">
+                    <div class="w100">
+                    <p class="f18p10"> 添加图片-资源库<span class="f14pl10">只能添加jpg,jpeg,bmp,png,gif, 免费版大小不超过1MB</span>
+                            </p>
+                    <div class="flex col-sm-12 justify mb30">
+                        <!-- <div class="flex wauto">
+                            <div class="addImg1 position" > -->
+                                <!-- <input type="file" > -->
+                                <!-- <img src="../image/u1986.png" alt=""  class="jt w30">
+                                <input class="btn addColor w200"  value="直接上传"   readonly />
+                            </div> -->
+
+                        <!-- </div> -->
+                        
+                        <div class="flex flexend" >
+                            <div class="flex textRight">
+                                <div class="position">
+                                    <input type="text" class="form-control searchName1" placeholder="搜索所有文件" />
+                                    <span class="icon" class="searchName">&#xe615;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="returnBack">&larr;<span class="f14">返回上一级</span></p>
+                    <div class="flex" style="width: 100%">
+                        <div class="imgBox3 flex">
+            
+                        </div>
+                       
+                        
+                    </div>
+                  </div>
+                </div> 
     </div>
     <div class="nv" style="padding:10px;">
         <div class="prompt">

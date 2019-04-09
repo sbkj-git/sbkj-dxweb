@@ -44,7 +44,7 @@ $(document).ready(function(){
         //通过用户名查找
         var cateName
         $(".ct1").click(function () {
-            debugger
+            
                 cateName = $(".ct").val();
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateList&cateName=" + cateName;
                 var data2 = getSign(url, par);
@@ -63,7 +63,7 @@ $(document).ready(function(){
         render(data2);
         pageChange("get.dxWeb.cateList",data2,"pagination9");
         function pageChange(method,data2,pagination){
-            debugger
+            
             var appsercet = window.localStorage.getItem("appsercet");
                 appsercet = JSON.parse(appsercet);
                 var newAppsercet = appsercet.data;
@@ -85,7 +85,7 @@ $(document).ready(function(){
                 //初次加载页面数据
                
                 $(document).on("click", ".pageItem", function () {
-                    debugger
+                    
                     currentPage = $(this).html();
                     localStorage.setItem("pageNow1", currentPage)
                     par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
@@ -95,8 +95,9 @@ $(document).ready(function(){
                 var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
                 var ret = document.querySelector(".returnPage");
                 $(".returnPage").blur(function () {
-                    debugger
-                    var value = $(this).val();
+                    
+                    var value = $(this).html();
+
                     if (!re.test(value)) {
                         alert("请输入数字");
         
@@ -114,7 +115,7 @@ $(document).ready(function(){
     
     function render(data) {
        
-        if (data.dxWebList.length > 0) {
+        if (data.dxWebList&&data.dxWebList.length > 0) {
             var str = "";
             $(".textList").html("");
             $.each(data.dxWebList, function (i, item) {
@@ -167,16 +168,17 @@ $(document).ready(function(){
                             //添加分类事件
                                 $(".nv91-mask").show();
                                 $(".nv91").show();
-                                $(".addType").click(function(){
-                                    debugger
-                                    var cateName = $(".cateName").val();
-                                    par = "appsercet="+newAppsercet+"&method=get.dxWeb.addCate&cateName="+cateName;
-                                    var data = getSign(url,par);
-                                    if(data.msg.code == "200"){
-                                        alert("添加成功");
-                                    }
-                                })
+                                
                           })
+                          $(".addType").click(function(){
+                                    
+                            var cateName = $(".cateName").val();
+                            par = "appsercet="+newAppsercet+"&method=get.dxWeb.addCate&cateName="+cateName;
+                            var data = getSign(url,par);
+                            if(data.msg.code == "200"){
+                                alert("添加成功");
+                            }
+                        })
                           
                             }
                         //判断该用户是否有删除权限 
@@ -188,7 +190,7 @@ $(document).ready(function(){
                             })
                             $(".isDelete").click(function () {
                                 var id = $(this).attr("data-id");
-                                debugger
+                                
                                 url = src + "/skillInterface.dx";
                                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteCate&IdList=" + id;
 

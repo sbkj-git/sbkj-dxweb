@@ -1,6 +1,5 @@
 $(document).ready(function(){
-    $(document).ready(function () {
-        
+       
         //个人信息四个节点跳转
         $(".p1").click(function () {
             $("#iframe").attr("src", "./UpdatePerson.html");
@@ -23,6 +22,11 @@ $(document).ready(function(){
             $("#iframe1").attr("src", "./nav9/setting.html"); 
         })
         //右上角点击退出
+        //点击跳转到设置页面
+        $(".set").click(function(){
+            $("#iframe").attr("src", "./nav9/setting.html");
+            $("#iframe1").attr("src", "./nav9/setting.html"); 
+        })
         //获取缓存中存入的姓名
         var user_name = localStorage.getItem("user_name");
         var user_photo = localStorage.getItem("user_photo");
@@ -67,7 +71,7 @@ $(document).ready(function(){
                 return
             } else {
 
-                str1 += "<li id='" + item.id + "'><a href='#'><img src='./image/lf" + item.id + ".png' alt='' style='width:20px;height:20px;'></a></li>"
+                str1 += "<li id='" + item.id + "'><img src='./image/lf" + item.id + ".png' alt='' style='width:20px;height:20px;'></li>"
                 str += "<li class='treeview' id='" + item.id + "'><a href='#'><i class='fa fa-dashboard'><img src='./image/lf" + item.id + ".png' style='width:20px;height:20px;margin:0 10px 0 26px'/></i> <span>" + item.name + "</span> <i class='fa fa-angle-right pull-right'></i></a>"
                 str += "<ul class='treeview-menu'>";
                 str2 += "<div class='nav-slide-o'><ul>";
@@ -235,7 +239,7 @@ $(document).ready(function(){
                 $("#iframe").attr("src", "./nv10/Identification.html");
             }
         })
-    })
+   
     //个人信息下拉弹框
     $(".person").hover(function () {
         $(".selectDown").slideDown();
@@ -374,11 +378,14 @@ $(document).ready(function(){
     })
 
     var thisTime;
-    $('.nav-ul li').mouseleave(function (even) {
+    $('.nav-ul li ').mouseleave(function (even) {
+        
         thisTime = setTimeout(thisMouseOut, 1000);
     })
 
-    $('.nav-ul li').mouseenter(function () {
+    $('.nav-ul li ').mouseenter(function () {
+        
+        
         clearTimeout(thisTime);
         var thisUB = $('.nav-ul li').index($(this));
         if ($.trim($('.nav-slide-o').eq(thisUB).html()) != "") {

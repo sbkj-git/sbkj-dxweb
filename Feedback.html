@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" type="text/css" href="./css/buind.css">
     <link rel="stylesheet" href="./js/js/daterangepicker.css">
-    <link rel="stylesheet" href="./css/page.css">
+    <link rel="stylesheet" href="./css/newPage.css">
     <style>
         .lookType,.details{display: none;}
     </style>
@@ -20,10 +20,10 @@
 <body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;padding-left: 50px;">
 <div class="brand">
     <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
-        <li><a href="#" style="color:#8D8D8D;">设置</a>&nbsp;/&nbsp;</li>
-        <li><a href="#" style="color:#5A5A5A;">操作日志</a></li>
+        <li><a href="#" style="color:#8D8D8D;">投诉与反馈</a>&nbsp;/&nbsp;</li>
+        <!-- <li><a href="#" style="color:#5A5A5A;">操作日志</a></li> -->
     </ul>
-    <h1>操作日志</h1>
+    <h1>投诉与反馈</h1>
 </div>
 <ul class="chooseCard flex">
     <li class="chooseActive">管理反馈内容</li>
@@ -33,7 +33,7 @@
     <div class="choose1">
         <div class="flex" style="width:100%;padding-bottom: 2%;">
             <div class="col-sm-3">
-                <button class="btn-primary btn export" style="margin-right: 1%;">导出反馈</button>
+                <button class="btn-primary btn export" style="margin-right: 1%;"><a class="export1">导出反馈</a></button>
                 <button class="btn isDelete">删除反馈</button>
             </div>
             <div class="col-sm-6 flex " style="text-align: right;">
@@ -52,58 +52,44 @@
 
             </div>
         </div>
-        <table class="table" style="width: 100%;overflow: hidden;">
-            <thead>
-            <tr style="border-bottom: 1px solid #d8d8d8;">
-                <td class="position">
-                    <div class="radio radio-info radio-inline">
-                        <input type="radio" id="tall" name="tall1" class="tall">
-                        <label for="tall"> 类型 </label>
-                    </div>
-                </td>
-                <td>反馈内容</td>
-                <td>IP</td>
-                <td>反馈时间</td>
-                <td style="font-weight: 600;">操作</td>
-            </tr>
-            </thead>
-            <tbody class="feedback">
+        <form action="" id="form" >
+                <table class="table" style="width: 100%;overflow: hidden;">
+                        <thead>
+                        <tr style="border-bottom: 1px solid #d8d8d8;">
+                            <td class="position">
+                                <div class="radio radio-info radio-inline">
+                                    <input type="radio" id="tall" name="tall1" class="tall">
+                                    <label for="tall"> 类型 </label>
+                                </div>
+                            </td>
+                            <td>反馈内容</td>
+                            <td>IP</td>
+                            <td>反馈时间</td>
+                            <td style="font-weight: 600;">操作</td>
+                        </tr>
+                        </thead>
+                        <tbody class="feedback">
+            
+                        </tbody>
+                    </table>
+        </form>
 
-            </tbody>
-        </table>
+       
 
-        <div class=" flex w100" >
-            <div  class="f14mt30">
-                <span>共<i class="totalCount">100</i>条数据</span>
-                <span>第<i class="nowNum">1</i>/<i class="pagenumber">80</i>页</span>
+        <div class="paging flex " style="width:100%;justify-content: flex-end;" >
+                <div id="pagination10" class="pagination"></div>
+            
             </div>
-            <div id="pageGro">
-                <div class="pageUp">&lt;</div>
-                <div class="pageList">
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                    </ul>
-                </div>
-                <div class="pageDown">&gt;</div>
-                <button class="btn ml10" >10条/页</button>
-                <span  style="margin-left: 10px;">跳转<input type="number" class="btn returnNum w60ml10" >页</span>
-
-            </div>
-        </div>
     </div>
     <div class="choose1 " style="display: none!important;">
         <div class="col-sm-12 flex" style="border-bottom:1px solid #dddddd;padding-bottom: 2%;;">
             <span>验证码:</span>
             <div class="radio radio-info radio-inline">
-                <input type="radio" id="f1" value="option1" name="radioInline" checked="" class="validate">
+                <input type="radio" id="f1" value="" name="radioll" checked="" class="validate">
                 <label for="f1"> 必填 </label>
             </div>
             <div class="radio radio-info radio-inline">
-                <input type="radio" id="f2" value="option1" name="radioInline" checked="" class="validate">
+                <input type="radio" id="f2" value="" name="radioll"  class="validate">
                 <label for="f2"> 防刷保护 </label>
 
             </div>
@@ -133,7 +119,7 @@
 
         </div>
     </div>
-
+   
 </div>
 <div class="nv91-mask">
     <div class="nv91">
@@ -253,7 +239,7 @@
 <script src="./js/js/daterangepicker.js"></script>
 <script src="./js/js/package.js"></script>
 <script src="./js/getRequest.js"></script>
-<script src="./js/page2.js"></script>
+<script src="./js/newPage.js"></script>
 <script src="./js/Feedback.js"></script>
 <script src="./js/radioAllChoose.js"></script>
 

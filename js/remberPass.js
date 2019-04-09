@@ -1,6 +1,6 @@
 //点击登录时触发客户端事件
 function SetPwdAndChk() {
-    debugger
+    
     //取用户名
     var usr = document.getElementById('user').value;
     alert(usr);
@@ -30,7 +30,7 @@ function SetLastUser(usr) {
 }
 //用户名失去焦点时调用该方法
 function GetPwdAndChk() {
-    debugger
+    
     var usr = document.getElementById('user').value;
     var pwd = GetCookie(usr);
     if (pwd != null) {
@@ -43,7 +43,7 @@ function GetPwdAndChk() {
 }
 //取Cookie的值
 function GetCookie(name) {
-    debugger
+    
     var arg = name + "=";
     var alen = arg.length;
     var clen = document.cookie.length;
@@ -62,14 +62,14 @@ function GetCookie(name) {
 }
 
 function getCookieVal(offset) {
-    debugger
+    
     var endstr = document.cookie.indexOf(";", offset);
     if (endstr == -1) endstr = document.cookie.length;
     return unescape(document.cookie.substring(offset, endstr));
 }
 //写入到Cookie
 function SetCookie(name, value, expires) {
-    debugger
+    
     var argv = SetCookie.arguments;
     //本例中length = 3
     var argc = SetCookie.arguments.length;

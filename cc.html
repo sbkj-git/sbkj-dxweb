@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Flex布局</title>
+<style>
+.con {
+/* 要创建一个 flex 容器，只需要将一个 display: flex 属性添加到一个元素上。
+默认情况下，所有的直接子元素都被认为是 flex 项，并从左到右依次排列在一行中。
+如果 flex 项的宽度总和大于容器，那么 flex 项将按比例缩小，直到它们适应 flex 容器宽度 */
+display: flex;
+
+/* flex-direction 决定主轴的方向 row(默认)|row-reverse|column|column-reverse*/
+/* flex-direction: row; */
+
+/* flex-wrap决定当排列不下时是否换行以及换行的方式,nowrap(默认)|wrap|wrap-reverse */
+/* flex-wrap:wrap; */
+
+/* flex-flow是lex-direction和flex-wrap的简写形式，如：row wrap|column wrap-reverse等。默认值为row nowrap，即横向排列 不换行 */
+flex-flow:row wrap;
+
+/* !当主轴沿水平方向时!justify-content,决定item在主轴上的对齐方式，可能的值有flex-start（默认），flex-end，center，space-between，space-around */
+justify-content:center;
+/* !主轴水平时!决定了item在交叉轴上的对齐方式，可能的值有flex-start|flex-end|center|baseline|stretch */
+align-items:center;
+
+
+}
+.con>div {
+width: 100px;
+height: 100px;
+background: #8DB6CD;
+border: 1px solid black;
+margin-left: 10px;
+text-align: center;
+line-height:100px;
+}
+</style>
+</head>
+
+<body>
+<div class='con'>
+<!-- order的值是整数，默认为0，整数越小，item排列越靠前 这里只给item1 和item4设置了order属性 1跟4排到了最后面，并且4在1的前面 -->
+<div style="order: 2">item 1</div>
+<div style="height: 300px;">item 2</div>
+<!-- flex-grow定义了当flex容器有多余空间时，item是否放大 flex-shrink为缩小 -->
+<div style="flex-grow:2">item 3</div>
+<div style="order: 1">item 4</div>
+<div style="flex-basis:60px">item 5</div>
+<div>item 6</div>
+<div>item 7</div>
+<div>item 8</div>
+<div>item 9</div>
+<div>item 10</div>
+<div>item 11</div>
+</div>
+
+</body>
+
+</html>

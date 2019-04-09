@@ -27,17 +27,17 @@ $(document).ready(function(){
     });
      //点击弹窗关闭时间
      $(".BannerRefuse1").click(function(){
-        debugger
+        
         $(".nv91-mask").hide();
         $(".nv91").hide();
     })
     $(".roleRefuse5").click(function(){
-        debugger
+        
         $(".nv91-mask").hide();
         $(".nv").hide();
     })
     $(".nv91-close").click(function(){
-        debugger
+        
         $(".nv91-mask").hide();
         $(".nv91").hide();
     })
@@ -51,10 +51,11 @@ $(document).ready(function(){
     }
     //封装渲染数据方法
     function bannerList1(data) {
-            if (data.dxWebList.length > 0) {
+            if (data.dxWebList && data.dxWebList.length > 0) {
                 var str = "";
                 $(".textList").html("");
                 $.each(data.dxWebList, function (i, item) {
+                    debugger
                     str += '<tr style="border-bottom: 1px solid #d8d8d8;">';
                     str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.id + '"   aria-label="Single checkbox Two" data-id="' + item.id + '"><label for="' + item.id + '">' + item.title + '</label></div></td><td><img src="' + item.large_img + '" alt="" style="width: 82px;height:56px;display: table-column;vertical-align: middle;"></td><td>' + item.author + '</td>';
                     if (item.is_ups == 1) {
@@ -62,16 +63,46 @@ $(document).ready(function(){
                     } else {
                         str += "<td>&#10007;</td>"
                     }
-                    str += '<td>' + item.create_time + '</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.id + '">删除</span>&nbsp;&nbsp;<span data-id="' + item.id + '" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.id + '">编辑</span></td>'
-                    // if (item.is_ups == 1) {
-                    //     str+="&nbsp;&nbsp;<span class='toDown' data-id='" + item.id + "'>取消置顶</span></td>";
-                    // } else {
-                    //     str+="&nbsp;&nbsp;<span class='toTop ' data-id='" + item.id + "'>置顶</span>&nbsp;</td>";
-                    // }
+                    str += '<td>' + item.create_time + '</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.id + '">删除</span>&nbsp;&nbsp;<span data-id="' + item.id + '" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.id + '">编辑</span>'
+                    if (item.is_ups == 1) {
+                        str+="&nbsp;&nbsp;<span class='toDown' data-id='" + item.id + "'>取消置顶</span></td>";
+                    } else {
+                        str+="&nbsp;&nbsp;<span class='toTop ' data-id='" + item.id + "'>置顶</span>&nbsp;</td>";
+                    }
                     str += "</tr>";
 
                 })
                 $(".textList").html(str);
+                
+                //banner置顶事件   
+                $(".toTop").unbind('click').bind("click",function(){ 
+                    var index = $(this).index();
+                    
+                    var id = $(this).attr("data-id");
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateWebOperation&isUp=1";
+                    var statu = getSign(url, par);
+
+                    if (statu.msg.code == "200") {
+                        alert("置顶成功");
+                        // $(".toTop").eq(index).hide();
+                        location.reload();
+
+                    }
+                })
+                $(".toDown").unbind('click').bind("click",function(){ 
+                
+                    
+                    var id = $(this).attr("data-id");
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateWebOperation&isUp=2";
+                    
+                    var statu = getSign(url, par);
+                    if (statu.msg.code == "200") {
+                        alert("取消置顶成功");
+                        // $(".toDown").eq(index).hide();
+                        location.reload();
+
+                    }
+                })
             }
         };
          
@@ -79,11 +110,21 @@ $(document).ready(function(){
     var data = window.localStorage.getItem("dxRightsList");    
         data = JSON.parse(data);  
      //页面初次加载渲染页面
-     var url,par;      
+     var url,par;
+     url = src + "/webInterface.dx";      
         var appsercet = window.localStorage.getItem("appsercet");
         appsercet = JSON.parse(appsercet);
         var newAppsercet = appsercet.data;
-       
+        var currentPage = localStorage.getItem("pageNow1");
+        par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList"; 
+            var data2 = getSign(url, par);
+            console.log(data2);
+            
+        console.log(data2);
+        bannerList1(data2);
+        pageJudge(data2);
+
+
      //通过banner名称查询
      $(".banner1").click(function(){
         var title = $(".banner").val();
@@ -95,8 +136,9 @@ $(document).ready(function(){
             
         }
         else if( bannerList.dxWebList){
-            bannerList1(bannerList)
-           
+            debugger
+            bannerList1(bannerList);
+            pageJudge(bannerList);
         }
        
        
@@ -111,41 +153,21 @@ $(document).ready(function(){
             }
         })
         var help ;
+        
         console.log(arr[0]);
         $.each(arr[0].dxRightsList,function(i,item){
             //console.log(arr[0].dxRightsList)
             if(item.method === "get.dxWeb.webOperationList"){
                 url = src+"/"+item.link_path;
                 help = "/"+item.link_path;
-                localStorage.setItem("pageNow1",1)     
-                var currentPage = localStorage.getItem("pageNow1")
-                // par = "appsercet="+newAppsercet+"&method="+item.method+"&currentPage="+currentPage;
-                par = "appsercet="+newAppsercet+"&method="+item.method+"&currentPage="+currentPage; 
-                    var data2 = getSign(url, par);
-                    console.log(data2)
-                    pageCount = Math.ceil(data2.pageInfo.totalRows/10);
-                    new Page({
-                        id: 'pagination',
-                        pageTotal: pageCount, //必填,总页数
-                        pageAmount: 10,  //每页多少条
-                        dataTotal: data2.pageInfo.totalRows, //总共多少条数据
-                        curPage:1, //初始页码,不填默认为1
-                        pageSize: 5, //分页个数,不填默认为5
-                        showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
-                        showSkipInputFlag:true, //是否支持跳转,不填默认不显示
-                        getPage: function (page) {
-                            //获取当前页数
-                           console.log(page);
-                        }
-                    })
-                console.log(data2);
-                bannerList1(data2);
+                    
+               
                             //分页
                             //分页渲染
         
                 $(document).on("click", ".pageItem", function () {
 
-                    debugger
+                    
                     currentPage = $(this).html();
                     localStorage.setItem("pageNow1", currentPage)
                     par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webOperationList&currentPage=" + currentPage;
@@ -155,8 +177,9 @@ $(document).ready(function(){
                 var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
                 var ret = document.querySelector(".returnPage");
                 $(".returnPage").blur(function () {
-                    debugger
-                    var value = $(this).val();
+                    
+                    var value = $(this).html();
+
                     if (!re.test(value)) {
                         alert("请输入数字");
     
@@ -171,35 +194,7 @@ $(document).ready(function(){
                     }
     
                 })
-                //banner置顶事件   
-                $(".toTop").click(function () {
-                    var index = $(this).index();
-                    debugger
-                    var id = $(this).attr("data-id");
-                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.topBanner&id=" + id + "&type=1";
-                    var stc = src + "/bannerGetInterface.dx";
-                    var statu = getSign(stc, par);
-
-                    if (statu.msg.code == "200") {
-                        alert("置顶成功");
-                        // $(".toTop").eq(index).hide();
-                        location.reload();
-
-                    }
-                })
-                $(".toDown").click(function () {
-                    debugger
-                    var id = $(this).attr("data-id");
-                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.topBanner&id=" + id + "&type=2";
-                    var stc = src + "/bannerGetInterface.dx";
-                    var statu = getSign(stc, par);
-                    if (statu.msg.code == "200") {
-                        alert("取消置顶成功");
-                        // $(".toDown").eq(index).hide();
-                        location.reload();
-
-                    }
-                })
+                
                 //判断该角色是否有权限操作
                 if(item.dxRightsTwoList.length == 0){
                     return
@@ -263,7 +258,9 @@ $(document).ready(function(){
                                 par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationDetails&articleId="+id;
                                 var data = getSign(url,par);
                                 
-                                localStorage.setItem("textDetail",JSON.stringify(data) );
+                                localStorage.setItem("textDetail",JSON.stringify(data));
+                                localStorage.setItem("url",help);
+                                localStorage.setItem("method","get.dxWeb.webOperationDetails");
                                 console.log(data); 
                                 location.href = "./AddText.html"
                             })
@@ -295,6 +292,38 @@ $(document).ready(function(){
            
 
         })
+        //封装查询事件分页效果
+        function pageJudge(data2){
+            var pageCount,pageN;
+            if(data2.pageInfo&&data2.pageInfo.totalRows){
+                pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+            }else{
+                pageCount == 0;
+            }
+            if(data2.pageInfo&&data2.pageInfo.totalRows){
+                pageN = data2.pageInfo.totalRows;
+            }else{
+                pageN == 0;
+            }
+            if(data2.pageInfo&&data2.pageInfo.totalRows){
+                new Page({
+                    id: 'pagination',
+                    pageTotal: pageCount, //必填,总页数
+                    pageAmount: 10,  //每页多少条
+                    dataTotal: pageN, //总共多少条数据
+                    curPage:1, //初始页码,不填默认为1
+                    pageSize: 5, //分页个数,不填默认为5
+                    showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                    showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                    getPage: function (page) {
+                        //获取当前页数
+                       console.log(page);
+                    }
+                })
+            }else{
+                pageN == 0;
+            }
+           }
        //删除函数封装
         function deleteText() {
             var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  

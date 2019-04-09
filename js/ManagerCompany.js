@@ -14,55 +14,70 @@
     appsercet = JSON.parse(appsercet);
     var newAppsercet = appsercet.data;
     $(".roleRefuse5").click(function(){
-        debugger
+        
         $(".nv91-mask").hide();
         $(".nv").hide();
     })
     $(".nv91-close").click(function(){
-        debugger
+        
         $(".nv91-mask").hide();
         $(".nv91").hide();
     })
-    localStorage.setItem("pageNow1",1)     
+    
     var currentPage = localStorage.getItem("pageNow1")
-        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList&currentPage=" + currentPage;
-        debugger
-        var data = getSign(url, par);
-        console.log(data);
-        render(data);
-        pageCount = Math.ceil(data.pageInfo.totalRows / 10);
-        new Page({
-            id: 'pagination1',
-            pageTotal: pageCount, //必填,总页数
-            pageAmount: 10,  //每页多少条
-            dataTotal: data.pageInfo.totalRows, //总共多少条数据
-            curPage: 1, //初始页码,不填默认为1
-            pageSize: 5, //分页个数,不填默认为5
-            showPageTotalFlag: true, //是否显示数据统计,不填默认不显示
-            showSkipInputFlag: true, //是否支持跳转,不填默认不显示
-            getPage: function (page) {
-                //获取当前页数
-                console.log(page);
-            }
-        })
+        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList" ;
+        var data2 = getSign(url, par);
+        console.log(data2);
+        render(data2);
+        firstRender();
+        pageJudge(data2);
+        function pageJudge(data2){
+        var pageCount,pageN;
+        if(data2.pageInfo && data2.pageInfo.totalRows){
+            pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+        }else{
+            pageCount == 0;
+        }
+        if(data2.pageInfo && data2.pageInfo.totalRows){
+            pageN = Math.ceil(data2.pageInfo.totalRows/10);
+        }else{
+            pageN == 0;
+        }
+        if(data2.pageInfo && data2.pageInfo.totalRows){
+            new Page({
+                id: 'pagination1',
+                pageTotal: pageCount, //必填,总页数
+                pageAmount: 10,  //每页多少条
+                dataTotal:pageN, //总共多少条数据
+                curPage: 1, //初始页码,不填默认为1
+                pageSize: 5, //分页个数,不填默认为5
+                showPageTotalFlag: true, //是否显示数据统计,不填默认不显示
+                showSkipInputFlag: true, //是否支持跳转,不填默认不显示
+                getPage: function (page) {
+                    //获取当前页数
+                    console.log(page);
+                }
+            })
+        }else{
 
-        //分页
-        //分页渲染
-
+        }
         $(document).on("click", ".pageItem", function () {
 
-            debugger
+            
             currentPage = $(this).html();
             localStorage.setItem("pageNow1", currentPage)
             par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList&currentPage=" + currentPage;
             var bannerList = getSign(url, par);
             render(bannerList);
         })
+        }
+        
         var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
         var ret = document.querySelector(".returnPage");
         $(".returnPage").blur(function () {
-            debugger
-            var value = $(this).val();
+            
+            var value = $(this).html();
+
             if (!re.test(value)) {
                 alert("请输入数字");
 
@@ -108,20 +123,23 @@
                        
                         if(obj.method === "get.dxWeb.addWebBottom"){
                           $(".addInput").show();
-                          $(".add1").click(function(){
+                          $(".add1").unbind('click').bind("click",function(){
                               
                             //添加管理合作伙伴操作
                             $(".nv91-mask").show();
                             $(".nv91").show();
                             object(url,newAppsercet)
                              
-                              $("#picimg").change(function () {
-                                var fileDom = document.getElementById("picimg");
-                                  imgPreview(fileDom, "pic");
-                              })
-                            $(".addBanner").click(function () {
-                                addorupdate("get.dxWeb.addWebBottom",1);
-                              })
+                          })
+                          $("#picimg").change(function () {
+                            debugger
+                          var fileDom = document.getElementById("picimg");
+                            imgPreview(fileDom, "pic");
+                        })
+                        $(".addBanner").unbind('click').bind("click",function(){
+                         
+                            addorupdate("get.dxWeb.addWebBottom",1);
+                            
                           })
                           
                             }
@@ -129,21 +147,23 @@
                         if(obj.method === "get.dxWeb.deleteWebBottom"){
                             $(".Delete").show();
                             $(".isDelete").show();
-
+                            var id
                             $(".isDelete").click(function(){
+                                id = $(this).attr("data-id");
                                 $(".nv91-mask").show();
-                                        $(".nv").show();
-                                        $(".roleSure").click(function(){
-                                            var id = $(this).attr("data-id");
-                                            deleteText(id);
-                                        })
-                                        $(".roleRefuse").click(function(){
-                                            $(".nv91-mask").show();
-                                            $(".nv").show(); 
-                                        })
-                                
-                                                               
-                            })  
+                                        $(".nv").show();  
+                                    $(".roleSure").unbind('click').bind("click",function(){
+                                   
+                                            debugger        
+                                        deleteText(id);
+                                    })
+                                    $(".roleRefuse").unbind('click').bind("click",function(){
+                                   
+                                        $(".nv91-mask").show();
+                                        $(".nv").show(); 
+                                    })                               
+                            }) 
+                            
                         }
                             //判断是否有编辑权限
                            if(obj.method === "get.dxWeb.updateWebBottom"){      
@@ -152,36 +172,28 @@
                             $(".isEdit").click(function () {
                                 $(".nv91-mask").show();
                                 $(".nv91").show();
-                                $("#picImg").hide();
+                                // $("#picImg").hide();
                                 var id = $(this).attr("data-id");
                                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getWebBottom&id=" + id;
                                 var data = getSign(url, par);
                                 
                                 console.log(data);
-                                debugger
+                                
                                 object(url, newAppsercet)
                                 $(".companyName").val(data.msg.pic_title);
                                 $(".companyUrl").val(data.msg.pic_url);
                                 var option = document.querySelectorAll(".companyType option");
+                                
                                 for (var i = 0; i < option.length; i++) {
                                     var obj = option[i];
-                                    if (obj.innerHTML == data.msg.cate_name) {
+                                    if (obj.innerHTML = data.msg.cate_name) {
                                         obj.selected == true;
+                                        // return true;
                                     }
                                 }
                                 $("#pic").attr("src", data.msg.pic_img);
-                                $("#pic").click(function(){
-                                    $("#picImg").click();
-                                    $("#picImg").show();
-                                    $("#picimg").change(function () {
-                                    debugger
-
-                                    var fileDom = document.getElementById("picimg");
-                                    imgPreview(fileDom, "pic");
-                                })
-                                   
-                                })
-                               
+                                
+        
                                 var status = document.querySelectorAll(".status");
                                 var obj = status[0];
                                 var obj1 = status[1];
@@ -193,6 +205,8 @@
                                 }
                                 $(".companyName").val(data.msg.pic_title);
                                 $("#picimg").change(function () {
+                                    $("#pic").attr("src", "");
+                                    debugger
                                     var fileDom = document.getElementById("picimg");
                                     imgPreview(fileDom, "pic");
                                 })
@@ -213,33 +227,53 @@
     }
         // 封装渲染函数
         function render(data){
-                        if(data.dxBannerList.length>0){
+                        if(data.dxBannerList&&data.dxBannerList.length>0){
                     var str = "";
                     $(".textList").html(str);
                     
                     $.each(data.dxBannerList,function(i,item){
                         str+='<tr style="border-bottom: 1px solid #d8d8d8;">';
                             str+='<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="'+item.id+'"   aria-label="Single checkbox Two" data-id="'+item.id+'"><label for="'+item.id+'"><img src="'+item.pic_img+'" alt="" style="width: 82px;height:56px;display: table-column;vertical-align: middle;"></label></div></td><td>'+item.pic_title+'</td><td>'+item.cate_name+'</td><td>'+item.pic_url+'</td>';
-                            var status = document.querySelectorAll(".status");
-                            var obj = status[0];
-                            debugger
-                            if (obj.value == item.state) {
-                                str+='<td>上线</td>';
-                            } else {
-                                str+='<td>下线</td>';
+                            if(item.state == 1){
+                                str+="<td><input class='switch switch-anim' type='checkbox' checked data-id='" + item.id + "'></td>";
+                            }else{
+                                str+="<td><input class='switch switch-anim' type='checkbox' data-id='" + item.id + "'></td>";
                             }
                             str+='<td>'+item.frequency+'</td><td style="color:#FF5456;"><span class="isDelete" data-id="'+item.id+'">删除</span>&nbsp;&nbsp;<span data-id="'+item.id+'" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="'+item.id+'">编辑</span></td>'
                         str+="</tr>";
                     })
                     $(".textList").html(str);
                     firstRender();
+                      //上下限切换
+                var state,id;
+                $(".switch").unbind('click').bind("click",function(){ 
+                var index = $(this).index();
+                //1. 获取id值             
+                var id = $(this).attr("data-id");
+                if($(this).prop("checked")){
+                    state = 1;     
+                
+                }else{
+                    state = 2;
+                    
+                }
+                par = "appsercet="+newAppsercet+"&method=get.dxWeb.updateWebBottom&id="+id+"&state="+state;
+                var data = getSign(url,par);
+                if(data.msg.code == "200"){
+                    alert("操作成功");
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList";
+                    var data = getSign(url, par);
+                    render(data);
+                }
+        
+                });
                 }
                 console.log(data);
                     }
-               
+      
          //删除函数封装
          function deleteText(id) {
-               
+               debugger
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteWebBottom&id=" + id;
                 var data = getSign(url, par);
                 if (data.msg.code == "200") {
@@ -250,7 +284,7 @@
 
         // 添加修改函数封装
         function addorupdate(method,id) {
-            debugger
+            
 
                 var formData = new FormData();
                 var appid = localStorage.getItem("appid");
@@ -277,7 +311,7 @@
                 formData.append("cateId", $(".companyType option:checked").attr("data-id"));
                 var status = document.querySelectorAll(".status");
                 var state = $("input[name='bm2']:checked").val()
-                debugger
+                
                 // var state
                 // for(var i = 0;i<status.length;i++){
                 //     var obj = status[i];
@@ -292,10 +326,21 @@
                 console.log($(".companyUrl").val())
                 var data = post(url, formData);
                 console.log(data);
+                data = JSON.parse(data)
                 if(data.msg.code == "200"){
                     alert("操作成功");
                     location.reload();
+                }else if(data.msg.code == "200"){
+                    alert("操作失败");
+                    location.reload();
                 }
+                setTimeout(function(){
+                    $(".nv91-mask").hide();
+                    $(".nv91").hide();
+                    $(".nv91 input").val("");
+                },1000)
+               
+               
             }
 //获取所有合作伙伴类别
     function object(url, newAppsercet) {

@@ -7,27 +7,15 @@ $(document).ready(function() {
     //回调函数
 
 });
-    //点击的时候判断是否都填了
-    $(".addMessage").click(function(){
-        var img1 = $(".reviewImg1").attr("src");
-        var img2 = $(".reviewImg3").attr("src");
-        if(img1 == ""||img1 == null || img1 == "undefined"){
-            alert("请选择正文头图");
-            return false;
-        }
-        if(img2 == ""||img2 == null || img2 == "undefined"){
-            alert("请选择文章缩略图");
-            return false;
-        }
-        if($(".changeSelect option:checked").attr("data-id") && method === "get.dxWeb.updateSkill" || method === "get.dxWeb.addSkill"){
-            alert("请选择产品分类");
-            return false;
-        }
-        if($(".changeSelect option:checked").attr("data-id") && method === "get.dxWeb.addQAndA" || method === "get.dxWeb.updateQAndA"){
-            alert("请选择问题分类");
-            return false;
-        }
-    })
+    //作业开始时间失去焦点验证
+$('#date').blur(function(){
+	var ret = contrastTime("date");//获取返回值
+	if(ret == 0){
+		alert("请选择正确的时间。");
+		$(this).val('');
+		return;
+	}
+})
     //切换自定义还是和正文头图一致
     var add1 = document.querySelectorAll(".add1");
     var value
@@ -57,14 +45,14 @@ $(document).ready(function() {
       })   
       $(".rigntop1").click(function(){
         $(".imgcov1").hide();
-        delete2 = 2;
+        delete2 = 1;
     }) 
     $(".imgcov1").hover(function(){
        $(".rigntop1").show(); 
     })  
     $(".rigntop2").click(function(){
         $(".imgcov2").hide();
-        delete2 = 2;
+        delete2 = 1;
     }) 
     $(".imgcov2").hover(function(){
        $(".rigntop2").show(); 
@@ -78,61 +66,72 @@ $(document).ready(function() {
             $(".search2").hide();
         }) 
     }) 
-    $(document).on("click",".addPhone",function(e){
-        debugger
-    // $(".addPhone").on("click",function(e){
+    //点击关闭弹窗
+    $(".nv91-close").click(function(){
+        $(".nv91-mask").hide();
+        $(".nv91").hide();
+        $(".nv92").hide();
+        $(".imgBox1").html("");
+        $(".imgBox2").html("");
+        $(".imgBox3").html("");
+        $(".imgBox4").html("");
+    })
+    var urlSrc1,urlId1
+    // $(document).on("click",".addPhone",function(e){
+        $(".addPhone").click(function(){
         $(".nv91-mask").show();
        $(".nv91").show();
         $(this).val("修改图片");
-        $(".imgHover").each(function(index){
-            $(".imgHover").eq(index).on("click",function(e){
-                $(".nv91-mask").hide();
-                $(".nv91").hide();
-                $(".custom").eq(0).show();
-                $(".imgcov").show();
-                value1 = $("input[type='radio']:checked").val();
-                if(value1 == 1){
-                    $(".imgcov1").show();
-                }else{
-                    $(".imgcov1").hide();
-                }
+        localStorage.setItem("addphone",1);
+        // $(".imgCover").each(function(index){
+        //     // $(".imgCover").eq(index).on("click",function(e){
+        //         $(".imgCover").click(function(){  
+        //         $(".nv91-mask").hide();
+        //         $(".nv91").hide();
+        //         $(".custom").eq(0).show();
+        //         $(".imgcov").show();
+        //         value1 = $("input[type='radio']:checked").val();
+        //         if(value1 == 1){
+        //             $(".imgcov1").show();
+        //         }else{
+        //             $(".imgcov1").hide();
+        //         }
                
-                $(".imgcov2").show();
-                var urlSrc1 = $(".imgHover").eq(index).find("img").attr("src");
-                var urlId1 = $(".imgHover").eq(index).find("img").attr("data-id");
-                $(".reviewImg1").attr("src",url1.urlSrc);
-                $(".reviewImg1").attr("data-id",url1.urlId);
-                //         localStorage.setItem("url1",JSON.stringify({"urlSrc":urlSrc1,"urlId":urlId1}));
-                //         var url1 = localStorage.getItem("url1");
-                // url1 = JSON.parse(url1);
-                // $(".reviewImg1").attr("src",url1.urlSrc);
-                // $(".reviewImg1").attr("data-id",url1.urlId);
-            })
-        })
+        //         $(".imgcov2").show();
+        //         urlSrc1 = $(this).find(".imgHover1").attr("src");
+        //          urlId1 = $(this).find(".imgHover1").attr("data-id");
+        //         $(".reviewImg1").attr("src",urlSrc1);
+        //         $(".reviewImg1").attr("data-id",urlId1);
+               
+        //     })
+        // })
        
     })
+    var urlSrc,urlId
     $(document).on("click",".addPhone2",function(e){
-        debugger
+        
     // $(".addPhone2").on("click",function(e){
         $(".nv91-mask").show();
-        $(".nv91").show();
+       $(".nv92").show();
+       $(".nv91").hide();
         $(this).val("修改图片");
-        $(".imgHover").each(function(index){
-            $(".imgHover").eq(index).on("click",function(e){
-                window.event.cancelBubble=true;
-                e.stopPropagation();
-                $(".nv91-mask").hide();
-                $(".nv91").hide();
-                $(".imgcov1").hide();
-                var urlSrc = $(".imgHover").eq(index).find("img").attr("src");
-                var urlId = $(this).find("img").attr("data-id");
-                localStorage.setItem("url2",JSON.stringify({"urlSrc":urlSrc,"urlId":urlId}));
-                var url2 = localStorage.getItem("url2");
-                url2 = JSON.parse(url2);
-                $(".reviewImg3").attr("src",url2.urlSrc);
-                $(".reviewImg3").attr("data-id",url2.urlId);
-            })
-        })
+       localStorage.setItem("addphone",2);
+        // $(".imgCover1").each(function(index){
+        //     // $(".imgCover1").eq(index).on("click",function(e){
+        //         $(".imgCover1").click(function(){
+        //         $(".nv91-mask").hide();
+        //         $(".nv91").hide();
+        //         $(".imgcov1").hide();
+        //         urlSrc = $(".imgCover1").eq(index).find(".imgHover1").attr("src");
+        //          urlId = $(this).find(".imgHover1").attr("data-id");
+        //         // localStorage.setItem("url2",JSON.stringify({"urlSrc":urlSrc,"urlId":urlId}));
+        //         // var url2 = localStorage.getItem("url2");
+        //         // url2 = JSON.parse(url2);
+        //         $(".reviewImg3").attr("src",urlSrc);
+        //         $(".reviewImg3").attr("data-id",urlId);
+        //     })
+        // })
+       
 	});
 
     
@@ -170,7 +169,7 @@ var url = src + url1;
     //设置分类回显
     if (method === "get.dxWeb.updateSkill" || method === "get.dxWeb.addSkill") {
         $(".show1").show();
-        debugger
+        
         par = "appsercet=" + appsercet + "&method=get.dxWeb.cateAllList";
         var data = getSign(url, par);
         if (data.dxWebList) {
@@ -221,8 +220,12 @@ var url = src + url1;
         })
 
         $(".addMessage").click(function () {
-
-            updateMessage(method, id, url1);
+            if($(".changeSelect option:checked").attr("data-id") == 0 || $(".changeSelectTwo option:checked").attr("data-id") == 0){
+                alert("请先选择产品分类和问题详情,如果没有请先添加分类");
+            }else{
+             updateMessage(method,id,url1);
+            }
+           
         })
     }
       
@@ -252,7 +255,7 @@ var url = src + url1;
           cateId = $(".changeSelect option:checked").attr("data-id");
           productId = $(".changeSelectTwo option:checked").attr("data-id");
           for (var i = 0; i < add1.length; i++) {
-              debugger
+              
               var obj = add1[0];
               if (obj.checked == true) {
                   recommended = 1;
@@ -266,48 +269,15 @@ var url = src + url1;
           var formData = new FormData();
          //添加cateid productid属性 
       if ( method === "get.dxWeb.addSkill" || method === "get.dxWeb.updateSkill") {
-    //     var cateId;
-    //    var option = document.querySelectorAll(".changeSelect option");
-    //     
-    //     for (var i = 0; i < option.length; i++) {
-    //         var obj = option[i];
-    //         if (obj.checked = true) {
-    //             //获取对应产品一级栏目的data-id属性
-    //             cateId = obj.getAttribute("data-id");
-               
-    //         }
-    //     } 
+   
        
        formData.append('cateId', cateId);  //添加其他参数
              
       }
       if ( method === "get.dxWeb.addQAndA" || method === "get.dxWeb.updateQAndA") {
-    //       
-    //    var option = document.querySelectorAll(".changeSelect option");
-    //       for (var i = 0; i < option.length; i++) {
-    //           var obj = option[i];
-              
-    //           if (obj.selected = true) {
-    //               //获取对应产品一级栏目的data-id属性
-    //               cateId = obj.getAttribute("data-id");
-                
-    //           }
-    //       }  
-    //       formData.append('cateId', cateId);  //添加其他参数
-    //       var option = document.querySelectorAll(".changeSelectTwo option");
-    //       for (var i = 0; i < option.length; i++) {
-    //           var obj = option[i];
-    //           if (obj.selected = true) {
-    //               //获取对应产品一级栏目的data-id属性
-    //               productId = obj.getAttribute("data-id");
-                  
-    //           }
-    //       }  
-
-
-        //   formData.append('productId', productId);  //添加其他参数
-        formData.append('cateId', cateId);  //添加其他参数
-        formData.append('productId',productId ); 
+        
+        formData.append('cateId', productId);  //添加其他参数
+        formData.append('productId',cateId ); 
         
       }
           upBrowse = $.trim($(".upBrowse").val());
@@ -332,15 +302,34 @@ var url = src + url1;
           formData.append('browserTitle', browserTitle);  //浏览器标题
           formData.append('detailsKeyWord', detailsKeyWord);  //关键字
           formData.append('detailsDescribe', detailsDescribe);  //文章详情
-          formData.append('imgId', imgId || "");  //正文头图
-          formData.append('imgId1', imgId1 || "");  //缩略图       
+          if(imgId == "undefined" || imgId == "" || imgId == null){
+
+          }else{
+            formData.append('imgId', imgId || "");  //正文头图
+          }
+          if(imgId1 == "undefined" || imgId1 == "" || imgId1 == null){
+
+            }else{
+                formData.append('imgId1', imgId1 || "");  //缩略图  
+            }
+            if(delete1 == "undefined" || delete1 == "" || delete1 == null){
+
+            }else{
+                formData.append('delete1', delete1);  //是否删除正文头图
+            }
+            if(delete2 == "undefined" || delete2 == "" || delete2 == null){
+  
+              }else{
+                formData.append('delete2', delete2);  //是否删除自定义缩略图  
+              }    
+         
           
           if(id == "" || id == null){
               
           }else{
            formData.append('articleId', id);  //添加其他参数  
           }
-         
+         debugger
           console.log(url)
              
           var data = post(url, formData);
@@ -355,15 +344,24 @@ var url = src + url1;
                $(".nv").hide();
                },1000); 
         }
-        //   $("iframe").attr("src","./BannerManager.html")
-        //   location.href = "./BannerManager.html";
-        //   if(data.msg.code == "200"){
-        //       location.href = "./BannerManager.html";
-        //   }
-
+        if(data.msg.code == "10"){
+            $(".prompt span").text("请求失败");
+            $(".nv91-mask").show();
+               $(".nv").show();
+               setTimeout(function(){
+                $(".nv91-mask").hide();
+               $(".nv").hide();
+               },1000); 
+        }
+        document.getElementById("resetInput").reset();
+        $(".summernote").summernote("code","");
+        $(".detailsKeyWord").val("");
+        $(".detailsDescribe").val("");
+        $(".reviewImg1").attr("src","");
+        $(".reviewImg3").attr("src","");
   }
   
-  if(method === "get.dxWeb.updateWebOperation" || method === "get.dxWeb.updateHelp" || method === "get.dxWeb.helpDetails" || method === "get.dxWeb.skillDetails" || method === "get.dxWeb.updateSkill" || method === "get.dxWeb.qAndADetails" || method === "get.dxWeb.updateQAndA"){
+  if(method === "get.dxWeb.updateWebOperation" || method === "get.dxWeb.updateHelp" || method === "get.dxWeb.helpDetails" || method === "get.dxWeb.skillDetails" || method === "get.dxWeb.updateSkill" || method === "get.dxWeb.qAndADetails" || method === "get.dxWeb.updateQAndA" || method === "get.dxWeb.webOperationDetails"){
       
    var detail = localStorage.getItem("textDetail");
    var cateId;
@@ -385,6 +383,8 @@ var url = src + url1;
           $(".source").val(detail.msg.source);
           $(".author").val(detail.msg.author);
           $(".authorAbstract").val(detail.msg.author_abstract);
+         
+         
           if(detail.msg.large_img){
             $(".reviewImg1").show();
             $(".imgcov").show();
@@ -405,13 +405,42 @@ var url = src + url1;
             $(".reviewImg3").attr("src",detail.msg.small_img);
           }
          
-         var opt = document.querySelectorAll(".changeSelect option");
+         if(method === "get.dxWeb.updateSkill"){
+            var opt = document.querySelectorAll(".changeSelect option");
+            for (var i = 0; i < opt.length; i++) {
+               var obj = opt[i];
+               if (obj.getAttribute("data-id") == detail.msg.cate_id) {
+                   obj.selected = true;
+                  
+               }
+           }  
+         }
+         if(method === "get.dxWeb.updateQAndA"){
+            var opt = document.querySelectorAll(".changeSelect option");
          for (var i = 0; i < opt.length; i++) {
             var obj = opt[i];
-            if (obj.value == detail.msg.cate_id) {
+            if (obj.getAttribute("data-id") == detail.msg.product_id) {
                 obj.selected = true;
+                $(".changeSelectTwo").html("");
+                par = "appsercet=" + appsercet + "&method=get.dxWeb.cateTwoAllList&productId=" + detail.msg.product_id;
+                var data1 = getSign(url, par);
+                question(data1);
+            var opt1 = document.querySelectorAll(".changeSelectTwo option");
+             for (var i = 0; i < opt1.length; i++) {
+                var obj = opt1[i];
+                if (obj.getAttribute("data-id") == detail.msg.cate_id) {
+                    obj.selected = true;
+                   
+                }
+            }
             }
         }
+         }
+         
+        // 
+        // productId = detail.msg.product_id;
+        //     $(".changeSelectTwo").html("");
+           
           var add1 = document.querySelectorAll(".add1");
           for (var i = 0; i < add1.length; i++) {
               var obj = add1[0];
@@ -432,7 +461,7 @@ var url = src + url1;
           $(".detailsDescribe").text(detail.msg.details_describe);
       }
       //判断如果是查看的清空不允许进行修改
-      if(method === "get.dxWeb.helpDetails" || method === "get.dxWeb.skillDetails" || method === "get.dxWeb.qAndADetails" ){
+      if(method === "get.dxWeb.helpDetails" || method === "get.dxWeb.skillDetails" || method === "get.dxWeb.qAndADetails" || method === "get.dxWeb.webOperationDetails" ){
        $(".message1").hide();
       }
       $(".addMessage").click(function () {
@@ -442,7 +471,7 @@ var url = src + url1;
 }else if(method === "get.dxWeb.addWebOperation" ){
    var id = "";
    $(".addMessage").click(function () {
-       
+    
        updateMessage(method,id,url1);
        location.href = "./ManagerText.html"
    })
@@ -459,7 +488,7 @@ var url = src + url1;
    type(data);
   
    $(".addMessage").click(function () {
-       
+    
        updateMessage(method,id,url1);
    })
 }
@@ -475,8 +504,14 @@ else if(method === "get.dxWeb.addSkill"){
    console.log(data);
    type(data);
    $(".addMessage").click(function () {
-       
-       updateMessage(method,id,url1);
+       if($(".changeSelect option:checked").attr("data-id") == 0){
+           alert("请先创建文章分类,如果没有请先创建分类");
+       }else{
+        updateMessage(method,id,url1);
+       }
+      
+
+    
    })
 }
   //渲染分类下拉框

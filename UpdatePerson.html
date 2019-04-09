@@ -69,7 +69,7 @@
         var newAppsercet = appsercet.data;
         par = "appsercet="+newAppsercet+"&method=get.dxWeb.getCenter";
         var data = getSign(url,par);
-        debugger
+        
         console.log(data);
 
         $(".username").val(data.userInfo.true_name);
@@ -81,7 +81,7 @@
 
         });
         $('#disnone').on('change',function(){
-            debugger
+            
             var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
                 fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
                 imgBase64 = '',      //存储图片的imgBase64
@@ -115,7 +115,7 @@
 
         // 对图片进行压缩
         function compress(fileObj, callback) {
-            debugger
+            
             if ( typeof (FileReader) === 'undefined') {
                 console.log("当前浏览器内核不支持base64图标压缩");
                 //调用上传方式不压缩
@@ -167,7 +167,7 @@
 
         // var userId = localStorage.getItem("userId");
         $(".updateNews").click(function(){
-            debugger
+            
             //调用之前封装的formdata传签名参数密钥的方法
             var formData = postFormdata("get.dxWeb.userUpdateCenter");
             var trueName = $(".username").val();
@@ -178,11 +178,11 @@
             formData.append("headPortrait", $("#disnone")[0].files[0]);
             var data1 = post(url,formData);
             data = JSON.parse(data1);
-            debugger
+            
             console.log(data)
             if (data.msg.code == "200") {
                 alert("修改成功");
-                debugger
+                
                 localStorage.setItem("user_name",$(".username").val());
                 localStorage.setItem("user_phone",$(".phone1").val());
                 localStorage.setItem("user_photo",$("#review").attr("src"));

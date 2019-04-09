@@ -28,8 +28,15 @@ $(document).ready(function(){
     result = getSign(url,par);
     return result;
 }
+//
+var urlSrc1,urlId1
+    // $(document).on("click",".addPhone",function(e){
+        
+       
+    //
         var url,par;  
         //页面初次渲染加载数据
+       
         var data = window.localStorage.getItem("dxRightsList");    
         data = JSON.parse(data);      
         var appsercet = window.localStorage.getItem("appsercet");
@@ -55,6 +62,7 @@ $(document).ready(function(){
                     
                     par = "appsercet="+newAppsercet+"&method=get.dxWeb.libraryList";
                     var data = getSign(url,par);
+                    
                     console.log(data);
 
                     var str = "";
@@ -83,31 +91,46 @@ $(document).ready(function(){
                     })
                 })
                 //请求完成渲染页面 待处理
-                // localStorage.setItem("size","");
+                // var florId = localStorage.getItem("florId");
+                // if(florId == "" ||florId == null || florId == "undefined"){
+                //     par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll";
+                // }else{
+                //     par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll&folderId="+florId;
+                // }
                 par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll";
-                
                 var list = getSign(url,par);
-                
-                render3(list)
+                render3(list);
                 function render3(list){
                     
+
+                    $(".imgBox1").html("");
+                    $(".imgBox2").html("");
+                    $(".imgBox3").html("");
+                    $(".imgBox4").html("");
+                    var str1="";
+                    var str=""; 
+                    var str2="";  
                     if(list.dxFolderList && list.dxFolderList.length > 0 ){
-                        var str1="";
-                        $(".imgBox1").html("");
+                       
                         $.each(list.dxFolderList,function(i,obj){
                             str1+='<div class="w200center position" data-id="'+obj.id+'" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"'+obj.brand_name+'"</p><img src="../image/close12.png" alt="" style="width: 20px;height:20px;" class="close12"></div>'
                         })
-                        $(".imgBox1").html(str1)
+                        $(".imgBox1").append(str1); 
+                        $(".imgBox3").append(str1)
                     }else{
-                        $(".imgBox1").html("");  
+                        $(".imgBox1").html(""); 
+                        $(".imgBox3").html("") 
                     }
                     if(list.dximgList && list.dximgList.length > 0 ){
-                        var str="";
-                        $(".imgBox2").html("");
+                        
                         $.each(list.dximgList,function(i,obj){
-                            str+='<div class="imgHover position" data-id="'+obj.id+'" style="margin-right:40px;"><div class="imgCover"><div class="imgHover2" data-id="'+obj.id+'"><img src="'+obj.img_route+'" alt="" data-id="'+obj.id+'" class="imgHover1"><input class="p" value="'+obj.img_name+'"/></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left:-30;top:0;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n'+i+'" data-name="'+i+'"  data-id="'+obj.id+'" name="radio12"><label for="n'+i+'"  style="color:#8A111A;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99" class="close12" data-id="'+obj.id+'"/></div>'
+                            str+='<div class="imgHover position" data-id="'+obj.id+'" style="margin-right:40px;"><div class="imgCover"><div class="imgHover2" data-id="'+obj.id+'"><img src="'+obj.img_route+'" alt="" data-id="'+obj.id+'" class="imgHover1"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left:-30;top:0;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n'+i+'" data-name="'+i+'"  data-id="'+obj.id+'" name="radio12"><label for="n'+i+'"  style="color:#8A111A;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="'+obj.img_name+'"/><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99" class="close12" data-id="'+obj.id+'"/></div>';
+                            //添加那块逻辑处理补充
+                            str2+='<div class="imgHover position" data-id="'+obj.id+'" style="margin-right:40px;"><div class="imgCover1"><div class="imgHover2" data-id="'+obj.id+'"><img src="'+obj.img_route+'" alt="" data-id="'+obj.id+'" class="imgHover1"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left:-30;top:0;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n'+i+'" data-name="'+i+'"  data-id="'+obj.id+'" name="radio12"><label for="n'+i+'"  style="color:#8A111A;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="'+obj.img_name+'"/><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99" class="close12" data-id="'+obj.id+'"/></div>'
                         })
-                        $(".imgBox2").html(str);
+                        $(".imgBox1").append(str);
+                        $(".imgBox3").append(str2);
+                        
                         if( $(".imgBox2").html() == ""){
     
                         }else{
@@ -129,22 +152,8 @@ $(document).ready(function(){
                         }
                             
                     }else{
-                        $(".imgBox2").html("");  
-                    }
-                }
-                //进入子集目录操作
-                var width = document.querySelectorAll(".w200center");
-
-                $(document).on("click",".w200center",function(){
-                    var id = $(this).attr("data-id");
-                    par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll&folderId="+id+"&isUp=2";
-                    
-                    var data = getSign(url,par);
-                    localStorage.setItem("florId",data.mag.folderId);
-                    $(".imgBox2").html("");
-                        $(".imgBox1").html("");
-                    if(data.dximgList.length >0 || data.dxFolderList.length > 0){
-                          
+                        $(".imgBox2").html("");
+                        $(".imgBox4").html("");  
                     }
                     $(".imgHover").each(function(index){
                         $(this).hover(function(){
@@ -174,15 +183,65 @@ $(document).ready(function(){
                         })
                     
                   })
-                 
+                }
+                //进入子集目录操作
+                var width = document.querySelectorAll(".w200center");
+
+                $(document).on("dblclick",".w200center",function(){
+                    var id = $(this).attr("data-id");
+                    par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll&folderId="+id+"&isUp=2";
+                    
+                    var data = getSign(url,par);
+                    localStorage.setItem("florId",data.mag.folderId);
+                    $(".imgBox2").html("");
+                        $(".imgBox1").html("");
+                        $(".imgBox3").html("");
+                        $(".imgBox4").html("");
+                    if(data.dximgList.length >0 || data.dxFolderList.length > 0){
+                          
+                    }
                         render3(data);
+                        if(ptype == "1"){
+                            $(".imgCover").unbind('click').bind("click",function(){ 
+                                debugger
+                                    // $(".imgCover").click(function(){  
+                                    $(".nv91-mask").hide();
+                                    $(".nv91").hide();
+                                    $(".custom").eq(0).show();
+                                    $(".imgcov").show();
+                                    value1 = $("input[type='radio']:checked").val();
+                                    if(value1 == 1){
+                                        $(".imgcov1").show();
+                                    }else{
+                                        $(".imgcov1").hide();
+                                    }
+                                   
+                                    $(".imgcov2").show();
+                                    urlSrc1 = $(this).find(".imgHover1").attr("src");
+                                     urlId1 = $(this).find(".imgHover1").attr("data-id");
+                                    $(".reviewImg1").attr("src",urlSrc1);
+                                    $(".reviewImg1").attr("data-id",urlId1);
+                                   
+                                
+                            })
+                        }else{
+                            $(".imgCover1").unbind('click').bind("click",function(){
+                                debugger 
+                            // $(".imgCover1").on("click",function(){
+                                    $(".nv91-mask").hide();
+                                    $(".nv91").hide();
+                                    $(".imgcov1").hide();
+                                    urlSrc = $(this).find(".imgHover1").attr("src");
+                                     urlId = $(this).find(".imgHover1").attr("data-id");
+                                    $(".reviewImg3").attr("src",urlSrc);
+                                    $(".reviewImg3").attr("data-id",urlId);
+                               
+                            })
+                        }
                 })
 
 
-                // $(".w200center").each(function(index){
-                    
-                 
-                // })
+              var ptype = localStorage.getItem("addphone");
               //进入父级目录
               $(".returnBack").click(function(){
                
@@ -190,39 +249,51 @@ $(document).ready(function(){
                 par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll&folderId="+folderId+"&isUp=1";
                 
                 var data = getSign(url,par);
-                render3(data)
+                render3(data);
+                if(ptype == 1){
+                    $(".imgCover").unbind('click').bind("click",function(){ 
+                        debugger
+                            // $(".imgCover").click(function(){  
+                            $(".nv91-mask").hide();
+                            $(".nv91").hide();
+                            $(".custom").eq(0).show();
+                            $(".imgcov").show();
+                            value1 = $("input[type='radio']:checked").val();
+                            if(value1 == 1){
+                                $(".imgcov1").show();
+                            }else{
+                                $(".imgcov1").hide();
+                            }
+                           
+                            $(".imgcov2").show();
+                            urlSrc1 = $(this).find(".imgHover1").attr("src");
+                             urlId1 = $(this).find(".imgHover1").attr("data-id");
+                            $(".reviewImg1").attr("src",urlSrc1);
+                            $(".reviewImg1").attr("data-id",urlId1);
+                           
+                        
+                    })
+                }else{
+                    $(".imgCover1").unbind('click').bind("click",function(){
+                        debugger 
+                    // $(".imgCover1").on("click",function(){
+                            $(".nv91-mask").hide();
+                            $(".nv91").hide();
+                            $(".imgcov1").hide();
+                            urlSrc = $(this).find(".imgHover1").attr("src");
+                             urlId = $(this).find(".imgHover1").attr("data-id");
+                            $(".reviewImg3").attr("src",urlSrc);
+                            $(".reviewImg3").attr("data-id",urlId);
+                       
+                    })
+                }
+               
+               
                 if(data.dximgList.length == 0 && data.dxFolderList.length == 0){
                     $(".imgBox2").html("");
                     $(".imgBox1").html("");
                 }
-                $(".imgHover").each(function(index){
-                    $(this).hover(function(){
-                        $(".imgHover .close12").hide().eq(index).css({"opacity":"1"}).show();
-                    })
-                    $(this).mouseleave(function(){
-                        $(".imgHover .close12").hide();
-                    })
-                })
-                $(".w200h145").each(function(index){
-                    $(this).mouseenter(function(){
-                        $(".w200center .close12").hide().eq(index).css({"opacity":"1"}).show();
-                    })
-                    $(this).mouseleave(function(){
-                        $(".w200center .close12").hide();
-                    })
-                })
-                $(".imgHover").each(function (index) {
-                    $(this).hover(function () {
-                        $(".search2").hide().eq(index).show();
-                    })
-                    $(this).mouseleave(function () {
-                        $(".search2").hide();
-                    })
-                    $(this).dblclick(function () {
-                        location.href = "../nav7/ImgReview.html"
-                    })
                 
-              })
                 
               })
             
@@ -230,7 +301,7 @@ $(document).ready(function(){
                 $(".searchName").click(function(){
                     
                     var val = $(".searchName1").val();
-                    par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll&fileName="+val;
+                    par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll&fileNmae="+val;
                     var statu = getSign(url,par);
                     render3(statu);
                     if(statu.mag.code == "200"){
@@ -249,18 +320,42 @@ $(document).ready(function(){
                             var isEnable;
                             var warmask = document.querySelector(".warmask");
                             $(".addImg").show();
+                            
                             $(".addImg").click(function () {
                                 
                                 $(".nv91-mask").show();
                                 $(".nv93").show();
+                                
+                                par = "appsercet="+newAppsercet+"&method=get.dxWeb.libraryList";
+                            var data = getSign(url,par);
+                            
+                            console.log(data);
+        
+                            var str = "";
+                             
+                            if(data.dxFolderList && data.dxFolderList.length > 0){
+                                $(".folderId").html("");
+                            str+='<option value="0" selected>请选择</option>';
+        
+                                $.each(data.dxFolderList,function(i,obj){
+                                str+='<option value="'+obj.id+'" >"'+obj.brand_name+'"</option>';
+                                    
+                                })
+                                $(".folderId").html(str);
+        
+                            }
                                 //判断是否有添加水印权限
                                
-
-                                    if (warmask.checked = true) {
+                                    if($(".warmask").prop("checked")){
                                         isEnable = 1;
-                                    } else {
+                                    }else{
                                         isEnable = 2;
                                     }
+                                    // if (warmask.checked == true) {
+                                    //     isEnable = 1;
+                                    // } else {
+                                    //     isEnable = 2;
+                                    // }
                                 $(".fileSure1").click(function(){
                                     
                                     
@@ -345,17 +440,7 @@ $(document).ready(function(){
                                   
                                   var data = getSign(url,par);
                                   console.log(data)
-                                //  if(data.msg.code == "200"){
-                                //     url = noapi +"/queryWatermark.dx";
-                                //     var formData = new FormData();
-                                //     formData.append("id",id);
-                                //     // formData.append("watermarkImg",data.img);
-                                //     formData.append("type",data.type);
-                                //     formData.append("position",data.position);
-                                //     formData.append("hyaline",data.hyaline);
-                                //     var data1 = post(url,formData);
-                                //     $(".water").attr("src",data1.msg.imgPath);
-                                //  }
+                               
                                localStorage.setItem("waterId",data.id);
     
                                var postion = document.querySelectorAll(".postion option");
@@ -415,7 +500,7 @@ $(document).ready(function(){
                                     //   var data = watermark1(id);
                                     //   var imgUrl = data.msg.imgUrl
                                     
-                                     debugger
+                                     
                                       var waterId = localStorage.getItem("waterId");
                                       if(waterId == "undefined" || waterId == "" ||waterId == null){
                                         var form = postFormdata("get.dxWeb.addWatermark");

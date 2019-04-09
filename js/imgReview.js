@@ -1,7 +1,7 @@
 function imgPreview(fileDom,review) {
     //定义返回图片名
-   debugger
-                  
+   
+      debugger            
     //判断是否支持FileReader
     if(window.FileReader) {
         var reader = new FileReader();
