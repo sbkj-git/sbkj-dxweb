@@ -15,6 +15,7 @@
             margin: 0;
             padding: 0;
         }
+
         .checkbox label::after {
             display: inline-block;
             position: absolute;
@@ -28,6 +29,7 @@
             font-size: 11px;
             color: #555;
         }
+
         .checkbox label::before {
             content: "";
             display: inline-block;
@@ -48,7 +50,7 @@
 </head>
 <script src="./js/remberPass.js"></script>
 <body id="body">
-<div class="banner3" style="height: 100%" >
+<div class="banner3" style="height: 100%">
 
     <div>
         <div class="banners">
@@ -69,14 +71,17 @@
                 </div>
                 <div style="width: 100%;" class="hide flex div">
                     <img src="./image/l4.png" alt="" class="img" style="margin-left: 10px">
-                    <input style="padding-left: 50px" type="text" placeholder="验证码" class="input2 vister" placeholder="请输入验证码">
+                    <input style="padding-left: 50px" type="text" placeholder="验证码" class="input2 vister"
+                           placeholder="请输入验证码">
                     <button class="qs btn btn-default" style="margin-top: 8px;margin-right: 5px">获取验证码</button>
                 </div>
                 <button class="btnLogin" style="width: 400px;height: 50px">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
 
                 <div class="flex remberAcount">
                     <div class='checkbox checkbox-primary' style="margin-right:10px"><input type='checkbox'
-                       class='styled styled-primary' id="need" aria-label='Single checkbox Two'>
+                                                                                            class='styled styled-primary'
+                                                                                            id="need"
+                                                                                            aria-label='Single checkbox Two'>
                         <label for='need' class='rolen' style="margin-top: 4px">记住账号</label></div>
                     <span><a href="./forgetPass.html" class="forgetPass" style="font-size: 18px;">忘记密码</a></span>
                 </div>
@@ -102,6 +107,7 @@
     window.onload = function () {
         var height = document.documentElement.clientHeight;
         $("#body").height(height);
+
         // $(".login").height(height/1.75);
         function changeState(el) {
             if (el.readOnly) el.checked = el.readOnly = false;
@@ -110,23 +116,29 @@
 
         //提交用户信息
         window.localStorage.clear()
-        var par, url, visterName, username, pwd, type, methods
+        var par, url, visterName, username, pwd, type, methods;
         $(".user").blur(function () {
-            var value = $(this).val()
-            if (/[\u4E00-\u9FA5]/g.test(value)) {
-                return
-            } else {
-
-            }
             username = $(this).val()
+            if (username==null||username.trim()=="") {
+                alert("用户名不能为空!");
+                return false;
+            }
             par = "username=" + username
         })
         $(".pass").blur(function () {
             pwd = $(this).val();
+            if (pwd==null||pwd.trim()=="") {
+                alert("密码不能为空!");
+                return false;
+            }
             par = "username=" + username + "&pwd=" + pwd
         })
         $(".vister").blur(function () {
             visterName = $(this).val();
+            if (visterName==null||visterName.trim()=="") {
+                alert("验证码不能为空!");
+                return false;
+            }
         })
         $(".qs").click(function () {
             url = src + "/atohCode.dx"
@@ -139,7 +151,16 @@
             window.sessionStorage.setItem("n", 0)
             //重新判断什么时候显示验证码
             $(".btnLogin").click(function () {
-
+                alert(username)
+                if (username==null||username.trim()=="") {
+                    alert("用户名不能为空!");
+                    return false;
+                }
+                alert(pwd)
+                if (pwd==null||pwd.trim()=="") {
+                    alert("密码不能为空!");
+                    return false;
+                }
                 var n = 0;
                 //判断是第几次登陆     
                 if ($(".user").val() && $(".pass").val()) {
@@ -175,6 +196,14 @@
                 $(".hide").show();
                 $(".btnLogin").click(function () {
 
+                    if (username==null||username.trim()=="") {
+                        alert("用户名不能为空!");
+                        return false;
+                    }
+                    if (pwd==null||pwd.trim()=="") {
+                        alert("密码不能为空!");
+                        return false;
+                    }
                     //判断是第几次登陆     
                     if ($(".user").val() && $(".pass").val()) {
                         if ($(".vister").val()) {
@@ -197,7 +226,14 @@
             if (x < 3) {
                 $(".hide").hide();
                 $(".btnLogin").click(function () {
-
+                    if (username==null||username.trim()=="") {
+                        alert("用户名不能为空!");
+                        return false;
+                    }
+                    if (pwd==null||pwd.trim()=="") {
+                        alert("密码不能为空!");
+                        return false;
+                    }
                     //判断是第几次登陆         
                     if ($(".user").val() && $(".pass").val()) {
                         if ($(".vister").val()) {
