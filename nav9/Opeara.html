@@ -26,50 +26,53 @@
             line-height: 30px;}
     </style>
 </head>
-<body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;">
-<div class="brand">
+<body style="background-color: #f3f3f3;width: inherit;box-sizing: border-box;">
+<div class="brand" style="padding-left: 22px">
     <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
         <li><a href="#" class="color">设置/</a></li>
         <li><a href="#" class="color">管理操作员</a></li>
     </ul>
     <h1>管理操作员</h1>
 </div>
-<div style="width: 1700px;box-sizing: border-box;padding-left:50px;overflow-x: hidden;">
+<div style="margin: 50px 70px 0 72px;background: #fff;">
     <div class="col-sm-10 col-sm-pull-1" style="margin-top: 2%;">
-        <div class="flex">
-            <div class="form-group flex">
-                <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 2.2;font-size: 16px;padding-left: 2%;">角色:</label>
-                <div class="col-sm-8">
-                    <select class="form-control chOperator" style="width:400px">
-                        <option checked value="0">--请选择--</option>
-                    </select>
+        <div style="height: 189px">
+            <div class="flex" style="padding-top: 38px;padding-bottom: 30px;">
+                <div class="form-group flex">
+                    <label for="name" class="control-label col-sm-3" style="text-align: center;line-height: 2.2;font-size: 16px;padding-left: 2%;">角色:</label>
+                    <div class="col-sm-8">
+                        <select class="form-control chOperator" style="width:400px">
+                            <option checked value="0">--请选择--</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-3 flex " style="margin-right:40%;text-align: right;">
-                <div class="position" style="width: 100%;position: absolute;left: 80%">
-                    <input type="text" class="form-control opName" placeholder="请输入员工姓名" />
-                    <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="searvh1">&#xe615;</span>
+                <div class="col-sm-3 flex " style="text-align: right;">
+                    <div class="position" style="width: 100%;position: absolute;left: 80%">
+                        <input type="text" class="form-control opName" placeholder="请输入员工姓名" />
+                        <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="searvh1">&#xe615;</span>
+                    </div>
                 </div>
-            </div>
 
+            </div>
+            <div class="form-group flex" style="padding-bottom: 41px;">
+                <div class="col-sm-2" style="text-align: right;    margin-left: 20px;">
+                    <button class="btn btn-primary add saveBtn addto" style="display: none;">添加操作员</button>
+                </div>
+                <div class="col-sm-1 " style="text-align: center;" >
+                    <button class="btn qy btngroup" style="    margin-left: 40px;background:#fff;height:40px;width:100px;display: none;">启用</button>
+                </div>
+                <div class="col-sm-1 " style="text-align: center;">
+                    <button class="btn jy btngroup" style="    margin-left: 70px;background:#fff;height:40px;width:100px;display: none;">禁用</button>
+                </div>
+                <div class="col-sm-1 " style="text-align: center;">
+                    <button class="btn delete btngroup" style="    margin-left: 100px;background:#fff;height:40px;width:100px;display: none;">删除</button>
+                </div>
+            </div>
         </div>
-        <div class="form-group flex" style="padding-bottom: 2%;">
-            <div class="col-sm-2" style="text-align: center;">
-                <button class="btn btn-primary add saveBtn addto" style="display: none;">添加操作员</button>
-            </div>
-            <div class="col-sm-1 " style="text-align: center;" >
-                <button class="btn qy btngroup" style="background:#fff;height:40px;width:100px;display: none;">启用</button>
-            </div>
-            <div class="col-sm-1 " style="text-align: center;">
-                <button class="btn jy btngroup" style="background:#fff;height:40px;width:100px;display: none;">禁用</button>
-            </div>
-            <div class="col-sm-1 " style="text-align: center;">
-                <button class="btn delete btngroup" style="background:#fff;height:40px;width:100px;display: none;">删除</button>
-            </div>
-        </div>
+
         <table class="table" style="width: 100%;overflow: hidden;">
             <thead>
-            <tr style="text-align:center;border-bottom: 1px solid #d8d8d8;">
+            <tr style="text-align:center;border-bottom: 1px solid #d8d8d8;background: #f3f3f3">
                 <th class="position loginId">
                     <div class="radio radio-info radio-inline">
                         <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="">
@@ -92,7 +95,7 @@
         <div class="paging flex justify"  >
             <div style="color:#929292;font-size: 14px;padding-left: 20px;">共<span class="total"></span>条数据&nbsp;第<span class="current">1</span>/<span
                     class="pagenum">80</span>页</div>
-            <div style="width:60%;">
+            <div>
                 <div class="box" id="box" style="width:auto;justify-content: flex-end;"></div>
             </div>
         </div>

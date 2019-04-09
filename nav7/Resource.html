@@ -24,24 +24,32 @@
         .w200center .close12{right: 0px;top: 0px;}
         
         .files{
+            width: 30px;
+            height: 27px;
             position: absolute;
-            left: 15px;
+            left: 6px;
             top: -3px;
             bottom: 0%;
             margin: auto;
+        }
+        .flex {
+            display: flex;
+            /* flex-wrap: wrap; */
         }
     </style>
 
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
-<div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
+<div class="brand" style="background-color:#fff!important;height:135px;">
     <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
         <li><a href="#" class="color">资源库</a>&nbsp;/&nbsp;</li>
         <li><a href="#" class="color">管理文件</a></li>
     </ul>
     <h1>管理文件</h1>
 </div>
-<div class="" style="margin-top:50px;padding: 0 70px;width: 100%;box-sizing: border-box;">
+<div class="" style="width: 100%;
+    box-sizing: border-box;
+    padding: 50px 70px 0 70px;">
     <div style="width: 100%;">
         <div class="flex col-sm-12 justify" style="background-color:#fff;height: 130px;padding:40px  25px;box-sizing: border-box;margin-bottom: 100px;">
             <div class="flex">
@@ -66,7 +74,7 @@
             <div class="flex " style="justify-content: flex-end;">
                 <div class="flex " style="text-align: right;">
                     <div class="position">
-                        <input type="text" class="form-control searchName1" placeholder="搜索所有文件" style="width:340px;"/>
+                        <input type="text" class="form-control searchName1" placeholder="搜索所有文件" style="width:250px;"/>
                         <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="searchName">&#xe615;</span>
                     </div>
                 </div>
@@ -94,7 +102,7 @@
         <form action="" class="form-horizontal" role="form" style="text-align:center;">
             <div class="form-group  flex">
                 <label for="name" class="control-label col-sm-3 star rolename" style="text-align: right;line-height: 1.5;">附件上传:</label>
-                <div class=" position" style="height:35px;">
+                <div class=" position" style="height:35px;position: absolute;left: 71%;">
                     <img src="../image/u1986.png" alt="" style="width:15px;height:15px;" class="jt">
                     <!-- <input class="btn" value="上传文件" style="width:100px;height: inherit;" readonly /> -->
                     <input type="file" class="watermarkImg" />

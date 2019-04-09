@@ -67,6 +67,11 @@
             transition: left 0.3s;
         }
     .disnone{display: none}
+    .table td:first-child {
+        text-align: left;
+        padding-left: 30px;
+        width: 0px;
+    }
 /* .toDown{display: none;} */
 </style>
 </head>
@@ -168,11 +173,11 @@
 
 <div class="col-sm-10 col-sm-pull-1" style="padding-top: 30px;width: 90%;margin: 0 auto;background: #fff;margin-top: 30px;">
     <div class="flex w100 pb2">
-        <span  class="col-sm-1 pr2" style="padding-left: 23px">筛选查询</span>
-        <div class="col-sm-3 flex">
-            <label for="name" class="control-label lh15 mr5" >位置:</label>
+        <span  class="col-sm-1 pr2" style="font-size: 18px">筛选查询</span>
+        <div class="col-sm-3 flex" style="display: -webkit-box;" >
+            <label for="name" class="control-label lh15 mr5">位置:</label>
             <div>
-                <select class="form-control location" style="width: 260px;">
+                <select class="form-control location" style="width: 80%;">
                     <option checked>全部</option>
                     <option>2</option>
                     <option>3</option>

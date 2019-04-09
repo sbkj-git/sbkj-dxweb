@@ -79,7 +79,7 @@ iframe::-webkit-scrollbar {
 }
 
 .mt10 {
-    justify-content: flex-end;
+    /*justify-content: flex-end;*/
     margin-top: 10px;
 }
 
@@ -119,13 +119,14 @@ iframe::-webkit-scrollbar {
     width: 30px;
     height: 30px;
     display: block;
+    margin-left: 13px;
 }
 
 .back {
     width: 30px;
     height: 33px;
     display: block;
-    margin-left: 0px;
+    margin-left: 35px;
 }
 
 /*.ml30{margin-left: 30px;}*/
@@ -323,19 +324,19 @@ iframe::-webkit-scrollbar {
 
 .addImg {
     height: 33px;
-    width: 180px;
+    width: 150px;
 }
 
 .newImg {
     height: 33px;
-    width: 180px;
-    margin: 0 20px;
+    width: 150px;
+    /*margin: 0 20px;*/
     display: block;
 }
 
 .editImg {
     height: 33px;
-    width: 180px;
+    width: 150px;
     display: block;
 }
 
@@ -461,6 +462,7 @@ iframe::-webkit-scrollbar {
     border-top: 1px solid #dddddd;
     border-bottom: 1px solid #dddddd;
     padding: 10px;
+    background: #fff;
 }
 
 .text-center {
@@ -632,7 +634,7 @@ a {
     line-height: 30px;
     border: 1px dashed #dddddd;
     border-radius: 10px;
-    margin: 1% 0;
+    margin: 2% 0;
 }
 
 /* e 投诉予反馈页面 */
@@ -892,7 +894,7 @@ ul {
 }
 
 .w200 {
-    width: 180px;
+    width: 150px;
     height: 50px;
     display: block;
     font-size: 16px;
