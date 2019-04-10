@@ -57,7 +57,7 @@ $(document).ready(function(){
       par="appsercet="+newAppsercet+"&method="+src1+"&browse="+browse+"&praise="+praise;         
       var data = getSign(url,par);
       if(data.msg.code == "200"){
-          alert("保存成功");
+        //   alert("保存成功");
         // $(".prompt span").text("保存成功");
         // $(".nv91-mask").show();
         //    $(".nv").show();

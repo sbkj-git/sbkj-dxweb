@@ -9,30 +9,38 @@
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/setting.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="css/dataSelect.css"/>
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" type="text/css" href="./css/buind.css">
     <link rel="stylesheet" href="./js/js/daterangepicker.css">
     <link rel="stylesheet" href="./css/newPage.css">
     <link rel="stylesheet" href="./css/datePicker.css">
-    <script type="text/javascript" src="./js/jquery.min.js"></script> 
-<script type="text/javascript" src="./js/jquery.date_input.pack.js"></script> 
-<script>
-// $('.laydate-icon').blur(function(){
-// 	var ret = contrastTime("date");//获取返回值
-// 	if(ret == 0){
-// 		alert("请选择正确的时间。");
-// 		$(this).val('');
-// 		return;
-// 	}else{
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.date_input.pack.js"></script>
+    <script>
+        // $('.laydate-icon').blur(function(){
+        // 	var ret = contrastTime("date");//获取返回值
+        // 	if(ret == 0){
+        // 		alert("请选择正确的时间。");
+        // 		$(this).val('');
+        // 		return;
+        // 	}else{
 
-//     }
-// })
-$('#datePicker').date_input();
-	$('#datePicker2').date_input();
-</script>
+        //     }
+        // })
+        $('#datePicker').date_input();
+        $('#datePicker2').date_input();
+    </script>
     <style>
-        .lookType,.details{display: none;}
-        .date_selector{top:50px!important;left: 0!important;}
+        .date_picker{width: auto!important;}
+        .lookType, .details {
+            display: none;
+        }
+
+        .date_selector {
+            top: 50px !important;
+            left: 0 !important;
+        }
     </style>
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
@@ -52,22 +60,35 @@ $('#datePicker').date_input();
         <div class="flex" style="    width: 100%;height: 100px;padding: 32px 0 28px 20px;">
             <div class="col-sm-3">
                 <button class="btn-primary btn export" style="margin-right: 1%;"><a class="export1">导出反馈</a></button>
-                <button class="btn isDelete">删除反馈</button>
+                <button class="btn isDelete" style="width: 87px;height: 37px;font-weight: 500;font-size: 16px">删除反馈</button>
             </div>
-            <!-- <div class="col-sm-6 flex " style="text-align: right;"> -->
-                <!-- <label for="name" class="control-label" style="text-align: right;line-height: 1.5;margin-right: 5px;">反馈时间:</label>
-                <div class="position">
-                    <input type="text" class="form-control" id="nowdate" />
-                    <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" id="datetimepicker1">&#xe73a;</span>
-                </div> -->
-                <!-- <input type="text" id="datePicker" class="date_picker time1" placeholder="点击选择日期"/>
-                <input type="text" id="datePicker2" class="date_picker time2" placeholder="点击选择日期"/> -->
-            <!-- </div> -->
+            <div class="flex textRight textLeft col-sm-12 col-md-6 col-lg-4">
+                <div class="col-sm-3" style="max-width: 80px;">
+                    <label for="name" class="control-label lh15 mr5" style="margin-left: -5px;line-height:37px;font-size: 17px">选择时间:</label>
+                </div>
+                <div class="position col-sm-9 flex" >
+                    <div class="col-sm-5">
+                        <input type="text" id="datePicker" style="max-width: 145px" class="date_picker start1 " placeholder="点击选择日期" />
+                    </div>
+                    <p style="line-height:37px">&nbsp;&nbsp;—&nbsp;&nbsp;</p>
+                    <div class="col-sm-5" >
+                        <input type="text" id="datePicker2" style="max-width: 145px" class="date_picker end1 " placeholder="点击选择日期"/>
+                    </div>
+
+                    <!--<input type="text" class=" form-control start1" style="width: 70%;margin-left: 72px;margin-top: -34px;" />-->
+
+
+                    <!--<input type="text" class="form-control end1"/>-->
+
+                    <!--<button class="btn sec1">查询</button>-->
+                    <!--<span style="font-family: iconfont;position: absolute;right: 5%;top:0;font-size: 24px;" >&#xe73a;</span>-->
+                </div>
+            </div>
             
             <div class="col-sm-3 flex " style="text-align: right;">
-                <div class="position">
-                    <input type="text" class="form-control content" placeholder="请输入姓名、反馈内容" />
-                    <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="openContent">&#xe615;</span>
+                <div class="position" style="max-width: 450px;min-width: 400px">
+                    <input type="text" style="max-width: 450px;min-width: 400px;height: 40px" class="form-control content" placeholder="请输入姓名、反馈内容" />
+                    <span class="bannerName1 icon" style="margin-right: 10px">&#xe615;</span>
                 </div>
 
             </div>
@@ -273,6 +294,12 @@ $('#datePicker').date_input();
 <script src="./js/Feedback.js"></script>
 <script src="./js/radioAllChoose.js"></script>
 <script src="./js/time.js"></script>
+<script src="js/dataSelect.js"></script>
+<script>
+    //选择发布时间
+    $("#datePicker").dateSelect();
+    $("#datePicker2").dateSelect();
+</script>
 
 
 
