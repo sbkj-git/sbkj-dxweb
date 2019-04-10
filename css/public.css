@@ -181,6 +181,6 @@ input::-webkit-input-speech-button {
  body::-ms-scrollbar{display: none;}
  body::-moz-scrollbar{display: none;}
  /* 超出部分省略号隐藏 */
- .textList tr td:nth-child(1) div label{overflow: hidden;text-overflow:ellipsis;white-space: nowrap;max-width: 50%;}
+ /*.textList tr td:nth-child(1) div label{overflow: hidden;text-overflow:ellipsis;white-space: nowrap;max-width: 50%;}*/
 /* input[type='radio'],input[type='checkbox']{outline: none;border: none;} */
 /* input[type='radio'],input[type='checkbox']{outline: none;border: none;} */
