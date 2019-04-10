@@ -13,9 +13,12 @@
     var con_min_hieght;
     var _dateBody = "<div class='tz-datepicker' id='datepicker_" + elem_id + "'>" +
         "<div class='year-month' id='ym" + elem_id + "'><span class='left'><</span>" +
-        "<span class='month'><span>6鏈�</span><div class='month-list' id='mlist_" + elem_id + "'><ul><li data-id='1'>涓€鏈�</li><li data-id='2'>浜屾湀</li><li data-id='3'>涓夋湀</li><li data-id='4'>鍥涙湀</li><li data-id='5'>浜旀湀</li><li data-id='6'>鍏湀</li>" +
-        "<li data-id='7'>涓冩湀</li><li data-id='8'>鍏湀</li><li data-id='9'>涔濇湀</li><li data-id='10'>鍗佹湀</li><li data-id='11'>鍗佷竴</li><li data-id='12'>鍗佷簩</li></ul></div></span>" +
-        "<span class='year'><span class='span-year'>2015</span><div class='year-list' id='ylist_" + elem_id + "'><ul></ul><div class='year-change'><span class='year-left'></span><span class='year-right'></span></div></div></span><span class='right'>></span></div>" +
+        "<span class='month'><span>月</span><div class='month-list' id='mlist_" + elem_id + "'><ul><li data-id='1'>1月</li>" +
+        "<li data-id='2'>2月</li><li data-id='3'>3月</li><li data-id='4'>4月</li><li data-id='5'>5月</li><li data-id='6'>6月</li>" +
+        "<li data-id='7'>7月</li><li data-id='8'>8月</li><li data-id='9'>9月</li><li data-id='10'>10月</li><li data-id='11'>11月</li>" +
+        "<li data-id='12'>12月</li></ul></div></span>" +
+        "<span class='year'><span class='span-year'>2015</span><div class='year-list' id='ylist_" + elem_id + "'><ul></ul><div class='year-change'>" +
+        "<span class='year-left'></span><span class='year-right'></span></div></div></span><span class='right'>></span></div>" +
         "<div class='week'><ul><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul></div>" +
         "<div class='day'><ul></ul></div><div class='action'><span>取消</span></div>" +
         "</div>";
@@ -24,7 +27,7 @@
     $(obj).next("span").click(function () {
         var pos = getElementPos(elem_id);
         var top = pos.y;
-        var left = pos.x+document.getElementById("date").offsetWidth;
+        var left = pos.x + document.getElementById(elem_id).offsetWidth;
         $("#datepicker_" + elem_id).css({"left": left, "top": top + settings.offTop});
         var d = getFocusDate($(obj).val());
         tz_m = d.getMonth() + 1;
@@ -33,7 +36,7 @@
         input_m = d.getMonth() + 1;
         input_y = d.getFullYear();
         input_d = d.getDate();
-        $("#mlist_" + elem_id).prev("span").text(tz_m + "年");
+        $("#mlist_" + elem_id).prev("span").text(tz_m + "月");
         $("#ylist_" + elem_id).prev("span").text(tz_y);
         dayListReload();
         hideYearmonth();
@@ -60,7 +63,8 @@
     $(obj).click(function () {
         var pos = getElementPos(elem_id);
         var top = pos.y;
-        var left = pos.x+document.getElementById("date").offsetWidth;;
+        var left = pos.x + document.getElementById(elem_id).offsetWidth;
+        ;
         $("#datepicker_" + elem_id).css({"left": left, "top": top + settings.offTop});
         var d = getFocusDate($(this).val());
         tz_m = d.getMonth() + 1;
@@ -69,7 +73,7 @@
         input_m = d.getMonth() + 1;
         input_y = d.getFullYear();
         input_d = d.getDate();
-        $("#mlist_" + elem_id).prev("span").text(tz_m + "年");
+        $("#mlist_" + elem_id).prev("span").text(tz_m + "月");
         $("#ylist_" + elem_id).prev("span").text(tz_y);
         dayListReload();
         hideYearmonth();
@@ -101,7 +105,7 @@
     });
     $("#datepicker_" + elem_id).on("click", ".month li", function () {
         tz_m = parseInt($(this).attr("data-id"));
-        $("#datepicker_" + elem_id).find(".month span").text(tz_m + "年");
+        $("#datepicker_" + elem_id).find(".month span").text(tz_m + "月");
         dayListReload();
         $(this).addClass("active").siblings("li").removeClass("active");
         $(this).parents(".month-list").slideUp("fast");
@@ -167,7 +171,7 @@
             tz_m = 12;
             tz_y--;
         }
-        $("#datepicker_" + elem_id + " .month span").text(tz_m + "年");
+        $("#datepicker_" + elem_id + " .month span").text(tz_m + "月");
         $("#datepicker_" + elem_id + " .year .span-year").text(tz_y);
         dayListReload();
     });
@@ -178,7 +182,7 @@
             tz_m = 1;
             tz_y++;
         }
-        $("#datepicker_" + elem_id + " .month span").text(tz_m + "年");
+        $("#datepicker_" + elem_id + " .month span").text(tz_m + "月");
         $("#datepicker_" + elem_id + " .year .span-year").text(tz_y);
         dayListReload();
     });
