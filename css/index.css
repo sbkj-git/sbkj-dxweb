@@ -617,8 +617,9 @@ a {
 }
 
 .chooseCard li {
+    width: 200px;
     line-height: 50px;
-    font-size: 14px;
+    font-size: 18px;
     padding: 0 2%;
 }
 
