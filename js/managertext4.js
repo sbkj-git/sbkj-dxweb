@@ -208,7 +208,7 @@ $(document).ready(function(){
                 var index = $(this).index();
                 
                 var id = $(this).attr("data-id");
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateSkill&isUP=1";
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateSkill&isUp=1&articleId="+id;
               
                 var statu = getSign(url, par);
     
@@ -222,7 +222,7 @@ $(document).ready(function(){
             $(".toDown").unbind('click').bind("click",function(){ 
                 
                 var id = $(this).attr("data-id");
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateSkill&isUP=2";
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateSkill&isUp=2&articleId="+id;
                
                 var statu = getSign(url, par);
                 if (statu.msg.code == "200") {

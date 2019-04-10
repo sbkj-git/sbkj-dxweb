@@ -53,6 +53,7 @@ $(document).ready(function(){
                     alert("没有数据");
                 } else {
                     render(data2);
+                    pageJudge(data2);
                 }
             })
        
@@ -67,21 +68,8 @@ $(document).ready(function(){
             var appsercet = window.localStorage.getItem("appsercet");
                 appsercet = JSON.parse(appsercet);
                 var newAppsercet = appsercet.data;
-            var pageCount = Math.ceil(data2.pageInfo.totalRows/10);
-                     new Page({
-                         id: pagination,
-                         pageTotal: pageCount, //必填,总页数
-                         pageAmount: 10,  //每页多少条
-                         dataTotal: data2.pageInfo.totalRows, //总共多少条数据
-                         curPage:1, //初始页码,不填默认为1
-                         pageSize: 5, //分页个数,不填默认为5
-                         showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
-                         showSkipInputFlag:true, //是否支持跳转,不填默认不显示
-                         getPage: function (page) {
-                             //获取当前页数
-                            console.log(page);
-                         }
-                     })
+           pageJudge(data2);
+          
                 //初次加载页面数据
                
                 $(document).on("click", ".pageItem", function () {
@@ -121,7 +109,9 @@ $(document).ready(function(){
             $.each(data.dxWebList, function (i, item) {
                 str += '<tr style="border-bottom: 1px solid #d8d8d8;">';
                 str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.cate_id + '"   aria-label="Single checkbox Two" data-id="' + item.cate_id + '"><label for="' + item.cate_id + '"></label></div></td>';
-                str += '<td>' + item.cate_name + '</td><td>"' + item.cate_num + '"</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.cate_id + '">删除</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.cate_id + '">编辑</span></td>'
+                str += '<td>' + item.cate_name + '</td>';
+                str+='<td>"' + item.cate_num + '"</td>';
+                str+='<td style="color:#FF5456;"><span class="isDelete" data-id="' + item.cate_id + '">删除</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.cate_id + '">编辑</span></td>'
                 str += "</tr>";
             })
             $(".textList").html(str);
@@ -129,6 +119,38 @@ $(document).ready(function(){
         }
         console.log(data);
     }
+      //封装查询事件分页效果
+      function pageJudge(data2){
+        var pageCount,pageN;
+        if(data2.pageInfo&&data2.pageInfo.totalRows){
+            pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+        }else{
+            pageCount == 0;
+        }
+        if(data2.pageInfo&&data2.pageInfo.totalRows){
+            pageN = data2.pageInfo.totalRows;
+        }else{
+            pageN == 0;
+        }
+        if(data2.pageInfo&&data2.pageInfo.totalRows){
+            new Page({
+                id: 'pagination9',
+                pageTotal: pageCount, //必填,总页数
+                pageAmount: 10,  //每页多少条
+                dataTotal: pageN, //总共多少条数据
+                curPage:1, //初始页码,不填默认为1
+                pageSize: 5, //分页个数,不填默认为5
+                showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                getPage: function (page) {
+                    //获取当前页数
+                   console.log(page);
+                }
+            })
+        }else{
+            pageN == 0;
+        }
+       }
    function judgePower(){
         //页面初次渲染加载数据
     var data = window.localStorage.getItem("dxRightsList");    

@@ -146,9 +146,72 @@
                     <button class="btn" >取消</button>
                 </div>
                 <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn btn-primary sure11" >确定</button>
+                    <button class="btn btn-primary sure11" onclick="change()">确定</button>
                 </div>
             </div>
+        </form>
+    </div>
+    <div class="nv93">
+        <h1>公司信息</h1>
+        <div  class="form-horizontal" >
+            <div class="form-group flex " >
+                <label for="name" class="control-label col-sm-2 star" style="text-align: right;line-height: 1.5;">公司：</label>
+                <!-- <div class="col-sm-10">
+                    <select class="form-control s1">
+                        <option checked value="0">请选择</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>         -->
+                <div class="col-sm-10">
+                    <input type="text" class="form-control s21" placeholder="请输入公司名称"/>
+                </div>
+            </div>
+            <div class="form-group  flex" >
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">邮编:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control s22" placeholder="请输入公司邮编"/>
+                </div>
+            </div>
+            <div class="form-group flex" >
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">地理位置:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control s23" placeholder="地理经度"/>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control s24" placeholder="地理纬度"/>
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn input12" ><a href="./map.html">选择坐标</a></button>
+
+                </div>
+            </div>
+            <div class="form-group flex" >
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">公司地址:</label>
+                <div class="col-sm-10">
+                    <textarea type="number" class="form-control s26" style="height:100px;"></textarea>
+                </div>
+            </div>
+            <div class="form-group flex"  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                <div class="col-sm-1" style="margin-top: 1%;margin-right: 22px;">
+                    <button class="btn redux" >取消</button>
+                </div>
+                <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
+                    <button  class="btn btn-primary sure12"  >确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nv" style="padding:10px;">
+        <div class="nv91-close">X</div>
+        <form action="" class="form-horizontal" role="form" >
+            <div class="prompt" style="padding-bottom:30px;">
+                <p style="font-size: 20px;">警告</p>
+                <img src="" alt="" ><span>操作成功</span>
+            </div>
+            
         </form>
     </div>
 </div>
@@ -158,37 +221,34 @@
         <div class="form-group flex " >
             <label for="name" class="control-label col-sm-2 star" style="text-align: right;line-height: 1.5;">公司：</label>
             <div class="col-sm-10 ">
-                <select class="form-control s11">
-                    <option checked>北京公司</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select class="form-control s11" >
+                    <option checked>--请选择--</option>
+                   
                 </select>
             </div>
         </div>
         <div class="form-group  flex" >
             <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">职位:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control s12" placeholder="请输入公司职位"/>
+                <input type="text" class="form-control s12" placeholder="请输入公司职位"  />
             </div>
         </div>
         <div class="form-group  flex" >
             <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">姓名:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control s13" placeholder="请输入姓名"/>
+                <input type="text" class="form-control s13" placeholder="请输入姓名"  />
             </div>
         </div>
         <div class="form-group  flex" >
             <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">电话:</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control s14" placeholder="请输入电话"/>
+                <input type="number" class="form-control s14" placeholder="请输入电话" />
             </div>
         </div>
         <div class="form-group  flex" >
             <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">邮箱:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control s15" placeholder="请输入邮箱"/>
+                <input type="text" class="form-control s15" placeholder="请输入邮箱" />
             </div>
         </div>
         <div class="form-group flex"  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
@@ -201,6 +261,7 @@
         </div>
     </form>
 </div>
+
 <footer class="footer">
     <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
     </p>
@@ -215,6 +276,7 @@
 <!-- <script src="../js/sign.js"></script> -->
 <script src="../js/getRequest.js"></script>
 <script src="../js/api.js"></script>
+<script src="../js/getRequest.js"></script>
 <script>
     $(document).ready(function(){
         // judge(href = "../login1.html");
@@ -229,7 +291,38 @@
 
 
     })
-
+    //取消按钮点击事件
+    $(".redux").click(function(){
+        $(".nv93 input").val("");
+        $(".nv91-mask3").hide();
+        $(".nv93").hide();
+        $(".nv91").hide();
+    })
+function change(){
+    var corporateName, corporateWeb,lat,lnt,  address,corporateId,position,username,modilePhone,email;
+        //公司信息
+        corporateName = $(".s1").val();
+        corporateWeb = $(".s2").val();
+        lat =$(".s3").val();
+        lnt = $(".s4").val();
+        address = $(".s6").val();
+        //添加公司人员信息
+        corporateId = $(".s11 option:checked").val();
+        position = $(".s12").val();
+        username = $(".s13").val();
+        modilePhone = $(".s14").val();
+        email = $(".s15").val();
+       
+            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.addCompanyWeb&corporateName=" + corporateName + "&corporateWeb=" + corporateWeb + "&lat=" + lat + "&lnt=" + lnt + "&address=" + address;
+        
+        var  data = getSign(url, par);
+        console.log(data);
+        if(data.msg.code == "10"){
+            alert("添加成功");
+        }else{
+            alert("添加失败");
+        }
+}
     //处理设置节点下基础设置公司人员添加点击事件触发查询的所有公司信息   
     function list(data){
         $(".s11").html("");
@@ -243,6 +336,7 @@
     }
     //封装添加公司职工修改公司职工方法
     function see(method,url){
+        debugger
         var corporateName, corporateWeb,lat,lnt,  address,corporateId,position,username,modilePhone,email;
         //公司信息
         corporateName = $(".s1").val();
@@ -256,13 +350,11 @@
         username = $(".s13").val();
         modilePhone = $(".s14").val();
         email = $(".s15").val();
-        if(method === "get.dxWeb.addCompanyWeb"){
-
-            par = "appsercet=" + newAppsercet + "&method=" + method + "&corporateName=" + corporateName + "&corporateWeb=" + corporateWeb + "&lat=" + lat + "&lnt=" + lnt + "&address=" + address;
+        if(corporateId == "" || position == "" || username == "" ||modilePhone == "" || email == ""){
+            alert("请填写所有信息");
+            return;
         }
-        else if(method === "get.dxWeb.updateCompanyWeb"){
-            par = "appsercet=" + newAppsercet + "&method=" + method + "&corporateName=" + corporateName + "&corporateWeb=" + corporateWeb + "&lat=" + lat + "&lnt=" + lnt + "&address=" + address+"&id="+id;
-        }else if(method === "get.dxWeb.updateCompanyStaff"){
+        if(method === "get.dxWeb.updateCompanyStaff"){
 
             par = "appsercet=" + newAppsercet + "&method=" + method + "&corporateId=" + corporateId + "&position=" + position + "&username=" + username + "&modilePhone=" + modilePhone + "&email=" + email+"&id="+id;
 
@@ -273,6 +365,15 @@
 
         var  data = getSign(url, par);
         console.log(data);
+        if(data.msg.code == "200"){
+            alert("修改成功");
+            $(".nv91-mask3").hide();
+            $(".nv91").hide();
+            $(".nv92").hide();
+            location.reload();
+        }else{
+            alert("修改失败"); 
+        }
 
     }
 
@@ -332,10 +433,10 @@
                         $(".addCompany").click(function () {
                             $(".nv91-mask3").show();
                             $(".nv91").show();
-                            $(".sure11").click(function () {
+                            // $(".sure11").click(function () {
 
-                                see("get.dxWeb.addCompanyWeb", url)
-                            })
+                            //     see("get.dxWeb.addCompanyWeb", url)
+                            // })
                             //将添加信息暂时存放在缓存中  用于地图返回渲染
                             $(".s1").blur(function () {
                                 localStorage.setItem("s1", $(this).val());
@@ -360,6 +461,7 @@
 
                                 $(".nv91-mask3").show();
                                 $(".nv91").show();
+                                $(".nv93").hide();
                                 $(".s3").val(lat);
                                 $(".s4").val(lnt);
                                 if (s1) {
@@ -390,27 +492,93 @@
                         $(".edits").click(function () {
                             id = $(this).attr("data-id");
                             $(".nv91-mask3").show();
-                            $(".nv91").show();
+                            $(".nv93").show();
+                            $(".nv91").hide();
                             par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getCompanyWeb&id=" + id;
-
                             var data = getSign(url, par);
-
+                            
                             //处理设置节点下基础设置公司信息详情渲染
                             if (data.msg.code == "200") {
                                 var x = data.dxCompanyWeb
-                                $(".s1").val(x.corporate_name);
-                                $(".s2").val(x.corporate_web);
-                                $(".s3").val(x.lat);
-                                $(".s4").val(x.lnt);
-                                $(".s6").val(x.address);
+                                $(".s21").val(x.corporate_name);
+                                $(".s22").val(x.corporate_web);
+                                $(".s23").val(x.lat);
+                                $(".s24").val(x.lnt);
+                                $(".s26").val(x.address);
 
                             }
-                            $(".sure11").click(function () {
+                            $(".sure12").click(function () {
+                            debugger
+                            //公司信息
+                            var corporateName, corporateWeb, lat, lnt, address;
+                            //公司信息
+                            corporateName = $(".s21").val();
+                            corporateWeb = $(".s22").val();
+                            lat = $(".s23").val();
+                            lnt = $(".s24").val();
+                            address = $(".s26").val();
+                           
 
-                                see("get.dxWeb.updateCompanyWeb", url)
-                            })
+                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateCompanyWeb&corporateName=" + corporateName + "&corporateWeb=" + corporateWeb + "&lat=" + lat + "&lnt=" + lnt + "&address=" + address+"&id="+id;
+                            console.log(par)
+                            var data  = getSign(url,par);
+                            if(data.msg.code == "200"){
+                                // alert("")
+                                location.reload();
+                            }
+                            
                         })
+                           
+                        })
+                        //将添加信息暂时存放在缓存中  用于地图返回渲染
+                       
+                        $(".s21").blur(function () {
+                                localStorage.setItem("s21", $(this).val());
+                            })
+                            $(".s22").blur(function () {
+                                localStorage.setItem("s22", $(this).val());
+                            })
+                            $(".s26").blur(function () {
+                                localStorage.setItem("address", $(this).text());
+                            })
+                            var return1 = localStorage.getItem("return1");
+                        if (return1 == "yes") {
+                            var lnt = localStorage.getItem("lnt");
+                            var lat = localStorage.getItem("lat");
+                            var s1 = localStorage.getItem("s21");
+                            var s2 = localStorage.getItem("s22");
+                            var address = localStorage.getItem("address");
+                            if (lnt && lat) {
 
+                                $(".nv91-mask3").show();
+                                $(".nv91").show();
+                                $(".nv93").hide();
+                                $(".s23").val(lat);
+                                $(".s24").val(lnt);
+                                if (s1) {
+                                    $(".s21").val(s1);
+                                }
+                                if (s2) {
+                                    $(".s22").val(s2);
+                                }
+                                if (address) {
+                                    $(".s26").val(address);
+                                }
+                                localStorage.setItem("s21", "");
+                                localStorage.setItem("s22", "");
+                                localStorage.setItem("address", "");
+                                localStorage.setItem("lnt", "");
+                                localStorage.setItem("lat", "");
+                            }
+                            // $(".sure11").click(function () {
+                            //
+                            //     see("get.dxWeb.addCompanyWeb", url)
+                            // })
+                            // $(".sure12").unbind('click').bind("click",function(){ 
+                        
+
+                        }
+                       
                     }
                     //判断是否有添加职工权限
                     if(obj.method === "get.dxWeb.addCompanyStaff"){
