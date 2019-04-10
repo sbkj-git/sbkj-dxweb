@@ -15,7 +15,6 @@
             margin: 0;
             padding: 0;
         }
-
         .checkbox label::after {
             display: inline-block;
             position: absolute;
@@ -29,7 +28,6 @@
             font-size: 11px;
             color: #555;
         }
-
         .checkbox label::before {
             content: "";
             display: inline-block;
@@ -95,7 +93,16 @@
         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
     </footer>
 </div>
+<div class="nv" style="padding:10px;">
+    <div class="nv91-close">X</div>
+    <form action="" class="form-horizontal" role="form" >
+        <div class="prompt" style="padding-bottom:30px;">
+            <p style="font-size: 20px;">警告</p>
+            <img src="" alt="" ><span>操作成功</span>
+        </div>
 
+    </form>
+</div>
 </body>
 </html>
 <script src="js/jquery-1.10.2.min.js"></script>
@@ -204,7 +211,7 @@
                         alert("密码不能为空!");
                         return false;
                     }
-                    //判断是第几次登陆     
+                    //判断是第几次登陆
                     if ($(".user").val() && $(".pass").val()) {
                         if ($(".vister").val()) {
                             type = 1;

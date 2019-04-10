@@ -20,7 +20,7 @@ function logsgin(url,par){
     //利用数组的join()方法转换为字符串 
     var str=arrstr.join("");
     par_sp=par_sp+'&sign='+str;
-    
+    debugger
     // document.write(str);
      $.ajax({                  
             url: url+"?"+par_sp,
@@ -215,16 +215,17 @@ function logsgin(url,par){
                             })
                             }
                             //console.log(data.pageInfo)
-                            $(".log").html("");
-                            if(data.productList){
                             
+                            if(data.productList){
+                                $(".log").html("");
                                 var str = "";
                                 $.each(data.productList,function(i,item){
                                     str+="<tr style='border-bottom: 1px solid #d8d8d8;'><td>"+item.user_name+"</td><td>"+item.sensitive_operation+"</td><td>"+item.operation_details+"</td><td>"+item.login_time+"</td><td>"+item.ip_addr
                                 })
+                                $(".log").html(str);
                             }
                             
-                            $(".log").html(str);
+                           
                         }                  
                     //设置基础设置下页面渲染
                    else if(data.dxbasics){

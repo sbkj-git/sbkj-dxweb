@@ -162,6 +162,16 @@
                 </div>
             </form>
         </div>
+        <div class="nv" style="padding:10px;">
+            <div class="nv91-close">X</div>
+            <form action="" class="form-horizontal" role="form" >
+                <div class="prompt" style="padding-bottom:30px;">
+                    <p style="font-size: 20px;">警告</p>
+                    <img src="" alt="" ><span>操作成功</span>
+                </div>
+                
+            </form>
+        </div>
     </div>
     <footer class="footer">
         <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
@@ -228,10 +238,12 @@
                     role = htm;
 
                     par = "appsercet="+newAppsercet+"&method=get.dxWeb.operation&roleId="+val;
+                    
                     logsgin(url,par);
 
                     if(val == 0){
                         par = "appsercet="+newAppsercet+"&method=get.dxWeb.operation";
+                       
                         logsgin(url,par);
                     }
                 })
@@ -284,7 +296,7 @@
                                     user4 = $(this).val()
                                 })
                                 $(".roleSure").click(function(){
-
+                                    debugger
                                     var inputs = document.querySelectorAll(".item3 input");//获取所有的input标签对象
                                     var radio = document.querySelectorAll(".status ");
                                     var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
@@ -312,8 +324,15 @@
                                     url = src+"/adminInterface.dx";
 
                                     par = "appsercet="+newAppsercet+"&method=get.dxWeb.addOperation&status="+status+"&roleIds="+rightsIds+"&username="+user1+"&pwd="+user2+"&roleId="+roleId+"&modilePhone="+user4+"&trueName="+user3;
-                                    logsgin(url,par);
-
+                                   var data =  logsgin(url,par);
+                                    // debugger
+                                    // var data = getSign(url,par);
+                                    if(data.msg.code == "200"){
+                                        alert("添加成功");
+                                        $(".nv91").reset();
+                                        $(".nv91-mask").fadeOut();
+                                        $(".nv91").hide();
+                                    }
 
                                 })
                                 $(".roleRefuse").click(function(){

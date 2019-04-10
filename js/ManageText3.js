@@ -33,7 +33,7 @@
                     var index = $(this).index();
                     
                     var id = $(this).attr("data-id");
-                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateHelp&isUP=1";
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateHelp&isUp=1&articleId="+id;
                   
                     var statu = getSign(url, par);
         
@@ -47,7 +47,7 @@
                 $(".toDown").unbind('click').bind("click",function(){ 
                     
                     var id = $(this).attr("data-id");
-                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateHelp&isUP=2";
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateHelp&isUp=2&articleId="+id;
                    
                     var statu = getSign(url, par);
                     if (statu.msg.code == "200") {
@@ -78,35 +78,7 @@
             var appsercet = window.localStorage.getItem("appsercet");
                 appsercet = JSON.parse(appsercet);
                 var newAppsercet = appsercet.data;
-                var pageCount,pageN;
-                if(data2.pageInfo&&data2.pageInfo.totalRows){
-                    pageCount = Math.ceil(data2.pageInfo.totalRows/10);
-                }else{
-                    pageCount == 0;
-                }
-                if(data2.pageInfo&&data2.pageInfo.totalRows){
-                    pageN = data2.pageInfo.totalRows;
-                }else{
-                    pageN == 0;
-                }
-                if(data2.pageInfo&&data2.pageInfo.totalRows){
-                    new Page({
-                        id: pagination,
-                        pageTotal: pageCount, //必填,总页数
-                        pageAmount: 10,  //每页多少条
-                        dataTotal: pageN, //总共多少条数据
-                        curPage:1, //初始页码,不填默认为1
-                        pageSize: 5, //分页个数,不填默认为5
-                        showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
-                        showSkipInputFlag:true, //是否支持跳转,不填默认不显示
-                        getPage: function (page) {
-                            //获取当前页数
-                           console.log(page);
-                        }
-                    })
-                }else{
-                    pageN == 0;
-                }
+               pageJudge(data2);
                 //初次加载页面数据
                
                 $(document).on("click", ".pageItem", function () {
@@ -163,6 +135,7 @@
             }else {
             var data = getSign(url, par);
             render(data);
+            pageJudge(data);
             if(data.msg && data.msg.codeMsg){
             
                 $(".textList").html("");
@@ -199,6 +172,38 @@
        
   
     }) 
+    //封装分页
+    function pageJudge(data2){
+        var pageCount,pageN;
+        if(data2.pageInfo&&data2.pageInfo.totalRows){
+            pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+        }else{
+            pageCount == 0;
+        }
+        if(data2.pageInfo&&data2.pageInfo.totalRows){
+            pageN = data2.pageInfo.totalRows;
+        }else{
+            pageN == 0;
+        }
+        if(data2.pageInfo&&data2.pageInfo.totalRows){
+            new Page({
+                id: 'pagination4',
+                pageTotal: pageCount, //必填,总页数
+                pageAmount: 10,  //每页多少条
+                dataTotal: pageN, //总共多少条数据
+                curPage:1, //初始页码,不填默认为1
+                pageSize: 5, //分页个数,不填默认为5
+                showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                getPage: function (page) {
+                    //获取当前页数
+                   console.log(page);
+                }
+            })
+        }else{
+            pageN == 0;
+        }
+    }
     //进行增删改查操作后进行权限判断
     function judgePower(){
          //首先刚开始加载页面的时候从缓存中读取之前存入的 id  以及 method名

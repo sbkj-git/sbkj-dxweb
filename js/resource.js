@@ -183,6 +183,41 @@ var urlSrc1,urlId1
                         })
                     
                   })
+                  $(".imgCover").unbind('click').bind("click",function(){ 
+                    debugger
+                        // $(".imgCover").click(function(){  
+                        $(".nv91-mask").hide();
+                        $(".nv91").hide();
+                        $(".custom").eq(0).show();
+                        $(".imgcov").show();
+                        value1 = $("input[type='radio']:checked").val();
+                        if(value1 == 1){
+                            $(".imgcov1").show();
+                        }else{
+                            $(".imgcov1").hide();
+                        }
+                       
+                        $(".imgcov2").show();
+                        urlSrc1 = $(this).find(".imgHover1").attr("src");
+                         urlId1 = $(this).find(".imgHover1").attr("data-id");
+                        $(".reviewImg1").attr("src",urlSrc1);
+                        $(".reviewImg1").attr("data-id",urlId1);
+                       
+                    
+                })
+       
+                $(".imgCover1").unbind('click').bind("click",function(){
+                    debugger 
+                // $(".imgCover1").on("click",function(){
+                        $(".nv91-mask").hide();
+                        $(".nv91").hide();
+                        $(".imgcov1").hide();
+                        urlSrc = $(this).find(".imgHover1").attr("src");
+                         urlId = $(this).find(".imgHover1").attr("data-id");
+                        $(".reviewImg3").attr("src",urlSrc);
+                        $(".reviewImg3").attr("data-id",urlId);
+                   
+                })
                 }
                 //进入子集目录操作
                 var width = document.querySelectorAll(".w200center");
@@ -201,7 +236,7 @@ var urlSrc1,urlId1
                           
                     }
                         render3(data);
-                        if(ptype == "1"){
+                     
                             $(".imgCover").unbind('click').bind("click",function(){ 
                                 debugger
                                     // $(".imgCover").click(function(){  
@@ -224,7 +259,7 @@ var urlSrc1,urlId1
                                    
                                 
                             })
-                        }else{
+                       
                             $(".imgCover1").unbind('click').bind("click",function(){
                                 debugger 
                             // $(".imgCover1").on("click",function(){
@@ -237,11 +272,11 @@ var urlSrc1,urlId1
                                     $(".reviewImg3").attr("data-id",urlId);
                                
                             })
-                        }
+                      
                 })
 
 
-              var ptype = localStorage.getItem("addphone");
+           
               //进入父级目录
               $(".returnBack").click(function(){
                
@@ -250,7 +285,7 @@ var urlSrc1,urlId1
                 
                 var data = getSign(url,par);
                 render3(data);
-                if(ptype == 1){
+           
                     $(".imgCover").unbind('click').bind("click",function(){ 
                         debugger
                             // $(".imgCover").click(function(){  
@@ -273,7 +308,7 @@ var urlSrc1,urlId1
                            
                         
                     })
-                }else{
+           
                     $(".imgCover1").unbind('click').bind("click",function(){
                         debugger 
                     // $(".imgCover1").on("click",function(){
@@ -286,7 +321,7 @@ var urlSrc1,urlId1
                             $(".reviewImg3").attr("data-id",urlId);
                        
                     })
-                }
+              
                
                
                 if(data.dximgList.length == 0 && data.dxFolderList.length == 0){
@@ -368,7 +403,11 @@ var urlSrc1,urlId1
                                     console.log($(".galleryImg")[0].files[0])
                                     formData.append("folderId",$(".folderId option:checked").val());
                                     console.log($(".folderId option:checked").val())
+                                    debugger
                                     formData.append("method","get.dxWeb.uploadImgs");
+                                    formData.append("method","get.dxWeb.uploadImgs");
+                                //     formData.append("imgsName",$(".galleryImg")[0].files[0].name);
+                                //    console.log($(".galleryImg")[0].files[0].name)
                                     formData.append("isEnable",isEnable);
                                     formData.append("appid",appid);
                                     formData.append("sign",sign2);
@@ -386,7 +425,7 @@ var urlSrc1,urlId1
                                 for(var i = 0;i<radio.length;i++){
                                     var obj = radio[i];
                                  
-                                    if(obj.checked = true){
+                                    if(obj.checked == true){
                                         
                                         var value = obj.getAttribute("data-name");
                                         var id = obj.getAttribute("data-id");

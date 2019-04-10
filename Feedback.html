@@ -13,8 +13,26 @@
     <link rel="stylesheet" type="text/css" href="./css/buind.css">
     <link rel="stylesheet" href="./js/js/daterangepicker.css">
     <link rel="stylesheet" href="./css/newPage.css">
+    <link rel="stylesheet" href="./css/datePicker.css">
+    <script type="text/javascript" src="./js/jquery.min.js"></script> 
+<script type="text/javascript" src="./js/jquery.date_input.pack.js"></script> 
+<script>
+// $('.laydate-icon').blur(function(){
+// 	var ret = contrastTime("date");//获取返回值
+// 	if(ret == 0){
+// 		alert("请选择正确的时间。");
+// 		$(this).val('');
+// 		return;
+// 	}else{
+
+//     }
+// })
+$('#datePicker').date_input();
+	$('#datePicker2').date_input();
+</script>
     <style>
         .lookType,.details{display: none;}
+        .date_selector{top:50px!important;left: 0!important;}
     </style>
 </head>
 <body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;padding-left: 50px;">
@@ -26,7 +44,7 @@
     <h1>投诉与反馈</h1>
 </div>
 <ul class="chooseCard flex">
-    <li class="chooseActive">管理反馈内容</li>
+    <li class=" lian chooseActive">管理反馈内容</li>
     <li class="lookType">功能设置</li>
 </ul>
 <div class="col-sm-10 col-sm-pull-1" style="margin-top: 2%;">
@@ -36,14 +54,16 @@
                 <button class="btn-primary btn export" style="margin-right: 1%;"><a class="export1">导出反馈</a></button>
                 <button class="btn isDelete">删除反馈</button>
             </div>
-            <div class="col-sm-6 flex " style="text-align: right;">
-                <label for="name" class="control-label" style="text-align: right;line-height: 1.5;margin-right: 5px;">反馈时间:</label>
+            <!-- <div class="col-sm-6 flex " style="text-align: right;"> -->
+                <!-- <label for="name" class="control-label" style="text-align: right;line-height: 1.5;margin-right: 5px;">反馈时间:</label>
                 <div class="position">
                     <input type="text" class="form-control" id="nowdate" />
                     <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" id="datetimepicker1">&#xe73a;</span>
-                </div>
-
-            </div>
+                </div> -->
+                <!-- <input type="text" id="datePicker" class="date_picker time1" placeholder="点击选择日期"/>
+                <input type="text" id="datePicker2" class="date_picker time2" placeholder="点击选择日期"/> -->
+            <!-- </div> -->
+            
             <div class="col-sm-3 flex " style="text-align: right;">
                 <div class="position">
                     <input type="text" class="form-control content" placeholder="请输入姓名、反馈内容" />
@@ -85,11 +105,11 @@
         <div class="col-sm-12 flex" style="border-bottom:1px solid #dddddd;padding-bottom: 2%;;">
             <span>验证码:</span>
             <div class="radio radio-info radio-inline">
-                <input type="radio" id="f1" value="" name="radioll" checked="" class="validate">
+                <input type="radio" id="f1" value="1" name="radioll" checked="" class="validate">
                 <label for="f1"> 必填 </label>
             </div>
             <div class="radio radio-info radio-inline">
-                <input type="radio" id="f2" value="" name="radioll"  class="validate">
+                <input type="radio" id="f2" value="2" name="radioll"  class="validate">
                 <label for="f2"> 防刷保护 </label>
 
             </div>
@@ -114,8 +134,8 @@
             </tbody>
         </table>
         <div class="flex" style="justify-content: center;">
-            <button class="btn btn-primary" style="margin-right: 2%;">保存</button>
-            <button class="btn">取消</button>
+            <button class="btn btn-primary saveBtn" style="margin-right: 2%;">保存</button>
+            <!-- <button class="btn">取消</button> -->
 
         </div>
     </div>
@@ -219,6 +239,16 @@
             </div>
         </form>
     </div>
+    <div class="nv" style="padding:10px;">
+        <div class="nv91-close">X</div>
+        <form action="" class="form-horizontal" role="form" >
+            <div class="prompt" style="padding-bottom:30px;">
+                <p style="font-size: 20px;">警告</p>
+                <img src="" alt="" ><span>操作成功</span>
+            </div>
+            
+        </form>
+    </div>
 </div>
 <footer class="footer">
     <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
@@ -242,6 +272,7 @@
 <script src="./js/newPage.js"></script>
 <script src="./js/Feedback.js"></script>
 <script src="./js/radioAllChoose.js"></script>
+<script src="./js/time.js"></script>
 
 
 

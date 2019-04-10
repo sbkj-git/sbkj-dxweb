@@ -253,6 +253,9 @@ $(document).ready(function(){
                         if (data.msg.code == "200") {
                             alert("操作成功");
                             location.reload();
+                        }else{
+                            alert("操作失败");
+                            location.reload();  
                         }
 
                     })
@@ -326,7 +329,13 @@ $(document).ready(function(){
             $(".textList").html("");
             $.each(data.dxWebList, function (i, item) {
                 str += '<tr style="border-bottom: 1px solid #d8d8d8;">';
-                str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.id + '"   aria-label="Single checkbox Two" data-id="' + item.id + '"><label for="' + item.id + '">' + item.title + '</label></div></td><td>"' + item.product_name + '"</td><td>' + item.classify_name+ '</td><td>' + item.author + '</td><td>' + item.browse + '</td>';
+                str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.id + '"   aria-label="Single checkbox Two" data-id="' + item.id + '"><label for="' + item.id + '">' + item.title + '</label></div></td><td>"' + item.product_name + '"</td><td>' + item.classify_name+ '</td><td>' + item.author + '</td>';
+                if (item.is_ups == 1) {
+                    str += "<td>&#10003;</td>";
+                } else {
+                    str += "<td>&#10007;</td>"
+                }
+                str+='<td>' + item.browse + '</td>';
                 if (item.is_ups == 1) {
                     str+="&nbsp;&nbsp;<span class='toDown' data-id='" + item.id + "'>取消置顶</span></td>";
                 } else {
@@ -347,7 +356,7 @@ $(document).ready(function(){
                 var index = $(this).index();
                 
                 var id = $(this).attr("data-id");
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.batchUpdateQAndA&isUp=1";
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateQAndA&isUp=1&articleId="+id;
               
                 var statu = getSign(url, par);
     
@@ -361,7 +370,7 @@ $(document).ready(function(){
             $(".toDown").unbind('click').bind("click",function(){ 
                 
                 var id = $(this).attr("data-id");
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.batchUpdateQAndA&isUp=2";
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateQAndA&isUp=2&articleId="+id;
                
                 var statu = getSign(url, par);
                 if (statu.msg.code == "200") {

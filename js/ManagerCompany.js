@@ -22,8 +22,15 @@
         
         $(".nv91-mask").hide();
         $(".nv91").hide();
+        $(".nv91 input").val("");
+        (".form-horizontal").reset();
     })
-    
+    $(".closeBtn").click(function(){
+        $(".nv91-mask").hide();
+        $(".nv91").hide();
+        $(".nv91 input").val("");
+        (".form-horizontal").reset(); 
+    })
     var currentPage = localStorage.getItem("pageNow1")
         par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList" ;
         var data2 = getSign(url, par);
@@ -334,12 +341,9 @@
                     alert("操作失败");
                     location.reload();
                 }
-                setTimeout(function(){
+                
                     $(".nv91-mask").hide();
                     $(".nv91").hide();
-                    $(".nv91 input").val("");
-                },1000)
-               
                
             }
 //获取所有合作伙伴类别

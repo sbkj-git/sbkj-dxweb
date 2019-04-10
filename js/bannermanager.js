@@ -13,7 +13,6 @@ $(document).ready(function(){
         $(".needHide").show();
         $(".slideImg").hide();
 
-       
 
     })
     $(".roleRefuse5").click(function(){
@@ -160,6 +159,7 @@ $(document).ready(function(){
                  debugger
                 var data2 = getSign(url, par);
                 bannerList1(data2);
+                
          })
         
             var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
@@ -232,23 +232,28 @@ $(document).ready(function(){
                 $(".bannerList").html("");
             } else {
                 bannerList1(bannerList);
-
+                pageJudge(bannerList);
                
             }
         });
         //通过反馈时间查询
-        $(".sec1").click(function(){
+        $(".end1").blur(function(){
             var  starttime = $(".start1").val();
             var erdtime = $(".end1").val();
-            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList&starttime="+starttime+"&erdtime="+erdtime;
+            if(starttime == "" || erdtime == ""){
+                return
+            }else{
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList&starttime="+starttime+"&erdtime="+erdtime;
             
-            var bannerList = getSign(url,par);
-            if(bannerList.msg && bannerList.msg.code == "10"){
-                $(".bannerList").html("");
-                alert("没有数据");
+                var bannerList = getSign(url,par);
+                if(bannerList.msg && bannerList.msg.code == "10"){
+                    $(".bannerList").html("");
+                    alert("没有数据");
+                }
+                bannerList1(bannerList);
+                firstRender();
             }
-            bannerList1(bannerList);
-            firstRender();
+            
         })
         
        

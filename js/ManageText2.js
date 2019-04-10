@@ -73,13 +73,14 @@ $(document).ready(function(){
 
                 })
                 $(".textList").html(str);
+                judgePower();
                 
                 //banner置顶事件   
                 $(".toTop").unbind('click').bind("click",function(){ 
                     var index = $(this).index();
                     
                     var id = $(this).attr("data-id");
-                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateWebOperation&isUp=1";
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateWebOperation&isUp=1&id="+id;
                     var statu = getSign(url, par);
 
                     if (statu.msg.code == "200") {
@@ -93,7 +94,7 @@ $(document).ready(function(){
                 
                     
                     var id = $(this).attr("data-id");
-                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateWebOperation&isUp=2";
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateWebOperation&isUp=2&id="+id;
                     
                     var statu = getSign(url, par);
                     if (statu.msg.code == "200") {
@@ -118,15 +119,13 @@ $(document).ready(function(){
         var currentPage = localStorage.getItem("pageNow1");
         par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList"; 
             var data2 = getSign(url, par);
-            console.log(data2);
-            
-        console.log(data2);
         bannerList1(data2);
         pageJudge(data2);
 
 
      //通过banner名称查询
      $(".banner1").click(function(){
+         debugger
         var title = $(".banner").val();
         par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList&title="+title;
         var bannerList = getSign(url,par);
@@ -135,16 +134,26 @@ $(document).ready(function(){
             alert("没有数据");
             
         }
-        else if( bannerList.dxWebList){
+        else if(bannerList.dxWebList){
             debugger
             bannerList1(bannerList);
             pageJudge(bannerList);
         }
-       
+        bannerList1(bannerList);
+        pageJudge(bannerList);
        
     })
-   
-        //判断是否有添加管理员操作权限
+    judgePower();
+        function judgePower(){
+              //页面初次渲染加载数据
+    var data = window.localStorage.getItem("dxRightsList");    
+    data = JSON.parse(data);  
+ //页面初次加载渲染页面
+ var url,par;      
+    var appsercet = window.localStorage.getItem("appsercet");
+    appsercet = JSON.parse(appsercet);
+    var newAppsercet = appsercet.data;
+            //判断是否有添加管理员操作权限
         var arr = [];
         $.each(data,function(i,item){
             //console.log(item)
@@ -273,7 +282,7 @@ $(document).ready(function(){
                                   
                             $(".isEdit").show();
                               $(".isEdit").click(function(){
-                               
+                               debugger
                                   var id = $(this).attr("data-id");
                                   par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationDetails&articleId="+id;
                                 var data = getSign(url,par);
@@ -292,6 +301,7 @@ $(document).ready(function(){
            
 
         })
+        }
         //封装查询事件分页效果
         function pageJudge(data2){
             var pageCount,pageN;

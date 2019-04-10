@@ -1,12 +1,12 @@
 $(document).ready(function() {
     //jquery创建一个summernote实例
- $('.summernote').summernote({
-    height: 200,
-    tabsize: 2,
-    lang: 'zh-CN'
-    //回调函数
+//  $('.summernote').summernote({
+//     height: 200,
+//     tabsize: 2,
+//     lang: 'zh-CN'
+//     //回调函数
 
-});
+// });
     //作业开始时间失去焦点验证
 $('#date').blur(function(){
 	var ret = contrastTime("date");//获取返回值
@@ -30,7 +30,13 @@ $('#date').blur(function(){
             if(value == 2){
                 $(".imgcov1").hide();
                 $(".imgcov2").show();
-                $(".custom").hide().eq(1).show() 
+                $(".custom").hide().eq(1).show();
+                if($(".reviewImg3").attr("src") == "undefined" || $(".reviewImg3").attr("src") == null || $(".reviewImg3").attr("src") == ""){
+                    $(".imgcov2").hide(); 
+                }else{
+                    $(".imgcov2").show(); 
+                }
+                
             } 
            
         })
@@ -81,30 +87,10 @@ $('#date').blur(function(){
         $(".addPhone").click(function(){
         $(".nv91-mask").show();
        $(".nv91").show();
+       $(".nv92").hide();
         $(this).val("修改图片");
-        localStorage.setItem("addphone",1);
-        // $(".imgCover").each(function(index){
-        //     // $(".imgCover").eq(index).on("click",function(e){
-        //         $(".imgCover").click(function(){  
-        //         $(".nv91-mask").hide();
-        //         $(".nv91").hide();
-        //         $(".custom").eq(0).show();
-        //         $(".imgcov").show();
-        //         value1 = $("input[type='radio']:checked").val();
-        //         if(value1 == 1){
-        //             $(".imgcov1").show();
-        //         }else{
-        //             $(".imgcov1").hide();
-        //         }
-               
-        //         $(".imgcov2").show();
-        //         urlSrc1 = $(this).find(".imgHover1").attr("src");
-        //          urlId1 = $(this).find(".imgHover1").attr("data-id");
-        //         $(".reviewImg1").attr("src",urlSrc1);
-        //         $(".reviewImg1").attr("data-id",urlId1);
-               
-        //     })
-        // })
+       
+       
        
     })
     var urlSrc,urlId
@@ -114,37 +100,16 @@ $('#date').blur(function(){
         $(".nv91-mask").show();
        $(".nv92").show();
        $(".nv91").hide();
+      $(".imgcov2").show();
         $(this).val("修改图片");
-       localStorage.setItem("addphone",2);
-        // $(".imgCover1").each(function(index){
-        //     // $(".imgCover1").eq(index).on("click",function(e){
-        //         $(".imgCover1").click(function(){
-        //         $(".nv91-mask").hide();
-        //         $(".nv91").hide();
-        //         $(".imgcov1").hide();
-        //         urlSrc = $(".imgCover1").eq(index).find(".imgHover1").attr("src");
-        //          urlId = $(this).find(".imgHover1").attr("data-id");
-        //         // localStorage.setItem("url2",JSON.stringify({"urlSrc":urlSrc,"urlId":urlId}));
-        //         // var url2 = localStorage.getItem("url2");
-        //         // url2 = JSON.parse(url2);
-        //         $(".reviewImg3").attr("src",urlSrc);
-        //         $(".reviewImg3").attr("data-id",urlId);
-        //     })
-        // })
+      
        
 	});
 
     
     //选择发布时间
     $("#date").dateSelect();
-    //jquery创建一个summernote实例
-    $('.summernote').summernote({
-        height: 200,
-        tabsize: 2,
-        lang: 'zh-CN'
-        //回调函数
-
-    });
+   
    function changeState(el) {
        if (el.readOnly) el.checked=el.readOnly=false;
        else if (!el.checked) el.readOnly=el.indeterminate=true;
@@ -233,8 +198,10 @@ var url = src + url1;
  
 //定义url
   function updateMessage(method,id,url1){
-    var tt = $(".summernote").summernote("code");
-      
+    // var tt = $(".summernote").summernote("code");
+    var arr = [];
+    arr.push(UE.getEditor('editor').getContent());
+    var tt = arr.join("\n");
       
       var cateId,productId;
      
@@ -354,7 +321,7 @@ var url = src + url1;
                },1000); 
         }
         document.getElementById("resetInput").reset();
-        $(".summernote").summernote("code","");
+        //清空列表
         $(".detailsKeyWord").val("");
         $(".detailsDescribe").val("");
         $(".reviewImg1").attr("src","");
@@ -376,7 +343,19 @@ var url = src + url1;
           $(".title").val(detail.msg.title);
           // $("#summernote").summernote("code") = detail.msg.article;
           // $(".articleDetail").text(detail.msg.article);
-          $('.summernote').summernote('code', detail.msg.article);
+              debugger 
+          var ue = UE.getEditor('editor');//初始化对象
+	$(document).ready(function(){
+		var ue = UE.getEditor('editor');
+		// var proinfo=$("#divdata").text();
+		
+		ue.ready(function() {//编辑器初始化完成再赋值
+			ue.setContent(detail.msg.article);  //赋值给UEditor
+		});
+		
+	});
+　
+        //   $('.summernote').summernote('code', detail.msg.article);
         //   article_detail
         //   $(".summernote").html(detail.msg.article);
           $(".releaseTime").val(detail.msg.release_time);
@@ -422,19 +401,20 @@ var url = src + url1;
             if (obj.getAttribute("data-id") == detail.msg.product_id) {
                 obj.selected = true;
                 $(".changeSelectTwo").html("");
-                par = "appsercet=" + appsercet + "&method=get.dxWeb.cateTwoAllList&productId=" + detail.msg.product_id;
-                var data1 = getSign(url, par);
-                question(data1);
-            var opt1 = document.querySelectorAll(".changeSelectTwo option");
-             for (var i = 0; i < opt1.length; i++) {
-                var obj = opt1[i];
-                if (obj.getAttribute("data-id") == detail.msg.cate_id) {
-                    obj.selected = true;
-                   
-                }
-            }
+               
             }
         }
+        par = "appsercet=" + appsercet + "&method=get.dxWeb.cateTwoAllList&productId=" + detail.msg.product_id;
+        var data1 = getSign(url, par);
+        question(data1);
+    var opt1 = document.querySelectorAll(".changeSelectTwo option");
+     for (var i = 0; i < opt1.length; i++) {
+        var obj = opt1[i];
+        if (obj.getAttribute("data-id") == detail.msg.cate_id) {
+            obj.selected = true;
+           
+        }
+    }
          }
          
         // 

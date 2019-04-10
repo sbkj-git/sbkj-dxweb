@@ -70,9 +70,7 @@ $('.ul_sort ul li').remove();
 for (var i=0; i<ux.length; i++){
    ul.append(ux[i].dom);
 }
-$(document).ready(function(){
-    
-})
+
  
 //页面初次渲染加载数据
 
@@ -94,21 +92,7 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
             var appsercet = window.localStorage.getItem("appsercet");
                 appsercet = JSON.parse(appsercet);
                 var newAppsercet = appsercet.data;
-            var pageCount = Math.ceil(data2.pageInfo.totalRows/10);
-                     new Page({
-                         id: pagination,
-                         pageTotal: pageCount, //必填,总页数
-                         pageAmount: 10,  //每页多少条
-                         dataTotal: data2.pageInfo.totalRows, //总共多少条数据
-                         curPage:1, //初始页码,不填默认为1
-                         pageSize: 5, //分页个数,不填默认为5
-                         showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
-                         showSkipInputFlag:true, //是否支持跳转,不填默认不显示
-                         getPage: function (page) {
-                             //获取当前页数
-                            console.log(page);
-                         }
-                     })
+                pageJudge(data2)
                 //初次加载页面数据
                
                 $(document).on("click", ".pageItem", function () {
@@ -139,6 +123,38 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
                     }
                 })
         }
+         //封装查询事件分页效果
+      function pageJudge(data2){
+        var pageCount,pageN;
+        if(data2.pageInfo&&data2.pageInfo.totalRows){
+            pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+        }else{
+            pageCount == 0;
+        }
+        if(data2.pageInfo&&data2.pageInfo.totalRows){
+            pageN = data2.pageInfo.totalRows;
+        }else{
+            pageN == 0;
+        }
+        if(data2.pageInfo && data2.pageInfo.totalRows){
+            new Page({
+                id: "pagination8",
+                pageTotal: pageCount, //必填,总页数
+                pageAmount: 10,  //每页多少条
+                dataTotal: pageN, //总共多少条数据
+                curPage:1, //初始页码,不填默认为1
+                pageSize: 5, //分页个数,不填默认为5
+                showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                getPage: function (page) {
+                    //获取当前页数
+                   console.log(page);
+                }
+            })
+        }else{
+            pageN == 0;
+        }
+       }
     //通过分类方法名请求列表
     $(".classifyName").click(function(){
         
@@ -151,6 +167,7 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
         alert("没有数据");
     } else {
         render(data2);
+        pageJudge(data2)
     }
      
       
@@ -355,8 +372,28 @@ function addorup(method,method2,pid,id){
                     formData.append("cateName", $(".cateName").val());
                     
                     var data = post(url, formData);
+                    $(".nv91-mask").hide();
+                        $(".nv91").hide();
+                    data = JSON.parse(data);
                     if (data.msg.code == "200") {
-                        alert("添加成功");
+                        $(".nv91-mask").show();
+                        $(".nv").show();
+                        $(".prompt span").text("操作成功");
+                        setTimeout(function () {
+                            $(".nv91-mask").hide();
+                            $(".nv").hide();
+                            // location.reload();
+                        }, 2000);
+                        
+                    } else {
+                        $(".prompt span").text("操作失败");
+                        $(".nv91-mask").show();
+                        $(".nv").show();
+                        setTimeout(function () {
+                            $(".nv91-mask").hide();
+                            $(".nv").hide();
+                            // location.reload();
+                        }, 2000);
                     }
                 } else {
                     
@@ -367,8 +404,26 @@ function addorup(method,method2,pid,id){
                     formData.append("cateName", $(".cateName1").val());
                     formData.append("id", $(".cateId2 option:checked").attr("data-id"));
                     var data = post(url, formData);
+                    data = JSON.parse(data);
                     if (data.msg.code == "200") {
-                        alert("添加成功");
+                        $(".nv91-mask").show();
+                        $(".nv").show();
+                        $(".prompt span").text("操作成功");
+                        setTimeout(function () {
+                            $(".nv91-mask").hide();
+                            $(".nv").hide();
+                            location.reload();
+                        }, 2000);
+                        
+                    } else {
+                        $(".prompt span").text("操作失败");
+                        $(".nv91-mask").show();
+                        $(".nv").show();
+                        setTimeout(function () {
+                            $(".nv91-mask").hide();
+                            $(".nv").hide();
+                            location.reload();
+                        }, 2000);
                     }
                 }
 
