@@ -94,6 +94,11 @@
         .disnone{display: none}
         .textLeft{text-align: left;}
         /* .toDown{display: none;} */
+        .table td:first-child {
+            text-align: left;
+            padding-left: 30px;
+            width: 13%;
+        }
     </style>
 </head>
 <body style="background: #f3f3f3;">
@@ -202,8 +207,8 @@
 
             <span class="pr2" >筛选查询</span>
             <label for="name" class="control-label lh15 mr5" style="line-height:33.5px;font-size: 18px">位置:</label>
-            <div>
-                <select class="form-control location" style="width: 260px;">
+            <div style="width: 40%">
+                <select class="form-control location" style="width: 100%;">
                     <option checked>--请选择--</option>
 
                 </select>
@@ -211,31 +216,31 @@
 
         </div>
 
-         <div class="flex textRight textLeft col-sm-12 col-md-6 col-lg-4">
+        <div class="flex textRight textLeft col-sm-12 col-md-6 col-lg-4">
             <div class="col-sm-3" style="max-width: 80px;">
                 <label for="name" class="control-label lh15 mr5" style="margin-left: -5px;line-height:37px;font-size: 18px">到期时间:</label>
             </div>
             <div class="position col-sm-9 flex" >
-                <div class="col-sm-5">
-                    <input type="text" id="datePicker111" style="max-width: 145px" class="date_picker start1 " placeholder="点击选择日期" />
+                <div class="col-sm-5" style="width: 100px;">
+                    <input type="text" id="datePicker111" style="max-width: 100%" class="date_picker start1 " placeholder="点击选择日期" />
                 </div>
                 <p style="line-height:37px">&nbsp;&nbsp;—&nbsp;&nbsp;</p>
                 <div class="col-sm-5" >
-                        <input type="text" id="datePicker222" style="max-width: 145px" class="date_picker end1 " placeholder="点击选择日期"/>
+                    <input type="text" id="datePicker222" style="max-width: 100%" class="date_picker end1 " placeholder="点击选择日期"/>
                 </div>
 
                 <!--<input type="text" class=" form-control start1" style="width: 70%;margin-left: 72px;margin-top: -34px;" />-->
 
 
-        <!--<input type="text" class="form-control end1"/>-->
+                <!--<input type="text" class="form-control end1"/>-->
 
-        <!--<button class="btn sec1">查询</button>-->
-         <!--<span style="font-family: iconfont;position: absolute;right: 5%;top:0;font-size: 24px;" >&#xe73a;</span>-->
-         </div>
-    </div>
+                <!--<button class="btn sec1">查询</button>-->
+                <!--<span style="font-family: iconfont;position: absolute;right: 5%;top:0;font-size: 24px;" >&#xe73a;</span>-->
+            </div>
+        </div>
         <div class="flex textRight col-sm-12 col-md-6 col-lg-4 position">
 
-            <input type="text" class="form-control bannerName12" placeholder="请输入banner名称" style="height: 40px;max-width: 400px"/>
+            <input type="text" class="form-control bannerName12" placeholder="请输入banner名称" style="height: 40px;max-width: 80%"/>
             <span  class="bannerName1 icon" style="margin-right: 70px">&#xe615;</span>
 
         </div>
