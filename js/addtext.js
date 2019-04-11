@@ -16,14 +16,14 @@ $(document).ready(function() {
     });
 
     //作业开始时间失去焦点验证
-$('#date').blur(function(){
-	var ret = contrastTime("date");//获取返回值
-	if(ret == 0){
-		alert("请选择正确的时间。");
-		$(this).val('');
-		return;
-	}
-})
+// $('#date').blur(function(){
+// 	var ret = contrastTime("date");//获取返回值
+// 	if(ret == 0){
+// 		alert("请选择正确的时间。");
+// 		$(this).val('');
+// 		return;
+// 	}
+// })
     //切换自定义还是和正文头图一致
     var add1 = document.querySelectorAll(".add1");
     var value
@@ -193,11 +193,8 @@ var url = src + url1;
         })
 
         $(".addMessage").click(function () {
-            if($(".changeSelect option:checked").attr("data-id") == 0 || $(".changeSelectTwo option:checked").attr("data-id") == 0){
-                alert("请先选择产品分类和问题详情,如果没有请先添加分类");
-            }else{
-             updateMessage(method,id,url1);
-            }
+            formvalidar(method,id,url1);
+           
            
         })
     }
@@ -459,9 +456,8 @@ var url = src + url1;
 }else if(method === "get.dxWeb.addWebOperation" ){
    var id = "";
    $(".addMessage").click(function () {
-    
-       updateMessage(method,id,url1);
-       location.href = "./ManagerText.html"
+    debugger
+    formvalidar(method,id,url1);
    })
 }else if(method === "get.dxWeb.addHelp"){
    $(".changeFlex").removeClass("column");
@@ -477,7 +473,7 @@ var url = src + url1;
   
    $(".addMessage").click(function () {
     
-       updateMessage(method,id,url1);
+    formvalidar(method,id,url1);
    })
 }
 else if(method === "get.dxWeb.addSkill"){
@@ -492,14 +488,8 @@ else if(method === "get.dxWeb.addSkill"){
    console.log(data);
    type(data);
    $(".addMessage").click(function () {
-       if($(".changeSelect option:checked").attr("data-id") == 0){
-           alert("请先创建文章分类,如果没有请先创建分类");
-       }else{
-        updateMessage(method,id,url1);
-       }
-      
-
-    
+        formvalidar(method,id,url1)
+     
    })
 }
   //渲染分类下拉框
@@ -532,4 +522,84 @@ else if(method === "get.dxWeb.addSkill"){
         }
 
     }  
+    //封装校验表单方法
+    function formvalidar(method,id,url1){
+        debugger
+      
+			
+			
+        var ret = /^\d{4}[-]([0][1-9]|(1[0-2]))[-]([1-9]|([012]\d)|(3[01]))([ \t\n\x0B\f\r])(([0-1]{1}[0-9]{1})|([2]{1}[0-4]{1}))([:])(([0-5]{1}[0-9]{1}|[6]{1}[0]{1}))([:])((([0-5]{1}[0-9]{1}|[6]{1}[0]{1})))$/;
+            if($(".title").val() == ""){
+                $(".prompt span").text("请填写文章标题");
+                $(".nv91-mask").show();
+                $(".nv").show();
+                setTimeout(function(){
+                    $(".nv91-mask").hide();
+                    $(".nv").hide();
+                },1000);
+                return;
+            }
+            else if($(".releaseTime").val() == ""){
+                $(".prompt span").text("请选择发布日期");
+                $(".nv91-mask").show();
+                $(".nv").show();
+                setTimeout(function(){
+                    $(".nv91-mask").hide();
+                    $(".nv").hide();
+                },1000);
+                return;
+            }
+            else if(!ret.test($(".releaseTime").val())){
+                $(".prompt span").text("请输入正确的发布日期");
+                $(".nv91-mask").show();
+                $(".nv").show();
+                setTimeout(function(){
+                    $(".nv91-mask").hide();
+                    $(".nv").hide();
+                },1000);
+                return; 
+            }
+            else if($(".author").val() == ""){
+                $(".prompt span").text("请填写发布作者");
+                $(".nv91-mask").show();
+                $(".nv").show();
+                setTimeout(function(){
+                    $(".nv91-mask").hide();
+                    $(".nv").hide();
+                },1000);
+                return;
+            }else{
+                updateMessage(method,id,url1); 
+            }
+            if(method === "get.dxWeb.updateSkill" || method === "get.dxWeb.addSkill"){
+                if($(".changeSelect option:checked").attr("data-id") == 0){
+                    $(".prompt span").text("请先创建文章分类,如果没有请先创建分类");
+                    $(".nv91-mask").show();
+                    $(".nv").show();
+                    setTimeout(function(){
+                        $(".nv91-mask").hide();
+                        $(".nv").hide();
+                    },1000);
+                    return;
+                  
+                }
+               
+            }
+            if(method === "get.dxWeb.addQAndA" || method === "get.dxWeb.updateQAndA"){
+                if($(".changeSelect option:checked").attr("data-id") == 0 || $(".changeSelectTwo option:checked").attr("data-id") == 0){
+                    $(".prompt span").text("请先创建文章分类,如果没有请先创建分类");
+                    $(".nv91-mask").show();
+                    $(".nv").show();
+                    setTimeout(function(){
+                        $(".nv91-mask").hide();
+                        $(".nv").hide();
+                    },1000);
+                    return;
+                  
+                }
+            }
+        
+        
+       
+    }
 }); 

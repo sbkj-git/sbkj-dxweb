@@ -605,7 +605,7 @@ a {
 }
 
 .closeBtn {
-    display: none;
+    /* display: none; */
 }
 
 /* e nav9下管理操作员选项卡 */
@@ -651,7 +651,7 @@ a {
     display: none;
     z-index: 9999;
 }
-
+.nv{padding:10px;box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);}
 .nv91-mask2 {
     display: none;
 }

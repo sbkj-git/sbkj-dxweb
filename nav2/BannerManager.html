@@ -99,7 +99,6 @@
             padding-left: 30px;
             width: 13%;
         }
-
     </style>
 </head>
 <body style="background: #f3f3f3;">
@@ -129,6 +128,7 @@
 
 
     </div>
+    
     <form class="nv91 p5_0" >
         <div   class="form-horizontal textCenter" id="form">
             <div class="nv91-close">x</div>
@@ -227,7 +227,7 @@
                 </div>
                 <p style="line-height:37px">&nbsp;&nbsp;—&nbsp;&nbsp;</p>
                 <div class="col-sm-5" >
-                    <input type="text" id="datePicker222" style="max-width: 100%" class="date_picker end1 " placeholder="点击选择日期"/>
+                    <input type="text" id="datePicker222" style="max-width: 100%" class="date_picker end1 " placeholder="点击选择日期" onkeydown="keyup_submit(event);"/>
                 </div>
 
                 <!--<input type="text" class=" form-control start1" style="width: 70%;margin-left: 72px;margin-top: -34px;" />-->
@@ -307,6 +307,7 @@
     //选择发布时间
     $("#datePicker111").dateSelect();
     $("#datePicker222").dateSelect();
+    
 </script>
 
 

@@ -135,15 +135,15 @@ var radio = document.querySelectorAll(".st1");
     var radio1 = document.querySelectorAll(".st2");      
            for (var i = 0; i < radio.length; i++) {
                var obj = radio[i];
-               if (obj.value = phone) {
-                obj.checked == true;
+               if (obj.value == phone) {
+                obj.checked = true;
                }
            }
            for (var j = 0; j < radio1.length; j++) {
                var obj1 = radio1[j];
              
-                   if (obj1.value = visit) {
-                       obj1.checked == true;
+                   if (obj1.value == visit) {
+                       obj1.checked = true;
                    }  
            }
            //修改手机网站方法
@@ -155,7 +155,7 @@ var radio = document.querySelectorAll(".st1");
                var value1,obj  
             for (var i = 0; i < radio.length; i++) {
                obj = radio[i];
-               if (obj.checked = true) {
+               if (obj.checked == true) {
                 value1 = obj.value;
                 url = src + "/adminInterface.dx";
                 par = "appsercet="+newAppsercet+"&method=get.dxWeb.dxSetUp&phoneWeb="+value1;

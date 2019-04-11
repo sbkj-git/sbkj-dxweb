@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../css/newPage.css">
 
     <style>
+        .nv{padding:10px;box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.5);}
         .table th, .table td{vertical-align: middle;}
         .isLook,.disnone{display: none;}
         #pic{display: block;width: 100px;height: auto;margin-left: 15%;}
@@ -115,19 +116,19 @@
     <div class="nv91">
         <h4 class="position" style="font-size: 28px">添加合作伙伴<div class="nv91-close">&#10005;</div>
         </h4>
-        <form action="" class="form-horizontal" role="form" style="text-align:center;">
+        <form action="" class="form-horizontal" role="form" style="text-align:center;" >
             <div class="form-group flex" style="width:100%;padding-top: 20px">
                 <label for="name" class="control-label l22"
                 >合作伙伴名称:</label>
                 <div class="position col-sm-4">
-                    <input type="text"  class="form-control companyName " required/>
+                    <input type="text"  class="form-control companyName " />
 
                 </div>
             </div>
             <div class="form-group flex" style="width:100%;">
                 <label for="name" class="control-label l22">合作伙伴类型:</label>
                 <div class="position col-sm-4">
-                    <select class="form-control companyType" required>
+                    <select class="form-control companyType" >
                         <option value="0">--请选择--</option>
                     </select>
                 </div>
@@ -137,7 +138,7 @@
                 <label for="name" class="control-label l22"
                 >合作伙伴链接:</label>
                 <div class="position col-sm-4">
-                    <input type="text"  class="form-control companyUrl" required />
+                    <input type="text"  class="form-control companyUrl" id="url" />
 
                 </div>
             </div>
@@ -147,7 +148,7 @@
                     <input type="file" class="form-control " id="picImg" />
 
                 </div>
-                <div class="position col-sm-12 ">
+                <div class="position col-sm-12 imgremove">
                     <p class="p1">图片预览</p>
 
                     <img src="" alt="" id="pic">
@@ -166,25 +167,18 @@
             </div>
             <div class="form-group flex" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
                 <div class="col-sm-2" style="margin-top: 1%;text-align: right;">
-                    <button class="btn closeBtn">取消</button>
+                    <button type="button" class="btn closeBtn">取消</button>
                 </div>
                 <div class="col-sm-2" style="margin-top: 1%;text-align: left;">
-                    <button class="btn btn-primary addBanner">确定</button>
+                    <button  type="button" class="btn btn-primary addBanner">确定</button>
                 </div>
             </div>
         </form>
     </div>
-    <div class="nv" style="padding:10px;">
+    <div class="nv" >
         <div class="prompt">
             <p style="font-size: 20px;">提示</p>
-            <img src="" alt=""><span>确认删除</span>
-            <div class=" flex " style="justify-content: flex-end;box-sizing: border-box;">
-
-                <button type="button" class="btn btn-primary roleSure">确定</button>
-
-                <button type="button" class="btn  roleRefuse5">取消</button>
-
-            </div>
+            <img src="" alt=""><span style="font-size: 20px;">确认删除</span>
         </div>
 
 
@@ -209,6 +203,9 @@
 
 <script src="../js/ManagerCompany.js"></script>
 <script src="../js/radioAllChoose.js"></script>
+<script src="../js/formValidate.js"></script>
+<script src="../js/formRule.js"></script>
+
 
 
 

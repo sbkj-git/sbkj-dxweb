@@ -185,7 +185,15 @@ $(document).ready(function(){
             var str = "";
             $.each(data.dxWebList, function (i, item) {
                 str += '<tr style="border-bottom: 1px solid #d8d8d8;">';
-                str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.id + '"   aria-label="Single checkbox Two" data-id="' + item.id + '"><label for="' + item.id + '">' + item.title + '</label></div></td><td>"' + item.cate_name + '"</td><td>' + item.author + '</td><td>' + item.browse + '</td>';
+                str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.id + '"   aria-label="Single checkbox Two" data-id="' + item.id + '">';
+                var title;
+                    if(item.title.length > 10){
+                        title = item.title.substring(0,10)+"...";
+                    }else{
+                        title = item.title;
+                    }
+                    str+='<label for="' + item.id + '">' + title + '</label>'
+                str+='</div></td><td>"' + item.cate_name + '"</td><td>' + item.author + '</td><td>' + item.browse + '</td>';
                 if (item.is_ups == 1) {
                     str += "<td>&#10003;</td>";
                 } else {
