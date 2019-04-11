@@ -19,10 +19,10 @@
     <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
 
     <style>
-        .delete2,.edit2,.edits,.addCompany,.addPerson{display: none;}
+        .delete2,.edit2,.edits,.addCompany,.addPerson,.delete1{display: none;}
     </style>
 </head>
-<body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
+<body style="background-color:#fbfbfb;width: inherit;box-sizing: border-box;padding-left: 50px;">
 <div class="brand">
     <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
         <li><a href="#" class="color">设置/</a></li>
@@ -31,41 +31,38 @@
     <h1>基础设置</h1>
 </div>
 
-<div style="height: 300px;margin: 51px 71px;background: #fff">
-<h1 style="padding-left: 30px;font-size:18px;line-height: 100px;border-bottom:1px solid #dddddd;">手机网站</h1>
-<div class="form-group flex" style="padding-left: 30px;margin: 37px 0 0 0;">
+<h1 style="font-size:18px;line-height: 50px;border-bottom:1px solid #dddddd;">手机网站</h1>
+<div class="form-group flex">
     <label for="name" class="control-label col-sm-2" style="line-height: 1.5;">手机网站:</label>
     <div class="radio radio-info radio-inline">
-        <input type="radio" id="st1" value="" name="st1" checked="">
+        <input type="radio" id="st1" value="1" name="st1" checked="" class="st1">
         <label for="st1" style="font-size: 14px;"> 开启 </label>
     </div>
     <div class="radio radio-info radio-inline">
-        <input type="radio" id="st2" value="" name="st1" checked="">
+        <input type="radio" id="st2" value="2" name="st1" class="st1">
         <label for="st2" style="font-size: 14px;"> 关闭 </label>
     </div>
 </div>
-<div class="form-group flex" style="padding-left: 30px;margin: 57px 0 41px 0;">
+<div class="form-group flex">
     <label for="name" class="control-label col-sm-2" style="line-height: 1.5;">手机访问:</label>
     <div class="radio radio-info radio-inline">
-        <input type="radio" id="st3" value="" name="st2" checked="">
-        <label for="st3" style="font-size: 14px;"> 显示手机版 </label>
+        <input type="radio" id="st3" value="1" name="st2" checked="" class="st2">
+        <label for="st3" > 显示手机版 </label>
     </div>
     <div class="radio radio-info radio-inline">
-        <input type="radio" id="st4" value="" name="st2" checked="">
-        <label for="st4" style="font-size: 14px;"> 显示电脑板 </label>
+        <input type="radio" id="st4" value="2" name="st2"  class="st2">
+        <label for="st4" > 显示电脑板 </label>
     </div>
 </div>
-</div>
-
-<div style="margin: 51px 71px 0 71px;background: #fff">
-    <h1 style="font-size:18px;line-height: 100px;border-bottom:1px solid #dddddd;padding-left: 30px;">网站信息</h1>
+<div>
+    <h1 style="font-size:18px;line-height: 50px;border-bottom:1px solid #dddddd;">网站信息</h1>
     <div>
-        <div class="form-group" style="padding-left: 30px;">
+        <div class="form-group">
             <button class="btn btn-primary addCompany saveBtn">添加公司</button>
         </div>
         <table class="table" style="width: 100%;overflow: hidden;">
             <thead>
-            <tr class="active" style="font-size: 18px;background: #f3f3f3;height: 80px">
+            <tr class="active" style="font-size: 18px">
                 <td>公司</td>
                 <td>邮编</td>
                 <td>公司坐标</td>
@@ -77,12 +74,12 @@
 
             </tbody>
         </table>
-        <div class="form-group" style="padding-left: 30px">
+        <div class="form-group">
             <button class="btn btn-primary addPerson saveBtn">添加人员</button>
         </div>
         <table class="table" style="margin-top:10px">
             <thead>
-            <tr class="active" style="font-size: 18px;background: #f3f3f3;height: 80px">
+            <tr class="active" style="font-size: 18px">
                 <td>公司</td>
                 <td>职位</td>
                 <td>姓名</td>
@@ -277,374 +274,5 @@
 <script src="../js/getRequest.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/getRequest.js"></script>
-<script>
-    $(document).ready(function(){
-        // judge(href = "../login1.html");
-        //页面初次加载渲染页面
-
-        var url,par;
-        // Datetime();
-        var appsercet = window.localStorage.getItem("appsercet");
-        appsercet = JSON.parse(appsercet);
-        var newAppsercet = appsercet.data;
-        var id;
-
-
-    })
-    //取消按钮点击事件
-    $(".redux").click(function(){
-        $(".nv93 input").val("");
-        $(".nv91-mask3").hide();
-        $(".nv93").hide();
-        $(".nv91").hide();
-    })
-function change(){
-    var corporateName, corporateWeb,lat,lnt,  address,corporateId,position,username,modilePhone,email;
-        //公司信息
-        corporateName = $(".s1").val();
-        corporateWeb = $(".s2").val();
-        lat =$(".s3").val();
-        lnt = $(".s4").val();
-        address = $(".s6").val();
-        //添加公司人员信息
-        corporateId = $(".s11 option:checked").val();
-        position = $(".s12").val();
-        username = $(".s13").val();
-        modilePhone = $(".s14").val();
-        email = $(".s15").val();
-       
-            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.addCompanyWeb&corporateName=" + corporateName + "&corporateWeb=" + corporateWeb + "&lat=" + lat + "&lnt=" + lnt + "&address=" + address;
-        
-        var  data = getSign(url, par);
-        console.log(data);
-        if(data.msg.code == "10"){
-            alert("添加成功");
-        }else{
-            alert("添加失败");
-        }
-}
-    //处理设置节点下基础设置公司人员添加点击事件触发查询的所有公司信息   
-    function list(data){
-        $(".s11").html("");
-        if (data.dxCompanyWebList.length > 0) {
-            var str = "<option value='0'>--请选择--</option>";
-            $.each(data.dxCompanyWebList, function (i, item) {
-                str += "<option value='" + item.id + "'>" + item.corporate_name + "</option>";
-            })
-            $(".s11").html(str);
-        }
-    }
-    //封装添加公司职工修改公司职工方法
-    function see(method,url){
-        debugger
-        var corporateName, corporateWeb,lat,lnt,  address,corporateId,position,username,modilePhone,email;
-        //公司信息
-        corporateName = $(".s1").val();
-        corporateWeb = $(".s2").val();
-        lat =$(".s3").val();
-        lnt = $(".s4").val();
-        address = $(".s6").val();
-        //添加公司人员信息
-        corporateId = $(".s11 option:checked").val();
-        position = $(".s12").val();
-        username = $(".s13").val();
-        modilePhone = $(".s14").val();
-        email = $(".s15").val();
-        if(corporateId == "" || position == "" || username == "" ||modilePhone == "" || email == ""){
-            alert("请填写所有信息");
-            return;
-        }
-        if(method === "get.dxWeb.updateCompanyStaff"){
-
-            par = "appsercet=" + newAppsercet + "&method=" + method + "&corporateId=" + corporateId + "&position=" + position + "&username=" + username + "&modilePhone=" + modilePhone + "&email=" + email+"&id="+id;
-
-        }else if(method === "get.dxWeb.addCompanyStaff"){
-
-            par = "appsercet=" + newAppsercet + "&method=" + method + "&corporateId=" + corporateId + "&position=" + position + "&username=" + username + "&modilePhone=" + modilePhone + "&email=" + email;
-        }
-
-        var  data = getSign(url, par);
-        console.log(data);
-        if(data.msg.code == "200"){
-            alert("修改成功");
-            $(".nv91-mask3").hide();
-            $(".nv91").hide();
-            $(".nv92").hide();
-            location.reload();
-        }else{
-            alert("修改失败"); 
-        }
-
-    }
-
-    //页面初次渲染加载数据
-    //页面初次加载渲染页面
-    var url,par;
-    // Datetime();
-    var appsercet = window.localStorage.getItem("appsercet");
-    appsercet = JSON.parse(appsercet);
-    var newAppsercet = appsercet.data;
-    var data = window.localStorage.getItem("dxRightsList");
-    data = JSON.parse(data);
-    //console.log(data);
-
-    //判断是否有添加管理员操作权限
-    // return
-    var arr = [];
-    $.each(data,function(i,item){
-        //console.log(item)
-        if(item.id == 9){
-            arr.push(item)
-        }
-    })
-    //console.log(arr[0]);
-
-    $.each(arr[0].dxRightsList,function(i,item){
-        //console.log(arr[0].dxRightsList)
-        if(item.method === "get.dxWeb.basics"){
-            url = src+"/"+item.link_path;
-            par = "appsercet="+newAppsercet+"&method="+item.method;
-            var data = getSign(url,par);
-            console.log(data);
-            var company1 = "";
-            $.each(data.dxbasics.dxcompanywebList, function (i, item) {
-                company1 += "<tr>";
-                company1 += "<td>" + item.corporate_name + "</td><td>" + item.corporate_web + "</td><td>" + item.lat + "," + item.lnt + "</td><td>" + item.ip_addr + "<td style='color:#FF5456;' data-id='" + item.id + "' class='edits'>编辑</td>";
-                company1 += "/<tr >"
-            });
-            $(".company1").append(company1)
-            var company2 = "";
-            $.each(data.dxbasics.dxCompanyStaffList, function (i, item) {
-                company2 += "<tr >";
-                company2 += "<td>" + item.corporate_name + "</td><td>" + item.position + "</td><td>" + item.username + "</td><td>" + item.modile_phone + "</td><td>" + item.email + "<td style='color:#FF5456;'><span data-id='" + item.id + "' class='edit2'>编辑</span><span data-id='" + item.id + "' class='delete2'>删除</span></td>";
-                company2 += "/<tr >";
-            })
-            $(".company2").append(company2);
-            //判断该角色是否有权限操作
-            if(item.dxRightsTwoList.length == 0){
-                return
-            }
-            else{
-                $.each(item.dxRightsTwoList,function(i,obj){
-                    //判断该用户是否有添加管理员权限
-                    if(obj.method === "get.dxWeb.addCompanyWeb"){
-
-                        $(".addCompany").show();
-                        $(".addCompany").click(function () {
-                            $(".nv91-mask3").show();
-                            $(".nv91").show();
-                            // $(".sure11").click(function () {
-
-                            //     see("get.dxWeb.addCompanyWeb", url)
-                            // })
-                            //将添加信息暂时存放在缓存中  用于地图返回渲染
-                            $(".s1").blur(function () {
-                                localStorage.setItem("s1", $(this).val());
-                            })
-                            $(".s2").blur(function () {
-                                localStorage.setItem("s2", $(this).val());
-                            })
-                            $(".s6").blur(function () {
-                                localStorage.setItem("address", $(this).text());
-                            })
-                        })
-                        //点击选择经度纬度后返回原来页面获取之前写入的数据
-
-                        var return1 = localStorage.getItem("return1");
-                        if (return1 == "yes") {
-                            var lnt = localStorage.getItem("lnt");
-                            var lat = localStorage.getItem("lat");
-                            var s1 = localStorage.getItem("s1");
-                            var s2 = localStorage.getItem("s2");
-                            var address = localStorage.getItem("address");
-                            if (lnt && lat) {
-
-                                $(".nv91-mask3").show();
-                                $(".nv91").show();
-                                $(".nv93").hide();
-                                $(".s3").val(lat);
-                                $(".s4").val(lnt);
-                                if (s1) {
-                                    $(".s1").val(s1);
-                                }
-                                if (s2) {
-                                    $(".s2").val(s2);
-                                }
-                                if (address) {
-                                    $(".s6").val(address);
-                                }
-                                localStorage.setItem("s1", "");
-                                localStorage.setItem("s2", "");
-                                localStorage.setItem("address", "");
-                                localStorage.setItem("lnt", "");
-                                localStorage.setItem("lat", "");
-                            }
-                            // $(".sure11").click(function () {
-                            //
-                            //     see("get.dxWeb.addCompanyWeb", url)
-                            // })
-                        }
-                    }
-
-                    //判断是否有编辑权限
-                    if(obj.method === "get.dxWeb.updateCompanyWeb"){
-                        $(".edits").show();
-                        $(".edits").click(function () {
-                            id = $(this).attr("data-id");
-                            $(".nv91-mask3").show();
-                            $(".nv93").show();
-                            $(".nv91").hide();
-                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getCompanyWeb&id=" + id;
-                            var data = getSign(url, par);
-                            
-                            //处理设置节点下基础设置公司信息详情渲染
-                            if (data.msg.code == "200") {
-                                var x = data.dxCompanyWeb
-                                $(".s21").val(x.corporate_name);
-                                $(".s22").val(x.corporate_web);
-                                $(".s23").val(x.lat);
-                                $(".s24").val(x.lnt);
-                                $(".s26").val(x.address);
-
-                            }
-                            $(".sure12").click(function () {
-                            debugger
-                            //公司信息
-                            var corporateName, corporateWeb, lat, lnt, address;
-                            //公司信息
-                            corporateName = $(".s21").val();
-                            corporateWeb = $(".s22").val();
-                            lat = $(".s23").val();
-                            lnt = $(".s24").val();
-                            address = $(".s26").val();
-                           
-
-                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateCompanyWeb&corporateName=" + corporateName + "&corporateWeb=" + corporateWeb + "&lat=" + lat + "&lnt=" + lnt + "&address=" + address+"&id="+id;
-                            console.log(par)
-                            var data  = getSign(url,par);
-                            if(data.msg.code == "200"){
-                                // alert("")
-                                location.reload();
-                            }
-                            
-                        })
-                           
-                        })
-                        //将添加信息暂时存放在缓存中  用于地图返回渲染
-                       
-                        $(".s21").blur(function () {
-                                localStorage.setItem("s21", $(this).val());
-                            })
-                            $(".s22").blur(function () {
-                                localStorage.setItem("s22", $(this).val());
-                            })
-                            $(".s26").blur(function () {
-                                localStorage.setItem("address", $(this).text());
-                            })
-                            var return1 = localStorage.getItem("return1");
-                        if (return1 == "yes") {
-                            var lnt = localStorage.getItem("lnt");
-                            var lat = localStorage.getItem("lat");
-                            var s1 = localStorage.getItem("s21");
-                            var s2 = localStorage.getItem("s22");
-                            var address = localStorage.getItem("address");
-                            if (lnt && lat) {
-
-                                $(".nv91-mask3").show();
-                                $(".nv91").show();
-                                $(".nv93").hide();
-                                $(".s23").val(lat);
-                                $(".s24").val(lnt);
-                                if (s1) {
-                                    $(".s21").val(s1);
-                                }
-                                if (s2) {
-                                    $(".s22").val(s2);
-                                }
-                                if (address) {
-                                    $(".s26").val(address);
-                                }
-                                localStorage.setItem("s21", "");
-                                localStorage.setItem("s22", "");
-                                localStorage.setItem("address", "");
-                                localStorage.setItem("lnt", "");
-                                localStorage.setItem("lat", "");
-                            }
-                            // $(".sure11").click(function () {
-                            //
-                            //     see("get.dxWeb.addCompanyWeb", url)
-                            // })
-                            // $(".sure12").unbind('click').bind("click",function(){ 
-                        
-
-                        }
-                       
-                    }
-                    //判断是否有添加职工权限
-                    if(obj.method === "get.dxWeb.addCompanyStaff"){
-                        $(".addPerson").show();
-                        $(".addPerson").click(function () {
-                            $(".nv91-mask3").show();
-                            $(".nv92").show();
-
-                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.listCompanyWeb";
-                            var data = getSign(url, par);
-                            list(data);
-                            $(".sure2").click(function () {
-                                see("get.dxWeb.addCompanyStaff", url)
-                            })
-                        })
-                    }
-                    //判断是否有编辑员工权限
-                    if (obj.method === "get.dxWeb.updateCompanyStaff") {
-                        $(".edit2").show();
-                        $(".edit2").click(function () {
-                            id = $(this).attr("data-id");
-                            $(".nv91-mask3").show();
-                            $(".nv92").show();
-
-                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.listCompanyWeb";
-                            var data = getSign(url, par);
-                            list(data);
-                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getCompanyStaff&id=" + id;
-                            var data = getSign(url, par);
-                            //处理设置节点下基础设置公司人员详情渲染
-                            if (data.msg.code == "200") {
-                                var y = data.dxCompanyStaff;
-                                var s11 = document.querySelectorAll(".s11 option");
-                                for (var i = 0; i < s11.length; i++) {
-                                    var obj = s11[i];
-                                    console.log(obj.innerHTML)
-                                    if (obj.innerHTML === y.corporate_name) {
-                                        obj.selected = true;
-                                    }
-                                }
-                                $(".s12").val(y.username);
-                                $(".s13").val(y.position);
-                                $(".s14").val(y.modile_phone);
-                                $(".s15").val(y.email);
-                            }
-                            $(".sure2").click(function () {
-                                see("get.dxWeb.updateCompanyStaff", url)
-                            })
-                        })
-
-
-                    }
-                    //判断是否有删除员工权限
-                    if(obj.method === "get.dxWeb.deleteCompanyStaff"){
-                        $(".delete2").show();
-                        $(".delete2").click(function () {
-                            var id = $(this).attr("data-id");
-                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteCompanyStaff&id=" + id;
-
-                            getSign(url, par);
-                            location.reload()
-                        })
-                    }
-                })
-            }
-        }
-    })
-
-</script>
+<script src="../js/setting.js"></script>
+<script src="../js/radioAllChoose.js"></script>

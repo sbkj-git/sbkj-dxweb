@@ -176,7 +176,7 @@ function logsgin(url,par){
                                 $.each(data.roleList,function(i,item){
                                     //console.log(item)
                                     role+="<tr style='border-bottom: 1px solid #d8d8d8;' class='rolename1' data-id='"+item.id+"'>"; 
-                                    role+="<td><div class='checkbox checkbox-primary'><input type='checkbox' class='styled styled-primary' id='role"+i+"'"+"value='"+item.id+"' aria-label='Single checkbox Two'><label for='role"+i+"' class='rolen'>"+item.name+"</label></div></td><td>"+item.admin_num+"</td><td class='stcode' data-id='"+item.status+"'>"+item.status_code+"</td><td style='color:#FF5456;' ><span class='isEdit' data-id='"+item.id+"' >编辑</span>&nbsp;<span class='isDelete' data-id='"+item.id+"'>删除</span></td>";
+                                    role+="<td><div class='checkbox checkbox-primary'><input type='checkbox' class='styled styled-primary t1' id='role"+i+"'"+"value='"+item.id+"' aria-label='Single checkbox Two'><label for='role"+i+"' class='rolen'>"+item.name+"</label></div></td><td>"+item.admin_num+"</td><td class='stcode' data-id='"+item.status+"'>"+item.status_code+"</td><td style='color:#FF5456;' ><span class='isEdit' data-id='"+item.id+"' >编辑</span>&nbsp;<span class='isDelete' data-id='"+item.id+"'>删除</span></td>";
                                     role+="</tr>";
                                                         
                             })
@@ -187,7 +187,7 @@ function logsgin(url,par){
                                 $.each(data.roleList,function(i,item){                                  
                                     //console.log(item)
                                     role2+="<tr style='border-bottom: 1px solid #d8d8d8;' class='rolename1' data-id='"+item.user_id+"'>"; 
-                                    role2+="<td><div class='checkbox checkbox-primary'><input type='checkbox' class='styled styled-primary r1' id='role"+i+"'"+"value='"+item.user_id+"' aria-label='Single checkbox Two'><label for='role"+i+"' class='test'>"+item.user_id+"</label></div></td><td class='r2'>"+item.role_name+"</td><td class='r3'>"+item.true_name+"</td><td class='r4'>"+item.modile_phone+"</td>";
+                                    role2+="<td><div class='checkbox checkbox-primary'><input type='checkbox' class='styled styled-primary r1 t1' id='role"+i+"'"+"value='"+item.user_id+"' aria-label='Single checkbox Two'><label for='role"+i+"' class='test'>"+item.user_id+"</label></div></td><td class='r2'>"+item.role_name+"</td><td class='r3'>"+item.true_name+"</td><td class='r4'>"+item.modile_phone+"</td>";
                                     if(item.status == 1){
                                         role2+="<td class='r5' data-id='1'>启用</td>";
                                     }

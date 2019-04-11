@@ -6,7 +6,15 @@ function changeState(el) {
 $(".nv91-close").click(function(){
     $(".nv91-mask").fadeOut();
     $(".nv91").hide();
+   $(".cateName").val("");
+   $(".cateName1").val(""); 
 });
+$(".refud").click(function(){
+    $(".nv91-mask").fadeOut();
+    $(".nv91").hide();
+    $(".cateName").val(""); 
+    $(".cateName1").val(""); 
+})
 //弹框内选项卡事件
 var radio = document.querySelectorAll(".status");
 $(".status").click(function(){

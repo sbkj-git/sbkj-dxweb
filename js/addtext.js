@@ -8,14 +8,14 @@ $(document).ready(function() {
 
 // });
     //作业开始时间失去焦点验证
-// $('#date').blur(function(){
-// 	var ret = contrastTime("date");//获取返回值
-// 	if(ret == 0){
-// 		alert("请选择正确的时间。");
-// 		$(this).val('');
-// 		return;
-// 	}
-// })
+$('#date').blur(function(){
+	var ret = contrastTime("date");//获取返回值
+	if(ret == 0){
+		alert("请选择正确的时间。");
+		$(this).val('');
+		return;
+	}
+})
     //切换自定义还是和正文头图一致
     var add1 = document.querySelectorAll(".add1");
     var value
@@ -39,42 +39,6 @@ $(document).ready(function() {
                 
             } 
            
-        })
-        $(".wauto").click(function(){
-            $(".nv91-mask").hide();
-            $(".nv92").hide();
-            $(".nv91").hide();
-            $("#upload2").click();
-            
-        })
-        var  webImg1,webImg2;
-        $("#upload2").change(function(){
-            var type = localStorage.getItem("type1");
-            var files = document.getElementById("upload2")
-            var add1 = document.querySelectorAll(".add1");
-            for (var i = 0; i < add1.length; i++) {
-              if(type == 1){
-                webImg1 = $("#upload2")[0].files[0];
-              }else{
-                webImg2 = $("#upload2")[0].files[0];
-              }
-              var obj = add1[0];
-              if (obj.checked == true) {
-                  $(".imgcov").show();
-                  $(".custom").eq(0).show();
-                  imgPreview(files,"reviewImg1");
-                  imgPreview(files,"reviewImg2");
-                  $(".reviewImg1").attr("data-id","");
-                  $(".reviewImg2").attr("data-id","");
-                  
-              } else {
-                $(".imgcov2").show();
-                $(".custom").eq(1).show();
-                imgPreview(files,"reviewImg3");
-                $(".reviewImg3").attr("data-id","");
-               
-              }
-          }
         })
       //点击删除图片
       var delete1,delete2;
@@ -121,7 +85,6 @@ $(document).ready(function() {
     var urlSrc1,urlId1
     // $(document).on("click",".addPhone",function(e){
         $(".addPhone").click(function(){
-            localStorage.setItem("type1",1);
         $(".nv91-mask").show();
        $(".nv91").show();
        $(".nv92").hide();
@@ -132,7 +95,7 @@ $(document).ready(function() {
     })
     var urlSrc,urlId
     $(document).on("click",".addPhone2",function(e){
-        localStorage.setItem("type1",2);
+        
     // $(".addPhone2").on("click",function(e){
         $(".nv91-mask").show();
        $(".nv92").show();
@@ -252,7 +215,8 @@ var url = src + url1;
           authorAbstract = $.trim($(".authorAbstract").val());
           detailsKeyWord = $.trim($(".detailsKeyWord").val());
           detailsDescribe = $.trim($(".detailsDescribe").val());
-        
+          imgId = $(".reviewImg1").attr("data-id");
+          imgId1 = $(".reviewImg3").attr("data-id");
           var add1 = document.querySelectorAll(".add1");
         //   if($(".add1").eq(0))
           cateId = $(".changeSelect option:checked").attr("data-id");
@@ -308,13 +272,11 @@ var url = src + url1;
           if(imgId == "undefined" || imgId == "" || imgId == null){
 
           }else{
-            imgId = $(".reviewImg1").attr("data-id");
             formData.append('imgId', imgId || "");  //正文头图
           }
           if(imgId1 == "undefined" || imgId1 == "" || imgId1 == null){
 
             }else{
-                imgId1 = $(".reviewImg3").attr("data-id");
                 formData.append('imgId1', imgId1 || "");  //缩略图  
             }
             if(delete1 == "undefined" || delete1 == "" || delete1 == null){
@@ -327,16 +289,7 @@ var url = src + url1;
               }else{
                 formData.append('delete2', delete2);  //是否删除自定义缩略图  
               }    
-          if(webImg1 == "" || webImg1 == null || webImg1 == "undefined"){
-              
-          }else{
-            formData.append('webImg1', webImg1);  //是否删除正文头图
-          }
-        if(webImg2 == "" || webImg2 == null || webImg2 == "undefined"){
-                
-        }else{
-            formData.append('webImg2', webImg2);  //是否删除正文头图
-        }
+         
           
           if(id == "" || id == null){
               
@@ -498,9 +451,7 @@ var url = src + url1;
 }else if(method === "get.dxWeb.addWebOperation" ){
    var id = "";
    $(".addMessage").click(function () {
-        var p1 =  $("").val();
-        var p1 =  $("").val();
-        var p1 =  $("").val();
+    
        updateMessage(method,id,url1);
        location.href = "./ManagerText.html"
    })

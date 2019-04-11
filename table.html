@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        input[type=checkbox] {
+            -ms-transform: scale(1.5); /* IE */
+            -moz-transform: scale(1.5); /* FireFox */
+            -webkit-transform: scale(1.5); /* Safari and Chrome */
+            -o-transform: scale(1.5); /* Opera */
+        }
+
+        tr{
+            height: 30px;
+        }
+
+        td{
+            width: 100px;
+        }
+
+        td span{
+            line-height: 30px;
+        }
+    </style>
+</head>
+<div id="tableShow">
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script>
+    // var arr = [1,2,3,4];
+    var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+    var tableShow = $("#tableShow");
+    if (arr.length <= 0) {
+
+    } else {
+        if (arr.length < 5) {
+            var str;
+            str = "<table><tr>";
+            for (var i = 0; i < arr.length; i++) {
+                str += "<td><input type=\"checkbox\"><span>" + arr[i] + "</span></td>";
+            }
+            str += "</tr></table>";
+            console.info(str);
+            tableShow.html(str);
+            console.info(tableShow.html())
+        } else {
+            var str = "<table>";
+            var arrLen = arr.length / 5 + "";
+            if (arrLen.indexOf(".") > 0) {
+                arrLen = arrLen.substring(0, arrLen.indexOf("."));
+                arrLen = parseInt(arrLen) + 1;
+            }
+            for (var j = 0; j < arrLen; j++) {
+                str += "<tr>";
+                for (var i = 0; i < 5; i++) {
+                    if ((j*5 + i) >= arr.length) {
+                    } else {
+                        str += "<td><input type=\"checkbox\"><span>" + arr[i+j*5] + "</span></td>";
+                    }
+                }
+                str += "</tr>";
+            }
+            str+="</table>";
+            console.info(str);
+            tableShow.html(str);
+            console.info(tableShow.html())
+        }
+    }
+</script>
+</body>
+</html>
