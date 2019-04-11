@@ -7,6 +7,14 @@ $(document).ready(function() {
 //     //回调函数
 
 // });
+
+    //初始化日期选择控件
+    $(".form_datetime").datetimepicker({
+        format: 'yyyy-mm-dd hh:ii:ss',
+        language: 'zh-CN',
+        autoclose: true,
+    });
+
     //作业开始时间失去焦点验证
 $('#date').blur(function(){
 	var ret = contrastTime("date");//获取返回值
