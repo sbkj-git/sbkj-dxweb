@@ -3,6 +3,9 @@ $(document).ready(function(){
         if (el.readOnly) el.checked=el.readOnly=false;
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
+    var appsercet = window.localStorage.getItem("appsercet");
+    appsercet = JSON.parse(appsercet);
+    var newAppsercet = appsercet.data;
     //刚进入判断是那一部分显示
     var  type = localStorage.getItem("nowType1");
     if(type == "" || type == null || type == "undefined" || type == 1){
@@ -18,17 +21,45 @@ $(document).ready(function(){
     }
     $(".lian").click(function(){
         localStorage.setItem("nowType1",1);
+        $(".choose1").hide().eq(0).show();
+        $(".lian").addClass("chooseActive");
+        $(".lookType").removeClass("chooseActive"); 
     })
-        $(".lookType").click(function(){
-            localStorage.setItem("nowType1",2);
-            debugger
-             //查看投诉和反馈验证码设置详情
-             var validate = document.querySelectorAll(".validate");//获取所有的input标签对象 
-             var url = src + "/adminInterface.dx";
+    // input标签对象 
+             var url1 = src + "/adminInterface.dx";
              par = "appsercet="+newAppsercet+"&method=get.dxWeb.querysetup&type=6";
              debugger
-             var data = getSign(url,par); 
+             var data = getSign(url1,par); 
              console.log(data);
+             var da = localStorage.getItem("nowType1");
+            if(da == 2 ){
+                var validate = document.querySelectorAll(".validate");//获取所有的
+                for(var i = 0 ;i<validate.length;i++){
+                    var obj = validate[i];
+                    if(obj.value == data.msg.validate){
+                        obj.checked = true;
+                    }
+                }   
+            }else{
+                localStorage.setItem("show2",data.msg.validate);   
+            }
+        $(".lookType").click(function(){
+            localStorage.setItem("nowType1",2);
+            $(".choose1").hide().eq(1).show();
+            $(".lookType").addClass("chooseActive");
+            $(".lian").removeClass("chooseActive");
+            var show = localStorage.getItem("show2");
+            var validate = document.querySelectorAll(".validate");//获取所有的
+            for(var i = 0 ;i<validate.length;i++){
+                var obj = validate[i];
+                if(obj.value == show){
+                    obj.checked = true;
+                }
+            }   
+           
+            debugger
+             //查看投诉和反馈验证码设置详情
+             var validate = document.querySelectorAll(".validate");//获取所有的
              for(var i = 0 ;i<validate.length;i++){
                  var obj = validate[i];
                  if(obj.value == data.msg.validate){

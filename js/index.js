@@ -1,5 +1,16 @@
 $(document).ready(function(){
-       
+       //进入页面判断是否有设置权限如果没有设置权限右上角权限不显示
+       var data = localStorage.getItem("dxRightsList");
+      data = JSON.parse(data);
+      var arr = [];
+        $.each(data,function(i,item){
+            //console.log(item)
+            if(item.id == 9){
+                $(".selectDown .p3").show();
+            }else{
+                $(".selectDown .p3").show(); 
+            }
+        })
         //个人信息四个节点跳转
         $(".p1").click(function () {
             $("#iframe").attr("src", "./UpdatePerson.html");
