@@ -7,7 +7,7 @@
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    padding-left: 5px
+    padding-left: 10px
 }
 
 .checkbox label::before {
@@ -176,14 +176,14 @@
 }
 
 .radio {
-    padding-left: 20px
+    padding-left: 17px
 }
 
 .radio label {
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    padding-left: 5px
+    padding-left: 10px
 }
 
 .radio label::before {

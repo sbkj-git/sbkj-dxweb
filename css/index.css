@@ -1000,5 +1000,7 @@ ul {
     width: 100%;
     height: 100%;
 }
-
+.paging{
+    padding:20px;
+}
 /* e 资源库下添加水印 */
