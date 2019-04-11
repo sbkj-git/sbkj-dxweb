@@ -193,9 +193,14 @@ var url = src + url1;
         })
 
         $(".addMessage").click(function () {
-            formvalidar(method,id,url1);
-           
-           
+            debugger
+            var data = formvalidar(method);
+            console.log(data);
+           if(data){
+            updateMessage(method,id,url1);
+           }else{
+               return;
+           }
         })
     }
       
@@ -457,7 +462,13 @@ var url = src + url1;
    var id = "";
    $(".addMessage").click(function () {
     debugger
-    formvalidar(method,id,url1);
+       var data = formvalidar(method);
+       console.log(data);
+       if (data) {
+           updateMessage(method, id, url1);
+       } else {
+           return;
+       }
    })
 }else if(method === "get.dxWeb.addHelp"){
    $(".changeFlex").removeClass("column");
@@ -473,7 +484,13 @@ var url = src + url1;
   
    $(".addMessage").click(function () {
     
-    formvalidar(method,id,url1);
+       var data = formvalidar(method);
+       console.log(data);
+       if (data) {
+           updateMessage(method, id, url1);
+       } else {
+           return;
+       }
    })
 }
 else if(method === "get.dxWeb.addSkill"){
@@ -488,8 +505,14 @@ else if(method === "get.dxWeb.addSkill"){
    console.log(data);
    type(data);
    $(".addMessage").click(function () {
-        formvalidar(method,id,url1)
-     
+    var data = formvalidar(method);
+    console.log(data);
+   if(data){
+    updateMessage(method,id,url1);
+   }else{
+       return;
+   }
+
    })
 }
   //渲染分类下拉框
@@ -513,7 +536,7 @@ else if(method === "get.dxWeb.addSkill"){
            $(".changeSelectTwo").html("");
             if (data.dxWebList.length > 0) {
                 var str = "";
-                str+="<option value='0' >请选择</option>";
+                str+="<option value='0' data-id = '0' selected>请选择</option>";
                 $.each(data.dxWebList, function (i, obj) {
                     str += "<option data-id='" + obj.cate_id + "'>" + obj.cate_name + "</option>"
                 })
@@ -523,11 +546,9 @@ else if(method === "get.dxWeb.addSkill"){
 
     }  
     //封装校验表单方法
-    function formvalidar(method,id,url1){
+    function formvalidar(method){
         debugger
-      
-			
-			
+        var success = true;
         var ret = /^\d{4}[-]([0][1-9]|(1[0-2]))[-]([1-9]|([012]\d)|(3[01]))([ \t\n\x0B\f\r])(([0-1]{1}[0-9]{1})|([2]{1}[0-4]{1}))([:])(([0-5]{1}[0-9]{1}|[6]{1}[0]{1}))([:])((([0-5]{1}[0-9]{1}|[6]{1}[0]{1})))$/;
             if($(".title").val() == ""){
                 $(".prompt span").text("请填写文章标题");
@@ -537,6 +558,7 @@ else if(method === "get.dxWeb.addSkill"){
                     $(".nv91-mask").hide();
                     $(".nv").hide();
                 },1000);
+                success = false;
                 return;
             }
             else if($(".releaseTime").val() == ""){
@@ -547,6 +569,7 @@ else if(method === "get.dxWeb.addSkill"){
                     $(".nv91-mask").hide();
                     $(".nv").hide();
                 },1000);
+                success = false;
                 return;
             }
             else if(!ret.test($(".releaseTime").val())){
@@ -557,7 +580,8 @@ else if(method === "get.dxWeb.addSkill"){
                     $(".nv91-mask").hide();
                     $(".nv").hide();
                 },1000);
-                return; 
+                success = false;
+                return;
             }
             else if($(".author").val() == ""){
                 $(".prompt span").text("请填写发布作者");
@@ -567,9 +591,8 @@ else if(method === "get.dxWeb.addSkill"){
                     $(".nv91-mask").hide();
                     $(".nv").hide();
                 },1000);
+                success = false;
                 return;
-            }else{
-                updateMessage(method,id,url1); 
             }
             if(method === "get.dxWeb.updateSkill" || method === "get.dxWeb.addSkill"){
                 if($(".changeSelect option:checked").attr("data-id") == 0){
@@ -580,26 +603,38 @@ else if(method === "get.dxWeb.addSkill"){
                         $(".nv91-mask").hide();
                         $(".nv").hide();
                     },1000);
+                    success = false;
                     return;
-                  
+
                 }
-               
+
             }
             if(method === "get.dxWeb.addQAndA" || method === "get.dxWeb.updateQAndA"){
-                if($(".changeSelect option:checked").attr("data-id") == 0 || $(".changeSelectTwo option:checked").attr("data-id") == 0){
-                    $(".prompt span").text("请先创建文章分类,如果没有请先创建分类");
+                if($(".changeSelect option:checked").attr("data-id") == 0){
+                    $(".prompt span").text("请选择文章分类");
                     $(".nv91-mask").show();
                     $(".nv").show();
                     setTimeout(function(){
                         $(".nv91-mask").hide();
                         $(".nv").hide();
                     },1000);
+                    success = false;
                     return;
-                  
+
+                }else if( $(".changeSelectTwo option:checked").attr("data-id") == 0){
+                    $(".prompt span").text("请选择问题分类");
+                    $(".nv91-mask").show();
+                    $(".nv").show();
+                    setTimeout(function(){
+                        $(".nv91-mask").hide();
+                        $(".nv").hide();
+                    },1000);
+                    success = false;
+                    return;
                 }
             }
-        
-        
-       
+
+
+       return success;
     }
-}); 
+});

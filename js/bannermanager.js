@@ -363,7 +363,6 @@ $(document).ready(function(){
                                     })
                                     $(".toDown").unbind('click').bind("click",function(){ 
                                   
-                                        
                                         var id = $(this).attr("data-id");
                                         par = "appsercet=" + newAppsercet + "&method=get.dxWeb.topBanner&id=" + id+"&type=2";
                                         var statu = getSign(url, par);

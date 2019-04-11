@@ -123,7 +123,7 @@ input::-webkit-input-speech-button {
 .w50{width: 50%;}
 /*.isEdit{display: none;}*/
 /*.isDelete{display: none;}*/
-.nv{width: 525px;height:167px;left: 0;right:0;top:0;bottom: 0;margin:auto;border:1px solid #EBEBEB;background-color: #fff;position: absolute;display: none;z-index: 9999;border-radius: 10px;}
+.nv,.nv1{width: 525px;height:167px;left: 0;right:0;top:0;bottom: 0;margin:auto;border:1px solid #EBEBEB;background-color: #fff;position: absolute;display: none;z-index: 9999;border-radius: 10px;}
 .nv91-close,.nv92-close{font-size: 24px;position: absolute;right: 5px;top: 0;bottom:0;margin:auto;color:#999999;}
 .w100{width: 100%;}
 .w100_{width: 100px;}
@@ -177,9 +177,17 @@ input::-webkit-input-speech-button {
         }
         /* //去除滚动条  */
  body::-webkit-scrollbar{display: none;}
- body::-o-scrollbar{display: none;}
+ body::-o-scrollbar{display: none!important;-moz-appearance:none !important; }
  body::-ms-scrollbar{display: none;}
  body::-moz-scrollbar{display: none;}
+ /* body::-o-scrollbar{
+    -moz-appearance: none !important;   
+    background: rgba(0,255,0,0) !important;  
+}
+iframe::-o-scrollbar{
+    -moz-appearance: none !important;   
+    background: rgba(0,255,0,0) !important;  
+} */
  /* 超出部分省略号隐藏 */
  /*.textList tr td:nth-child(1) div label{overflow: hidden;text-overflow:ellipsis;white-space: nowrap;max-width: 50%;}*/
 /* input[type='radio'],input[type='checkbox']{outline: none;border: none;} */

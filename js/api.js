@@ -11,7 +11,7 @@ var yzm = "http://47.105.116.237:8001/dongxin-network-admin/atohCode.dx"
 //中台接口
 // var zt = "http://10.18.3.11:28080/acc/getUser"
 // var zt = "http://localhosts:28080/"
-var zt = "http://10.18.3.11:28080/"
+var zt = "http://10.18.3.11:28080/middle/"
 
 // http://10.18.3.11:28080/userInfo/getCompanyAuthInfo
 // http://10.18.3.11:28080/operationSupport/getCompanyAuthInfo

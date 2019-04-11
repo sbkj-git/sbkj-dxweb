@@ -285,20 +285,41 @@
                         if(obj.method === "get.dxWeb.deleteHelp"){
                             $(".Delete").show();
                             $(".isDelete").show();
-                            $(".deleteText").click(function(){
-                                deleteText();
+                            $(".Delete").click(function(){
+                                $(".nv91-mask").show();
+                                $(".nv").show();
+                                $(".needShow").show();
+                                $(".roleSure").click(function(){
+                                    deleteText();
+                                })
+                                $(".roleRefuse").click(function(){
+                                    $(".nv91-mask").show();
+                                    $(".nv").show(); 
+                                })
+                                
                             })
+                           
                             $(".isDelete").click(function () {
-                                var id = $(this).attr("data-id");
-
-                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteHelp&IdList=" + id;
-                                var data = getSign(url, par);
-                                console.log(data)
-                                if (data.msg.code == "200") {
-                                    // alert("删除成功");
-                                    location.reload();
-                                }
+                                $(".nv91-mask").show();
+                                $(".nv").show();
+                                var IdList = $(this).attr("data-id");
+                                $(".roleSure").click(function(){
+                                    
+                                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteHelp&IdList=" + id;
+                                    var data = getSign(url, par);
+                                    console.log(data)
+                                    if (data.msg.code == "200") {
+                                        // alert("删除成功");
+                                        location.reload();
+                                    }
+                                })
+                                $(".roleRefuse").click(function(){
+                                    $(".nv91-mask").show();
+                                    $(".nv").show(); 
+                                })
+                                
                             })
+
                         }    
                           //判断是否有编辑员工权限
                           if (obj.method === "get.dxWeb.updateHelp") {

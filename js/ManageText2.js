@@ -88,7 +88,7 @@ $(document).ready(function(){
                     var index = $(this).index();
                     
                     var id = $(this).attr("data-id");
-                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateWebOperation&isUp=1&id="+id;
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateWebOperation&isUp=1&articleId="+id;
                     var statu = getSign(url, par);
 
                     if (statu.msg.code == "200") {
@@ -102,7 +102,7 @@ $(document).ready(function(){
                 
                     
                     var id = $(this).attr("data-id");
-                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateWebOperation&isUp=2&id="+id;
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateWebOperation&isUp=2&articleId="+id;
                     
                     var statu = getSign(url, par);
                     if (statu.msg.code == "200") {
@@ -236,6 +236,7 @@ $(document).ready(function(){
                             $(".Delete").click(function(){
                                 $(".nv91-mask").show();
                                 $(".nv").show();
+                                $(".needShow").show();
                                 $(".roleSure").click(function(){
                                     deleteText();
                                 })
@@ -256,7 +257,17 @@ $(document).ready(function(){
     
                                     var data = getSign(url, par);
                                     if (data.msg.code == "200") {
-                                        location.reload();
+                                        $(".nv").hide();
+                                        $(".prompt span").text("删除成功");  
+                                        $(".nv1").show();
+                                        setTimeout(function(){
+                                            $(".nv91-mask").hide();
+                                            $(".nv1").hide();
+                                            par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList&currentPage=" + currentPage; 
+                                            var data2 = getSign(url, par);
+                                            bannerList1(data2);
+                                            pageJudge(data2);
+                                        },2000);
                                     }
                                 })
                                 $(".roleRefuse").click(function(){
