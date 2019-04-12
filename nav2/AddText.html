@@ -160,7 +160,7 @@
                 <div class="form-group flex w100">
                     <label for="name" class="control-label w160lh22">浏览数:</label>
                     <div class="col-sm-4">
-                        <input type="number" class="resn btn upBrowse w100_" 1000 />
+                        <input type="text" class="resn btn upBrowse w100_" 1000 onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" />
                         <span class="ml10"><i class="resetNum">【重置】</i></span>
                     </div>
                 </div>
@@ -263,7 +263,7 @@
                     </div>
                     <p class="returnBack">&larr;<span class="f14">返回上一级</span></p>
                     <div class="flex" style="width: 100%">
-                        <div class="imgBox1 flex">
+                        <div class="imgBox2 flex">
 
                         </div>
 

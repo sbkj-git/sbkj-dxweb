@@ -112,15 +112,20 @@ $(document).ready(function () {
                 var str1 = "";
                 var str = "";
                 var str2 = "";
+                var str3 = "";
+                var str4 = "";
                 if (list.dxFolderList && list.dxFolderList.length > 0) {
 
                     $.each(list.dxFolderList, function (i, obj) {
-                        str1 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p><img src="../image/close12.png" alt="" style="width: 20px;height:20px;" class="close12"></div>'
+                        str1 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p><img src="../image/close12.png" alt="" style="width: 20px;height:20px;" class="close12"></div>';
+                        str3 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p></div>'
                     })
                     $(".imgBox1").append(str1);
-                    $(".imgBox3").append(str1)
+                    $(".imgBox2").append(str3);
+                    $(".imgBox3").append(str3)
                 } else {
                     $(".imgBox1").html("");
+                    $(".imgBox2").html("");
                     $(".imgBox3").html("")
                 }
                 if (list.dximgList && list.dximgList.length > 0) {
@@ -128,9 +133,12 @@ $(document).ready(function () {
                     $.each(list.dximgList, function (i, obj) {
                         str += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover" ><div class="imgHover2"  data-id="' + obj.id + '"><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" style="width:80px;height:80px" class="imgHover1"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99;display:block" class="close12" data-id="' + obj.id + '"/></div>';
                         //添加那块逻辑处理补充
-                        str2 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover1" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99;display:block" class="close12" data-id="' + obj.id + '"/></div>'
+                        str2 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover1" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/></div>'
+
+                        str4 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/></div>'
                     })
                     $(".imgBox1").append(str);
+                    $(".imgBox2").append(str4);
                     $(".imgBox3").append(str2);
 
                     if ($(".imgBox2").html() == "") {

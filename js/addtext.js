@@ -132,7 +132,7 @@ var method = localStorage.getItem("method");
    var articleDetail,title,releaseTime,source,author,authorAbstract,recommended,upBrowse,browserTitle,detailsKeyWord,detailsDescribe,imgId,isUp,imgId1
    //重置浏览数
    $(".resetNum").click(function(){
-       $(".upBrowse").val("0");
+       $(".upBrowse").val("");
    })
    var data = sign(method);
    var sign1 = data.parameter;

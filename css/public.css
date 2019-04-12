@@ -192,3 +192,4 @@ iframe::-o-scrollbar{
  /*.textList tr td:nth-child(1) div label{overflow: hidden;text-overflow:ellipsis;white-space: nowrap;max-width: 50%;}*/
 /* input[type='radio'],input[type='checkbox']{outline: none;border: none;} */
 /* input[type='radio'],input[type='checkbox']{outline: none;border: none;} */
+.imgHover2{width: 80px;height: 80px;overflow: hidden;}
