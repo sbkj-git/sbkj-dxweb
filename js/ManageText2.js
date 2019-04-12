@@ -34,7 +34,7 @@ $(document).ready(function(){
     $(".roleRefuse5").click(function(){
         
         $(".nv91-mask").hide();
-        $(".nv").hide();
+        $(".confirm").hide();
     })
     $(".nv91-close").click(function(){
         
@@ -235,21 +235,21 @@ $(document).ready(function(){
                             $(".isDelete").show();
                             $(".Delete").click(function(){
                                 $(".nv91-mask").show();
-                                $(".nv").show();
+                                $(".confirm").show();
                                 $(".needShow").show();
                                 $(".roleSure").click(function(){
                                     deleteText();
                                 })
                                 $(".roleRefuse").click(function(){
                                     $(".nv91-mask").show();
-                                    $(".nv").show(); 
+                                    $(".confirm").show(); 
                                 })
                                 
                             })
                            
                             $(".isDelete").click(function () {
                                 $(".nv91-mask").show();
-                                $(".nv").show();
+                                $(".confirm").show();
                                 var IdList = $(this).attr("data-id");
                                 $(".roleSure").click(function(){
                                     
@@ -257,7 +257,7 @@ $(document).ready(function(){
     
                                     var data = getSign(url, par);
                                     if (data.msg.code == "200") {
-                                        $(".nv").hide();
+                                        $(".confirm").hide();
                                         $(".prompt span").text("删除成功");  
                                         $(".nv1").show();
                                         setTimeout(function(){
@@ -272,7 +272,7 @@ $(document).ready(function(){
                                 })
                                 $(".roleRefuse").click(function(){
                                     $(".nv91-mask").show();
-                                    $(".nv").show(); 
+                                    $(".confirm").show(); 
                                 })
                                 
                             })

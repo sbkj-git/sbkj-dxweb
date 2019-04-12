@@ -72,26 +72,21 @@
             </tbody>
         </table>
         <div class="nv91-mask">
-            <div class="nv" style="padding:10px;">
-                <div class="prompt">
-                    <p style="font-size: 20px;">提示</p>
-                    <img src="" alt=""><span>确认删除</span>
-                    <div class="flex needShow" >
-                        <button type="button" class="btn btn-primary roleSure">确定</button>
-                        <button type="button" class="btn  roleRefuse5">取消</button>
-
-                    </div>
+           <!--确认 取消-->
+        <div class="confirm">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete">确定要删除这条消息吗?</span>
                 </div>
+                <div class="dele">
+                <button class="roleRefu  roleRefuse5">取消</button>
+                <button class="roleSur roleSure">确定</button>
             </div>
-            <div class="nv1" style="padding:10px;z-index: 999;">
-                    <div class="prompt">
-                        <p style="font-size: 20px;">提示</p>
-                        <img src="" alt=""><span>删除成功</span>
-                        
-                    </div>
-    
-    
-                </div>
+        </div>
+        <div class="nv1">
+            <img src="../image/succes.png" class="success1"/>
+            <span class="referMes">删除成功</span>
+        </div>
         </div>
         <div class="paging flex " style="width:100%;justify-content: flex-end;" >
             <div id="pagination" class="pagination"></div>

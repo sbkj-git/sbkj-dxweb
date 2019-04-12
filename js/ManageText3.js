@@ -287,35 +287,29 @@
                             $(".isDelete").show();
                             $(".Delete").click(function(){
                                 $(".nv91-mask").show();
-                                $(".nv").show();
+                                $(".confirm").show();
                                 $(".needShow").show();
                                 $(".roleSure").click(function(){
                                     deleteText();
                                 })
-                                $(".roleRefuse").click(function(){
-                                    $(".nv91-mask").show();
-                                    $(".nv").show(); 
+                                $(".roleRefuse5").click(function(){
+                                    $(".nv91-mask").hide();
+                                    $(".confirm").hide(); 
                                 })
                                 
                             })
                            
                             $(".isDelete").click(function () {
                                 $(".nv91-mask").show();
-                                $(".nv").show();
+                                $(".confirm").show();
                                 var IdList = $(this).attr("data-id");
                                 $(".roleSure").click(function(){
-                                    
-                                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteHelp&IdList=" + id;
-                                    var data = getSign(url, par);
-                                    console.log(data)
-                                    if (data.msg.code == "200") {
-                                        // alert("删除成功");
-                                        location.reload();
-                                    }
+                                    deleteText1(IdList);
+                                   
                                 })
-                                $(".roleRefuse").click(function(){
-                                    $(".nv91-mask").show();
-                                    $(".nv").show(); 
+                                $(".roleRefuse5").click(function(){
+                                    $(".nv91-mask").hide();
+                                    $(".confirm").hide(); 
                                 })
                                 
                             })
@@ -343,6 +337,26 @@
         })
     }
     //删除函数封装
+    function deleteText1(IdList){
+        var appsercet = window.localStorage.getItem("appsercet");
+        appsercet = JSON.parse(appsercet);
+        var newAppsercet = appsercet.data;
+        var currentPage = localStorage.getItem("pageNow1");
+        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteHelp&IdList=" + IdList;
+        // var currentPage   = window.localStorage.getItem("pageNow1")
+        var data = getSign(url, par);
+        if (data.msg.code == "200") {
+            $(".confirm").hide();
+            $(".prompt span").text("删除成功");  
+            $(".nv1").show();
+            setTimeout(function(){
+                $(".nv91-mask").hide();
+                $(".nv1").hide();
+                location.reload();
+            },2000);
+           
+        }
+    }
     function deleteText() {
          var appsercet = window.localStorage.getItem("appsercet");
         appsercet = JSON.parse(appsercet);

@@ -5,8 +5,13 @@
     <title>提示框</title>
     <style>
         .confirm {
-            margin: 15% auto;
-            border: 1px solid red;
+           position: absolute;
+           left: 0;
+           top: 0;
+           right: 0;
+           bottom: 0;
+           margin:auto;
+            /* border: 1px solid red; */
             width: 420px;
             height: 220px;
             background-color: #ffffff;
@@ -15,20 +20,29 @@
         button {
             outline: none;
         }
+        .boxTotal{height: 120px;width: 100%;}
+        .boxImg{position: absolute;margin-top: 42px;margin-left: 60px}
+        .boxDelete{display: inline-block; margin-left: 105px;margin-top: 50px;}
+        .roleRefu{width: 60px;height: 40px;border:1px solid #8d8d8d; background-color: #fff;color: #0f0f0f;border-radius: 10%}
+        .roleSur{width: 60px;height: 40px; margin-left: 20px;border:1px solid #ff7706; background-color: #ff7706;color: #fff;border-radius: 10%;}
+        .dele{height: 40px;width: 100%;display: flex;justify-content:flex-end; margin-top:15px;}
+        .nv1{height: 130px;width: 250px;position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin:auto;background-color: #ffffff;}
+           .success1{position: absolute;margin-top: 47px;margin-left: 60px}
+           .referMes{display: inline-block; margin-left: 105px;margin-top: 50px;color: red;}
     </style>
 </head>
 <body>
 <!--确认 取消-->
-<div class="confirm">
-<div style="height: 120px;width: 100%;">
-<img src="image/hint.png" style="position: absolute;margin-top: 42px;margin-left: 60px"/>
-<span style="display: inline-block; margin-left: 105px;margin-top: 50px;">确定要删除这条消息吗?</span>
-</div>
-<div style="height: 40px;width: 150px;margin-left: 230px; margin-top:15px;">
-<button style="width: 60px;height: 40px;border:1px solid #8d8d8d; background-color: #fff;color: #0f0f0f;border-radius: 10%">取消</button>
-<button style="width: 60px;height: 40px; margin-left: 20px;border:1px solid #ff7706; background-color: #ff7706;color: #fff;border-radius: 10%;">确定</button>
-</div>
-</div>
+<!-- <div class="confirm">
+    <div  class="boxTotal">
+        <img src="image/hint.png" class="boxImg"/>
+        <span class="boxDelete">确定要删除这条消息吗?</span>
+        </div>
+        <div class="dele">
+        <button class="roleRefu">取消</button>
+        <button class="roleSur">确定</button>
+    </div>
+</div> -->
 
 
 <!--提价 保存 删除-->
@@ -54,10 +68,10 @@
 <!--</div>-->
 
 <!--提交成功-->
-<!--<div style="height: 130px;width: 250px;margin: 15% auto;border: 1px solid red;">-->
-<!--<img src="image/succes.png" style="position: absolute;margin-top: 47px;margin-left: 60px"/>-->
-<!--<span style="display: inline-block; margin-left: 105px;margin-top: 50px;color: red">提交成功</span>-->
-<!--</div>-->
+<div class="nv1">
+<img src="image/succes.png" class="success1"/>
+<span class="referMes">提交成功</span>
+</div>
 
 </body>
 </html>
