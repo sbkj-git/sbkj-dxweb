@@ -121,7 +121,7 @@ function logsgin(url,par){
                                    return 
                                 }else{
                                     qx+="<li class='list-group-item flex justify' style='width: 100%;background-color:#F8F8F8;' data-id='"+obj.id+"'><div style='width: 100%;' class='flex roleLis'><div style='width: 50%;text-align: left;'><input type='checkbox' value='"+obj.id+"' />"
-                                    +obj.name+"</div><div style='width: 50%;text-align: right;' class='position'>                <button class='btn openBtn'>展开</button> <button class='btn closeBtn'>收起</button></div>";
+                                    +obj.name+"</div><div style='width: 50%;text-align: right;' class='position'>                <button class='btn openBtn'>展开</button> <button class='btn closeBtn' style='display:none;'>收起</button></div>";
                                     $(".openBtn").click(function(){
                                         $(this).hide();
                                         $(".show").slideDown();

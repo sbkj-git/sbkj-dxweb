@@ -4,6 +4,10 @@ $(document).ready(function(){
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
     $("#date1").dateSelect();
+    $(".nv91-close").click(function(){
+        $(".nv91-mask").hide();
+        $(".nv91").hide();
+    })
    //按照发布时间排序
    var ul = $(".ul_sort ul");
     var lis = [];
@@ -97,7 +101,7 @@ $(document).ready(function(){
                     var value = $(this).html();
 
                     if (!re.test(value)) {
-                        alert("请输入数字");
+                       
         
                         return false;
                     } else {
@@ -251,11 +255,22 @@ $(document).ready(function(){
                         par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&releaseTime=" + releaseTime;
                         var data = getSign(url, par);
                         if (data.msg.code == "200") {
-                            alert("操作成功");
-                            location.reload();
+                            $(".confirm").hide();
+                            $(".prompt").text("修改成功");  
+                            $(".nv1").show();
+                            setTimeout(function(){
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                               location.reload();
+                            },2000);
                         }else{
-                            alert("操作失败");
-                            location.reload();  
+                            $(".confirm").hide();
+                            $(".prompt").text("修改失败");  
+                            $(".nv1").show();
+                            setTimeout(function(){
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                            },2000);  
                         }
 
                     })

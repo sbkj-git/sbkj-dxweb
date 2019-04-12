@@ -36,7 +36,7 @@ function pageChange(method,data2,pagination){
             var value = $(this).html();
 
             if (!re.test(value)) {
-                alert("请输入数字");
+               
 
                 return false;
             } else {

@@ -118,7 +118,7 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
                     var value = $(this).html();
 
                     if (!re.test(value)) {
-                        alert("请输入数字");
+                       
         
                         return false;
                     } else {

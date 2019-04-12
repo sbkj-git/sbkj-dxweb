@@ -23,6 +23,8 @@
             padding: 0;
             height: 30px;
             line-height: 30px;}
+            
+
     </style>
 </head>
 <body style="background-color: #f3f3f3;width: inherit;box-sizing: border-box;">
@@ -82,7 +84,7 @@
                 <div class="form-group  flex">
                     <label for="name" class="control-label col-sm-3 star rolename" style="text-align: right;line-height: 1.5;">角色名称:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control role1" placeholder="" required />
+                        <input type="text" class="form-control role1" placeholder=""  />
                     </div>
                 </div>
                 <div class="form-group flex">
@@ -142,6 +144,7 @@
 <script src="../js/MD5.js"></script>
 <script src="../js/sign.js"></script>
 <script src="../js/api.js"></script>
+<script src="../js/getRequest.js"></script>
 <script type="text/javascript">
     function changeState(el) {
         if (el.readOnly) el.checked=el.readOnly=false;
@@ -179,9 +182,9 @@
             if(item.method === "get.dxWeb.managementRoles"){
                 url = src+"/"+item.link_path;
                 par = "appsercet="+newAppsercet+"&method="+item.method;
-                //console.log(url,par);
-                logsgin(url,par);
-                pagenow(url,"get.dxWeb.managementRoles")
+              logsgin(url,par);
+               pagenow(url,"get.dxWeb.managementRoles")
+               
                 //判断该角色是否有权限操作
                 if(item.dxRightsTwoList.length == 0){
                     return

@@ -7,7 +7,17 @@ $(document).ready(function() {
 //     //回调函数
 
 // });
+var i = 1 ;
 $(".wauto").click(function(){
+    i = 1;
+    $(".nv91-mask").hide();
+    $(".nv92").hide();
+    $(".nv91").hide();
+    $("#upload2").click();
+     
+})
+$(".wauto1").click(function(){
+    i = 2;
     $(".nv91-mask").hide();
     $(".nv92").hide();
     $(".nv91").hide();
@@ -17,18 +27,21 @@ $(".wauto").click(function(){
 $("#upload2").change(function(){
     var files = document.getElementById("upload2")
     var add1 = document.querySelectorAll(".add1");
-    for (var i = 0; i < add1.length; i++) {
+    // for (var i = 0; i < add1.length; i++) {
 
       var obj = add1[0];
-      if (obj.checked == true) {
+      if (obj.checked == true && i == 1) {
         imgPreview(files,"reviewImg1");
         imgPreview(files,"reviewImg2");
-      } else {
+      } else if (obj.checked == false && i == 2){
 
         imgPreview(files,"reviewImg3");
 
+      }else if (obj.checked == false && i == 1) {
+        imgPreview(files,"reviewImg1");
+        imgPreview(files,"reviewImg2");
       }
-  }
+//   }
 })
     //初始化日期选择控件
     $(".form_datetime").datetimepicker({
