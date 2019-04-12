@@ -116,7 +116,7 @@ $(document).ready(function() {
 
     
     //选择发布时间
-    $("#date").dateSelect();
+    // $("#date").dateSelect();
    
    function changeState(el) {
        if (el.readOnly) el.checked=el.readOnly=false;
@@ -550,6 +550,7 @@ else if(method === "get.dxWeb.addSkill"){
         debugger
         var success = true;
         var ret = /^\d{4}[-]([0][1-9]|(1[0-2]))[-]([1-9]|([012]\d)|(3[01]))([ \t\n\x0B\f\r])(([0-1]{1}[0-9]{1})|([2]{1}[0-4]{1}))([:])(([0-5]{1}[0-9]{1}|[6]{1}[0]{1}))([:])((([0-5]{1}[0-9]{1}|[6]{1}[0]{1})))$/;
+        console.log($(".date").val());
             if($(".title").val() == ""){
                 $(".prompt span").text("请填写文章标题");
                 $(".nv91-mask").show();

@@ -152,10 +152,10 @@ $(".idenPath").attr("src",detail.idenPath);
 }
 console.log(detail)
 $(".approveTime").text(detail.approveTime);
-if(detail.authState){
-    $(".authState").text("未通过");
-}else{
+if(detail.authState == true){
     $(".authState").text("已通过");
+}else{
+    $(".authState").text("未通过");
 }
 
 $(".businessLicense").text(detail.businessLicense);
