@@ -437,18 +437,50 @@ function judgePower(){
                             $(".Delete").show();
                             $(".isDelete").show();
                             $(".Delete").click(function(){
-                                deleteText();
+                                $(".nv91-mask").show();
+                                $(".confirm").show();
+                                $(".needShow").show();
+                                $(".roleSure").click(function(){
+                                    deleteText();
+                                })
+                                $(".roleRefuse5").click(function(){
+                                    $(".nv91-mask").hide();
+                                    $(".confirm").hide(); 
+                                })
+                                
                             })
-                            $(".isDelete").click(function(){
-                                var id = $(this).attr("data-id");
-
-                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteQAndA&IdList=" + id;
-                
-                                var data = getSign(url, par);
-                                if (data.msg.code == "200") {
-                                    alert("删除成功");
-                                    location.reload();
-                                }                              
+                           
+                            $(".isDelete").click(function () {
+                                $(".nv91-mask").show();
+                                $(".confirm").show();
+                                var IdList = $(this).attr("data-id");
+                                $(".roleSure").click(function(){
+                                    
+                                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteQAndA&IdList=" + IdList;
+    
+                                    var data = getSign(url, par);
+                                    if (data.msg.code == "200") {
+                                        $(".confirm").hide(); 
+                                        $(".nv1").show();
+                                        setTimeout(function(){
+                                            $(".nv91-mask").hide();
+                                            $(".nv1").hide();
+                                           location.reload();
+                                        },2000);
+                                    }else{
+                                        $(".confirm").hide(); 
+                                        $(".nv3").show();
+                                        setTimeout(function(){
+                                            $(".nv91-mask").hide();
+                                            $(".nv3").hide();
+                                        },2000);
+                                    }
+                                })
+                                $(".roleRefuse5").click(function(){
+                                    $(".nv91-mask").hide();
+                                    $(".confirm").hide(); 
+                                })
+                                
                             })
                            
                             //判断是否有查看权限

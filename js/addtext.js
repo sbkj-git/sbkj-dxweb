@@ -335,22 +335,23 @@ var url = src + url1;
           console.log(data);
           data = JSON.parse(data);
           if(data.msg.code == "200"){
-            $(".prompt span").text("保存成功");
+            $(".prompt ").text("保存成功");
             $(".nv91-mask").show();
-               $(".nv").show();
+               $(".nv1").show();
+            //    $(".confirm1 ").hide();
                setTimeout(function(){
                 $(".nv91-mask").hide();
-               $(".nv").hide();
-               },1000); 
+               $(".nv1").hide();
+               },2000); 
         }
         if(data.msg.code == "10"){
-            $(".prompt span").text("请求失败");
+            $(".prompt ").text("保存失败");
             $(".nv91-mask").show();
-               $(".nv").show();
+               $(".nv3").show();
                setTimeout(function(){
                 $(".nv91-mask").hide();
-               $(".nv").hide();
-               },1000); 
+               $(".nv3").hide();
+               },2000); 
         }
         document.getElementById("resetInput").reset();
         //清空列表
@@ -574,58 +575,58 @@ else if(method === "get.dxWeb.addSkill"){
         var ret = /^\d{4}[-]([0][1-9]|(1[0-2]))[-]([1-9]|([012]\d)|(3[01]))([ \t\n\x0B\f\r])(([0-1]{1}[0-9]{1})|([2]{1}[0-4]{1}))([:])(([0-5]{1}[0-9]{1}|[6]{1}[0]{1}))([:])((([0-5]{1}[0-9]{1}|[6]{1}[0]{1})))$/;
         console.log($(".date").val());
             if($(".title").val() == ""){
-                $(".prompt span").text("请填写文章标题");
+                $(".prompt ").text("请填写文章标题");
                 $(".nv91-mask").show();
-                $(".nv").show();
+                $(".confirm1 ").show();
                 setTimeout(function(){
                     $(".nv91-mask").hide();
-                    $(".nv").hide();
-                },1000);
+                    $(".confirm1 ").hide();
+                },2000);
                 success = false;
                 return;
             }
             else if($(".releaseTime").val() == ""){
-                $(".prompt span").text("请选择发布日期");
+                $(".prompt ").text("请选择发布日期");
                 $(".nv91-mask").show();
-                $(".nv").show();
+                $(".confirm1 ").show();
                 setTimeout(function(){
                     $(".nv91-mask").hide();
-                    $(".nv").hide();
-                },1000);
+                    $(".confirm1 ").hide();
+                },2000);
                 success = false;
                 return;
             }
             else if(!ret.test($(".releaseTime").val())){
-                $(".prompt span").text("请输入正确的发布日期");
+                $(".prompt ").text("请输入正确的发布日期");
                 $(".nv91-mask").show();
-                $(".nv").show();
+                $(".confirm1 ").show();
                 setTimeout(function(){
                     $(".nv91-mask").hide();
-                    $(".nv").hide();
-                },1000);
+                    $(".confirm1 ").hide();
+                },2000);
                 success = false;
                 return;
             }
             else if($(".author").val() == ""){
-                $(".prompt span").text("请填写发布作者");
+                $(".prompt ").text("请填写发布作者");
                 $(".nv91-mask").show();
-                $(".nv").show();
+                $(".confirm1 ").show();
                 setTimeout(function(){
                     $(".nv91-mask").hide();
-                    $(".nv").hide();
-                },1000);
+                    $(".confirm1 ").hide();
+                },2000);
                 success = false;
                 return;
             }
             if(method === "get.dxWeb.updateSkill" || method === "get.dxWeb.addSkill"){
                 if($(".changeSelect option:checked").attr("data-id") == 0){
-                    $(".prompt span").text("请先创建文章分类,如果没有请先创建分类");
+                    $(".prompt ").text("请选择产品分类");
                     $(".nv91-mask").show();
-                    $(".nv").show();
+                    $(".confirm1 ").show();
                     setTimeout(function(){
                         $(".nv91-mask").hide();
-                        $(".nv").hide();
-                    },1000);
+                        $(".confirm1 ").hide();
+                    },2000);
                     success = false;
                     return;
 
@@ -634,24 +635,24 @@ else if(method === "get.dxWeb.addSkill"){
             }
             if(method === "get.dxWeb.addQAndA" || method === "get.dxWeb.updateQAndA"){
                 if($(".changeSelect option:checked").attr("data-id") == 0){
-                    $(".prompt span").text("请选择文章分类");
+                    $(".prompt ").text("请选择产品分类");
                     $(".nv91-mask").show();
-                    $(".nv").show();
+                    $(".confirm1 ").show();
                     setTimeout(function(){
                         $(".nv91-mask").hide();
-                        $(".nv").hide();
-                    },1000);
+                        $(".confirm1 ").hide();
+                    },2000);
                     success = false;
                     return;
 
                 }else if( $(".changeSelectTwo option:checked").attr("data-id") == 0){
-                    $(".prompt span").text("请选择问题分类");
+                    $(".prompt ").text("请选择问题分类");
                     $(".nv91-mask").show();
-                    $(".nv").show();
+                    $(".confirm1 ").show();
                     setTimeout(function(){
                         $(".nv91-mask").hide();
-                        $(".nv").hide();
-                    },1000);
+                        $(".confirm1 ").hide();
+                    },2000);
                     success = false;
                     return;
                 }
