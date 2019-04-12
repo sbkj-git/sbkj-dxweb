@@ -4,31 +4,75 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style type="text/css">
+        /*input[type=checkbox] {*/
+        /*-ms-transform: scale(1.5); !* IE *!*/
+        /*-moz-transform: scale(1.5); !* FireFox *!*/
+        /*-webkit-transform: scale(1.5); !* Safari and Chrome *!*/
+        /*-o-transform: scale(1.5); !* Opera *!*/
+        /*}*/
+
         input[type=checkbox] {
-            -ms-transform: scale(1.5); /* IE */
-            -moz-transform: scale(1.5); /* FireFox */
-            -webkit-transform: scale(1.5); /* Safari and Chrome */
-            -o-transform: scale(1.5); /* Opera */
+            visibility: hidden;
         }
-        tr{
+
+        tr {
             height: 30px;
         }
 
-        td{
-            width: 100px;
+        td {
+            width: 123.5px;
         }
 
-        td span{
-            line-height: 30px;
+        .textSpan {
+            display: inline-block;
+            margin-left: 30px;
         }
+
+        input[type=checkbox] + label {
+            box-sizing: border-box;
+            overflow: hidden;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            position: absolute;
+            cursor: pointer;
+            background: rgb(255, 255, 255);
+            border: 1px solid #8d8d8d;
+            border-radius: 3px;
+        }
+
+        input[type=checkbox]:checked + label::before {
+            background-color: #FF5456;
+            text-align: center;
+            /*border: 1px solid red;*/
+            color: #fff;
+            content: "\2714";
+            padding-bottom: 1px;
+            display: inline-block;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            margin-top: -2px;
+            border-radius: 3px;
+        }
+
+
     </style>
 </head>
+<div id="tableHide" style="width: 741px;height: 80px;background-color: #f3f3f3;line-height: 80px">
+    <input id='checkId' type="checkbox"><label for='checkId' style="margin-top: 29px"></label>
+    <span class="textSpan">文档管理</span>
+    <button style="margin-left: 530px; width: 60px;height: 40px">展开</button>
+</div>
 <div id="tableShow">
 </div>
+
+
 <script src="js/jquery-1.10.2.min.js"></script>
 <script>
     // var arr = [1,2,3,4];
-    var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+    // var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+    var arr = ["管理文章", "查看列表", "查看内容", "追加", "修改", "删除", "管理", "查看列表", "添加"];
     var tableShow = $("#tableShow");
     if (arr.length <= 0) {
 
@@ -37,7 +81,7 @@
             var str;
             str = "<table><tr>";
             for (var i = 0; i < arr.length; i++) {
-                str += "<td><input type=\"checkbox\"><span>" + arr[i] + "</span></td>";
+                str += "<td><input id='checkId" + i + "'type=\"checkbox\"><label for='checkId" + i + "'></label> <span class='textSpan'>" + arr[i] + "</span></td>";
             }
             str += "</tr></table>";
             console.info(str);
@@ -53,14 +97,14 @@
             for (var j = 0; j < arrLen; j++) {
                 str += "<tr>";
                 for (var i = 0; i < 5; i++) {
-                    if ((j*5 + i) >= arr.length) {
+                    if ((j * 5 + i) >= arr.length) {
                     } else {
-                        str += "<td><input type=\"checkbox\"><span>" + arr[i+j*5] + "</span></td>";
+                        str += "<td><input id='checkId" + (i + j * 5) + "' type=\"checkbox\"><label for='checkId" + (i + j * 5) + "'></label><span class='textSpan'>" + arr[i + j * 5] + "</span></td>";
                     }
                 }
                 str += "</tr>";
             }
-            str+="</table>";
+            str += "</table>";
             console.info(str);
             tableShow.html(str);
             console.info(tableShow.html())

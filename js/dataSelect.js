@@ -18,7 +18,7 @@
         "<li data-id='7'>7月</li><li data-id='8'>8月</li><li data-id='9'>9月</li><li data-id='10'>10月</li><li data-id='11'>11月</li>" +
         "<li data-id='12'>12月</li></ul></div></span>" +
         "<span class='year'><span class='span-year'>2015</span><div class='year-list' id='ylist_" + elem_id + "'><ul></ul><div class='year-change'>" +
-        "<span class='year-left'></span><span class='year-right'></span></div></div></span><span class='right'>></span></div>" +
+        "<span class='year-left'>上翻</span><span class='year-right'>下翻</span></div></div></span><span class='right'>></span></div>" +
         "<div class='week'><ul><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul></div>" +
         "<div class='day'><ul></ul></div><div class='action'><span>取消</span></div>" +
         "</div>";
