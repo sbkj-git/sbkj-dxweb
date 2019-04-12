@@ -7,7 +7,29 @@ $(document).ready(function() {
 //     //回调函数
 
 // });
+$(".wauto").click(function(){
+    $(".nv91-mask").hide();
+    $(".nv92").hide();
+    $(".nv91").hide();
+    $("#upload2").click();
 
+})
+$("#upload2").change(function(){
+    var files = document.getElementById("upload2")
+    var add1 = document.querySelectorAll(".add1");
+    for (var i = 0; i < add1.length; i++) {
+
+      var obj = add1[0];
+      if (obj.checked == true) {
+        imgPreview(files,"reviewImg1");
+        imgPreview(files,"reviewImg2");
+      } else {
+
+        imgPreview(files,"reviewImg3");
+
+      }
+  }
+})
     //初始化日期选择控件
     $(".form_datetime").datetimepicker({
         format: 'yyyy-mm-dd hh:ii:ss',
