@@ -94,7 +94,7 @@
                     <input class="btn addColor w200"  value="直接上传"   readonly />
                 </div>
                 <div class="newImg position" style="height:50px;margin: 0 20px;">
-                    <img src="../image/u1986.png" alt=""  class="files w30">
+                    <img src="../image/u1986.png" alt=""  class="files w30" style="margin-left: -3px;">
                     <input class="btn addColor w200"  value="新建文件夹"  readonly  />
                 </div>
                 <div class="editImg position" style="height:50px;">
@@ -102,7 +102,7 @@
                     <input class="btn addColor w200"  value="编辑图片" readonly />
                 </div>
 
-                <div class="col-sm-4" style="    position: relative;top: -50%;left: 80%;margin-top:5px;font-size:14px;" class="setting1">
+                <div class="col-sm-4" style="line-height: 50px;position: relative;top: -50%;left: 80%;margin-top:5px;font-size:14px;" class="setting1">
                     <input type="checkbox" value="" name="rember" class="warmask">添加水印
                     <span style="color:#FF5456;" class="setting">【设置】</span>
                 </div>
@@ -111,7 +111,7 @@
                 <div class="flex " style="text-align: right;">
                     <div class="position">
                         <input type="text" class="form-control searchName1" placeholder="搜索所有文件" style="width:250px;"/>
-                        <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="searchName">&#xe615;</span>
+                        <span style="font-family: iconfont;position: absolute;right: 3%;top:0;font-size: 24px;" class="searchName">&#xe615;</span>
                     </div>
                 </div>
             </div>
@@ -138,8 +138,8 @@
         <form action="" class="form-horizontal" role="form" style="text-align:center;">
             <div class="form-group  flex">
                 <label for="name" class="control-label col-sm-3 star rolename" style="text-align: right;line-height: 1.5;">附件上传:</label>
-                <div class=" position" style="height:35px;position: absolute;left: 71%;">
-                    <img src="../image/u1986.png" alt="" style="width:15px;height:15px;" class="jt">
+                <div class=" position" style="height:35px;position: absolute;left: 27%;">
+                    <!--<img src="../image/u1986.png" alt="" style="width:15px;height:15px;" class="jt">-->
                     <!-- <input class="btn" value="上传文件" style="width:100px;height: inherit;" readonly /> -->
                     <input type="file" class="watermarkImg" />
                 </div>
@@ -158,7 +158,7 @@
             <div class="form-group flex">
                 <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 2;">水印位置:</label>
                 <div class="col-sm-9">
-                    <select name="" id="" class="form-control postion">
+                    <select name="" id="" class="form-control postion"  style="margin-left: 10px;width: 220px;">
                         <option value="">水印位置</option>
                         <option value="center">居中</option>
                         <option value="right-top">右上角</option>
@@ -171,7 +171,7 @@
             <div class="form-group flex">
                 <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 2;">不透明度:</label>
                 <div class="col-sm-9">
-                    <select name="" id="" class="form-control hyaline">
+                    <select name="" id="" class="form-control hyaline" style="margin-left: 10px;width: 220px;">
                         <option value="0">请选择</option>
                         <option value="0.2">20%</option>
                         <option value="0.4">40%</option>
@@ -184,7 +184,7 @@
             <div class="form-group flex">
                 <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 2;">示例图片:</label>
                 <div class="col-sm-9">
-                    <div style="width: 227px;height: 130px;background-color: #F2F2F2;">
+                    <div style="margin-left:5px;width: 227px;height: 130px;background-color: #F2F2F2;">
                         <img src="" alt="" class="water">
                     </div>
                 </div>
@@ -203,15 +203,15 @@
         <p style="line-height:50px;border-bottom: 1px solid #dddddd;padding-left: 20px;">添加文件夹</p>
         <form action="" class="form-horizontal" role="form" style="text-align:center;">
             <div class="form-group  flex">
-                <label for="name" class="control-label col-sm-3  rolename" style="text-align: right;line-height: 1.5;">文件夹名称:</label>
+                <label for="name" class="control-label col-sm-3  rolename" style="text-align: right;line-height: 33.5px;">文件夹名称:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control filename" placeholder="" />
+                    <input type="text" class="form-control filename" placeholder="" style="margin-left:5px;width: 320px;"/>
                 </div>
             </div>
             <div class="form-group flex">
-                <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 1.5;">上级文件夹:</label>
+                <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.5px;">上级文件夹:</label>
                 <div class="col-sm-9">
-                    <select name="" id="" class="form-control fileid filename2">
+                    <select name="" id="" class="form-control fileid filename2" style="margin-left:5px;width: 320px;">
                         <option value="0" selected>请选择</option>
                         <option value="1">新建文件夹一</option>
                     </select>
@@ -231,15 +231,15 @@
         <p style="line-height:50px;border-bottom: 1px solid #dddddd;padding-left: 20px;">上传图片</p>
         <form action="" class="form-horizontal" role="form" style="text-align:center;">
             <div class="form-group  flex">
-                <label for="name" class="control-label col-sm-3  rolename" style="text-align: right;line-height: 1.5;">选择文件:</label>
+                <label for="name" class="control-label col-sm-3  rolename" style="text-align: right;line-height: 33.5px;">选择文件:</label>
                 <div class="col-sm-9">
-                    <input type="file" class="form-control galleryImg" placeholder="" />
+                    <input type="file" class="form-control galleryImg" placeholder="" style=" margin-left:5px;width: 320px;"/>
                 </div>
             </div>
             <div class="form-group flex">
-                <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 1.5;">文件夹名称:</label>
+                <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.5px">文件夹名称:</label>
                 <div class="col-sm-9">
-                    <select name="" id="" class="form-control folderId">
+                    <select name="" id="" class="form-control folderId" style="margin-left:5px;width: 320px;">
                         <option value="0" selected>请选择</option>
                         <option value="1">新建文件夹一</option>
                     </select>

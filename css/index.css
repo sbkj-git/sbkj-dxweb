@@ -161,6 +161,10 @@ iframe::-webkit-scrollbar {
     box-sizing: border-box;
 }
 
+/*文本框固定*/
+textarea{resize:none;}
+
+
 /*e 首页样式结束 */
 
 /* s 添加文章节点样式 */

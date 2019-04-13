@@ -17,13 +17,13 @@
         "<li data-id='2'>2月</li><li data-id='3'>3月</li><li data-id='4'>4月</li><li data-id='5'>5月</li><li data-id='6'>6月</li>" +
         "<li data-id='7'>7月</li><li data-id='8'>8月</li><li data-id='9'>9月</li><li data-id='10'>10月</li><li data-id='11'>11月</li>" +
         "<li data-id='12'>12月</li></ul></div></span>" +
-        "<span class='year'><span class='span-year'>2015</span><div class='year-list' id='ylist_" + elem_id + "'><ul></ul><div class='year-change'>" +
+        "<span class='year'><span class='span-year'>2019</span><div class='year-list' id='ylist_" + elem_id + "'><ul></ul><div class='year-change'>" +
         "<span class='year-left'>上翻</span><span class='year-right'>下翻</span></div></div></span><span class='right'>></span></div>" +
         "<div class='week'><ul><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul></div>" +
         "<div class='day'><ul></ul></div><div class='action'><span>取消</span></div>" +
         "</div>";
     $(_dateBody).appendTo("body");
-    $("#datepicker_" + elem_id).css({"left": left, "top": top + settings.offTop});
+    $("#datepicker_" + elem_id).css({"left": left, "top": top + settings.offTop,"width": "220px"});
     $(obj).next("span").click(function () {
         var pos = getElementPos(elem_id);
         var top = pos.y;
@@ -74,7 +74,7 @@
         input_y = d.getFullYear();
         input_d = d.getDate();
         $("#mlist_" + elem_id).prev("span").text(tz_m + "月");
-        $("#ylist_" + elem_id).prev("span").text(tz_y);
+        $("#ylist_" + elem_id).prev("span").text(tz_y+"年");
         dayListReload();
         hideYearmonth();
         if (_shown) {

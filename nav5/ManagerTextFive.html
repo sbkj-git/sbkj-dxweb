@@ -32,6 +32,41 @@
             padding-left: 30px;
             width: 27%;
         }
+        /*杨晓蓉日历插件*/
+        .tz-datepicker {
+            width: 210px;
+            border: solid 1px #3a98d8;
+            font-family: 宋体;
+            font-size: 12px;
+            position: absolute;
+            z-index: 99999;
+            display: none;
+            background: #fff
+        }
+
+        .tz-datepicker .year-month {
+            height: 25px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 1px
+        }
+
+        .tz-datepicker .year-month span {
+            display: inline-block;
+            height: 25px;
+            line-height: 25px;
+            float: left
+        }
+
+        .tz-datepicker .year-month span:hover {
+            color: #fff;
+            background: #3a98d8
+        }
+
+        .tz-datepicker .year-month span.active {
+            color: #fff;
+            background: #3a98d8
+        }
     </style>
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
@@ -50,7 +85,7 @@
                     <button class="btn btn-primary addText saveBtn">添加文档</button>
                 </div>
                 <div class="" style="text-align: center;padding-left: 10px;">
-                    <select class="form-control operater" style="border:1px solid #FF5456;">
+                    <select class="form-control operater" style="border:1px solid #ced4da;">
                         <option value="0" selected="selected" style="color:#FF5456;">--批量修改--</option>
                         <option value="1">录入时间</option>
                         <option value="2">来源</option>
@@ -63,13 +98,13 @@
                 <div class="col-sm-3" style="text-align: center;padding-left: 10px;">
                     <select name="" id="" class="form-control changeSelect13">
                         <option selected="selected" value="0">--请选择对应产品--</option>
-                      
+
                     </select>
                 </div>
                 <div class="col-sm-3" style="text-align: center;padding-left: 10px;">
                     <select name="" id="" class="form-control changeSelect14">
                         <option selected="selected" value="0">--请选择问题分类--</option>
-                      
+
                     </select>
                 </div>
             </div>
@@ -229,17 +264,12 @@
 <script>
     //选择发布时间
     $("#date1").dateSelect();
-    $("#date1").click(function () {
-        var dateShowStr = $("#datepicker_date1").html();
-        if (!$("#newDatepicker_date1").html()) {
-            $("#datepicker_date1").attr("id", "newDatepicker_date1");
-            $("#dateShow").attr("class",$("#newDatepicker_date1").attr('class'));
-            $("#dateShow").css("margin-left",(0-1.5*this.offsetWidth));
-            $("#dateShow").css("margin-top",(0-3*this.offsetHeight));
-            $("#dateShow").html(dateShowStr);
-            $("#dateShow").attr("id", "datepicker_date1");
-        }
+    $(".month span").click(function () {
+        $(".month-list").show()
     });
+    $(".year .span-year").click(function () {
+        $(".year-list").show()
+    })
 </script>
 
 
