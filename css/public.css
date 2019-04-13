@@ -217,7 +217,7 @@ iframe::-o-scrollbar{
  .roleSur{width: 60px;height: 40px; margin-left: 20px;border:1px solid #ff7706; background-color: #ff7706;color: #fff;border-radius: 10%;}
  .dele{height: 40px;width: 100%;display: flex;justify-content:flex-end; margin-top:15px;box-sizing: border-box;padding-right: 30px;}
  .nv1,.nv3{height: 130px;width: 250px;position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin:auto;background-color: #ffffff;display: none;}
-           .success1{position: absolute;margin-top: 47px;margin-left: 60px}
+           .success1{position: absolute;margin-top: 47px;margin-left: 60px;width: 30px;height: 30px;}
            .referMes{display: inline-block; margin-left: 105px;margin-top: 50px;color: red;}
 /* //企业认证图片展示i */
 .licencePath{width: 151px;height: 210px;overflow: hidden;}

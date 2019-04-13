@@ -92,10 +92,19 @@ $(document).ready(function(){
                     var statu = getSign(url, par);
 
                     if (statu.msg.code == "200") {
-                        alert("置顶成功");
-                        // $(".toTop").eq(index).hide();
-                        location.reload();
+                        $(".confirm").hide();
+                        $(".prompt").text("操作成功");
+                        $(".nv91-mask").show();
+                        $(".nv1").show();
+                        $(".nv3").hide();
+                        setTimeout(function () {
+                            $(".nv91-mask").hide();
+                            $(".nv1").hide();
+                            location.reload();
 
+                        }, 2000);
+                      
+                        
                     }
                 })
                 $(".toDown").unbind('click').bind("click",function(){ 
@@ -106,9 +115,17 @@ $(document).ready(function(){
                     
                     var statu = getSign(url, par);
                     if (statu.msg.code == "200") {
-                        alert("取消置顶成功");
-                        // $(".toDown").eq(index).hide();
-                        location.reload();
+                        $(".confirm").hide();
+                        $(".prompt").text("操作成功");
+                        $(".nv91-mask").show();
+                        $(".nv1").show();
+                        $(".nv3").hide();
+                        setTimeout(function () {
+                            $(".nv91-mask").hide();
+                            $(".nv1").hide();
+                            location.reload();
+
+                        }, 2000);
 
                     }
                 })
@@ -129,7 +146,23 @@ $(document).ready(function(){
             var data2 = getSign(url, par);
         bannerList1(data2);
         pageJudge(data2);
-
+        var ind = 0;
+        $(".sort").click(function(){
+            debugger
+            ind++;
+            if (ind % 2 == 1) {
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webOperationList&currentPage=" + currentPage + "&timeSort=1";
+                var data2 = getSign(url, par);
+                bannerList1(data2);
+                pageJudge(data2);
+            }else{
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webOperationList&currentPage=" + currentPage + "&timeSort=2";
+                var data2 = getSign(url, par);
+                bannerList1(data2);
+                pageJudge(data2); 
+            }
+            
+        })
 
      //通过banner名称查询
      $(".banner1").click(function(){
@@ -139,7 +172,7 @@ $(document).ready(function(){
         var bannerList = getSign(url,par);
         if(bannerList.msg && bannerList.msg.codeMsg){
             $(".textList").html("");
-            alert("没有数据");
+            
             
         }
         else if(bannerList.dxWebList){
@@ -258,7 +291,7 @@ $(document).ready(function(){
                                     var data = getSign(url, par);
                                     if (data.msg.code == "200") {
                                         $(".confirm").hide();
-                                        $(".prompt span").text("删除成功");  
+                                        $(".prompt").text("删除成功");  
                                         $(".nv1").show();
                                         setTimeout(function(){
                                             $(".nv91-mask").hide();

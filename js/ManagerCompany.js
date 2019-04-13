@@ -156,54 +156,57 @@
                                     var url = document.getElementById("url").value;
                                     var reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
                                     if($(".companyName").val() == ""){
-                                        $(".prompt span").text("请填写合作伙伴");
+                                        debugger
+                                        $(".prompt ").text("请填写合作伙伴");
                                         $(".nv91-mask").show();
-                                        $(".nv").show();
+                                        $(".confirm1 ").show();
                                         setTimeout(function(){
-                                          
-                                            $(".nv").hide();
-                                        },1000);
+                                            
+                                            $(".confirm1 ").hide();
+                                        },2000);
                                         return;
                                     }
-                                    else if($(".companyUrl").val() == ""){
-                                        $(".prompt span").text("请填写合作伙伴链接");
+                                    else if ($(".companyUrl").val() == "") {
+                                        $(".prompt ").text("请填写合作伙伴链接");
                                         $(".nv91-mask").show();
-                                        $(".nv").show();
-                                        setTimeout(function(){
-                                          
-                                            $(".nv").hide();
-                                        },1000);
+                                        $(".confirm1 ").show();
+                                        setTimeout(function () {
+                                            
+                                            $(".confirm1 ").hide();
+                                        }, 2000);
                                         return;
                                     }
                                     else if (!reg.test(url)) {
-                                        $(".prompt span").text("这网址不是以http://https://开头，或者不是网址！");
+
+                                        $(".prompt ").text("请填写正确格式的网址");
                                         $(".nv91-mask").show();
-                                        $(".nv").show();
+                                        $(".confirm1 ").show();
                                         setTimeout(function () {
-                                            $(".nv").hide();
-                                        }, 1000);
+                                            
+                                            $(".confirm1 ").hide();
+                                        }, 2000);
                                         return;
                                     }
                                     else if($(".companyType option:checked").attr("data-id") == 0){
-                                        $(".prompt span").text("请选择伙伴伙伴类别");
+                                        $(".prompt ").text("请选择合作伙伴类型");
                                         $(".nv91-mask").show();
-                                        $(".nv").show();
+                                        $(".confirm1 ").show();
                                         setTimeout(function(){
-                                         
-                                            $(".nv").hide();
-                                        },1000);
+                                            
+                                            $(".confirm1 ").hide();
+                                        },2000);
                                         return;
                                      
                                     }
                                     
                                     else if($("#pic").attr("src") == ""){
-                                        $(".prompt span").text("请上传banner图片");
+                                        $(".prompt ").text("请上传banner图");
                                         $(".nv91-mask").show();
-                                        $(".nv").show();
+                                        $(".confirm1 ").show();
                                         setTimeout(function(){
-                                          
-                                            $(".nv").hide();
-                                        },1000);
+                                            
+                                            $(".confirm1 ").hide();
+                                        },2000);
                                         return;
                                     }else{
                                         addorupdate("get.dxWeb.addWebBottom",1);
@@ -223,22 +226,21 @@
                             $(".Delete").show();
                             $(".isDelete").show();
                             var id
-                            $(".isDelete").click(function(){
-                                id = $(this).attr("data-id");
-                                $(".nv91-mask").show();
-                                        $(".nv").show();  
-                                    $(".roleSure").unbind('click').bind("click",function(){
-                                   
-                                            debugger        
-                                        deleteText(id);
-                                    })
-                                    $(".roleRefuse").unbind('click').bind("click",function(){
-                                   
-                                        $(".nv91-mask").show();
-                                        $(".nv").show(); 
-                                    })                               
-                            }) 
                             
+                            $(".isDelete").click(function () {
+                                $(".nv91-mask").show();
+                                $(".confirm").show();
+                                var IdList = $(this).attr("data-id");
+                                $(".roleSure").click(function(){
+                                    deleteText(id);
+                                   
+                                })
+                                $(".roleRefuse").click(function(){
+                                    $(".nv91-mask").show();
+                                    $(".confirm").show(); 
+                                })
+                                
+                            })
                         }
                             //判断是否有编辑权限
                            if(obj.method === "get.dxWeb.updateWebBottom"){      
@@ -338,7 +340,16 @@
                 par = "appsercet="+newAppsercet+"&method=get.dxWeb.updateWebBottom&id="+id+"&state="+state;
                 var data = getSign(url,par);
                 if(data.msg.code == "200"){
-                    alert("操作成功");
+                   $(".confirm").hide();
+                    $(".prompt").text("操作成功");
+                    $(".nv91-mask").show();
+                    $(".nv1").show();
+                    $(".nv3").hide();
+                    setTimeout(function () {
+                        $(".nv91-mask").hide();
+                        $(".nv1").hide();
+                       
+                    }, 2000);
                     par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList";
                     var data = getSign(url, par);
                     render(data);
@@ -355,8 +366,19 @@
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteWebBottom&id=" + id;
                 var data = getSign(url, par);
                 if (data.msg.code == "200") {
-                    alert("删除成功");
-                    location.reload();
+                    if (data.msg.code == "200") {
+                        $(".confirm").hide();
+                        $(".prompt").text("删除成功");  
+                        $(".nv1").show();
+                        setTimeout(function(){
+                            $(".nv91-mask").hide();
+                            $(".nv1").hide();
+                            par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList&currentPage=" + currentPage; 
+                            var data2 = getSign(url, par);
+                            bannerList1(data2);
+                            pageJudge(data2);
+                        },2000);
+                    }
                 }
             }
 
@@ -407,7 +429,16 @@
                 data = JSON.parse(data)
                 debugger
                 if(data.msg.code == "200"){
-                    alert("操作成功");
+                    if (data.msg.code == "200") {
+                        $(".confirm").hide();
+                        $(".prompt").text("操作成功");  
+                        $(".nv1").show();
+                        setTimeout(function(){
+                            $(".nv91-mask").hide();
+                            $(".nv1").hide();
+                          location.reload();
+                        },2000);
+                    }
                     $(".nv91-mask").hide();
                     $(".nv91").hide();
                     $(".nv91 input").val("");
@@ -415,7 +446,14 @@
                     $("#pic").attr("src","");
                     location.reload();
                 }else if(data.msg.code == "10"){
-                    alert("操作失败");
+                    $(".confirm").hide();
+                        $(".prompt").text("操作失败");  
+                        $(".nv3").show();
+                        setTimeout(function(){
+                            $(".nv91-mask").hide();
+                            $(".nv3").hide();
+                         
+                        },2000);
                    
                 }
                 

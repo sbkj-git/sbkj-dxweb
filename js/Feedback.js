@@ -207,8 +207,8 @@ data = JSON.parse(data);
             }
             
             //通过用户名查找
-            $(".openContent").click(function(){
-                var content = $(".content").val();
+            $(".banner1").click(function(){
+                var content = $(".titleText").val();
                 if(content == null || content == ""){
                     return
                 }else{
@@ -216,12 +216,17 @@ data = JSON.parse(data);
                     par = "appsercet=" + newAppsercet + "&method=get.dxWeb.feedbackList&content="+content;
                     
                     var data2 = getSign(url, par);
-                    render(data2);
+                    if(data2.msg && data2.msg.code == "200"){
+                        $(".feedback").html("");
+                    }else{
+                        render(data2);
+                    }
+                   
                     
                 }
             })
            //通过时间查找
-             //通过用户名查找
+
              $(".time2").blur(function(){
                 var starttime = $(".time1").val();
                 var erdtime = $(".time2").val();
@@ -232,7 +237,11 @@ data = JSON.parse(data);
                     par = "appsercet=" + newAppsercet + "&method=get.dxWeb.feedbackList&starttime="+starttime+"&erdtime="+erdtime;
                     
                     var data2 = getSign(url, par);
-                    render(data2);
+                    if(data2.msg && data2.msg.code == "200"){
+                        $(".feedback").html("");
+                    }else{
+                        render(data2);
+                    }
                     
                 }
             })

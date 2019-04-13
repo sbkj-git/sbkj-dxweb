@@ -50,7 +50,7 @@ $(document).ready(function(){
                 var data2 = getSign(url, par);
                 if (data2.msg && data2.msg.code == "200") {
                     $(".textList").html("");
-                    alert("没有数据");
+                    
                 } else {
                     render(data2);
                     pageJudge(data2);

@@ -82,7 +82,17 @@ $(document).ready(function(){
                 par = "appsercet="+newAppsercet+"&method=get.dxWeb.updatehelp&id="+id+"&state="+state;
                 var data = getSign(url,par);
                 if(data.msg.code == "200"){
-                    alert("操作成功");
+                    $(".confirm").hide();
+                    $(".prompt").text("操作成功");
+                    $(".nv91-mask").show();
+                    $(".nv1").show();
+                    $(".nv3").hide();
+                    setTimeout(function () {
+                        $(".nv91-mask").hide();
+                        $(".nv1").hide();
+                       
+                    }, 2000);
+
                     par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList";
                     var data = getSign(url, par);
                     bannerList1(data);
@@ -202,13 +212,13 @@ $(document).ready(function(){
             }
         }
         //通过banner名称查询
-        $(".bannerName1").click(function () {
+        $(".banner1").click(function () {
             var bannerName = $(".bannerName12").val();
             par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList&bannerName=" + bannerName;
             var bannerList = getSign(url, par);
             if(bannerList.msg && bannerList.msg.code == "10"){
                 $(".bannerList").html("");
-                alert("没有数据");
+                
             }else{
                 bannerList1(bannerList);
                 pageJudge(bannerList);
@@ -238,6 +248,7 @@ $(document).ready(function(){
         });
         //通过反馈时间查询
         $(".end1").blur(function(){
+            debugger
             var  starttime = $(".start1").val();
             var erdtime = $(".end1").val();
             if(starttime == "" || erdtime == ""){
@@ -248,7 +259,7 @@ $(document).ready(function(){
                 var bannerList = getSign(url,par);
                 if(bannerList.msg && bannerList.msg.code == "10"){
                     $(".bannerList").html("");
-                    alert("没有数据");
+                    
                 }
                 bannerList1(bannerList);
                 firstRender();
@@ -316,29 +327,40 @@ $(document).ready(function(){
                                 if (obj.method === "get.dxWeb.deleteBanner") {
                                     $(".isDelete").show();
                                     //banner删除事件
+                                    
                                     $(".isDelete").click(function () {
-                                        
-                                        var id = $(this).attr("data-id");
                                         $(".nv91-mask").show();
-                                        $(".nv").show();
+                                        $(".confirm").show();
+                                        var IdList = $(this).attr("data-id");
                                         $(".roleSure").click(function(){
-                                            $(".nv91-mask").hide();
-                                            $(".nv").hide();
-                                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteBanner&id=" + id;
-                                            var statu = getSign(url, par);
-                                            if (statu.msg.code == "200") {
-                                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList";
-                                                var data = getSign(url, par);
-                                                bannerList1(data);
-                                                
+                                            
+                                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteBanner&id=" + IdList;
+            
+                                            var data = getSign(url, par);
+                                            if (data.msg.code == "200") {
+                                                $(".confirm").hide(); 
+                                                $(".nv1").show();
+                                                setTimeout(function(){
+                                                    $(".nv91-mask").hide();
+                                                    $(".nv1").hide();
+                                                   location.reload();
+                                                },2000);
+                                            }else{
+                                                $(".confirm").hide(); 
+                                                $(".nv3").show();
+                                                setTimeout(function(){
+                                                    $(".nv91-mask").hide();
+                                                    $(".nv3").hide();
+                                                },2000);
                                             }
                                         })
-                                        $(".roleRefuse").click(function(){
-                                            $(".nv91-mask").show();
-                                            $(".nv").show(); 
+                                        $(".roleRefuse5").click(function(){
+                                            $(".nv91-mask").hide();
+                                            $(".confirm").hide(); 
                                         })
                                         
                                     })
+                                    
                                 }
                                 //判断是否有置顶权限
                                 if (obj.method === "get.dxWeb.topBanner") {
@@ -355,10 +377,18 @@ $(document).ready(function(){
                                         var statu = getSign(url, par);
                                        
                                         if (statu.msg.code == "200") {
-                                            alert("置顶成功");
-                                            // $(".toTop").eq(index).hide();
-                                            location.reload();
-                                            
+                                            $(".confirm").hide();
+                                            $(".prompt").text("操作成功");
+                                            $(".nv91-mask").show();
+                                            $(".nv1").show();
+                                            $(".nv3").hide();
+                                            setTimeout(function () {
+                                                $(".nv91-mask").hide();
+                                                $(".nv1").hide();
+                                                location.reload();
+
+                                            }, 2000);
+
                                         }
                                     })
                                     $(".toDown").unbind('click').bind("click",function(){ 
@@ -367,9 +397,17 @@ $(document).ready(function(){
                                         par = "appsercet=" + newAppsercet + "&method=get.dxWeb.topBanner&id=" + id+"&type=2";
                                         var statu = getSign(url, par);
                                         if (statu.msg.code == "200") {
-                                            alert("取消置顶成功");
-                                            // $(".toDown").eq(index).hide();
-                                            location.reload();
+                                            $(".confirm").hide();
+                                            $(".prompt").text("操作成功");
+                                            $(".nv91-mask").show();
+                                            $(".nv1").show();
+                                            $(".nv3").hide();
+                                            setTimeout(function () {
+                                                $(".nv91-mask").hide();
+                                                $(".nv1").hide();
+                                                location.reload();
+                    
+                                            }, 2000);
                                             
                                         }
                                     })

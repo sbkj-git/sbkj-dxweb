@@ -120,41 +120,58 @@ function logsgin(url,par){
                                 if(obj.dxRightsList.length == 0){                                   
                                    return 
                                 }else{
-                                    qx+="<li class='list-group-item flex justify' style='width: 100%;background-color:#F8F8F8;' data-id='"+obj.id+"'><div style='width: 100%;' class='flex roleLis'><div style='width: 50%;text-align: left;'><input type='checkbox' value='"+obj.id+"' />"
-                                    +obj.name+"</div><div style='width: 50%;text-align: right;' class='position'>                <button class='btn openBtn'>展开</button> <button class='btn closeBtn' style='display:none;'>收起</button></div>";
-                                    $(".openBtn").click(function(){
-                                        $(this).hide();
-                                        $(".show").slideDown();
-                                        $(".closeBtn").show()
-                                    })
-                                    $(".closeBtn").click(function(){
-                                        $(this).hide();
-                                        $(".show").slideDown();
-                                        $(".openBtn").show()
-                                    })
+                                    qx+="<li class='list-group-item flex justify' style='width: 100%;background-color:#F8F8F8;' data-id='"+obj.id+"'><div style='width: 100%;' class='flex roleLis'><div class='controlShow flex' style='width:100%'><div style='width: 50%;text-align: left;'><input type='checkbox' value='"+obj.id+"' />"
+                                    +obj.name+"</div><div style='width: 50%;text-align: right;' class='position'>                <button type='button' class='btn openBtn'>展开</button> <button type='button' class='btn closeBtn1' style='display:none;'>收起</button></div></div><div class='flex show' style='width:100%;background-color:#ffffff;display:none' >";
+                                   
                                     $.each(obj.dxRightsList,function(i,item){
                                 
                                         // if(item.dxRightsTwoList.length == 0){
                                         //     return
                                         // }else{
-                                            qx+="<div class='flex show' style='width:100%;background-color:#ffffff;' data-id='"+item.id+"'><div class='item item3' ><input type='checkbox' value='"+item.id+"'  class='item2'/>"
+                                            qx+="<div class='item item3' ><input type='checkbox' value='"+item.id+"'  class='item2'/>"
                                             +item.name+"</div>";
+                                           
                                             $.each(item.dxRightsTwoList,function(i,itemi){
                                                 qx+="<div class='flex '>";
                                                 qx+="<div style='width:auto;text-align: left;' class='item3'><input type='checkbox'  value='"+itemi.id+"'  class='item2'/>"
                                                 +itemi.name+"</div>" ;
-                                                qx+="</div>"
+                                                qx+="</div>";
                                             })
+                                           
                                             
                                         // }
                                         
                                     })
+                                    qx+="</div>";
                                 }
                                
-                                 qx+="</div></li>"
+                                 qx+="</li>"
                             })
                            $(".qx").append(qx)
+                           $(".openBtn").each(function(index){
+                               debugger
+                           $(this).click(function(){
+                               debugger
+                           $(this).hide();
+                            $(".closeBtn1").eq(index).show();
+                            $(".show").eq(index).slideDown();
+                           })
                           
+                        })
+                        $(".closeBtn1").each(function(index){
+                            debugger
+                            $(this).click(function(){
+                                debugger
+                                $(this).hide();
+                                $(".openBtn").eq(index).show();
+                                $(".show").eq(index).slideUp();
+                              
+                               })
+                           
+                            
+                           
+                           
+                        })
                         }                      
                         //请求日志根据返回条数确定页数
                         else if(data.pageInfo){                      

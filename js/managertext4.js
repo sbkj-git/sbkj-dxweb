@@ -138,7 +138,7 @@ $(document).ready(function(){
             if(data.msg&&data.msg.codeMsg){
             
                 $(".textList").html("");
-                alert("没有数据");
+                
             }
  
         }
@@ -221,10 +221,16 @@ $(document).ready(function(){
                 var statu = getSign(url, par);
     
                 if (statu.msg.code == "200") {
-                    alert("置顶成功");
-                    // $(".toTop").eq(index).hide();
-                    location.reload();
-    
+                    $(".confirm").hide();
+                    $(".prompt").text("操作成功");
+                    $(".nv91-mask").show();
+                    $(".nv1").show();
+                    setTimeout(function () {
+                        $(".nv91-mask").hide();
+                        $(".nv1").hide();
+                        location.reload();
+
+                    }, 2000);
                 }
             })
             $(".toDown").unbind('click').bind("click",function(){ 
@@ -234,9 +240,17 @@ $(document).ready(function(){
                
                 var statu = getSign(url, par);
                 if (statu.msg.code == "200") {
-                    alert("取消置顶成功");
-                    // $(".toDown").eq(index).hide();
-                    location.reload();
+                    $(".confirm").hide();
+                        $(".prompt").text("操作成功");
+                        $(".nv91-mask").show();
+                        $(".nv1").show();
+                        $(".nv3").hide();
+                        setTimeout(function () {
+                            $(".nv91-mask").hide();
+                            $(".nv1").hide();
+                            location.reload();
+
+                        }, 2000);
     
                 }
             })

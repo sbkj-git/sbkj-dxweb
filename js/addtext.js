@@ -511,7 +511,7 @@ var url = src + url1;
 //    $(".show1").show();
    var id = "";
    
-   url = src + url1;
+   url = src +"/helpInterface.dx";
    par="appsercet="+appsercet+"&method=get.dxWeb.cateAllList";
    var data = getSign(url,par);
    
