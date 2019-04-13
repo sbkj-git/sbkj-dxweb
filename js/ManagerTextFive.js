@@ -8,34 +8,7 @@ $(document).ready(function(){
         $(".nv91-mask").hide();
         $(".nv91").hide();
     })
-   //按照发布时间排序
-   var ul = $(".ul_sort ul");
-    var lis = [];
-
-    lis = $(".ul_sort ul li");
-    var ux = [];
-    //循环提取时间，并调用排序方法进行排序
-    for (var i=0; i<lis.length; i++){
-        var tmp = {};
-        tmp.dom = lis.eq(i);
-        tmp.date = new Date(lis.eq(i).find("span").eq(0).html().replace(/-/g,'/'));
-        ux.push(tmp);
-    }
-    //数组排序，支持年的比较
-    ux.sort(function(a,b){
-       var myDate = new Date();
-       var year = myDate.getYear();
-       if(a.date.getYear < year && b.date.getYear == year){
-          return true;
-       }
-       return b.date - a.date;
-    });
-    //移除原先顺序错乱的li内容
-    $('.ul_sort ul li').remove();
-    //重新填写排序好的内容
-    for (var i=0; i<ux.length; i++){
-       ul.append(ux[i].dom);
-    }
+   
     //页面初次渲染加载数据
         url = src + "/qAndAInterface.dx";
         localStorage.setItem("pageNow1",1);   
@@ -49,6 +22,23 @@ $(document).ready(function(){
         render(data2);
         judgePower();
         pageChange("get.dxWeb.qAndAList",data2,"pagination7");
+        var ind = 0;
+        $(".sort").click(function(){
+            debugger
+            ind++;
+            if (ind % 2 == 1) {
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList&currentPage=" + currentPage + "&timeSort=1";
+                var data2 = getSign(url, par);
+                render(data2);       
+        pageChange("get.dxWeb.qAndAList",data2,"pagination7");
+            }else{
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList&currentPage=" + currentPage + "&timeSort=2";
+                var data2 = getSign(url, par);
+                render(data2);       
+                pageChange("get.dxWeb.qAndAList",data2,"pagination7");
+            }
+            
+        })
         function pageChange(method,data2,pagination){
             
             var appsercet = window.localStorage.getItem("appsercet");

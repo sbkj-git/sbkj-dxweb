@@ -98,6 +98,23 @@
         var data2 = getSign(url, par); 
         render(data2);       
         pageChange("get.dxWeb.helpList",data2,"pagination4");
+        var ind = 0;
+        $(".sort").click(function(){
+            debugger
+            ind++;
+            if (ind % 2 == 1) {
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.helpList&currentPage=" + currentPage + "&timeSort=1";
+                var data2 = getSign(url, par);
+                render(data2);       
+        pageChange("get.dxWeb.helpList",data2,"pagination4");
+            }else{
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.helpList&currentPage=" + currentPage + "&timeSort=2";
+                var data2 = getSign(url, par);
+                render(data2);       
+                pageChange("get.dxWeb.helpList",data2,"pagination4");
+            }
+            
+        })
         function pageChange(method,data2,pagination){
             var appsercet = window.localStorage.getItem("appsercet");
                 appsercet = JSON.parse(appsercet);

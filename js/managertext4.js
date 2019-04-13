@@ -3,34 +3,7 @@ $(document).ready(function(){
         if (el.readOnly) el.checked=el.readOnly=false;
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
-   //按照发布时间排序
-   var ul = $(".ul_sort ul");
-    var lis = [];
-
-    lis = $(".ul_sort ul li");
-    var ux = [];
-    //循环提取时间，并调用排序方法进行排序
-    for (var i=0; i<lis.length; i++){
-        var tmp = {};
-        tmp.dom = lis.eq(i);
-        tmp.date = new Date(lis.eq(i).find("span").eq(0).html().replace(/-/g,'/'));
-        ux.push(tmp);
-    }
-    //数组排序，支持年的比较
-    ux.sort(function(a,b){
-       var myDate = new Date();
-       var year = myDate.getYear();
-       if(a.date.getYear < year && b.date.getYear == year){
-          return true;
-       }
-       return b.date - a.date;
-    });
-    //移除原先顺序错乱的li内容
-    $('.ul_sort ul li').remove();
-    //重新填写排序好的内容
-    for (var i=0; i<ux.length; i++){
-       ul.append(ux[i].dom);
-    }
+  
     //获取分类列表
     url = src + "/skillInterface.dx";
     var appsercet = window.localStorage.getItem("appsercet");
@@ -43,6 +16,23 @@ $(document).ready(function(){
             //初次加载页面数据
         render(data2);
             pageChange("get.dxWeb.skillList",data2,"pagination5");
+            var ind = 0;
+            $(".sort").click(function(){
+                debugger
+                ind++;
+                if (ind % 2 == 1) {
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.skillList&currentPage=" + currentPage + "&timeSort=1";
+                    var data2 = getSign(url, par);
+                    render(data2);       
+            pageChange("get.dxWeb.skillList",data2,"pagination5");
+                }else{
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.skillList&currentPage=" + currentPage + "&timeSort=2";
+                    var data2 = getSign(url, par);
+                    render(data2);       
+                    pageChange("get.dxWeb.skillList",data2,"pagination5");
+                }
+                
+            })
             function pageChange(method,data2,pagination){
                 var appsercet = window.localStorage.getItem("appsercet");
                     appsercet = JSON.parse(appsercet);

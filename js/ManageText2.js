@@ -3,28 +3,7 @@ $(document).ready(function(){
         if (el.readOnly) el.checked=el.readOnly=false;
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
-   //按照发布时间排序
-   var ul = $(".ul_sort ul");
-    var lis = [];
-
-    lis = $(".ul_sort ul li");
-    var ux = [];
-    //循环提取时间，并调用排序方法进行排序
-    for (var i=0; i<lis.length; i++){
-        var tmp = {};
-        tmp.dom = lis.eq(i);
-        tmp.date = new Date(lis.eq(i).find("span").eq(0).html().replace(/-/g,'/'));
-        ux.push(tmp);
-    }
-    //数组排序，支持年的比较
-    ux.sort(function(a,b){
-       var myDate = new Date();
-       var year = myDate.getYear();
-       if(a.date.getYear < year && b.date.getYear == year){
-          return true;
-       }
-       return b.date - a.date;
-    });
+ 
      //点击弹窗关闭时间
      $(".BannerRefuse1").click(function(){
         
@@ -41,14 +20,7 @@ $(document).ready(function(){
         $(".nv91-mask").hide();
         $(".nv91").hide();
     })
-    //点击置顶
    
-    //移除原先顺序错乱的li内容
-    $('.ul_sort ul li').remove();
-    //重新填写排序好的内容
-    for (var i=0; i<ux.length; i++){
-       ul.append(ux[i].dom);
-    }
     //封装渲染数据方法
     function bannerList1(data) {
             if (data.dxWebList && data.dxWebList.length > 0) {
@@ -71,7 +43,7 @@ $(document).ready(function(){
                     } else {
                         str += "<td>&#10007;</td>"
                     }
-                    str += '<td>' + item.create_time + '</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.id + '">删除</span>&nbsp;&nbsp;<span data-id="' + item.id + '" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.id + '">编辑</span>'
+                    str += '<td>' + item.release_time + '</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.id + '">删除</span>&nbsp;&nbsp;<span data-id="' + item.id + '" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.id + '">编辑</span>'
                     if (item.is_ups == 1) {
                         str+="&nbsp;&nbsp;<span class='toDown' data-id='" + item.id + "'>取消置顶</span></td>";
                     } else {
