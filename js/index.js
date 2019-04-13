@@ -223,6 +223,23 @@ $(document).ready(function(){
                 $("#iframe").attr("src", "./nav5/TextDivideFive.html")
             }
         })
+        $("#6 .treeview-menu li a i").click(function () {
+            var index = $(this).index();
+            var value = $(this).attr("data-id")
+            
+            if (value == "get.dxWeb.addNotice") {
+                $("#iframe").attr("src", "./nav2/AddText.html");
+                window.localStorage.setItem("url", "/noticeInterface.dx");
+                localStorage.setItem("method", "get.dxWeb.addNotice");
+
+            }
+            if (value == "get.dxWeb.noticeList") {
+                $("#iframe").attr("src", "./nav6/ManagerTextSix.html");
+                //将此时的正在点击页面的方法 以及此时正在点击的是哪个节点暂放缓存
+                localStorage.setItem("node", JSON.stringify({ "method": "get.dxWeb.noticeList", "id": 6 }));
+            }
+            
+        })
         $("#7 .treeview-menu li a i").click(function () {
             var index = $(this).index();
             var value = $(this).attr("data-id")
@@ -359,6 +376,17 @@ $(document).ready(function(){
                 }
                 if (value == "get.dxWeb.cateTwoList") {
                     $("#iframe1").attr("src", "./nav5/TextDivideFive.html")
+                }
+                if (value == "get.dxWeb.addNotice") {
+                    $("#iframe").attr("src", "./nav2/AddText.html");
+                    window.localStorage.setItem("url", "/noticeInterface.dx");
+                    localStorage.setItem("method", "get.dxWeb.addNotice");
+    
+                }
+                if (value == "get.dxWeb.noticeList") {
+                    $("#iframe").attr("src", "./nav6/ManagerTextSix.html");
+                    //将此时的正在点击页面的方法 以及此时正在点击的是哪个节点暂放缓存
+                    localStorage.setItem("node", JSON.stringify({ "method": "get.dxWeb.noticeList", "id": 6 }));
                 }
                 //7
                 if (value == "get.dxWeb.queryFileAll") {

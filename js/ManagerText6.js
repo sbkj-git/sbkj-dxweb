@@ -3,39 +3,38 @@ $(document).ready(function(){
         if (el.readOnly) el.checked=el.readOnly=false;
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
-    $("#date1").dateSelect();
     $(".nv91-close").click(function(){
         $(".nv91-mask").hide();
         $(".nv91").hide();
     })
    
     //页面初次渲染加载数据
-        url = src + "/qAndAInterface.dx";
+        url = src + "/noticeInterface.dx";
         localStorage.setItem("pageNow1",1);   
         var appsercet = window.localStorage.getItem("appsercet");
         appsercet = JSON.parse(appsercet);
         var newAppsercet = appsercet.data;
         var currentPage   = window.localStorage.getItem("pageNow1")
-        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList&currentPage="+currentPage;  
+        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.noticeList&currentPage="+currentPage;  
         var data2 = getSign(url, par);
         console.log(data2);
         render(data2);
         judgePower();
-        pageChange("get.dxWeb.qAndAList",data2,"pagination7");
+        pageChange("get.dxWeb.noticeList",data2,"pagination12");
         var ind = 0;
         $(".sort").click(function(){
             debugger
             ind++;
             if (ind % 2 == 1) {
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList&currentPage=" + currentPage + "&timeSort=1";
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.noticeList&currentPage=" + currentPage + "&timeSort=1";
                 var data2 = getSign(url, par);
                 render(data2);       
-        pageChange("get.dxWeb.qAndAList",data2,"pagination7");
+        pageChange("get.dxWeb.noticeList",data2,"pagination12");
             }else{
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList&currentPage=" + currentPage + "&timeSort=2";
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.noticeList&currentPage=" + currentPage + "&timeSort=2";
                 var data2 = getSign(url, par);
                 render(data2);       
-                pageChange("get.dxWeb.qAndAList",data2,"pagination7");
+                pageChange("get.dxWeb.noticeList",data2,"pagination12");
             }
             
         })
@@ -104,34 +103,11 @@ $(document).ready(function(){
                     }
                 })
         }
-       
-        //获取对应产品
-        par="appsercet="+newAppsercet+"&method=get.dxWeb.cateAllList";
-        
-    var data = getSign(url,par);
-    
-    type(data);
-    var productId
-   
-    function type(data){
-       if (data.dxWebList) {
-        $(".changeSelect13").html("");
-           if (data.dxWebList.length > 0) {
-               var str = "";
-               str+="<option value='0' selected data-id='0'>请选择</option>";
-               $.each(data.dxWebList, function (i, obj) {
-                   str += "<option data-id='" + obj.product_id + "'>" + obj.product_name + "</option>"
-               })
-               $(".changeSelect13").html(str);
-           }
-       }
-        
-    }
-    
+      
  //通过文章标题查看列表
     $(".titleText4").click(function () {
         var title1 = $(".titleText14").val();
-        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList&title=" + title1;
+        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.noticeList&title=" + title1;
         var data = getSign(url, par);
 
         if (data.msg && data.msg.code == "200") {
@@ -141,75 +117,9 @@ $(document).ready(function(){
             render(data);   
         }
     })
-    //渲染问题分类下拉框
-   function question(data){
-    if (data.dxWebList) {
-        $(".changeSelect14").html("");
-         if (data.dxWebList.length > 0) {
-             var str = "";
-             str+="<option value='0' >请选择</option>";
-             $.each(data.dxWebList, function (i, obj) {
-                 str += "<option data-id='" + obj.cate_id + "'>" + obj.cate_name + "</option>"
-             })
-             $(".changeSelect14").html(str);
-         }
-     }
-
- }  
-    //通过类别id查看列表
-    var cateId,productId;
-        var changeSelect = document.querySelectorAll(".changeSelect13 option");
-        $(".changeSelect13").change(function () {
-            
-            $(".changeSelect14").html("<option value='0' >请选择</option>")
-            productId = $(".changeSelect13 option:checked").attr("data-id");
-                
-            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoAllList&productId=" + productId;
-            var data1 = getSign(url, par);
-            question(data1);
-        })
-        $(".changeSelect13").change(function () {
-            
-           
-           
-            if(productId == 0){
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList";
-                var data = getSign(url, par);
-                render(data);
-               
-            } else {
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList&productId=" + productId;
-                var data = getSign(url, par);
-                if (data.msg && data.msg.code == "200") {
-                    $(".textList").html("");
-                } else {
-                    render(data);
-                    
-                }
-            }
-            
-        })
-        //二级问题列表页查询
-        $(".changeSelect14").change(function () {
-            
-            cateId = $(".changeSelect14 option:checked").attr("data-id");
-            if(cateId == 0){
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList";
-                var data = getSign(url, par);
-                render(data);
-               
-            } else {
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList&cateId=" + cateId;
-                var data = getSign(url, par);
-                if (data.msg && data.msg.code == "200") {
-                    $(".textList").html("");
-                } else {
-                    render(data);
-                    
-                }
-            }
-            
-        })
+    
+    
+    
         // //批量操作
         function t1(){
             var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
@@ -230,78 +140,6 @@ $(document).ready(function(){
             return  IdList;
         }
        
-            $(".operater").change(function(){
-                
-                
-                var val = $(".operater option:checked").val();
-                if(val == 1){
-                    //展示发布日期弹框
-                    $(".nv91-mask").show();
-                    $(".nv91").show();
-                    $(".addType").click(function () {
-                        
-                        var IdList = t1();
-                        var releaseTime = $(".releaseTime").val();
-                        par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&releaseTime=" + releaseTime;
-                        var data = getSign(url, par);
-                        if (data.msg.code == "200") {
-                            $(".confirm").hide();
-                            $(".prompt").text("修改成功");  
-                            $(".nv1").show();
-                            setTimeout(function(){
-                                $(".nv91-mask").hide();
-                                $(".nv1").hide();
-                               location.reload();
-                            },2000);
-                        }else{
-                            $(".confirm").hide();
-                            $(".prompt").text("修改失败");  
-                            $(".nv1").show();
-                            setTimeout(function(){
-                                $(".nv91-mask").hide();
-                                $(".nv1").hide();
-                            },2000);  
-                        }
-
-                    })
-                   
-                }
-                if(val == 2){
-                    //展示来源弹框
-                    $(".nv91-mask").show();
-                    $(".nv92").show();
-                    $(".addType").click(function () {
-                        var IdList = t1();
-                        var source = $(".source").val();
-                        par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&source=" + source;
-                        var data = getSign(url, par);
-                        if (data.msg.code == "200") {
-                            alert("操作成功");
-                            location.reload();
-                        }
-                    })
-                    
-                }
-                if(val == 3){
-                    //展示作者弹框
-                    $(".nv91-mask").show();
-                    $(".nv93").show();
-                    $(".addType").click(function () {
-                        var IdList = t1();
-                        var author = $(".author").val();
-                        par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&author=" + author;
-                        var data = getSign(url, par);
-                        if (data.msg.code == "200") {
-                            alert("操作成功");
-                            location.reload();
-                        }
-                    })
-                    
-                }
-                
-            })
-           
-      
         //删除函数封装
          function deleteText() {
                 var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
@@ -319,7 +157,7 @@ $(document).ready(function(){
                         IdList.push(checkboxArray[i].getAttribute("data-id"));
                     }
                 }
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteQAndA&IdList=" + IdList;
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.delNotice&IdList=" + IdList;
                 
                 var data = getSign(url, par);
                 if (data.msg.code == "200") {
@@ -341,30 +179,16 @@ $(document).ready(function(){
                 str += '<tr style="border-bottom: 1px solid #d8d8d8;">';
                 str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.id + '"   aria-label="Single checkbox Two" data-id="' + item.id + '">';
                 var title;
-                if(item.title.length > 10){
-                    title = item.title.substring(0,10)+"...";
-                }else{
-                    title = item.title;
-                }
-                str+='<label for="' + item.id + '">' + title + '</label>'
-                str+='</div></td><td>"' + item.product_name + '"</td><td>' + item.classify_name+ '</td><td>' + item.author + '</td>';
-                if (item.is_ups == 1) {
-                    str += "<td>&#10003;</td>";
-                } else {
-                    str += "<td>&#10007;</td>"
-                }
-                str+='<td>' + item.browse + '</td>';
-                if (item.is_ups == 1) {
-                    str+="&nbsp;&nbsp;<span class='toDown' data-id='" + item.id + "'>取消置顶</span></td>";
-                } else {
-                    str+="&nbsp;&nbsp;<span class='toTop ' data-id='" + item.id + "'>置顶</span>&nbsp;</td>";
-                }
-                str += '<td>' + item.release_time + '</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.id + '">删除</span>&nbsp;&nbsp;<span data-id="' + item.id + '" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.id + '">编辑</span>'
-                if (item.is_ups == 1) {
-                    str+="&nbsp;&nbsp;<span class='toDown' data-id='" + item.id + "'>取消置顶</span></td>";
-                } else {
-                    str+="&nbsp;&nbsp;<span class='toTop ' data-id='" + item.id + "'>置顶</span>&nbsp;</td>";
-                }
+                    if(item.title.length > 10){
+                        title = item.title.substring(0,10)+"...";
+                    }else{
+                        title = item.title;
+                    }
+                    str+='<label for="' + item.id + '">' + title + '</label>'
+                str+='</div></td><td>' + item.author + '</td>';
+              
+                str += '<td>' + item.release_time + '</td><td style="color:#FF5456;"><span class="isDelete" data-id="' + item.id + '">删除</span>&nbsp;&nbsp;<span data-id="' + item.id + '" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.id + '">编辑</span></td>';
+                
                 str += "</tr>";
             })
             $(".textList").html(str);
@@ -419,27 +243,30 @@ $(document).ready(function(){
 //判断权限
 function judgePower(){
     //页面初次加载渲染页面
-    var data = window.localStorage.getItem("dxRightsList");    
-        data = JSON.parse(data);  
+     
     var url,par;  
-    url = src +"/qAndAInterface.dx"    
+    url = src +"/noticeInterface.dx"    
         var appsercet = window.localStorage.getItem("appsercet");
         appsercet = JSON.parse(appsercet);
         var newAppsercet = appsercet.data;
         // url = src + "/qAndAInterface.dx"
         //判断是否有添加管理员操作权限
+        var data = window.localStorage.getItem("dxRightsList");    
+        data = JSON.parse(data); 
+        debugger
         var arr = [];
         $.each(data,function(i,item){
             //console.log(item)
-            if(item.id == 5){
+            if(item.id == 6){
                 arr.push(item)
             }
         })
         console.log(arr[0]);
         $.each(arr[0].dxRightsList,function(i,item){
+            debugger
             //console.log(arr[0].dxRightsList)
-
-            if(item.method === "get.dxWeb.qAndAList"){
+            url = src + "/" +item.link_path
+            if(item.method === "get.dxWeb.noticeList"){
                
                 //判断该角色是否有权限操作
                 if(item.dxRightsTwoList.length == 0){
@@ -448,17 +275,19 @@ function judgePower(){
                 else{
                     $.each(item.dxRightsTwoList,function(i,obj){
                        //判断该用户是否有添加权限
-                        if(obj.method === "get.dxWeb.addQAndA"){
+                        if(obj.method === "get.dxWeb.addNotice"){
                             $(".addText").show();
                             $(".addText").click(function(){
-                            localStorage.setItem("method","get.dxWeb.addQAndA");
-                            localStorage.setItem("url","/qAndAInterface.dx");
+                            localStorage.setItem("method","get.dxWeb.addNotice");
+                            localStorage.setItem("url","/noticeInterface.dx");
                             location.href = "../nav2/AddText.html";
                           })
                           
                             }
                         //判断该用户是否有删除权限 
-                        if(obj.method === "get.dxWeb.deleteQAndA"){
+                        debugger
+                        if(obj.method === "get.dxWeb.delNotice"){
+                            debugger
                             $(".Delete").show();
                             $(".isDelete").show();
                             $(".Delete").click(function(){
@@ -476,12 +305,13 @@ function judgePower(){
                             })
                            
                             $(".isDelete").click(function () {
+                                debugger
                                 $(".nv91-mask").show();
                                 $(".confirm").show();
                                 var IdList = $(this).attr("data-id");
                                 $(".roleSure").click(function(){
                                     
-                                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteQAndA&IdList=" + IdList;
+                                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.delNotice&IdList=" + IdList;
     
                                     var data = getSign(url, par);
                                     if (data.msg.code == "200") {
@@ -509,31 +339,31 @@ function judgePower(){
                             })
                            
                             //判断是否有查看权限
-                        }if(obj.method === "get.dxWeb.qAndADetails"){
+                        }if(obj.method === "get.dxWeb.noticeDetails"){
                               //查看文章详情
                              $(".isLook").show();
                             $(".isLook").click(function(){
                                 
                                 var id = $(this).attr("data-id");
-                                par = "appsercet="+newAppsercet+"&method=get.dxWeb.qAndADetails&articleId="+id;
+                                par = "appsercet="+newAppsercet+"&method=get.dxWeb.noticeDetails&articleId="+id;
                                 var data = getSign(url,par);
                                 localStorage.setItem("textDetail",JSON.stringify(data));
-                                localStorage.setItem("method","get.dxWeb.qAndADetails");
+                                localStorage.setItem("method","get.dxWeb.noticeDetails");
                                 console.log(data); 
                                 location.href = "../nav2/AddText.html"
                             })  
                             }  
                             //判断是否有编辑权限
-                           if(obj.method === "get.dxWeb.updateQAndA"){
+                           if(obj.method === "get.dxWeb.updateNotice"){
                             $(".isEdit").show();
                          $(".isEdit").click(function(){
                              
                             var id = $(this).attr("data-id");
-                               var par = "appsercet="+newAppsercet+"&method=get.dxWeb.qAndADetails&articleId="+id;
+                               var par = "appsercet="+newAppsercet+"&method=get.dxWeb.noticeDetails&articleId="+id;
                                var data = getSign(url,par);
                                localStorage.setItem("textDetail",JSON.stringify(data));
-                               localStorage.setItem("method","get.dxWeb.updateQAndA");
-                               localStorage.setItem("url","/qAndAInterface.dx");
+                               localStorage.setItem("method","get.dxWeb.updateNotice");
+                               localStorage.setItem("url","/noticeInterface.dx");
                                location.href = "../nav2/AddText.html";
                          })      
 

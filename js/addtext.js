@@ -374,7 +374,7 @@ var url = src + url1;
         $(".reviewImg3").attr("src","");
   }
   
-  if(method === "get.dxWeb.updateWebOperation" || method === "get.dxWeb.updateHelp" || method === "get.dxWeb.helpDetails" || method === "get.dxWeb.skillDetails" || method === "get.dxWeb.updateSkill" || method === "get.dxWeb.qAndADetails" || method === "get.dxWeb.updateQAndA" || method === "get.dxWeb.webOperationDetails"){
+  if(method === "get.dxWeb.updateWebOperation" || method === "get.dxWeb.updateHelp" || method === "get.dxWeb.helpDetails" || method === "get.dxWeb.skillDetails" || method === "get.dxWeb.updateSkill" || method === "get.dxWeb.qAndADetails" || method === "get.dxWeb.updateQAndA" || method === "get.dxWeb.webOperationDetails" || method === "get.dxWeb.noticeDetails" || method === "get.dxWeb.updateNotice"){
       
    var detail = localStorage.getItem("textDetail");
    var cateId;
@@ -506,7 +506,22 @@ var url = src + url1;
            return;
        }
    })
-}else if(method === "get.dxWeb.addHelp"){
+}
+   else if(method === "get.dxWeb.addNotice"){
+    var id = "";
+    $(".addMessage").click(function () {
+     debugger
+        var data = formvalidar(method);
+        console.log(data);
+        if (data) {
+            updateMessage(method, id, url1);
+        } else {
+            return;
+        }
+    })
+   }
+
+else if(method === "get.dxWeb.addHelp"){
    $(".changeFlex").removeClass("column");
 //    $(".show1").show();
    var id = "";

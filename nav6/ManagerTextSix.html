@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,370 +7,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>管理文章</title>
+    <link rel="stylesheet" href="../css/dataSelect.css"/>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-<link rel="stylesheet" type="text/css" href="../css/buind.css">
-<script src="../js/jquery-1.10.2.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<style>
-.table th, .table td{vertical-align: middle;}
-.isLook{display: none;}
-</style>
+
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/buind.css">
+    <link rel="stylesheet" href="../css/page.css">
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+   
+    <link rel="stylesheet" href="../css/newPage.css">
+    <style>
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .isLook {
+            display: none;
+        }
+
+        .table td:first-child {
+            text-align: left;
+            padding-left: 30px;
+            width: 27%;
+        }
+        /*杨晓蓉日历插件*/
+        .tz-datepicker {
+            width: 210px;
+            border: solid 1px #3a98d8;
+            font-family: 宋体;
+            font-size: 12px;
+            position: absolute;
+            z-index: 99999;
+            display: none;
+            background: #fff
+        }
+
+        .tz-datepicker .year-month {
+            height: 25px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 1px
+        }
+
+        .tz-datepicker .year-month span {
+            display: inline-block;
+            height: 25px;
+            line-height: 25px;
+            float: left
+        }
+
+        .tz-datepicker .year-month span:hover {
+            color: #fff;
+            background: #3a98d8
+        }
+
+        .tz-datepicker .year-month span.active {
+            color: #fff;
+            background: #3a98d8
+        }
+    </style>
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
-        <div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
-            <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
-            <li><a href="#" class="color">帮助文档</a>&nbsp;/&nbsp;</li>
-            <li><a href="#" class="color">管理文章</a></li>
-        </ul>
-        <h1>管理文章</h1>
-    </div>
-   <div class="" style="margin-top:50px;padding: 0 70px;width: 100%;box-sizing: border-box;">
+<div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
+    <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
+        <li><a href="#" class="color">公告</a>&nbsp;/&nbsp;</li>
+        <li><a href="#" class="color">管理文章</a></li>
+    </ul>
+    <h1>管理文章</h1>
+</div>
+<div class="" style="margin-top:50px;padding: 0 70px;width: 100%;box-sizing: border-box;">
     <div style="width: 100%;background-color: #fff;padding:40px 20px;box-sizing: border-box;">
         <div class="form-group flex justify" style="padding-bottom: 2%;">
-            <div class="flex" style="width: 50%;">
-                <div class="" style="text-align: center;margin-right: 3%;">
-                    <button class="btn btn-primary addText">添加文章</button>
-                </div>
+            <div class="flex" style="width: 70%;">
                 <div class="" style="text-align: center;">
+                    <button class="btn btn-primary addText saveBtn">添加文档</button>
+                </div>
+                
+                <div class="" style="text-align: center;padding-left: 10px;">
                     <button class="btn Delete">删除选中</button>
                 </div>
+               
             </div>
-            <div class="flex" style="width: 50%;text-align: right;">
+            <div class="flex" style="width: 30%;text-align: right;">
                 <div class="col-sm-8" style="margin-left: 25%;">
                     <div class="position">
-                        <input type="text" class="form-control" placeholder="请输入文章标题"/>
-                        <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" >&#xe615;</span>
+                        <input type="text" class="form-control titleText14" placeholder="请输入文章标题"/>
+                        <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;"
+                              class="titleText4">&#xe615;</span>
                     </div>
-                        
-                </div>   
+
+                </div>
             </div>
         </div>
         <table class="table" style="width: 100%;overflow: hidden;">
             <thead>
-                <tr style="border-bottom: 1px solid #d8d8d8;">
-                    <td class="position">
-                        <div class="radio radio-info radio-inline">
-                            <input type="radio" id="m1" value="option1" name="radioInline" checked="">
-                            <label for="m1"> 文章名称 </label>
-                        </div>
-                    </td>
-                    <td>文章作者</td>
-                    <td>发布时间<img src="../image/u2372.png" alt="" style="display: inline-block;vertical-align: middle;width: 10px;height:18;margin-left: 1%;"></td>
-                    <td style="font-weight: 600;">操作</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="border-bottom: 1px solid #d8d8d8;">
-                    <td>
-                        <div class="checkbox checkbox-primary">
-                            <input type="checkbox" class="styled styled-primary" id="singleCheckbox3" value="option2" checked="false" aria-label="Single checkbox Two">
-                            <label for="singleCheckbox3">这是文章名称</label>
-                        </div>
-                    </td>
-                    <td>路人甲</td>
-                    <td>2019-02-20  11:40:08</td>
-                    <td style="color:#FF5456;"><span class="isEdit">编辑</span>&nbsp;<span class="isDelete">删除</span></td>
-                </tr>
+                <thead>
+                    <tr style="border-bottom: 1px solid #d8d8d8;">
+                        <td class="position">
+                            <div class="radio radio-info radio-inline">
+                                <input type="radio" id="ms1" value="" name="ms1" checked="">
+                                <label for="ms1"> 文章名称 </label>
+                            </div>
+                        </td>
+                        <td>文章作者</td>
+                        <td class="sort">发布时间<img src="../image/u2372.png" alt="" style="display: inline-block;vertical-align: middle;width: 10px;height:18;margin-left: 1%;"></td>
+                        <td style="font-weight: 600;">操作</td>
+                    </tr>
+                </thead>
+            <tbody class="textList">
+
             </tbody>
         </table>
-        <div class="paging flex justify"  >
-            <div style="color:#929292;font-size: 14px;padding-left: 20px;">共<span>400</span>条数据&nbsp;第<span>1</span>/<span>80</span>页</div>
-            <div style="width:50%;">
-                <ul class="pageList flex " style="width:auto;justify-content: flex-end;">
-                    <li>&lt;</li>
-                    <li class="colorActive">1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>&gt;</li>
-                    <li>10条/页</li>
-                    <li>跳至<input type="number" class="btn" style="width:50px;height:30px;border-radius:5px;">页</li>
-                </ul>
-            </div>
+
+        <div class="paging flex " style="width:100%;justify-content: flex-end;">
+            <div id="pagination12" class="pagination"></div>
+
         </div>
     </div>
 </div>
-   <footer class="footer">
-        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-         </p>
-        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-         
-         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
-    </footer>
+<div class="nv91-mask">
+  
+     <!--确认 取消-->
+     <div class="confirm">
+        <div  class="boxTotal">
+            <img src="../image/hint.png" class="boxImg"/>
+            <span class="boxDelete">确定要删除这条消息吗?</span>
+            </div>
+            <div class="dele">
+            <button class="roleRefu  roleRefuse5">取消</button>
+            <button class="roleSur roleSure">确定</button>
+        </div>
+    </div>
+    <div class="nv1">
+        <img src="../image/success.png" class="success1"/>
+        <span class="referMes prompt">删除成功</span>
+    </div>
+    <div class="nv3">
+        <img src="../image/close12.png" class="success1"/>
+        <span class="referMes prompt">删除失败</span>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    </p>
+    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+
+    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+</footer>
 </body>
 </html>
 <script src="../js/MD5.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/getRequest.js"></script>
-<script type="text/javascript">
-    function changeState(el) {
-        if (el.readOnly) el.checked=el.readOnly=false;
-        else if (!el.checked) el.readOnly=el.indeterminate=true;
-    }
-   //按照发布时间排序
-   var ul = $(".ul_sort ul");
-    var lis = [];
 
-    lis = $(".ul_sort ul li");
-    var ux = [];
-    //循环提取时间，并调用排序方法进行排序
-    for (var i=0; i<lis.length; i++){
-        var tmp = {};
-        tmp.dom = lis.eq(i);
-        tmp.date = new Date(lis.eq(i).find("span").eq(0).html().replace(/-/g,'/'));
-        ux.push(tmp);
-    }
-    //数组排序，支持年的比较
-    ux.sort(function(a,b){
-       var myDate = new Date();
-       var year = myDate.getYear();
-       if(a.date.getYear < year && b.date.getYear == year){
-          return true;
-       }
-       return b.date - a.date;
-    });
-    //移除原先顺序错乱的li内容
-    $('.ul_sort ul li').remove();
-    //重新填写排序好的内容
-    for (var i=0; i<ux.length; i++){
-       ul.append(ux[i].dom);
-    }
-    //页面初次渲染加载数据
-    var data = window.localStorage.getItem("dxRightsList");    
-        data = JSON.parse(data);  
-     //页面初次加载渲染页面
-     var url,par;      
-        var appsercet = window.localStorage.getItem("appsercet");
-        appsercet = JSON.parse(appsercet);
-        var newAppsercet = appsercet.data;
-        url = src + "/helpInterface.dx"
-        //判断是否有添加管理员操作权限
-        var arr = [];
-        $.each(data,function(i,item){
-            //console.log(item)
-            if(item.id == 3){
-                arr.push(item)
-            }
-        })
-        console.log(arr[0]);
-        $.each(arr[0].dxRightsList,function(i,item){
-            //console.log(arr[0].dxRightsList)
-            if(item.method === "get.dxWeb.helpList"){
-                url = src+"/"+item.link_path;
-                par = "appsercet="+newAppsercet+"&method="+item.method;
-                
-                // var data = getSign(url,par);
-                // if(data.dxWebList.length>0){
-                //     var str = "";
-                //     $.each(data.dxWebList,function(i,item){
-                //         str+='<tr style="border-bottom: 1px solid #d8d8d8;">';
-                //             str+='<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="'+item.id+'"   aria-label="Single checkbox Two" data-id="'+item.id+'"><label for="'+item.id+'">'+item.title+'</label></div></td><td><img src="'+item.small_img+'" alt="" style="width: 82px;height:56px;display: table-column;vertical-align: middle;"></td><td>'+item.author+'</td>';
-                //             if(item.is_ups == 1){
-                //                 str+="<td>&#10003;</td>";
-                //             }else{
-                //                 str+="<td>&#10007;</td>"
-                //             }
-                //             str+='<td>'+item.create_time+'</td><td style="color:#FF5456;"><span class="isDelete" data-id="'+item.id+'">删除</span>&nbsp;&nbsp;<span data-id="'+item.id+'" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="'+item.id+'">编辑</span></td>'
-                //         str+="</tr>";
-                //     })
-                //     $(".textList").append(str);
-                // }
-                console.log(data);
-                //判断该角色是否有权限操作
-                if(item.dxRightsTwoList.length == 0){
-                    return
-                }
-                else{
-                    $.each(item.dxRightsTwoList,function(i,obj){
-                       //判断该用户是否有添加权限
-                        if(obj.method === "get.dxWeb.addHelp"){
-                            $(".addText").show();
-                            $(".addText").click(function(){
-                            localStorage.setItem("method","get.dxWeb.addHelp");
-                            localStorage.setItem("url",url);
-                            location.href = "./AddText.html";
-                          })
-                          
-                            }
-                        //判断该用户是否有删除权限 
-                        if(obj.method === "get.dxWeb.deleteHelp"){
-                            $(".Delete").show();
-                            $(".isDelete").show();
-                            $(".Delete").click(function(){
-                                deleteText();
-                            })
-                            $(".isDelete").click(function(){
-                                deleteText();                               
-                            })
-                           
-                            //判断是否有查看权限
-                        }if(obj.method === "get.dxWeb.helpDetails"){
-                              //查看文章详情
-                             $(".isLook").show();
-                            $(".isLook").click(function(){
-                                var id = $(this).attr("data-id");
-                                par = "appsercet="+newAppsercet+"&method=get.dxWeb.helpDetails&articleId="+id;
-                                var data = getSign(url,par);
-                                localStorage.setItem("textDetail",JSON.stringify(data));
-                                console.log(data); 
-                                location.href = "./LookText.html"
-                            })  
-                            }  
-                            //判断是否有编辑权限
-                           if(obj.method === "get.dxWeb.updateHelp"){
-                            $(".isEdit").show();
-                         $(".isEdit").click(function(){
-                            var id = $(this).attr("data-id");
-                               var par = "appsercet="+appsercet+"&method=get.dxWeb.helpDetails&articleId="+id;
-                               var data = getSign(url,par);
-                               localStorage.setItem("textDetail",JSON.stringify(data));
-                               localStorage.setItem("method","get.dxWeb.updateHelp");
-                               location.href = "../nav2/AddText.html";
-                         })      
+<script src="../js/newPage.js"></script>
+<script src="../js/ManagerText6.js"></script>
+<script src="../js/radioAllChoose.js"></script>
 
-                                }   
-                                          
-                                          
-                    })
-                    
-                }
-            }
-            //删除函数封装
-            function deleteText() {
-                var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
-                var IdList;
-                var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
-                for (var i = 0; i < inputs.length; i++) {
-                    var obj = inputs[i];
-                    if (obj.type == 'checkbox') {
-                        checkboxArray.push(obj);
-                    }
-                }
-                IdList = new Array();
-                for (var i = 0; i < checkboxArray.length; i++) {
-                    if (checkboxArray[i].checked) {
-                        IdList.push(checkboxArray[i].getAttribute("data-id"));
-                    }
-                }
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteWebOperation&IdList=" + IdList;
-                
-                var data = getSign(url, par);
-                if (data.msg.code == "200") {
-                    alert("删除成功");
-                }
-            }
 
-        })
-       
-</script>
-<script type="text/javascript">
-//公告下判断方法  目前还没有方法判断   有方法替换方法就好
-    $(document).ready(function(){
-        //首先刚开始加载页面的时候从缓存中读取之前存入的 id  以及 method名
-        var node = localStorage.getItem("node");
-        node = JSON.parse(node);
-        var method = node.method;
-        var id = node.id;
-        function changeState(el) {
-            if (el.readOnly) el.checked=el.readOnly=false;
-            else if (!el.checked) el.readOnly=el.indeterminate=true;
-        } 
-        var url,par; 
-        var fileDom      
-        var appsercet = window.localStorage.getItem("appsercet");
-        appsercet = JSON.parse(appsercet);
-        var appid = localStorage.getItem("appid");
-        console.log(appid)
-        var newAppsercet = appsercet.data;
-        //从缓存中读取权限，判断是否有增删改查权限
-        //页面初次渲染加载数据      
-        var data = window.localStorage.getItem("dxRightsList");  
-        data = JSON.parse(data);    
-        //console.log(data);
-        //页面初次加载渲染页面
-        // Datetime();
-        var appsercet = window.localStorage.getItem("appsercet");
-        appsercet = JSON.parse(appsercet);
-        var newAppsercet = appsercet.data;
-        url = src + "/helpInterface.dx"
-        //判断是否有添加管理员操作权限     
-        // return
-        var arr = [];
-        $.each(data,function(i,item){
-            //判断是否是从缓存中读取的id
-            if(item.id == id){
-                arr.push(item)
-            }
-        })
-        //console.log(arr[0]); 
-        $.each(arr[0].dxRightsList,function(i,item){
-            // 判断是否是从缓存中读取的方法名
-            if(item.method === method){
-                par = "appsercet="+newAppsercet+"&method=get.dxWeb.helpList";
-                
-                // var data = getSign(url,par);
-                // console.log(data);
-                //判断该角色是否有权限操作
-                if(item.dxRightsTwoList.length == 0){
-                    return
-                }
-                else{                 
-                    $.each(item.dxRightsTwoList,function(i,obj){
-                       //判断该用户是否有添加文档权限
-                        if(obj.method === "get.dxWeb.addHelp"){  
-                            
-                            $(".addText").show();
-                            $(".addText").click(function () {
-                                localStorage.setItem("url","/helpInterface.dx");
-                                localStorage.setItem("method","/get.dxWeb.addHelp")
-                                location.href = "../nav2/AddText.html"
-                            
-                        })      
-                    }                     
-                            //判断是否有查看权限
-                           if(obj.method === "get.dxWeb.helpDetails"){
-                           $(".isLook").show();
-                           $(".isLook").click(function(){
-                               var id = $(this).attr("data-id");
-                               var par = "appsercet="+appsercet+"&method=get.dxWeb.helpDetails&articleId="+id;
-                               var data = getSign(url,par);
-                               localStorage.setItem("textDetail",JSON.stringify(data));
-                            //    localStorage.setItem("isLook","yes");
-                               location.href = "../nav2/LookText.html";
-                           });
 
-                        } 
-                        //判断是否有删除权限
-                        if(obj.method === "get.dxWeb.deleteHelp"){
-                            $(".isDelete").show();
-                           $(".isDelete").click(function(){
-                               var id = $(this).attr("data-id");
-                           });
-                        }    
-                          //判断是否有编辑员工权限
-                          if (obj.method === "get.dxWeb.updateHelp") {
-                         $(".isEdit").show();
-                         $(".isEdit").click(function(){
-                            var id = $(this).attr("data-id");
-                               var par = "appsercet="+appsercet+"&method=get.dxWeb.helpDetails&articleId="+id;
-                               var data = getSign(url,par);
-                               localStorage.setItem("textDetail",JSON.stringify(data));
-                               localStorage.setItem("isEdit","yes");
-                               location.href = "../nav2/AddText.html";
-                         })
-                        }           
-                    })                   
-                }
-            }
-        })
 
-    }) 
-</script>
+
+
+
+
+
+
+
+
 
 
 

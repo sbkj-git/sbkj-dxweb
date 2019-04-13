@@ -399,8 +399,13 @@ $(document).ready(function(){
         
         var data = getSign(url, par);
         if (data.msg.code == "200") {
-            alert("删除成功");
-            location.reload();
+            $(".confirm").hide(); 
+                    $(".nv1").show();
+                    setTimeout(function(){
+                        $(".nv91-mask").hide();
+                        $(".nv1").hide();
+                       location.reload();
+                    },2000);
         }
     }
 })
