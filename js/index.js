@@ -81,9 +81,21 @@ $(document).ready(function(){
             if (item.dxRightsList.length == 0) {
                 return
             } else {
-
-                str1 += "<li id='" + item.id + "'><img src='./image/lf" + item.id + ".png' alt='' style='width:20px;height:20px;'></li>"
-                str += "<li class='treeview' id='" + item.id + "'><a href='#'><i class='fa fa-dashboard'><img src='./image/lf" + item.id + ".png' style='width:20px;height:20px;margin:0 10px 0 26px'/></i> <span>" + item.name + "</span> <i class='fa fa-angle-right pull-right'></i></a>"
+                if(item.id == 8){
+                    str1 += "<li id='" + item.id + "'><img src='./image/lf" + item.id + ".png' alt='' style='width:20px;height:15px;'></li>"
+                }
+                else{
+                    str1 += "<li id='" + item.id + "'><img src='./image/lf" + item.id + ".png' alt='' style='width:20px;height:20px;'></li>"
+                }
+               
+                str += "<li class='treeview' id='" + item.id + "'><a href='#'><i class='fa fa-dashboard'>";
+                if(item.id == 8){
+                    str+="<img src='./image/lf" + item.id + ".png' style='width:20px;height:15px;margin:0 10px 0 26px'/>"
+                }else{
+                    str+="<img src='./image/lf" + item.id + ".png' style='width:20px;height:20px;margin:0 10px 0 26px'/>"
+                }
+               
+                str+="</i> <span>" + item.name + "</span> <i class='fa fa-angle-right pull-right'></i></a>"
                 str += "<ul class='treeview-menu'>";
                 str2 += "<div class='nav-slide-o'><ul>";
 

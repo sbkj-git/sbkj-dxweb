@@ -318,6 +318,17 @@
                             $(".Delete").show();
                             $(".isDelete").show();
                             $(".Delete").click(function(){
+                                var data = judgeChoose();
+                                if(data.length == 0){
+                                    $(".nv91-mask").show();
+                                    $(".prompt").text("请至少选择一条数据");
+                                    $(".confirm1").show(); 
+                                    setTimeout(function(){
+                                        $(".nv91-mask").hide();
+                                        $(".confirm1").hide();
+                                       
+                                    },2000);
+                                }else{
                                 $(".nv91-mask").show();
                                 $(".confirm").show();
                                 $(".needShow").show();
@@ -328,7 +339,7 @@
                                     $(".nv91-mask").hide();
                                     $(".confirm").hide(); 
                                 })
-                                
+                            }  
                             })
                            
                             $(".isDelete").click(function () {

@@ -176,10 +176,11 @@ input::-webkit-input-speech-button {
             transition: left 0.3s;
         }
         /* //去除滚动条  */
- body::-webkit-scrollbar{display: none;}
+ body::-webkit-scrollbar{scroll-behavior: auto;height: 100%;}
  body::-o-scrollbar{display: none!important;-moz-appearance:none !important; }
  body::-ms-scrollbar{display: none;}
  body::-moz-scrollbar{display: none;}
+ iframe::-webkit-scrollbar{scroll-behavior:auto}
  /* body::-o-scrollbar{
     -moz-appearance: none !important;   
     background: rgba(0,255,0,0) !important;  
@@ -221,4 +222,19 @@ iframe::-o-scrollbar{
            .referMes{display: inline-block; margin-left: 105px;margin-top: 50px;color: red;}
 /* //企业认证图片展示i */
 .licencePath{width: 151px;height: 210px;overflow: hidden;}
+/* //日历插件开始 */
 
+
+
+*{margin:0;padding:0;list-style:none;}
+html{background-color:#E3E3E3; font-size:14px; color:#000; font-family:'微软雅黑'}
+h2{line-height:30px; font-size:20px;}
+a,a:hover{ text-decoration:none;}
+pre{font-family:'微软雅黑'}
+.box{width:970px; padding:10px 20px; background-color:#fff; margin:10px auto;}
+.box a{padding-right:20px;}
+.demo1,.demo2,.demo3,.demo4,.demo5,.demo6{margin:25px 0;}
+h3{margin:10px 0;}
+.layinput{height: 22px;line-height: 22px;width: 150px;margin: 0;}
+
+/* 日历插件结束 */

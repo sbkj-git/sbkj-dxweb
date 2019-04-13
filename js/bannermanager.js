@@ -246,27 +246,10 @@ $(document).ready(function(){
                
             }
         });
-        //通过反馈时间查询
-        $(".end1").blur(function(){
-            debugger
-            var  starttime = $(".start1").val();
-            var erdtime = $(".end1").val();
-            if(starttime == "" || erdtime == ""){
-                return
-            }else{
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList&starttime="+starttime+"&erdtime="+erdtime;
-            
-                var bannerList = getSign(url,par);
-                if(bannerList.msg && bannerList.msg.code == "10"){
-                    $(".bannerList").html("");
-                    
-                }
-                bannerList1(bannerList);
-                firstRender();
-            }
-            
-        })
-        
+    //通过反馈时间查询
+    
+    
+
        
             function firstRender() {
             //页面初次渲染加载数据
@@ -315,9 +298,14 @@ $(document).ready(function(){
                                            
                                         })
                                         $(".BannerSure").click(function () {
-
-                                           
+                                            debugger
+                                           var success = formValidater();
+                                           if(success == true){
                                             getContentTwo("get.dxWeb.addhelp", 1);
+                                           }else{
+                                               return;
+                                           }
+                                            
                                             
                                             
                                         })
@@ -474,9 +462,12 @@ $(document).ready(function(){
                                             var sign2 = sign1.parameter;
                                             var timestamp = sign1.timestamp;   
                                             
-                                            
+                                            var success = formValidater();
+                                           if(success == true){
                                             getContentTwo("get.dxWeb.updatehelp", id);
-
+                                           }else{
+                                               return;
+                                           }
                                         })
                                     })
                                 }
@@ -574,21 +565,129 @@ $(document).ready(function(){
             console.log(success);
             $(".nv91-mask").hide();
             $(".nv91").hide();
-            $(".nv91 input").val("");
-            location.reload();
+          
             success = JSON.parse(success);
             if (success.msg.code == "200") {
-                alert("操作成功")
-               location.reload();
+                $(".confirm").hide();
+                    $(".prompt").text("操作成功");
+                    $(".nv91-mask").show();
+                    $(".nv1").show();
+                    $(".nv3").hide();
+                  
+                    setTimeout(function () {
+                        $(".nv91-mask").hide();
+                        $(".nv1").hide();
+                       location.reload();
+                    }, 2000);
+                    // $(".nv91 input").val("");
             }
-            if (success.msg.code == "10") {
-                alert("缺少参数");
-                location.reload();
+            else {
+                $(".confirm").hide();
+                $(".prompt").text("操作失败");
+                $(".nv91-mask").show();
+                $(".nv3").show();
+                $(".nv1").hide();
+                setTimeout(function () {
+                    $(".nv91-mask").hide();
+                    $(".nv3").hide();
+                   
+                }, 2000);
              }
 
         }   
         
+    //表单校验
+    function formValidater(){
+        var success = true;
+       debugger
+        var url = $(".url").val();
+        var reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
+        if($(".updateimg").attr("src") == "" ||$(".updateimg").attr("src") == "undefined" ){
+            debugger
+            $(".prompt ").text("请选择banner图片");
+            $(".nv91-mask").show();
+            $(".confirm1 ").show();
+            setTimeout(function(){
+                
+                $(".confirm1 ").hide();
+            },2000);
+            success = false;
+            return;
+        }
+        else if ($(".bannerName").val() == "") {
+            $(".prompt ").text("请填写banner名称");
+            $(".nv91-mask").show();
+            $(".confirm1 ").show();
+            setTimeout(function () {
+                
+                $(".confirm1 ").hide();
+            }, 2000);
+            success = false;
+            return;
+        }
+        else if (url == "") {
+
+            $(".prompt ").text("请填写链接");
+            $(".nv91-mask").show();
+            $(".confirm1 ").show();
+            setTimeout(function () {
+                
+                $(".confirm1 ").hide();
+            }, 2000);
+            success = false;
+            return;
+        }
+        else if (!reg.test(url)) {
+
+            $(".prompt ").text("请以http://或者https://开头");
+            $(".nv91-mask").show();
+            $(".confirm1 ").show();
+            setTimeout(function () {
+                
+                $(".confirm1 ").hide();
+            }, 2000);
+            success = false;
+            return;
+        }
+        else if($(".cateId option:checked").val() == 0){
+            $(".prompt ").text("请选择banner位置");
+            $(".nv91-mask").show();
+            $(".confirm1 ").show();
+            setTimeout(function(){
+                
+                $(".confirm1 ").hide();
+            },2000);
         
+            success = false;
+            return;
+         
+        }
+        else if($(".start").val() == 0){
+            $(".prompt ").text("请选择开始时间");
+            $(".nv91-mask").show();
+            $(".confirm1 ").show();
+            setTimeout(function(){
+                
+                $(".confirm1 ").hide();
+            },2000);
+            success = false;
+            return;
+         
+        }
+        else if($(".end").val() == 0){
+            $(".prompt ").text("请选择结束时间");
+            $(".nv91-mask").show();
+            $(".confirm1 ").show();
+            setTimeout(function(){
+                
+                $(".confirm1 ").hide();
+            },2000);
+            success = false;
+            return;
+         
+        }
+        return success;
+    }    
        
    
 })

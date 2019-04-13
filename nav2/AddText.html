@@ -7,6 +7,7 @@
     <script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="./ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="js/laydate.js"></script>
  <!--  e 富文本 -->
    <script>
      window.onload = function(){
@@ -23,15 +24,13 @@
     <link rel="stylesheet" href="../css/dataSelect.css" />
     <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" type="text/css" href="../plugins/datetimepicker/css/bootstrap-datetimepicker.min.css">
+   
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <!-- <link href="./dist/summernote.css" rel="stylesheet"/> -->
     <link rel="stylesheet" type="text/css" href="../css/buind.css"/>
     <script src="../js/jquery-1.10.2.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/dataSelect.js"></script>
-    <script src="../plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="../plugins/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    
     <!-- <script src="./dist/summernote.js"></script> -->
     <!-- <script src="./dist/lang/summernote-zh-CN.js"></script>    中文 -->
     <style type="text/css">
@@ -43,6 +42,7 @@
             margin-right: 10px;
         }
         textarea{resize:none;}
+        .laydate-icon {height: auto;}
     </style>
     <style>
         .reviewImg1,.reviewImg3{width: 100px;height: 80px;}
@@ -83,8 +83,8 @@
 <body class="bgf3">
     <div class="brand h135">
         <ul class="breadcrumb f14">
-            <li><a href="#" color="color_8d" class="color">网站运营</a>&nbsp;/&nbsp;</li>
-            <li><a href="#" color="color_5a" class="color">添加文章</a></li>
+            <li><a href="#" class="color color_8d">网站运营</a>&nbsp;/&nbsp;</li>
+            <li><a href="#"  class="color color_5a">添加文章</a></li>
         </ul>
         <h1>添加文章</h1>
     </div>
@@ -98,21 +98,26 @@
                         <input type="text" class="form-control title" placeholder="限制标题字数50字" maxlength="50" />
                     </div>
                 </div>
-                <div class="form-group flex w100">
+                
+                <!-- <div class="form-group flex w100">
                     <label for="name" class="control-label l22">发布日期:</label>
                     <div class="col-sm-4  date form_datetime">
                         <input size="16" type="text"    class="form-control releaseTime" >
-                        <!--<span class=""><i class="icon-calendar"></i></span>-->
+                       
                         <span class="icon add-on"><i class="icon-calendar">&#xe73a;</i></span>
                     </div>
-                    <!--
+                </div> -->
+                 <div class="form-group flex w100">
+                    <label for="name" class="control-label l22">发布日期:</label> 
                     <div class="position col-sm-4">
-                        <input type="text" id="date" class="form-control releaseTime" />
+                        
+                        <input placeholder="请输入日期" class="laydate-icon form-control jy releaseTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"  id="date8"/>
+                       
                         <span class="icon">&#xe73a;</span>
                     </div>
-                    -->
+                 </div>
 
-                </div>
+                
                 <div class="form-group flex show1 w50_">
                     <label for="name" class="control-label l22 changeTitle1">文档分类:</label>
                     <div class="col-sm-8">
@@ -336,31 +341,7 @@
 </body>
 
 </html>
-<!-- <script>
-        $(".wauto").click(function(){
-            $(".nv91-mask").hide();
-            $(".nv92").hide();
-            $(".nv91").hide();
-            $("#upload2").click();
 
-        })
-        $("#upload2").change(function(){
-            var files = document.getElementById("upload2")
-            var add1 = document.querySelectorAll(".add1");
-            for (var i = 0; i < add1.length; i++) {
-
-              var obj = add1[0];
-              if (obj.checked == true) {
-                imgReview(files,"reviewImg1");
-                imgReview(files,"reviewImg2");
-              } else {
-
-                  imgReview(files,"reviewImg3");
-
-              }
-          }
-        })
-        </script> -->
 
 <script src="../js/MD5.js"></script>
 <script src="../js/postSign.js"></script>
@@ -374,6 +355,7 @@
 <link rel="stylesheet" href="../plugins/kindeditor/themes/default/default.css"/>
 <script charset="utf-8" src="../plugins/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="../plugins/kindeditor/lang/zh_CN.js"></script>
+<script src="../js/dataNew.js"></script>
 
     
 

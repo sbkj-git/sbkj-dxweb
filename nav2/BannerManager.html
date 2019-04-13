@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/dataSelect.css"/>
-
-    <link rel="stylesheet" type="text/css" href="../plugins/datetimepicker/css/bootstrap-datetimepicker.min.css">
+   
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
 
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
@@ -22,9 +20,9 @@
     <!-- <script src="../js/183.js"></script> -->
     <script src="../js/simple.switch.min.js"></script>
     <link rel="stylesheet" href="../css/newPage.css">
-    <link rel="stylesheet" href="../css/datePicker.css">
+   
     <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.date_input.pack.js"></script>
+    <script type="text/javascript" src="js/laydate.js"></script>
 
     <script type="text/javascript">
         // $('.laydate-icon').blur(function(){
@@ -104,6 +102,8 @@
             padding-left: 30px;
             width: 13%;
         }
+        .laydate-icon{height: auto;}
+        .confirm1{z-index: 9999;}
     </style>
 </head>
 <body style="background: #f3f3f3;">
@@ -130,7 +130,7 @@
         </div>
     </div>
     <div class="nv1">
-        <img src="../image/succes.png" class="success1"/>
+        <img src="../image/success.png" class="success1"/>
         <span class="referMes prompt">删除成功</span>
     </div>
     
@@ -172,14 +172,14 @@
             <div class="form-group  flex">
                 <label for="name" class="control-label col-sm-3  lh15" style="padding-right: 5px">开始时间:</label>
 
-                <div class="col-sm-9 form_datetime">
-                    <input type="text" id="datePicker11" class="date_picker form-control  start " placeholder="请选择开始时间" />
+                <div class="col-sm-6 ">
+                        <input class="inline laydate-icon form-control start" id="start1" />
                 </div>
             </div>
             <div class="form-group  flex">
                 <label for="name" class="control-label col-sm-3  lh15" style="padding-right: 5px">结束时间:</label>
-                <div class="col-sm-9 form_datetime">
-                    <input type="text" id="datePicker22" class="date_picker form-control end " placeholder="请选择结束时间" />
+                <div class="col-sm-6">
+                        <input class="inline laydate-icon form-control end" id="end1" />
                 </div>
             </div>
             <div class="form-group flex" style="line-height:30px">
@@ -196,15 +196,22 @@
 
             <div class="form-group flex butto" >
                 <div class="col-sm-2" >
-                    <button class="btn btn-primary BannerSure banner aveBtn" style="margin-top: 7px;">确定</button>
+                    <button type="button" class="btn btn-primary BannerSure banner aveBtn" style="margin-top: 7px;">确定</button>
                 </div>
                 <div class="col-sm-2 mar12" >
-                    <button class="btn  BannerRefuse banner">取消</button>
+                    <button type="button" class="btn  BannerRefuse1 banner">取消</button>
                 </div>
             </div>
 
         </div>
     </form>
+    <div class="confirm1" >
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete prompt">确定要删除这条消息吗?</span>
+                </div>
+               
+        </div>
 </div>
 
 <div class="col-sm-10 col-sm-pull-1" style="padding-top: 40px;width: 90%;margin: 0 auto;background: #fff;margin-top: 30px;">
@@ -223,16 +230,17 @@
         </div>
 
         <div class="flex textRight textLeft col-sm-12 col-md-6 col-lg-4">
+                
             <div class="col-sm-3" style="max-width: 80px;">
                 <label for="name" class="control-label lh15 mr5" style="margin-left: -5px;line-height:37px;font-size: 18px">到期时间:</label>
             </div>
             <div class="position col-sm-9 flex" >
                 <div class="col-sm-5" style="width: 100px;">
-                    <input type="text" id="datePicker111" style="max-width: 100%" class="date_picker start1 " placeholder="点击选择日期" />
+                    <input class="inline laydate-icon form-control" id="start" />
                 </div>
                 <p style="line-height:37px">&nbsp;&nbsp;—&nbsp;&nbsp;</p>
                 <div class="col-sm-5" >
-                    <input type="text" id="datePicker222" style="max-width: 100%" class="date_picker end1 " placeholder="点击选择日期" onkeydown="keyup_submit(event);"/>
+                        <input class="inline laydate-icon form-control" id="end" />
                 </div>
 
                 <!--<input type="text" class=" form-control start1" style="width: 70%;margin-left: 72px;margin-top: -34px;" />-->
@@ -307,17 +315,397 @@
 <script src="../js/getRequest.js"></script>
 <script src="../js/bannermanager.js"></script>
 <script src="../js/newPage.js"></script>
-<script src="../js/dataSelect.js"></script>
 
-<script src="../plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-<script src="../plugins/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
 <script src="../js/addtext.js"></script>
 <script>
-    // //选择发布时间
-    // $("#datePicker").dateSelect();
-    $("#datePicker111").dateSelect();
-    $("#datePicker222").dateSelect();
+//通过反馈时间查询
+!function () {
+            laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
+            laydate({ elem: '#demo' });//绑定元素
+        }();
+
+        //日期范围限制
+        var start = {
+            elem: '#start',
+            format: 'YYYY-MM-DD',
+            min: laydate.now(), //设定最小日期为当前日期
+            max: '2099-06-16', //最大日期
+            istime: true,
+            istoday: false,
+            choose: function (datas) {
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var endTime = "";
+        var end = {
+            elem: '#end',
+            format: 'YYYY-MM-DD',
+            min: laydate.now(),
+            max: '2099-06-16',
+            istime: true,
+            istoday: false,
+            choose: function (values, datas) {
+                start.max = datas; //结束日选好后，充值开始日的最大日期
+                console.log(values);
+                endTime = values;
+                var starttime = $("#start").val();
+                var url = src + "/bannerGetInterface.dx";
+                var appsercet = window.localStorage.getItem("appsercet");
+                appsercet = JSON.parse(appsercet);
+                newAppsercet = appsercet.data;
+                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList&starttime=" + starttime + "&erdtime=" + endTime;
+
+                var bannerList = getSign(url, par);
+                if (bannerList.msg && bannerList.msg.code == "10") {
+                    $(".bannerList").html("");
+
+                } else {
+                    bannerList1(bannerList);
+                    firstRender();
+                }
+
+                
+            }
+        };
+        laydate(start);
+        laydate(end);
+        var start1 = {
+    elem: '#start1',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(), //设定最小日期为当前日期
+    max: '2099-06-16', //最大日期
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+         end.min = datas; //开始日选好后，重置结束日的最小日期
+         end.start = datas //将结束日的初始值设定为开始日
+    }
+};
+
+var end1 = {
+    elem: '#end1',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(),
+    max: '2099-06-16',
+    istime: true,
+    istoday: false,
+    choose: function(values,datas){
+        start.max = datas; //结束日选好后，充值开始日的最大日期
+        console.log(values);
+        
+        console.log("----------");
+        console.log(datas);
+    }
+};
+laydate(start1);
+        laydate(end1);
+ //页面渲染函数封装
+ function bannerList1(bannerList){
+            if(bannerList.dxBannerList){
+                $(".bannerList").html("");
+            var banner = "";
+            if (bannerList.dxBannerList.length > 0) {
+                $.each(bannerList.dxBannerList, function (i, item) {
+                    banner += "<tr style='border-bottom: 1px solid #d8d8d8;color: #8D8D8D;' class='' data-id='" + item.id + "'>";
+                    banner += "<td><a href='' class='hrefUrl'><img src='" + item.pic_img + "' style='width: 50px;height:50px;' /></a></td><td>" + item.pic_title + "</td><td>"+item.cate_name+"</td>"
+                    if (item.is_up == 1) {
+                        banner += "<td>&#10003;</td>";
+                    } else {
+                        banner += "<td>&#10007;</td>"
+                    }
+                    banner+="<td><span style='display:block'>" + item.begin_time + "</span><span style='display:block'>" + item.end_time + "</span>";
+                    if(item.state == 1){
+                        banner+="<td><input class='switch switch-anim' type='checkbox' checked data-id='" + item.id + "'></td>";
+                    }else{
+                        banner+="<td><input class='switch switch-anim' type='checkbox' data-id='" + item.id + "'></td>";
+                    }
+                    
+                    banner+="<td>" + item.frequency + "</td><td style='color: #FF5456; ' ><span class='isEdit' data-id='" + item.id + "' >编辑</span>&nbsp;<span class='isDelete' data-id='" + item.id + "'>删除</span>&nbsp;"
+                    if (item.is_up == 1) {
+                        banner+="<span class='toDown' data-id='" + item.id + "'>取消置顶</span></td>";
+                    } else {
+                        banner+="<span class='toTop ' data-id='" + item.id + "'>置顶</span>&nbsp;<span class='toDown disnone' data-id='" + item.id + "'>取消置顶</span></td>";
+                    }
+                    
+                    banner += "</tr>";
+                    
+                })
+               $(".bannerList").html(banner);
+               firstRender();
+               var switch1 = document.querySelectorAll(".switch");
+          
+               var state,id;
+               $(".switch").unbind('click').bind("click",function(){ 
+                var index = $(this).index();
+                //1. 获取id值             
+                var id = $(this).attr("data-id");
+                if($(this).prop("checked")){
+                    state = 1;     
+                
+                }else{
+                    state = 2;
+                    
+                }
+                par = "appsercet="+newAppsercet+"&method=get.dxWeb.updatehelp&id="+id+"&state="+state;
+                var data = getSign(url,par);
+                if(data.msg.code == "200"){
+                    $(".confirm").hide();
+                    $(".prompt").text("操作成功");
+                    $(".nv91-mask").show();
+                    $(".nv1").show();
+                    $(".nv3").hide();
+                    setTimeout(function () {
+                        $(".nv91-mask").hide();
+                        $(".nv1").hide();
+                       
+                    }, 2000);
+
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList";
+                    var data = getSign(url, par);
+                    bannerList1(data);
+                }
+        
+                 });
+       
+           
+            }   
+    }
+        }  
+        function firstRender() {
+            //页面初次渲染加载数据
+            var data = window.localStorage.getItem("dxRightsList");
+            data = JSON.parse(data);
+            if (data.length > 0) {
+                var arr = [];
+                $.each(data, function (i, item) {
+                    //console.log(item)
+                    if (item.id == 2) {
+                        arr.push(item)
+                    }
+                })
+                $.each(arr[0].dxRightsList, function (i, item) {
+                    if (item.method === "get.dxWeb.bannerList") {
+                       
+                        if (item.dxRightsTwoList.length == 0) {
+                            return
+                        }
+                        else {
+                            $.each(item.dxRightsTwoList, function (i, obj) {
+                                //判断该用户是否有添加管理员权限                     debugger      
+                                if (obj.method === "get.dxWeb.addhelp") {
+                                    $(".add").show();
+                                    //Banner添加事件
+                                    $(".addInput").click(function () {
+                                        
+                                        $(".nv91-mask").show();
+                                        $(".nv91").show();
+                                        $(".upload1").click(function (event) {
+                                            event.stopPropagation();
+                                            $("#fileUpload").show().css({"height":"50px","border":"none"});
+                                            $(this).hide();
+            
+                                        })
+                                        $("#fileUpload").change(function () {
+                                            $(".needHide").hide();
+                                            $(".slideImg").slideDown();
+                                            fileDom = document.getElementById("fileUpload");
+                                        imgPreview(fileDom);
+                                        })
+                                        $(".updateimg").click(function () {
+                                            debugger
+                                            $(".needHide").show();
+                                            $(".slideImg").hide();
+                                           
+                                        })
+                                        $(".BannerSure").click(function () {
+
+                                           
+                                            var success = formValidater();
+                                           if(success == true){
+                                            getContentTwo("get.dxWeb.addhelp", 1);
+                                           }else{
+                                               return;
+                                           }
+                                            
+                                            
+                                        })
+                                    })
+                                }
+                                //判断该用户是否有删除权限 
+                                if (obj.method === "get.dxWeb.deleteBanner") {
+                                    $(".isDelete").show();
+                                    //banner删除事件
+                                    
+                                    $(".isDelete").click(function () {
+                                        $(".nv91-mask").show();
+                                        $(".confirm").show();
+                                        var IdList = $(this).attr("data-id");
+                                        $(".roleSure").click(function(){
+                                            
+                                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteBanner&id=" + IdList;
+            
+                                            var data = getSign(url, par);
+                                            if (data.msg.code == "200") {
+                                                $(".confirm").hide(); 
+                                                $(".nv1").show();
+                                                setTimeout(function(){
+                                                    $(".nv91-mask").hide();
+                                                    $(".nv1").hide();
+                                                   location.reload();
+                                                },2000);
+                                            }else{
+                                                $(".confirm").hide(); 
+                                                $(".nv3").show();
+                                                setTimeout(function(){
+                                                    $(".nv91-mask").hide();
+                                                    $(".nv3").hide();
+                                                },2000);
+                                            }
+                                        })
+                                        $(".roleRefuse5").click(function(){
+                                            $(".nv91-mask").hide();
+                                            $(".confirm").hide(); 
+                                        })
+                                        
+                                    })
+                                    
+                                }
+                                //判断是否有置顶权限
+                                if (obj.method === "get.dxWeb.topBanner") {
+                                    
+                                    $(".toTop").show();
+                                    //banner置顶事件  
+                                    $(".toTop").unbind('click').bind("click",function(){ 
+                                   
+                                        debugger
+                                        var index = $(this).index();
+                                        
+                                        var id = $(this).attr("data-id");
+                                        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.topBanner&id=" + id+"&type=1";
+                                        var statu = getSign(url, par);
+                                       
+                                        if (statu.msg.code == "200") {
+                                            $(".confirm").hide();
+                                            $(".prompt").text("操作成功");
+                                            $(".nv91-mask").show();
+                                            $(".nv1").show();
+                                            $(".nv3").hide();
+                                            setTimeout(function () {
+                                                $(".nv91-mask").hide();
+                                                $(".nv1").hide();
+                                                location.reload();
+
+                                            }, 2000);
+
+                                        }
+                                    })
+                                    $(".toDown").unbind('click').bind("click",function(){ 
+                                  
+                                        var id = $(this).attr("data-id");
+                                        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.topBanner&id=" + id+"&type=2";
+                                        var statu = getSign(url, par);
+                                        if (statu.msg.code == "200") {
+                                            $(".confirm").hide();
+                                            $(".prompt").text("操作成功");
+                                            $(".nv91-mask").show();
+                                            $(".nv1").show();
+                                            $(".nv3").hide();
+                                            setTimeout(function () {
+                                                $(".nv91-mask").hide();
+                                                $(".nv1").hide();
+                                                location.reload();
+                    
+                                            }, 2000);
+                                            
+                                        }
+                                    })
+                                }
+                                //判断是否有编辑权限
+                               
+                                if (obj.method === "get.dxWeb.updatehelp") {
+                                    
+                                    $(".isEdit").show();
+                                    //banner编辑修改事件
+                                    $(".isEdit").click(function () {
+                                        debugger
+                                        var id = $(this).attr("data-id")
+                                        // var index = $(this).index;
+                                        $(".nv91-mask").show();
+                                        $(".nv91").show();
+                                        $(".slideImg").show();
+                                        $(".needHide").hide();
+                                        
+                                        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getBanner&id=" + id;
+
+                                        var details = getSign(url, par);
+                                        console.log(details);
+                                        // $("#fileUpload").val(details.msg.pic_img)
+                                        $(".bannerName").val(details.msg.pic_title);
+                                        var bannerCate = document.querySelectorAll(".cateId option");
+                                        for (var i = 0; i < bannerCate.length; i++) {
+                                            var item = bannerCate[i];
+                                            if (item.value == details.msg.cate_id) {
+                                                item.selected = true;
+                                            }
+                                        }
+                                        debugger
+                                           $(".updateimg").attr("src",details.msg.pic_img)
+                                        $(".start").val(details.msg.begin_time);
+                                        $(".end").val(details.msg.end_time);
+                                        $(".url").val(details.msg.pic_url);
+                                        var radio = document.querySelectorAll(".b6 ");
+                                        for (var i = 0; i < radio.length; i++) {
+                                            var obj = radio[i]
+                                            if (obj.value == details.msg.state) {
+                                                obj.checked = true;
+                                            }
+                                        }
+                                        $(".updateimg").click(function () {
+                                            debugger
+                                            $(".needHide").show();
+                                            $(".slideImg").hide();
+                                            $(".upload1").unbind('click').bind("click",function(){ 
+                                            
+                                                $("#fileUpload").click();
+                                                $("#fileUpload").change(function () {
+                                                    $(".needHide").hide();
+                                                    $(".slideImg").slideDown();
+                                                    fileDom = document.getElementById("fileUpload");
+                                                    imgPreview(fileDom);
+                                                })
+                                            })
+                                            
+                                            
+                                        })
+                                        $(".BannerSure").click(function () {
+                                            var sign1 = sign("get.dxWeb.updatehelp");
+                                            var sign2 = sign1.parameter;
+                                            var timestamp = sign1.timestamp;   
+                                            
+                                            
+                                            var success = formValidater();
+                                           if(success == true){
+                                            getContentTwo("get.dxWeb.updatehelp", id);
+                                           }else{
+                                               return;
+                                           }
+
+                                        })
+                                    })
+                                }
+                                
+                            })
+                        }
+                    }
+                })
+            }
+        }
+
+ 
 </script>
+
 
 
 

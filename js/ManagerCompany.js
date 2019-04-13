@@ -178,7 +178,7 @@
                                     }
                                     else if (!reg.test(url)) {
 
-                                        $(".prompt ").text("请填写正确格式的网址");
+                                        $(".prompt ").text("请以http://或者https://开头");
                                         $(".nv91-mask").show();
                                         $(".confirm1 ").show();
                                         setTimeout(function () {
