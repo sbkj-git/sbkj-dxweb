@@ -18,6 +18,11 @@
     <script src="./js/getRequest.js"></script>
     <link rel="shortcut icon" href="image/icon.png">
     <title>首页</title>
+    <style>
+        .h_inherit div{
+            display: inline-block;
+        }
+    </style>
 
 </head>
 <body>
@@ -26,27 +31,43 @@
         <img src="./image/banner1.png" alt="" class="h52">
         <img src="./image/bread.png" alt="" class="bread">
     </div>
-    <div class="flex col-sm-4 mt10" style="padding-top: 8px">
-        <div class="col-sm-4 position h_inherit" style="text-align: right;margin-right: 24px;margin-left: 42%;margin-top: -6px;">
-            <img src="./image/user.png" alt="" class=" himg">
-            <span class="person">路人及</span>
-            <img src="./image/pull.png" alt="" class="w20 set" style="margin-top: -10px;">
-            <ul class="selectDown flex" class="w160" style="background: #8A111A;color: #fff;margin-left: 70px;
-    width: 156px;height: 250px;margin-top: 23px;border-radius: 5px;">
-                <li class="p1">个人资料</li>
-                <li class="p2">修改密码</li>
-                <li class="p3">权限设置</li>
-                <li class="p4">设置</li>
-            </ul>
+    <div class="flex col-sm-4 mt10">
+        <div class="col-sm-4 position h_inherit" style="position: relative;left: 30%;text-align: -webkit-right;">
+            <div style="">
+                <!--用户头像-->
+                <img src="./image/user.png" alt="" class=" himg">
+            </div>
+            <div style="height: 100%;line-height: 2.5;">
+                <!--用户名-->
+                <span class="person">路人及</span>
+            </div>
+             <div style="position: absolute;top: 20%;">
+                 <!--三角图标-->
+               <img src="./image/pull.png" alt="" class="w20 set">
+              </div>
+
+
+
+
         </div>
-        <!-- //此处是设置按钮 -->
-        <div class="col-sm-1">
-            <img src="./image/settingg.png" alt="" class="w30 set">
+        <div style="width: 200px;text-align: -webkit-right;    margin-top: 8px;">
+            <!-- //此处是设置按钮 -->
+            <div class="col-sm-1" style="display: inline-block">
+                <img src="./image/settingg.png" alt="" class="w30 ">
+            </div>
+            <!-- 此处是返回登陆页按钮 -->
+            <div class="col-sm-1" style="display: inline-block">
+                <img src="./image/close1.png" alt="" class="back w30 ml30">
+            </div>
         </div>
-        <!-- 此处是返回登陆页按钮 -->
-        <div class="col-sm-1">
-            <img src="./image/close1.png" alt="" class="back w30 ml30">
-        </div>
+        <!--下拉框-->
+        <ul class="selectDown flex" class="w160" style="background: #8A111A;color: #fff;margin-left: 170px;
+    width: 156px;height: 250px;margin-top: 12px;border-radius: 5px;">
+            <li class="p1">个人资料</li>
+            <li class="p2">修改密码</li>
+            <li class="p3">权限设置</li>
+            <li class="p4">设置</li>
+        </ul>
     </div>
 </div>
 <div class="flex w100">
