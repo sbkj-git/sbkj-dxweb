@@ -19,7 +19,7 @@
         .table th, .table td{vertical-align: middle;}
         .disnone{display: none!important;}
         .go{padding:0 10px;border: 1px solid #dddddd;border-radius: 10px;width: 130px;height: 40px;    line-height: 40px;}
-        #fileImg2{width: 50px;height: 50px;display: block;margin-left: 15%;}
+        #fileImg2{width: 50px;height: 50px;display: block;margin-left: 17%;}
         .tel{text-align: left;padding-left: 15%;}
         .icons{
             position: absolute;
@@ -108,12 +108,12 @@
         </h3>
         <form action="" class="form-horizontal" role="form" style="text-align:center;padding-top: 30px;">
             <div class="form-group flex">
-                <label for="name" class="control-label col-sm-3" style="text-align: left;line-height: 1.5;padding-left: 20px;">选择类型:</label>
-                <div class="radio radio-info radio-inline ">
+                <label for="name" class="control-label col-sm-3" style="text-align: left;line-height: 33.3px;padding-left: 40px">选择类型:</label>
+                <div class="radio radio-info radio-inline " style="padding-left:10px;line-height: 33.3px;">
                     <input type="radio" id="type1" value="1" name="type2"  class="status"  checked/>
                     <label for="type1"> 创建产品 </label>
                 </div>
-                <div class="radio radio-info radio-inline">
+                <div class="radio radio-info radio-inline" style="line-height: 33.3px;">
                     <input type="radio" id="type2" value="2" name="type2"  class="status">
                     <label for="type2"> 创建分类 </label>
                 </div>
@@ -121,21 +121,21 @@
             <div class="c2 " style="display:block">
                 <div class="form-group  flex">
                     <label for="name" class="control-label col-sm-2"
-                           style="text-align: right;line-height: 2;font-size: 18px;">产品名称:</label>
+                           style="text-align: right;line-height: 33.3px;padding-right: 5px;font-size: 18px;">产品名称:</label>
                     <div class="col-sm-9">
-                        <input type="next" class="form-control cateName" placeholder="" required/>
+                        <input type="next" class="form-control cateName" placeholder="" required style="width: 80%"/>
                     </div>
                 </div>
                 <div class="form-group flex" style="width:100%;">
                     <label for="name" class="control-label col-sm-2"
-                           style="text-align: center;line-height: 2.2;font-size: 18px;    padding-left: 12px;">上传ICON:</label>
+                           style="text-align: right;font-size: 18px;  line-height: 33.3px;padding-right: 5px;">上传ICON:</label>
                     <div class="position go">
                         <img src="../image/u1986.png" alt="" style="width:15px;height:15px;" class="icons">
                         上传图片
                     </div>
-                    <p  class="col-sm-12 tel">支持扩展名.jpg.png</p>
+                    <p  class="col-sm-12 tel" style="margin-left: 10px">支持扩展名.jpg.png</p>
                     <div class="col-sm-12">
-                        <img src="" alt="" id="fileImg2" >
+                        <img src="" alt="" id="fileImg2"  >
                     </div>
                     <input class="btn addColor webImg2 w100_ disnone" value="上传文件"  type="file" id="filename2" />
 
@@ -143,7 +143,7 @@
             </div>
             <div class="c2 " style="display: none;">
                 <div class="form-group  flex" style="justify-content: center">
-                    <label for="" class="control-label col-sm-2 " style="text-align: right;line-height: 2;">选择产品:</label>
+                    <label for="" class="control-label col-sm-2 " style="text-align: right;line-height:33.3px;padding-right: 5px">选择产品:</label>
                     <div class="col-sm-9">
                         <select class="form-control cateId2" >
                             <option selected="selected" value="0">--请选择-- </option>
@@ -154,16 +154,16 @@
                     <label for="name" class="control-label col-sm-2"
                            style="text-align: right;line-height: 2;font-size: 16px;">分类名称:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control cateName1" placeholder="" required/>
+                        <input type="text" class="form-control cateName1" placeholder="" required style="width: 80%;"/>
                     </div>
                 </div>
             </div>
             <div class="form-group flex" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                <div class="col-sm-2" style="margin-top: 1%;text-align: right;">
-                    <button type="button" class="btn refud">取消</button>
+                <div class="col-sm-2" style="margin-top: 1%;text-align: right;margin-right: 4%">
+                    <button class="btn btn-primary addType" style="width: 60px;height: 40px">确定</button>
                 </div>
                 <div class="col-sm-2" style="margin-top: 1%;text-align: left;">
-                    <button class="btn btn-primary addType">确定</button>
+                    <button type="button" class="btn refud" style="width: 60px;height: 40px">取消</button>
                 </div>
             </div>
         </form>

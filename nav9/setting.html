@@ -22,7 +22,8 @@
         .delete2, .edit2, .edits, .addCompany, .addPerson {
             display: none;
         }
-        .lineHeight{
+
+        .lineHeight {
             line-height: 30px;
         }
     </style>
@@ -106,7 +107,7 @@
         <form action="" class="form-horizontal" role="form">
             <div class="form-group flex ">
                 <label for="name" class="control-label col-sm-2 star"
-                       style="text-align: right;line-height: 1.5;">公司：</label>
+                       style="text-align: right;line-height: 33.3px;">公司：</label>
                 <!-- <div class="col-sm-10">
                     <select class="form-control s1">
                         <option checked value="0">请选择</option>
@@ -117,18 +118,18 @@
                     </select>
                 </div>         -->
                 <div class="col-sm-10">
-                    <input type="text" class="form-control s1" placeholder="请输入公司名称"/>
+                    <input type="text" class="form-control s1" placeholder="请输入公司名称"style="width: 70%;"/>
                 </div>
             </div>
             <div class="form-group  flex">
-                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">邮编:</label>
+                <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 33.3px;padding-right: 5px">邮编:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control s2" placeholder="请输入公司邮编"/>
+                    <input type="number" class="form-control s2" placeholder="请输入公司邮编"style="width: 70%;"/>
                 </div>
             </div>
             <div class="form-group flex">
                 <label for="name" class="control-label col-sm-2"
-                       style="text-align: right;line-height: 1.5;">地理位置:</label>
+                       style="text-align: right;line-height: 33.3px;padding-right: 5px">地理位置:</label>
                 <div class="col-sm-3">
                     <input type="text" class="form-control s3" placeholder="地理经度"/>
                 </div>
@@ -136,24 +137,24 @@
                     <input type="text" class="form-control s4" placeholder="地理纬度"/>
                 </div>
                 <div class="col-sm-4">
-                    <button class="btn input12"><a href="./map.html">选择坐标</a></button>
+                    <button class="btn input12" style="height: 33.3px;margin-left: 5px;line-height: 1px"><a href="./map.html">选择坐标</a></button>
 
                 </div>
             </div>
             <div class="form-group flex">
                 <label for="name" class="control-label col-sm-2"
-                       style="text-align: right;line-height: 1.5;">公司地址:</label>
+                       style="text-align: right;line-height: 33.3px;padding-right: 5px">公司地址:</label>
                 <div class="col-sm-10">
-                    <textarea type="number" class="form-control s6" style="height:100px;"></textarea>
+                    <textarea type="number" class="form-control s6" style="height:100px;width: 70%"></textarea>
                 </div>
             </div>
             <div class="form-group flex"
                  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                <div class="col-sm-1" style="margin-top: 1%;margin-right: 22px;">
-                    <button class="btn">取消</button>
+                <div class="col-sm-1" style="margin-top: 1%;margin-right:4%;">
+                    <button class="btn btn-primary sure11" onclick="change()"  style="width: 60px;height: 40px">确定</button>
                 </div>
-                <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn btn-primary sure11" onclick="change()">确定</button>
+                <div class="col-sm-1" style="margin-top: 1%;margin-right: 11%;">
+                    <button class="btn" style="width: 60px;height: 40px">取消</button>
                 </div>
             </div>
         </form>
@@ -174,13 +175,13 @@
                     </select>
                 </div>         -->
                 <div class="col-sm-10">
-                    <input type="text" class="form-control s21" placeholder="请输入公司名称"/>
+                    <input type="text" class="form-control s21" placeholder="请输入公司名称"style="width: 70%;"/>
                 </div>
             </div>
             <div class="form-group  flex">
                 <label for="name" class="control-label col-sm-2" style="text-align: right;line-height: 1.5;">邮编:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control s22" placeholder="请输入公司邮编"/>
+                    <input type="number" class="form-control s22" placeholder="请输入公司邮编"style="width: 70%;"/>
                 </div>
             </div>
             <div class="form-group flex">
@@ -201,16 +202,16 @@
                 <label for="name" class="control-label col-sm-2"
                        style="text-align: right;line-height: 1.5;">公司地址:</label>
                 <div class="col-sm-10">
-                    <textarea type="number" class="form-control s26" style="height:100px;"></textarea>
+                    <textarea type="number" class="form-control s26" style="width:70%;height:100px;"></textarea>
                 </div>
             </div>
             <div class="form-group flex"
                  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                <div class="col-sm-1" style="margin-top: 1%;margin-right: 22px;">
-                    <button class="btn redux">取消</button>
+                <div class="col-sm-1" style="margin-top: 1%;margin-right:4%;">
+                    <button class="btn btn-primary sure12" style="height: 40px;width: 60px">确定</button>
                 </div>
-                <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn btn-primary sure12">确定</button>
+                <div class="col-sm-1" style="margin-top: 1%;margin-right: 11%;">
+                    <button class="btn redux" style="width: 60px;height: 40px">取消</button>
                 </div>
             </div>
         </div>
@@ -240,36 +241,40 @@
             </div>
         </div>
         <div class="form-group  flex">
-            <label for="name" class="control-label col-sm-2" style="padding-right: 8px;text-align: right;line-height: 33.3px;">职位:</label>
+            <label for="name" class="control-label col-sm-2"
+                   style="padding-right: 8px;text-align: right;line-height: 33.3px;">职位:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control s12" placeholder="请输入公司职位" style="width: 70%;"/>
             </div>
         </div>
         <div class="form-group  flex">
-            <label for="name" class="control-label col-sm-2" style="padding-right: 8px;text-align: right;line-height: 33.3px;">姓名:</label>
+            <label for="name" class="control-label col-sm-2"
+                   style="padding-right: 8px;text-align: right;line-height: 33.3px;">姓名:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control s13" placeholder="请输入姓名" style="width: 70%;"/>
             </div>
         </div>
         <div class="form-group  flex">
-            <label for="name" class="control-label col-sm-2" style="padding-right: 8px;text-align: right;line-height: 33.3px;">电话:</label>
+            <label for="name" class="control-label col-sm-2"
+                   style="padding-right: 8px;text-align: right;line-height: 33.3px;">电话:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control s14" placeholder="请输入电话" style="width: 70%;"/>
             </div>
         </div>
         <div class="form-group  flex">
-            <label for="name" class="control-label col-sm-2" style="padding-right: 8px;text-align: right;line-height: 33.3px;">邮箱:</label>
+            <label for="name" class="control-label col-sm-2"
+                   style="padding-right: 8px;text-align: right;line-height: 33.3px;">邮箱:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control s15" placeholder="请输入邮箱" style="width: 70%;"/>
             </div>
         </div>
         <div class="form-group flex"
              style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-            <div class="col-sm-1" style="margin-top: 1%;margin-right: 22px">
-                <button class="btn">取消</button>
+            <div class="col-sm-1" style="margin-top: 1%;margin-right:4%;">
+                <button class="btn btn-primary sure2" style="width: 60px;height: 40px">确定</button>
             </div>
-            <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
-                <button class="btn btn-primary sure2">确定</button>
+            <div class="col-sm-1" style="margin-top: 1%;margin-right: 11%">
+                <button class="btn" style="width: 60px;height: 40px">取消</button>
             </div>
         </div>
     </form>

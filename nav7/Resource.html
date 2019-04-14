@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../css/buind.css">
     <script src="../js/jquery-1.10.2.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
     <script src="../js/moment-with-locales.js"></script>
     <script src="../js/bootstrap-datetimepicker.min.js"></script>
     <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
@@ -34,6 +34,7 @@
             -o-transition: border .15s ease-in-out;
             transition: border .15s ease-in-out;
         }
+
         .radio label::after {
             display: inline-block;
             position: absolute;
@@ -54,12 +55,28 @@
             -o-transition: -o-transform .1s cubic-bezier(.8, -.33, .2, 1.33);
             transition: transform .1s cubic-bezier(.8, -.33, .2, 1.33);
         }
-        
-        .close12{position: absolute;right: -10px;top: -10px;display: none;}
-        .returnBack{font-size: 40px;}
-        .f14{font-size: 14px;}
-        .w200center .close12{right: 0px;top: 0px;}
-        .files{
+
+        .close12 {
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            display: none;
+        }
+
+        .returnBack {
+            font-size: 40px;
+        }
+
+        .f14 {
+            font-size: 14px;
+        }
+
+        .w200center .close12 {
+            right: 0px;
+            top: 0px;
+        }
+
+        .files {
             width: 30px;
             height: 27px;
             position: absolute;
@@ -68,9 +85,38 @@
             bottom: 0%;
             margin: auto;
         }
+
         .flex {
             display: flex;
             /* flex-wrap: wrap; */
+        }
+
+        #checkId + label {
+            box-sizing: border-box;
+            /*overflow: hidden;*/
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            position: absolute;
+            cursor: pointer;
+            background: rgb(255, 255, 255);
+            border: 1px solid #8d8d8d;
+            border-radius: 50%;
+        }
+
+        #checkId:checked + label::before {
+            background-color: #FF5456;
+            text-align: center;
+            /*border: 1px solid red;*/
+            color: #fff;
+            content: "";
+            padding-bottom: 1px;
+            display: inline-block;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            margin-top: -2px;
+            border-radius: 50%;
         }
     </style>
 
@@ -87,23 +133,28 @@
     box-sizing: border-box;
     padding: 50px 70px 0 70px;">
     <div style="width: 100%;">
-        <div class="flex col-sm-12 justify" style="background-color:#fff;height: 130px;padding:40px  25px;box-sizing: border-box;margin-bottom: 100px;">
+        <div class="flex col-sm-12 justify"
+             style="background-color:#fff;height: 130px;padding:40px  25px;box-sizing: border-box;margin-bottom: 100px;">
             <div class="flex">
                 <div class="addImg position" style="height:50px;">
-                    <img src="../image/u1986.png" alt=""  class="files w30">
-                    <input class="btn addColor w200"  value="直接上传"   readonly />
+                    <img src="../image/u1986.png" alt="" class="files w30">
+                    <input class="btn addColor w200" value="直接上传" readonly/>
                 </div>
                 <div class="newImg position" style="height:50px;margin: 0 20px;">
-                    <img src="../image/u1986.png" alt=""  class="files w30" style="margin-left: -3px;">
-                    <input class="btn addColor w200"  value="新建文件夹"  readonly  />
+                    <img src="../image/u1986.png" alt="" class="files w30" style="margin-left: -3px;">
+                    <input class="btn addColor w200" value="新建文件夹" readonly/>
                 </div>
                 <div class="editImg position" style="height:50px;">
-                    <img src="../image/u1986.png" alt=""  class="files w30">
-                    <input class="btn addColor w200"  value="编辑图片" readonly />
+                    <img src="../image/u1986.png" alt="" class="files w30">
+                    <input class="btn addColor w200" value="编辑图片" readonly/>
                 </div>
 
-                <div class="col-sm-4" style="line-height: 50px;position: relative;top: -50%;left: 80%;margin-top:5px;font-size:14px;" class="setting1">
-                    <input type="checkbox" value="" name="rember" class="warmask">添加水印
+                <div class="col-sm-4"
+                     style="line-height: 50px;position: relative;top: -50%;left:78%;margin-top:5px;font-size:14px;"
+                     class="setting1">
+                    <input id='checkId' type="checkbox" style="visibility: hidden;"><label for='checkId'
+                    style="margin-top: 15px"></label>
+                    <span style="padding-left: 20px">&nbsp;&nbsp;添加水印</span>
                     <span style="color:#FF5456;" class="setting">【设置】</span>
                 </div>
             </div>
@@ -111,7 +162,8 @@
                 <div class="flex " style="text-align: right;">
                     <div class="position">
                         <input type="text" class="form-control searchName1" placeholder="搜索所有文件" style="width:250px;"/>
-                        <span style="font-family: iconfont;position: absolute;right: 3%;top:0;font-size: 24px;" class="searchName">&#xe615;</span>
+                        <span style="font-family: iconfont;position: absolute;right: 3%;top:0;font-size: 24px;"
+                              class="searchName">&#xe615;</span>
                     </div>
                 </div>
             </div>
@@ -121,7 +173,7 @@
             <div class="imgBox1 flex">
 
             </div>
-            
+
 
         </div>
     </div>
@@ -133,19 +185,21 @@
 
     <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
 </footer>
-<div class="nv91-mask" >
+<div class="nv91-mask">
     <div class="nv91" style="padding:5% 0">
         <form action="" class="form-horizontal" role="form" style="text-align:center;">
             <div class="form-group  flex">
-                <label for="name" class="control-label col-sm-3 star rolename" style="text-align: right;line-height: 1.5;">附件上传:</label>
+                <label for="name" class="control-label col-sm-3 star rolename"
+                       style="text-align: right;line-height: 1.5;">附件上传:</label>
                 <div class=" position" style="height:35px;position: absolute;left: 27%;">
                     <!--<img src="../image/u1986.png" alt="" style="width:15px;height:15px;" class="jt">-->
                     <!-- <input class="btn" value="上传文件" style="width:100px;height: inherit;" readonly /> -->
-                    <input type="file" class="watermarkImg" />
+                    <input type="file" class="watermarkImg"/>
                 </div>
             </div>
             <div class="form-group flex">
-                <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 1.5;">水印大小:</label>
+                <label for="name" class="control-label col-sm-3"
+                       style="text-align: right;line-height: 1.5;">水印大小:</label>
                 <div class="radio radio-info radio-inline ">
                     <input type="radio" id="r1" value="1" name="r1" checked="" class="status">
                     <label for="r1"> 按实际大小 </label>
@@ -158,7 +212,7 @@
             <div class="form-group flex">
                 <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 2;">水印位置:</label>
                 <div class="col-sm-9">
-                    <select name="" id="" class="form-control postion"  style="margin-left: 10px;width: 220px;">
+                    <select name="" id="" class="form-control postion" style="margin-left: 10px;width: 220px;">
                         <option value="">水印位置</option>
                         <option value="center">居中</option>
                         <option value="right-top">右上角</option>
@@ -189,12 +243,13 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn btn-primary roleSure">确定</button>
+            <div class="form-group flex butto"
+                 style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                <div class="col-sm-2" style="margin-top: 1%;margin-right: -4%">
+                    <button class="btn btn-primary roleSure" style="width: 60px;height: 40px">确定</button>
                 </div>
-                <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn  roleRefuse">取消</button>
+                <div class="col-sm-2" style="margin-top: 1%;margin-right:8%;">
+                    <button class="btn  roleRefuse" style="width: 60px;height: 40px">取消</button>
                 </div>
             </div>
         </form>
@@ -203,13 +258,16 @@
         <p style="line-height:50px;border-bottom: 1px solid #dddddd;padding-left: 20px;">添加文件夹</p>
         <form action="" class="form-horizontal" role="form" style="text-align:center;">
             <div class="form-group  flex">
-                <label for="name" class="control-label col-sm-3  rolename" style="text-align: right;line-height: 33.5px;">文件夹名称:</label>
+                <label for="name" class="control-label col-sm-3  rolename"
+                       style="text-align: right;line-height: 33.5px;">文件夹名称:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control filename" placeholder="" style="margin-left:5px;width: 320px;"/>
+                    <input type="text" class="form-control filename" placeholder=""
+                           style="margin-left:5px;width: 320px;"/>
                 </div>
             </div>
             <div class="form-group flex">
-                <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.5px;">上级文件夹:</label>
+                <label for="name" class="control-label col-sm-3"
+                       style="text-align: right;line-height: 33.5px;">上级文件夹:</label>
                 <div class="col-sm-9">
                     <select name="" id="" class="form-control fileid filename2" style="margin-left:5px;width: 320px;">
                         <option value="0" selected>请选择</option>
@@ -217,12 +275,13 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn btn-primary fileSure">确定</button>
+            <div class="form-group flex butto"
+                 style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                <div class="col-sm-2" style="margin-top: 1%;margin-right: -4%">
+                    <button class="btn btn-primary fileSure" style="width: 60px;height: 40px">确定</button>
                 </div>
-                <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn  fileRefuse">取消</button>
+                <div class="col-sm-2" style="margin-top: 1%;margin-right:8%;">
+                    <button class="btn  fileRefuse" style="width: 60px;height: 40px">取消</button>
                 </div>
             </div>
         </form>
@@ -231,13 +290,16 @@
         <p style="line-height:50px;border-bottom: 1px solid #dddddd;padding-left: 20px;">上传图片</p>
         <form action="" class="form-horizontal" role="form" style="text-align:center;">
             <div class="form-group  flex">
-                <label for="name" class="control-label col-sm-3  rolename" style="text-align: right;line-height: 33.5px;">选择文件:</label>
+                <label for="name" class="control-label col-sm-3  rolename"
+                       style="text-align: right;line-height: 33.5px;">选择文件:</label>
                 <div class="col-sm-9">
-                    <input type="file" class="form-control galleryImg" placeholder="" style=" margin-left:5px;width: 320px;"/>
+                    <input type="file" class="form-control galleryImg" placeholder=""
+                           style=" margin-left:5px;width: 320px;"/>
                 </div>
             </div>
             <div class="form-group flex">
-                <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.5px">文件夹名称:</label>
+                <label for="name" class="control-label col-sm-3"
+                       style="text-align: right;line-height: 33.5px">文件夹名称:</label>
                 <div class="col-sm-9">
                     <select name="" id="" class="form-control folderId" style="margin-left:5px;width: 320px;">
                         <option value="0" selected>请选择</option>
@@ -245,24 +307,25 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn btn-primary fileSure1">确定</button>
+            <div class="form-group flex butto"
+                 style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                <div class="col-sm-2" style="margin-top: 1%;margin-right: -4%">
+                    <button class="btn btn-primary fileSure1" style="width: 60px;height: 40px">确定</button>
                 </div>
-                <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn  fileRefuse1">取消</button>
+                <div class="col-sm-2" style="margin-top: 1%;margin-right:8%;width: 65px">
+                    <button class="btn  fileRefuse1" style="width: 60px;height: 40px">取消</button>
                 </div>
             </div>
         </form>
     </div>
     <div class="nv" style="padding:10px;">
         <div class="nv91-close">X</div>
-        <form action="" class="form-horizontal" role="form" >
+        <form action="" class="form-horizontal" role="form">
             <div class="prompt" style="padding-bottom:30px;">
                 <p style="font-size: 20px;">警告</p>
-                <img src="" alt="" ><span>操作成功</span>
+                <img src="" alt=""><span>操作成功</span>
             </div>
-            
+
         </form>
     </div>
 </div>
