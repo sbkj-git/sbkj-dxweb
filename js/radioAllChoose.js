@@ -1,5 +1,5 @@
-$(function () {
-    $('input:radio').click(function () {
+// $(function () {
+    $('input[name="radio2"]').click(function () {
         //alert(this.checked);
         //
 
@@ -35,4 +35,5 @@ $(function () {
             $radio.data('waschecked', true);
         }
     });
-});
+
+

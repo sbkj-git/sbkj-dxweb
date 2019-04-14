@@ -134,7 +134,7 @@
                 var ret = document.querySelector(".returnPage");
                 $(".returnPage").blur(function () {
                     
-                    var value = $(this).html();
+                    var value = $(this).val();
 
                     if (!re.test(value)) {
                        
@@ -292,7 +292,8 @@
                             
                             $(".addText").show();
                             $(".addText").click(function () {
-                              
+                                $(this).addClass("btn-primary");
+                                $(".deleteText").removeClass("btn-primary");
                                 localStorage.setItem("url","/helpInterface.dx");
                                 localStorage.setItem("method","get.dxWeb.addHelp")
                                 location.href = "../nav2/AddText.html"
@@ -315,9 +316,11 @@
                         } 
                         //判断是否有删除权限
                         if(obj.method === "get.dxWeb.deleteHelp"){
-                            $(".Delete").show();
+                            $(".deleteText").show();
                             $(".isDelete").show();
-                            $(".Delete").click(function(){
+                            $(".deleteText").click(function(){
+                                $(this).addClass("btn-primary");
+                                $(".addText").removeClass("btn-primary");
                                 var data = judgeChoose();
                                 if(data.length == 0){
                                     $(".nv91-mask").show();

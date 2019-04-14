@@ -47,9 +47,9 @@
 }
 
 .checkbox input[type=checkbox]:focus + label::before, .checkbox input[type=radio]:focus + label::before {
-    outline: thin dotted;
+    /* outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px
+    outline-offset: -2px */
 }
 
 .checkbox input[type=checkbox]:checked + label::after, .checkbox input[type=radio]:checked + label::after {
@@ -104,8 +104,8 @@
 }
 
 .checkbox-info input[type=checkbox]:checked + label::before, .checkbox-info input[type=radio]:checked + label::before {
-    background-color: #5bc0de;
-    border-color: #5bc0de
+    /* background-color: #5bc0de;
+    border-color: #5bc0de */
 }
 
 .checkbox-info input[type=checkbox]:checked + label::after, .checkbox-info input[type=radio]:checked + label::after {
@@ -149,8 +149,8 @@
 }
 
 .checkbox-info input[type=checkbox]:indeterminate + label::before, .checkbox-info input[type=radio]:indeterminate + label::before {
-    background-color: #5bc0de;
-    border-color: #5bc0de
+    /* background-color: #5bc0de;
+    border-color: #5bc0de */
 }
 
 .checkbox-info input[type=checkbox]:indeterminate + label::after, .checkbox-info input[type=radio]:indeterminate + label::after {
@@ -230,9 +230,9 @@
 }
 
 .radio input[type=radio]:focus + label::before {
-    outline: thin dotted;
+    /* outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px
+    outline-offset: -2px */
 }
 
 .radio input[type=radio]:checked + label::after {

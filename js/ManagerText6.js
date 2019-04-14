@@ -87,7 +87,7 @@ $(document).ready(function(){
                 var ret = document.querySelector(".returnPage");
                 $(".returnPage").blur(function () {
                     
-                    var value = $(this).html();
+                    var value = $(this).val();
 
                     if (!re.test(value)) {
                        
@@ -278,6 +278,8 @@ function judgePower(){
                         if(obj.method === "get.dxWeb.addNotice"){
                             $(".addText").show();
                             $(".addText").click(function(){
+                                $(this).addClass("btn-primary");
+                                $(".Delete").removeClass("btn-primary");
                             localStorage.setItem("method","get.dxWeb.addNotice");
                             localStorage.setItem("url","/noticeInterface.dx");
                             location.href = "../nav2/AddText.html";
@@ -291,6 +293,8 @@ function judgePower(){
                             $(".Delete").show();
                             $(".isDelete").show();
                             $(".Delete").click(function(){
+                                $(this).addClass("btn-primary");
+                                $(".addText").removeClass("btn-primary");
                                 var data = judgeChoose();
                                 if(data.length == 0){
                                     $(".nv91-mask").show();

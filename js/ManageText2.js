@@ -205,7 +205,7 @@ $(document).ready(function(){
                 var ret = document.querySelector(".returnPage");
                 $(".returnPage").blur(function () {
                     
-                    var value = $(this).html();
+                    var value = $(this).val();
 
                     if (!re.test(value)) {
                        
@@ -232,7 +232,8 @@ $(document).ready(function(){
                         if(obj.method === "get.dxWeb.addWebOperation"){
                           $(".Add").show();
                           $(".Add").click(function(){
-                              
+                            $(this).addClass("btn-primary");
+                            $(".Delete").removeClass("btn-primary");
                             localStorage.setItem("method","get.dxWeb.addWebOperation");
                             localStorage.setItem("url",help);
                             location.href = "./AddText.html";
@@ -244,6 +245,8 @@ $(document).ready(function(){
                             $(".Delete").show();
                             $(".isDelete").show();
                             $(".Delete").click(function(){
+                                $(this).addClass("btn-primary");
+                                $(".Add").removeClass("btn-primary");
                                 var data = judgeChoose();
                                 if(data.length == 0){
                                     $(".nv91-mask").show();

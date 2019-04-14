@@ -162,10 +162,37 @@ function Page(_ref) {
                     that.curPage = val;
                     that.getPage(that.curPage);
                 } else {
-                    alert("璇疯緭鍏ユ纭殑椤垫暟 !")
+                    $(".prompt ").text("最大页数:"+that.pageTotal);
+                    $(".nv91-mask").show();
+                    $(".confirm1 ").show();
+                    setTimeout(function(){
+                        $(".nv91-mask").hide();
+                        $(".confirm1 ").hide();
+                    },2000);
+                    return;
                 }
                 that.init();
             }
+        };
+        input.onblur = function (e) {
+            var oEvent = e || event;
+         
+                var val = parseInt(oEvent.target.value);
+                if (typeof val === 'number' && val <= that.pageTotal && val > 0) {
+                    that.curPage = val;
+                    that.getPage(that.curPage);
+                } else {
+                    $(".prompt ").text("最大页数:"+that.pageTotal);
+                    $(".nv91-mask").show();
+                    $(".confirm1 ").show();
+                    setTimeout(function(){
+                        $(".nv91-mask").hide();
+                        $(".confirm1 ").hide();
+                    },2000);
+                    return;
+                }
+                that.init();
+           
         };
         li.appendChild(input);
         var span2 = document.createElement('span');

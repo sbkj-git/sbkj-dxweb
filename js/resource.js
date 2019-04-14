@@ -3,7 +3,7 @@ $(document).ready(function () {
         if (el.readOnly) el.checked = el.readOnly = false;
         else if (!el.checked) el.readOnly = el.indeterminate = true;
     }
-
+   
     //封装添加修改方法
     function addUpdate(method, id, embel) {
         var appsercet = window.localStorage.getItem("appsercet");
@@ -31,10 +31,65 @@ $(document).ready(function () {
 
 //
     var urlSrc1, urlId1
-    // $(document).on("click",".addPhone",function(e){
+    var appsercet = window.localStorage.getItem("appsercet");
+    appsercet = JSON.parse(appsercet);
+    var newAppsercet = appsercet.data;
+    url = src + "/libraryInterface.dx";
+    // 请求完成渲染页面 待处理
+    var florId = localStorage.getItem("florId");
+    if (florId == "" || florId == null || florId == "undefined") {
+        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll";
+    } else {
+        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll&folderId=" + florId;
+    }
+
+    var list = getSign(url, par);
+    render3(list);
+    //添加页面点击事件渲染页面
+    var urlSrc1, urlId1
+
+    $(".addPhone").click(function () {
+        debugger
+        $(".nv91-mask").show();
+        $(".nv91").show();
+        $(".nv92").hide();
+        // 请求完成渲染页面 待处理
+        var florId = localStorage.getItem("florId");
+        if (florId == "" || florId == null || florId == "undefined") {
+            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll";
+        } else {
+            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll&folderId=" + florId;
+        }
+
+        var list = getSign(url, par);
+        render3(list);
+        $(this).val("修改图片");
+
+    })
+    var urlSrc, urlId
+    $(document).on("click", ".addPhone2", function (e) {
 
 
-    //
+        $(".nv91-mask").show();
+        $(".nv92").show();
+        $(".nv91").hide();
+        $(".imgcov2").show();
+        // 请求完成渲染页面 待处理
+        var florId = localStorage.getItem("florId");
+        if (florId == "" || florId == null || florId == "undefined") {
+            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll";
+        } else {
+            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll&folderId=" + florId;
+        }
+
+        var list = getSign(url, par);
+        render3(list);
+        $(this).val("修改图片");
+
+
+    });
+    judgePower();
+   function judgePower(){
     var url, par;
     //页面初次渲染加载数据
 
@@ -51,12 +106,11 @@ $(document).ready(function () {
             arr.push(item)
         }
     })
-    console.log(arr[0]);
     $.each(arr[0].dxRightsList, function (i, item) {
         //console.log(arr[0].dxRightsList)
         if (item.method === "get.dxWeb.queryFileAll") {
             url = src + "/" + item.link_path;
-
+           
             //添加图片点击事件
             $(".newImg").click(function () {
                 //请求全部文件夹并且渲染
@@ -91,144 +145,9 @@ $(document).ready(function () {
                     }
                 })
             })
-            //请求完成渲染页面 待处理
-            // var florId = localStorage.getItem("florId");
-            // if(florId == "" ||florId == null || florId == "undefined"){
-            //     par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll";
-            // }else{
-            //     par = "appsercet="+newAppsercet+"&method=get.dxWeb.queryFileAll&folderId="+florId;
-            // }
-            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll";
-            var list = getSign(url, par);
-            render3(list);
+           
 
-            function render3(list) {
-
-
-                $(".imgBox1").html("");
-                $(".imgBox2").html("");
-                $(".imgBox3").html("");
-                $(".imgBox4").html("");
-                var str1 = "";
-                var str = "";
-                var str2 = "";
-                var str3 = "";
-                var str4 = "";
-                if (list.dxFolderList && list.dxFolderList.length > 0) {
-
-                    $.each(list.dxFolderList, function (i, obj) {
-                        str1 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p><img src="../image/close12.png" alt="" style="width: 20px;height:20px;" class="close12"></div>';
-                        str3 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p></div>'
-                    })
-                    $(".imgBox1").append(str1);
-                    $(".imgBox2").append(str3);
-                    $(".imgBox3").append(str3)
-                } else {
-                    $(".imgBox1").html("");
-                    $(".imgBox2").html("");
-                    $(".imgBox3").html("")
-                }
-                if (list.dximgList && list.dximgList.length > 0) {
-
-                    $.each(list.dximgList, function (i, obj) {
-                        str += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover" ><div class="imgHover2"  data-id="' + obj.id + '"><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" style="width:80px;height:80px" class="imgHover1"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99;display:block" class="close12" data-id="' + obj.id + '"/></div>';
-                        //添加那块逻辑处理补充
-                        str2 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover1" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/></div>'
-
-                        str4 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/></div>'
-                    })
-                    $(".imgBox1").append(str);
-                    $(".imgBox2").append(str4);
-                    $(".imgBox3").append(str2);
-
-                    if ($(".imgBox2").html() == "") {
-
-                    } else {
-
-                        var size = localStorage.getItem("size");
-                        if (size == null || size == "") {
-
-                        } else {
-                            var id = localStorage.getItem("nowId");
-                            var imgHover1 = document.querySelectorAll(".imgHover2");
-                            for (var i = 0; i < imgHover1.length; i++) {
-                                var obj = imgHover1[i];
-                                if (obj.getAttribute("data-id") == id) {
-                                    obj.innerHTML = size;
-                                }
-                            }
-                        }
-
-                    }
-
-                } else {
-                    $(".imgBox2").html("");
-                    $(".imgBox4").html("");
-                }
-                $(".imgHover").each(function (index) {
-                    $(this).hover(function () {
-                        $(".imgHover .close12").hide().eq(index).css({"opacity": "1"}).show();
-                    })
-                    $(this).mouseleave(function () {
-                        $(".imgHover .close12").hide();
-                    })
-                })
-                $(".w200h145").each(function (index) {
-                    $(this).mouseenter(function () {
-                        $(".w200center .close12").hide().eq(index).css({"opacity": "1"}).show();
-                    })
-                    $(this).mouseleave(function () {
-                        $(".w200center .close12").hide();
-                    })
-                })
-                $(".imgHover").each(function (index) {
-                    $(this).hover(function () {
-                        $(".search2").hide().eq(index).show();
-                    })
-                    $(this).mouseleave(function () {
-                        $(".search2").hide();
-                    })
-                    $(this).dblclick(function () {
-                        location.href = "../nav7/ImgReview.html"
-                    })
-
-                })
-                $(".imgCover").unbind('click').bind("click", function () {
-                    debugger
-                    // $(".imgCover").click(function(){
-                    $(".nv91-mask").hide();
-                    $(".nv91").hide();
-                    $(".custom").eq(0).show();
-                    $(".imgcov").show();
-                    value1 = $("input[type='radio']:checked").val();
-                    if (value1 == 1) {
-                        $(".imgcov1").show();
-                    } else {
-                        $(".imgcov1").hide();
-                    }
-
-                    $(".imgcov2").show();
-                    urlSrc1 = $(this).find(".imgHover1").attr("src");
-                    urlId1 = $(this).find(".imgHover1").attr("data-id");
-                    $(".reviewImg1").attr("src", urlSrc1);
-                    $(".reviewImg1").attr("data-id", urlId1);
-
-
-                })
-
-                $(".imgCover1").unbind('click').bind("click", function () {
-                    debugger
-                    // $(".imgCover1").on("click",function(){
-                    $(".nv91-mask").hide();
-                    $(".nv91").hide();
-                    $(".imgcov1").hide();
-                    urlSrc = $(this).find(".imgHover1").attr("src");
-                    urlId = $(this).find(".imgHover1").attr("data-id");
-                    $(".reviewImg3").attr("src", urlSrc);
-                    $(".reviewImg3").attr("data-id", urlId);
-
-                })
-            }
+           
 
             //进入子集目录操作
             var width = document.querySelectorAll(".w200center");
@@ -581,6 +500,8 @@ $(document).ready(function () {
             }
         }
     })
+   }
+    
     //展示列表图片引入效果
     $(".imgHover").each(function (index) {
         $(this).hover(function () {
@@ -593,7 +514,128 @@ $(document).ready(function () {
             location.href = "../nav7/ImgReview.html"
         })
     })
+    //渲染页面
+    function render3(list) {
 
+        debugger
+        $(".imgBox1").html("");
+        $(".imgBox2").html("");
+        $(".imgBox3").html("");
+        $(".imgBox4").html("");
+        var str1 = "";
+        var str = "";
+        var str2 = "";
+        var str3 = "";
+        var str4 = "";
+        if (list.dxFolderList && list.dxFolderList.length > 0) {
+
+            $.each(list.dxFolderList, function (i, obj) {
+                str1 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p><img src="../image/close12.png" alt="" style="width: 20px;height:20px;" class="close12"></div>';
+                str3 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p></div>'
+            })
+            $(".imgBox1").append(str1);
+            $(".imgBox2").append(str3);
+            $(".imgBox3").append(str3)
+        } 
+        if (list.dximgList && list.dximgList.length > 0) {
+
+            $.each(list.dximgList, function (i, obj) {
+                str += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover" ><div class="imgHover2"  data-id="' + obj.id + '"><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" style="width:80px;height:80px" class="imgHover1"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99;display:block" class="close12" data-id="' + obj.id + '"/></div>';
+                //添加那块逻辑处理补充
+                str2 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover1" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/></div>'
+
+                str4 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/></div>'
+            })
+            $(".imgBox1").append(str);
+            $(".imgBox2").append(str4);
+            $(".imgBox3").append(str2);
+
+            if ($(".imgBox2").html() == "") {
+
+            } else {
+
+                var size = localStorage.getItem("size");
+                if (size == null || size == "") {
+
+                } else {
+                    var id = localStorage.getItem("nowId");
+                    var imgHover1 = document.querySelectorAll(".imgHover2");
+                    for (var i = 0; i < imgHover1.length; i++) {
+                        var obj = imgHover1[i];
+                        if (obj.getAttribute("data-id") == id) {
+                            obj.innerHTML = size;
+                        }
+                    }
+                }
+
+            }
+
+        } 
+        $(".imgHover").each(function (index) {
+            $(this).hover(function () {
+                $(".imgHover .close12").hide().eq(index).css({"opacity": "1"}).show();
+            })
+            $(this).mouseleave(function () {
+                $(".imgHover .close12").hide();
+            })
+        })
+        $(".w200h145").each(function (index) {
+            $(this).mouseenter(function () {
+                $(".w200center .close12").hide().eq(index).css({"opacity": "1"}).show();
+            })
+            $(this).mouseleave(function () {
+                $(".w200center .close12").hide();
+            })
+        })
+        $(".imgHover").each(function (index) {
+            $(this).hover(function () {
+                $(".search2").hide().eq(index).show();
+            })
+            $(this).mouseleave(function () {
+                $(".search2").hide();
+            })
+            $(this).dblclick(function () {
+                location.href = "../nav7/ImgReview.html"
+            })
+
+        })
+        $(".imgCover").unbind('click').bind("click", function () {
+            debugger
+            // $(".imgCover").click(function(){
+            $(".nv91-mask").hide();
+            $(".nv91").hide();
+            $(".custom").eq(0).show();
+            $(".imgcov").show();
+            value1 = $("input[type='radio']:checked").val();
+            if (value1 == 1) {
+                $(".imgcov1").show();
+            } else {
+                $(".imgcov1").hide();
+            }
+
+            $(".imgcov2").show();
+            urlSrc1 = $(this).find(".imgHover1").attr("src");
+            urlId1 = $(this).find(".imgHover1").attr("data-id");
+            $(".reviewImg1").attr("src", urlSrc1);
+            $(".reviewImg1").attr("data-id", urlId1);
+
+
+        })
+
+        $(".imgCover1").unbind('click').bind("click", function () {
+            debugger
+            // $(".imgCover1").on("click",function(){
+            $(".nv91-mask").hide();
+            $(".nv91").hide();
+            $(".imgcov1").hide();
+            urlSrc = $(this).find(".imgHover1").attr("src");
+            urlId = $(this).find(".imgHover1").attr("data-id");
+            $(".reviewImg3").attr("src", urlSrc);
+            $(".reviewImg3").attr("data-id", urlId);
+
+        })
+        judgePower();
+    }
     //水印实时展示
     function watermark(id) {
         var data

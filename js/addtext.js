@@ -129,27 +129,7 @@ $("#upload2").change(function(){
         $(".imgBox3").html("");
         $(".imgBox4").html("");
     })
-    var urlSrc1,urlId1
-    // $(document).on("click",".addPhone",function(e){
-        $(".addPhone").click(function(){
-        $(".nv91-mask").show();
-       $(".nv91").show();
-       $(".nv92").hide();
-        $(this).val("修改图片");
-      
-    })
-    var urlSrc,urlId
-    $(document).on("click",".addPhone2",function(e){
-        
-    // $(".addPhone2").on("click",function(e){
-        $(".nv91-mask").show();
-       $(".nv92").show();
-       $(".nv91").hide();
-      $(".imgcov2").show();
-        $(this).val("修改图片");
-      
-       
-	});
+   
 
     
     //选择发布时间

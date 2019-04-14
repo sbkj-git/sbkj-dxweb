@@ -142,12 +142,7 @@
                             $("#pic").attr("src","");
                             $(".nv91-mask").show();
                             $(".nv91").show(); 
-                            $("#picimg").change(function () {
-                                // $("#picimg").on("change",function () {
-                                debugger
-                            var fileDom = document.getElementById("picimg");
-                                imgPreview(fileDom, "pic");
-                            }) 
+                            
                                             
                             object(url,newAppsercet);
                                 $(".addBanner").unbind('click').bind("click",function(){
@@ -199,7 +194,7 @@
                                      
                                     }
                                     
-                                    else if($("#pic").attr("src") == ""){
+                                    else if($("#picImg")[0].files[0] == "" || $("#picImg")[0].files[0] == "undefined"){
                                         $(".prompt ").text("请上传banner图");
                                         $(".nv91-mask").show();
                                         $(".confirm1 ").show();
@@ -215,7 +210,6 @@
                                     
                                   })
                           })
-                          
                          
                           
                        
@@ -281,13 +275,8 @@
                                     obj1.checked = true;
                                 }
                                 $(".companyName").val(data.msg.pic_title);
-                                $(".picimg").unbind('change').bind("change",function(){ 
-                                    // $("#picimg").change(function () {
-                                        $("#pic").attr("src", "");
-                                        debugger
-                                        var fileDom = document.getElementById("picimg");
-                                        imgPreview(fileDom, "pic");
-                                    })
+                                // $(".picimg").unbind('change').bind("change",function(){ 
+                                   
                                     $(".addBanner").unbind('click').bind("click",function(){ 
                                     // $(".addBanner").click(function () {
                                         addorupdate("get.dxWeb.updateWebBottom",id);
@@ -480,5 +469,19 @@
 
         }
     }
+    //切换图片
+    $(document).on("change","#picimg",function(){
+        debugger
+        var fileDom = document.getElementById("picimg");
+        imgPreview(fileDom, "pic");
+    });
+   
+    // $("#picimg12").click(function () {
+    //     debugger
+    //     $("#pic12").attr("src", "");
+    //     debugger
+    //     var fileDom = document.getElementById("picimg12");
+      
+    // })
     
   

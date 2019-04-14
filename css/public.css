@@ -238,3 +238,4 @@ h3{margin:10px 0;}
 .layinput{height: 22px;line-height: 22px;width: 150px;margin: 0;}
 
 /* 日历插件结束 */
+input[type='radio'],input[type='checkbox']{outline:none!important;}
