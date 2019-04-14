@@ -58,13 +58,13 @@ $(document).ready(function(){
       var data = getSign(url,par);
       if(data.msg.code == "200"){
         //   alert("保存成功");
-        // $(".prompt span").text("保存成功");
-        // $(".nv91-mask").show();
-        //    $(".nv").show();
-        //    setTimeout(function(){
-        //     $(".nv91-mask").hide();
-        //    $(".nv").hide();
-        //    },1000); 
+        $(".nv91-mask").show(); 
+        $(".nv1").show();
+        setTimeout(function(){
+            $(".nv91-mask").hide();
+            $(".nv1").hide();
+           location.reload();
+        },2000);
     }
     })
 })

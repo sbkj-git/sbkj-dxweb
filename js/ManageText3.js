@@ -318,6 +318,17 @@
                             $(".Delete").show();
                             $(".isDelete").show();
                             $(".Delete").click(function(){
+                                var data = judgeChoose();
+                                if(data.length == 0){
+                                    $(".nv91-mask").show();
+                                    $(".prompt").text("请至少选择一条数据");
+                                    $(".confirm1").show(); 
+                                    setTimeout(function(){
+                                        $(".nv91-mask").hide();
+                                        $(".confirm1").hide();
+                                       
+                                    },2000);
+                                }else{
                                 $(".nv91-mask").show();
                                 $(".confirm").show();
                                 $(".needShow").show();
@@ -328,7 +339,7 @@
                                     $(".nv91-mask").hide();
                                     $(".confirm").hide(); 
                                 })
-                                
+                            }  
                             })
                            
                             $(".isDelete").click(function () {
@@ -412,8 +423,13 @@
             var data = getSign(url, par);
             console.log(data)
             if (data.msg.code == "200") {
-                // alert("删除成功");
-                location.reload();
+                $(".confirm").hide(); 
+                    $(".nv1").show();
+                    setTimeout(function(){
+                        $(".nv91-mask").hide();
+                        $(".nv1").hide();
+                       location.reload();
+                    },2000);
             }
         }
 

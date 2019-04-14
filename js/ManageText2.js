@@ -140,7 +140,12 @@ $(document).ready(function(){
      $(".banner1").click(function(){
          debugger
         var title = $(".banner").val();
-        par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList&title="+title;
+        if(title == "" || title == null){
+            par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList";
+        }else{
+            par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList&title="+title;
+        }
+       
         var bannerList = getSign(url,par);
         if(bannerList.msg && bannerList.msg.codeMsg){
             $(".textList").html("");
@@ -239,16 +244,29 @@ $(document).ready(function(){
                             $(".Delete").show();
                             $(".isDelete").show();
                             $(".Delete").click(function(){
-                                $(".nv91-mask").show();
-                                $(".confirm").show();
-                                $(".needShow").show();
-                                $(".roleSure").click(function(){
-                                    deleteText();
-                                })
-                                $(".roleRefuse").click(function(){
+                                var data = judgeChoose();
+                                if(data.length == 0){
                                     $(".nv91-mask").show();
-                                    $(".confirm").show(); 
-                                })
+                                    $(".prompt").text("请至少选择一条数据");
+                                    $(".confirm1").show(); 
+                                    setTimeout(function(){
+                                        $(".nv91-mask").hide();
+                                        $(".confirm1").hide();
+                                       
+                                    },2000);
+                                }else{
+                                    $(".nv91-mask").show();
+                                    $(".confirm").show();
+                                    $(".needShow").show();
+                                    $(".roleSure").click(function(){
+                                        deleteText();
+                                    })
+                                    $(".roleRefuse").click(function(){
+                                        $(".nv91-mask").show();
+                                        $(".confirm").show(); 
+                                    })
+                                }
+                                
                                 
                             })
                            
@@ -358,6 +376,7 @@ $(document).ready(function(){
                 pageN == 0;
             }
            }
+          
        //删除函数封装
         function deleteText() {
             var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
@@ -379,7 +398,13 @@ $(document).ready(function(){
 
             var data = getSign(url, par);
             if (data.msg.code == "200") {
-                location.reload();
+                $(".confirm").hide(); 
+                $(".nv1").show();
+                setTimeout(function(){
+                    $(".nv91-mask").hide();
+                    $(".nv1").hide();
+                   location.reload();
+                },2000);
             }
         }
 })

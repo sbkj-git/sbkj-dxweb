@@ -16,4 +16,29 @@ var zt = "http://10.18.3.11:28080/middle/"
 // http://10.18.3.11:28080/userInfo/getCompanyAuthInfo
 // http://10.18.3.11:28080/operationSupport/getCompanyAuthInfo
 // http://10.18.3.11:28080/report/getFinanceProfile
+// $(".btn").click(function(){
+//     debugger
+//     $(this).addClass(".btn-primary");
+//     $(".btn").removeClass(".btn-primary");
+// })
+ //判断是否选中了值
+ function judgeChoose(){
+    var IdList;
+ var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
+ var IdList;
+ var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+ for (var i = 0; i < inputs.length; i++) {
+     var obj = inputs[i];
+     if (obj.type == 'checkbox') {
+         checkboxArray.push(obj);
+     }
+ }
+ IdList = new Array();
+ for (var i = 0; i < checkboxArray.length; i++) {
+     if (checkboxArray[i].checked) {
+         IdList.push(checkboxArray[i].getAttribute("data-id"));
+     }
+ }
+ return IdList;
+}
 

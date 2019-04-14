@@ -31,27 +31,31 @@ $("#upload2").change(function(){
 
       var obj = add1[0];
       if (obj.checked == true && i == 1) {
+          $(".imgcov").show();
+          $(".custom").eq(0).show();
         imgPreview(files,"reviewImg1");
         imgPreview(files,"reviewImg2");
       } else if (obj.checked == false && i == 2){
-
+        $(".custom").eq(1).show();
         imgPreview(files,"reviewImg3");
 
       }else if (obj.checked == false && i == 1) {
+        $(".imgcov").show();
+        $(".custom").eq(0).show();
         imgPreview(files,"reviewImg1");
         imgPreview(files,"reviewImg2");
       }
 //   }
 })
-    //初始化日期选择控件
-    $(".form_datetime").datetimepicker({
-        format: 'yyyy-mm-dd hh:ii:ss',
-        language: 'zh-CN',
-        autoclose: true,
-    });
+    // //初始化日期选择控件
+    // $(".form_datetime").datetimepicker({
+    //     format: 'yyyy-mm-dd hh:ii:ss',
+    //     language: 'zh-CN',
+    //     autoclose: true,
+    // });
 
     //作业开始时间失去焦点验证
-// $('#date').blur(function(){
+// $('.jy').blur(function(){
 // 	var ret = contrastTime("date");//获取返回值
 // 	if(ret == 0){
 // 		alert("请选择正确的时间。");
@@ -132,9 +136,7 @@ $("#upload2").change(function(){
        $(".nv91").show();
        $(".nv92").hide();
         $(this).val("修改图片");
-       
-       
-       
+      
     })
     var urlSrc,urlId
     $(document).on("click",".addPhone2",function(e){
@@ -159,6 +161,20 @@ $("#upload2").change(function(){
    }
 var url1 = localStorage.getItem("url");
 var method = localStorage.getItem("method");
+if(method === "get.dxWeb.addSkill"){
+    $(".color_8d").text("技术文档");
+}else if(method === "get.dxWeb.addQAndA"){
+    $(".color_8d").text("Q&A文档");
+}
+else if(method === "get.dxWeb.addWebOperation"){
+    $(".color_8d").text("网站运营");
+}
+else if(method === "get.dxWeb.addNotice"){
+    $(".color_8d").text("公告");
+}
+else if(method === "get.dxWeb.addHelp"){
+    $(".color_8d").text("帮助文档");
+}
    // 文章内容,文章标题,发布日期,来源,作者,文章摘要,文章列表缩列图 1与正文图一致 2自定义,浏览数,文章浏览器标题,文章详情页关键词,文章详情页描述,选择图片的id,是否置顶  1
    var appid = localStorage.getItem("appid");
    var appsercet = localStorage.getItem("appsercet");
@@ -374,7 +390,7 @@ var url = src + url1;
         $(".reviewImg3").attr("src","");
   }
   
-  if(method === "get.dxWeb.updateWebOperation" || method === "get.dxWeb.updateHelp" || method === "get.dxWeb.helpDetails" || method === "get.dxWeb.skillDetails" || method === "get.dxWeb.updateSkill" || method === "get.dxWeb.qAndADetails" || method === "get.dxWeb.updateQAndA" || method === "get.dxWeb.webOperationDetails"){
+  if(method === "get.dxWeb.updateWebOperation" || method === "get.dxWeb.updateHelp" || method === "get.dxWeb.helpDetails" || method === "get.dxWeb.skillDetails" || method === "get.dxWeb.updateSkill" || method === "get.dxWeb.qAndADetails" || method === "get.dxWeb.updateQAndA" || method === "get.dxWeb.webOperationDetails" || method === "get.dxWeb.noticeDetails" || method === "get.dxWeb.updateNotice"){
       
    var detail = localStorage.getItem("textDetail");
    var cateId;
@@ -506,7 +522,22 @@ var url = src + url1;
            return;
        }
    })
-}else if(method === "get.dxWeb.addHelp"){
+}
+   else if(method === "get.dxWeb.addNotice"){
+    var id = "";
+    $(".addMessage").click(function () {
+     debugger
+        var data = formvalidar(method);
+        console.log(data);
+        if (data) {
+            updateMessage(method, id, url1);
+        } else {
+            return;
+        }
+    })
+   }
+
+else if(method === "get.dxWeb.addHelp"){
    $(".changeFlex").removeClass("column");
 //    $(".show1").show();
    var id = "";
@@ -584,6 +615,9 @@ else if(method === "get.dxWeb.addSkill"){
     //封装校验表单方法
     function formvalidar(method){
         debugger
+	var rets = contrastTime("date8");//获取返回值
+	
+
         var success = true;
         var ret = /^\d{4}[-]([0][1-9]|(1[0-2]))[-]([1-9]|([012]\d)|(3[01]))([ \t\n\x0B\f\r])(([0-1]{1}[0-9]{1})|([2]{1}[0-4]{1}))([:])(([0-5]{1}[0-9]{1}|[6]{1}[0]{1}))([:])((([0-5]{1}[0-9]{1}|[6]{1}[0]{1})))$/;
         console.log($(".date").val());
@@ -608,7 +642,7 @@ else if(method === "get.dxWeb.addSkill"){
                 },2000);
                 success = false;
                 return;
-            }
+            }    
             else if(!ret.test($(".releaseTime").val())){
                 $(".prompt ").text("请输入正确的发布日期");
                 $(".nv91-mask").show();
@@ -620,6 +654,17 @@ else if(method === "get.dxWeb.addSkill"){
                 success = false;
                 return;
             }
+            else  if(rets == 0){
+                $(".prompt ").text("超出日期范围");
+                $(".nv91-mask").show();
+                $(".confirm1 ").show();
+                setTimeout(function(){
+                    $(".nv91-mask").hide();
+                    $(".confirm1 ").hide();
+                },2000);
+                success = false;
+                return;
+            } 
             else if($(".author").val() == ""){
                 $(".prompt ").text("请填写发布作者");
                 $(".nv91-mask").show();

@@ -81,9 +81,21 @@ $(document).ready(function(){
             if (item.dxRightsList.length == 0) {
                 return
             } else {
-
-                str1 += "<li id='" + item.id + "'><img src='./image/lf" + item.id + ".png' alt='' style='width:20px;height:20px;'></li>"
-                str += "<li class='treeview' id='" + item.id + "'><a href='#'><i class='fa fa-dashboard'><img src='./image/lf" + item.id + ".png' style='width:20px;height:20px;margin:0 10px 0 26px'/></i> <span>" + item.name + "</span> <i class='fa fa-angle-right pull-right'></i></a>"
+                if(item.id == 8){
+                    str1 += "<li id='" + item.id + "'><img src='./image/lf" + item.id + ".png' alt='' style='width:20px;height:15px;'></li>"
+                }
+                else{
+                    str1 += "<li id='" + item.id + "'><img src='./image/lf" + item.id + ".png' alt='' style='width:20px;height:20px;'></li>"
+                }
+               
+                str += "<li class='treeview' id='" + item.id + "'><a href='#'><i class='fa fa-dashboard'>";
+                if(item.id == 8){
+                    str+="<img src='./image/lf" + item.id + ".png' style='width:20px;height:15px;margin:0 10px 0 26px'/>"
+                }else{
+                    str+="<img src='./image/lf" + item.id + ".png' style='width:20px;height:20px;margin:0 10px 0 26px'/>"
+                }
+               
+                str+="</i> <span>" + item.name + "</span> <i class='fa fa-angle-right pull-right'></i></a>"
                 str += "<ul class='treeview-menu'>";
                 str2 += "<div class='nav-slide-o'><ul>";
 
@@ -223,6 +235,23 @@ $(document).ready(function(){
                 $("#iframe").attr("src", "./nav5/TextDivideFive.html")
             }
         })
+        $("#6 .treeview-menu li a i").click(function () {
+            var index = $(this).index();
+            var value = $(this).attr("data-id")
+            
+            if (value == "get.dxWeb.addNotice") {
+                $("#iframe").attr("src", "./nav2/AddText.html");
+                window.localStorage.setItem("url", "/noticeInterface.dx");
+                localStorage.setItem("method", "get.dxWeb.addNotice");
+
+            }
+            if (value == "get.dxWeb.noticeList") {
+                $("#iframe").attr("src", "./nav6/ManagerTextSix.html");
+                //将此时的正在点击页面的方法 以及此时正在点击的是哪个节点暂放缓存
+                localStorage.setItem("node", JSON.stringify({ "method": "get.dxWeb.noticeList", "id": 6 }));
+            }
+            
+        })
         $("#7 .treeview-menu li a i").click(function () {
             var index = $(this).index();
             var value = $(this).attr("data-id")
@@ -359,6 +388,17 @@ $(document).ready(function(){
                 }
                 if (value == "get.dxWeb.cateTwoList") {
                     $("#iframe1").attr("src", "./nav5/TextDivideFive.html")
+                }
+                if (value == "get.dxWeb.addNotice") {
+                    $("#iframe").attr("src", "./nav2/AddText.html");
+                    window.localStorage.setItem("url", "/noticeInterface.dx");
+                    localStorage.setItem("method", "get.dxWeb.addNotice");
+    
+                }
+                if (value == "get.dxWeb.noticeList") {
+                    $("#iframe").attr("src", "./nav6/ManagerTextSix.html");
+                    //将此时的正在点击页面的方法 以及此时正在点击的是哪个节点暂放缓存
+                    localStorage.setItem("node", JSON.stringify({ "method": "get.dxWeb.noticeList", "id": 6 }));
                 }
                 //7
                 if (value == "get.dxWeb.queryFileAll") {

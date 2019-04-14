@@ -480,7 +480,7 @@ function deleteM(method){
             if(method === "get.dxWeb.adminDetails"){
               
                $(".user1").val(update.username);
-               $(".user2").val(update.pwd);
+               $(".user2").val("......");
                $(".user3").val(update.trueName);
                $(".user4").val(update.modilePhone);
                var radio = document.querySelectorAll(".status");
