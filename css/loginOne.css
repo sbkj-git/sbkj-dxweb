@@ -217,12 +217,16 @@
 }
 
 .updateNews {
-    background-color: #E2302B;
+    /* background-color: #E2302B; */
     border: none;
     width: 150px;
     height: 40px;
     font-size: 18px;
     border-radius: 5px;
+}
+.updateNews:hover{
+    background-color: #E2302B;
+    color:#fff;
 }
 
 /* e 修改个人资料 */

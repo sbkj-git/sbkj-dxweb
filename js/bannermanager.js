@@ -125,7 +125,7 @@ $(document).ready(function(){
               
              var data2 = getSign(url, par);
              bannerList1(data2);
-             firstRender();
+            //  firstRender();
              console.log(data2);
              pageJudge(data2);
              function pageJudge(data2){
@@ -275,7 +275,8 @@ $(document).ready(function(){
                                 if (obj.method === "get.dxWeb.addhelp") {
                                     $(".add").show();
                                     //Banner添加事件
-                                    $(".addInput").click(function () {
+                                    $(".addInput").unbind('click').bind("click",function(){
+                                    // $(".addInput").click(function () {
                                         
                                         $(".nv91-mask").show();
                                         $(".nv91").show();
@@ -310,6 +311,7 @@ $(document).ready(function(){
                                             
                                         })
                                     })
+                                    
                                 }
                                 //判断该用户是否有删除权限 
                                 if (obj.method === "get.dxWeb.deleteBanner") {

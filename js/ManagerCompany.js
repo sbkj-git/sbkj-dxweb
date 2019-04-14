@@ -139,10 +139,16 @@
                             //添加管理合作伙伴操作
                             $(".nv91 input").val("");
                             $(".nv91 select").val("");
-                            $("#pic").attr("src","");
+                            // $("#pic").attr("src","");
                             $(".nv91-mask").show();
                             $(".nv91").show(); 
-                            
+                            $(".showUP").click(function(){
+                                $("#picImg").click();
+                                $("#picImg").change(function(){
+                                    var fileDom = document.getElementById("picImg");
+                                    imgPreview(fileDom);
+                                })
+                               })
                                             
                             object(url,newAppsercet);
                                 $(".addBanner").unbind('click').bind("click",function(){
@@ -275,7 +281,13 @@
                                     obj1.checked = true;
                                 }
                                 $(".companyName").val(data.msg.pic_title);
-                                // $(".picimg").unbind('change').bind("change",function(){ 
+                               $(".showUP").click(function(){
+                                $("#picImg").click();
+                                $("#picImg").change(function(){
+                                    var fileDom = document.getElementById("picImg");
+                                    imgPreview(fileDom);
+                                })
+                               })
                                    
                                     $(".addBanner").unbind('click').bind("click",function(){ 
                                     // $(".addBanner").click(function () {
@@ -470,18 +482,31 @@
         }
     }
     //切换图片
-    $(document).on("change","#picimg",function(){
-        debugger
-        var fileDom = document.getElementById("picimg");
-        imgPreview(fileDom, "pic");
-    });
    
-    // $("#picimg12").click(function () {
-    //     debugger
-    //     $("#pic12").attr("src", "");
-    //     debugger
-    //     var fileDom = document.getElementById("picimg12");
-      
-    // })
+    function imgPreview(fileDom) {
+                    
+        //判断是否支持FileReader
+        if(window.FileReader) {
+            var reader = new FileReader();
+        } else {
+            alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+        }
+        //获取文件
+        var file = fileDom.files[0];
+        var imageType = /^image\//;
+        //是否是图片
+        if(!imageType.test(file.type)) {
+            // alert("请选择图片！");
+            // return;
+        }
+        //读取完成
+        reader.onload = function(e) {
+            //获取图片dom
+            var img = document.getElementById("pic");
+            //图片路径设置为读取的图片
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
     
   
