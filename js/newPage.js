@@ -38,6 +38,7 @@ function Page(_ref) {
     }
 };Page.prototype = {
     init: function init() {
+        debugger
         var pagination = document.getElementById(this.id);
         pagination.innerHTML = '';
         this.ul.innerHTML = '';
@@ -162,14 +163,10 @@ function Page(_ref) {
                     that.curPage = val;
                     that.getPage(that.curPage);
                 } else {
-                    $(".prompt ").text("最大页数:"+that.pageTotal);
-                    $(".nv91-mask").show();
-                    $(".confirm1 ").show();
-                    setTimeout(function(){
-                        $(".nv91-mask").hide();
-                        $(".confirm1 ").hide();
-                    },2000);
-                    return;
+                    debugger
+                    input.value = that.pageTotal;
+                   localStorage.setItem("pageNow1",that.pageTotal);
+                    // location.reload();
                 }
                 that.init();
             }
@@ -182,14 +179,10 @@ function Page(_ref) {
                     that.curPage = val;
                     that.getPage(that.curPage);
                 } else {
-                    $(".prompt ").text("最大页数:"+that.pageTotal);
-                    $(".nv91-mask").show();
-                    $(".confirm1 ").show();
-                    setTimeout(function(){
-                        $(".nv91-mask").hide();
-                        $(".confirm1 ").hide();
-                    },2000);
-                    return;
+                    debugger
+                    input.value = that.pageTotal;
+                   localStorage.setItem("pageNow1",that.pageTotal);
+                    // location.reload();
                 }
                 that.init();
            

@@ -139,7 +139,7 @@ $(document).ready(function(){
      //通过banner名称查询
      $(".banner1").click(function(){
          debugger
-        var title = $(".banner").val();
+        var title = $(".titleText").val();
         if(title == "" || title == null){
             par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList";
         }else{

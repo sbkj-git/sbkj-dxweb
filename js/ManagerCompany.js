@@ -142,13 +142,12 @@
                             // $("#pic").attr("src","");
                             $(".nv91-mask").show();
                             $(".nv91").show(); 
-                            $(".showUP").click(function(){
-                                $("#picImg").click();
+                          
                                 $("#picImg").change(function(){
                                     var fileDom = document.getElementById("picImg");
                                     imgPreview(fileDom);
                                 })
-                               })
+                              
                                             
                             object(url,newAppsercet);
                                 $(".addBanner").unbind('click').bind("click",function(){
@@ -229,10 +228,11 @@
                             
                             $(".isDelete").click(function () {
                                 $(".nv91-mask").show();
+                                $(".prompt").text("确定要删除这条消息吗?");
                                 $(".confirm").show();
                                 var IdList = $(this).attr("data-id");
                                 $(".roleSure").click(function(){
-                                    deleteText(id);
+                                    deleteText(IdList);
                                    
                                 })
                                 $(".roleRefuse").click(function(){
@@ -245,8 +245,10 @@
                             //判断是否有编辑权限
                            if(obj.method === "get.dxWeb.updateWebBottom"){      
                             $(".isEdit").show();
-                           
-                            $(".isEdit").click(function () {
+                            $(".isEdit").unbind('click').bind("click",function(){
+                          
+                            // $(".isEdit").click(function () {
+                                $(".nv91 input").val("");
                                 $(".nv91-mask").show();
                                 $(".nv91").show();
                                 // $("#picImg").hide();
@@ -281,13 +283,13 @@
                                     obj1.checked = true;
                                 }
                                 $(".companyName").val(data.msg.pic_title);
-                               $(".showUP").click(function(){
-                                $("#picImg").click();
+
+                             
                                 $("#picImg").change(function(){
                                     var fileDom = document.getElementById("picImg");
                                     imgPreview(fileDom);
                                 })
-                               })
+                               
                                    
                                     $(".addBanner").unbind('click').bind("click",function(){ 
                                     // $(".addBanner").click(function () {
@@ -351,7 +353,7 @@
                         $(".nv1").hide();
                        
                     }, 2000);
-                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList";
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList&currentPage="+currentPage;
                     var data = getSign(url, par);
                     render(data);
                 }
@@ -410,16 +412,17 @@
 
                 formData.append("bannerName", $(".companyName").val());
                 formData.append("cateId", $(".companyType option:checked").attr("data-id"));
-                var status = document.querySelectorAll(".status");
-                var state = $("input[name='bm2']:checked").val()
-                
-                // var state
-                // for(var i = 0;i<status.length;i++){
-                //     var obj = status[i];
-                //     if (obj.checked == true) {
-                //     state = obj.value;
-                // } 
-                // }
+                // var status = document.querySelectorAll(".status");
+                // var state = $("input[name='bm2']:checked").val()
+                var state ;
+                debugger
+                var statu = $(".status").eq(0).prop("checked");
+                if(statu == true){
+                    state = 1;
+                }else{
+                    state = 2;  
+                }
+               
                 
                 formData.append("state", state);
                 formData.append("picImg", $("#picImg")[0].files[0]);
@@ -430,22 +433,24 @@
                 data = JSON.parse(data)
                 debugger
                 if(data.msg.code == "200"){
-                    if (data.msg.code == "200") {
+                    
                         $(".confirm").hide();
-                        $(".prompt").text("操作成功");  
+                        $(".prompt").text("操作成功"); 
+                        $(".nv91-mask").show();
                         $(".nv1").show();
                         setTimeout(function(){
                             $(".nv91-mask").hide();
                             $(".nv1").hide();
-                          location.reload();
+                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList&currentPage=" + currentPage;
+                            var bannerList = getSign(url, par);
+                            render(bannerList);
                         },2000);
-                    }
-                    $(".nv91-mask").hide();
-                    $(".nv91").hide();
+                    
+                   
                     $(".nv91 input").val("");
                 
                     $("#pic").attr("src","");
-                    location.reload();
+                  
                 }else if(data.msg.code == "10"){
                     $(".confirm").hide();
                         $(".prompt").text("操作失败");  

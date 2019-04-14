@@ -67,7 +67,7 @@ $(document).ready(function(){
         function refer() {
             location.href = "./login1.html";
             localStorage.clear();
-            sessionStorage.clear();
+            // sessionStorage.clear();
         }
         hasOperate(refer, 36000000);
         //左侧栏导航数据获取

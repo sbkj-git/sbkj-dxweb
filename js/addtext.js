@@ -47,22 +47,7 @@ $("#upload2").change(function(){
       }
 //   }
 })
-    // //初始化日期选择控件
-    // $(".form_datetime").datetimepicker({
-    //     format: 'yyyy-mm-dd hh:ii:ss',
-    //     language: 'zh-CN',
-    //     autoclose: true,
-    // });
-
-    //作业开始时间失去焦点验证
-// $('.jy').blur(function(){
-// 	var ret = contrastTime("date");//获取返回值
-// 	if(ret == 0){
-// 		alert("请选择正确的时间。");
-// 		$(this).val('');
-// 		return;
-// 	}
-// })
+   
     //切换自定义还是和正文头图一致
     var add1 = document.querySelectorAll(".add1");
     var value
@@ -595,8 +580,13 @@ else if(method === "get.dxWeb.addSkill"){
     //封装校验表单方法
     function formvalidar(method){
         debugger
-	var rets = contrastTime("date8");//获取返回值
-	
+
+    //获取当前时间戒指时分秒
+    var now = new Date().getTime();//当前时间戳
+var time_1 = new Date(document.getElementById('date8').value).getTime();//1的时间戳
+
+//直接进行时间戳的比较即可，js的时间戳是从1970年1月1日0时0分0秒到对应时间所经过的毫秒数
+//上面3个变量都是number类型，可直接进行比较，加减运算也可
 
         var success = true;
         var ret = /^\d{4}[-]([0][1-9]|(1[0-2]))[-]([1-9]|([012]\d)|(3[01]))([ \t\n\x0B\f\r])(([0-1]{1}[0-9]{1})|([2]{1}[0-4]{1}))([:])(([0-5]{1}[0-9]{1}|[6]{1}[0]{1}))([:])((([0-5]{1}[0-9]{1}|[6]{1}[0]{1})))$/;
@@ -634,7 +624,7 @@ else if(method === "get.dxWeb.addSkill"){
                 success = false;
                 return;
             }
-            else  if(rets == 0){
+            else  if(time_1 > now){
                 $(".prompt ").text("超出日期范围");
                 $(".nv91-mask").show();
                 $(".confirm1 ").show();

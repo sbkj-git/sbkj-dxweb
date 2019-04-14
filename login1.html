@@ -48,7 +48,7 @@
     </style>
 </head>
 <script src="./js/remberPass.js"></script>
-<body id="body">
+<body id="body" onload="document.getElementById('username').focus();GetCookie();">
 <div class="banner3" style="height: 100%">
 
     <div>
@@ -62,11 +62,11 @@
 
                 <div class="div">
                     <img src="./image/l2.png" alt="" class="img" style="margin-left: 10px">
-                    <input style="padding-left:50px;margin-bottom: 5px" type="text" class="input1 user" placeholder="请输入用户名称">
+                    <input style="padding-left:50px;margin-bottom: 5px" type="text" class="input1 user" placeholder="请输入用户名称"  id="username">
                 </div>
                 <div class="div">
                     <img src="./image/l3.png" alt="" class="img" style="margin-left: 10px">
-                    <input style="padding-left: 50px" type="password" class="input1 pass" placeholder="请输入用户密码"/>
+                    <input style="padding-left: 50px" type="password" class="input1 pass" placeholder="请输入用户密码" id="password"/>
                 </div>
                 <div style="width: 100%;" class="hide flex div">
                     <img src="./image/l4.png" alt="" class="img" style="margin-left: 10px">
@@ -78,11 +78,8 @@
                 <button class="btnLogin" style="width: 400px;height: 50px;margin-top: 10px">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
 
                 <div class="flex remberAcount">
-                    <div class='checkbox checkbox-primary' style="margin-right:10px"><input type='checkbox'
-                                                                                            class='styled styled-primary'
-                                                                                            id="need"
-                                                                                            aria-label='Single checkbox Two'>
-                        <label for='need' class='rolen' style="margin-top: 2px">记住账号</label></div>
+                    <div class='checkbox checkbox-primary' style="margin-right:10px"><input type='checkbox' class='styled styled-primary'  id="remember_password"                                                                             aria-label='Single checkbox Two'>
+                        <label for='remember_password' class='rolen' style="margin-top: 2px">记住账号</label></div>
                     <span><a href="./forgetPass.html" class="forgetPass" style="font-size: 15px;">忘记密码</a></span>
                 </div>
             </div>
@@ -124,8 +121,11 @@
         }
 
         //提交用户信息
-        window.localStorage.clear()
+        // window.localStorage.clear();
         var par, url, visterName, username, pwd, type, methods;
+        $(".user").focus(function(){
+            GetCookie();
+        })
         $(".user").blur(function () {
             username = $(this).val()
             if (username==null||username.trim()=="") {
@@ -333,6 +333,7 @@
     function referIndex(data) {
 
         if (data.msg.code == "200") {
+            saveInfo();
             localStorage.setItem("appsercet", JSON.stringify({"data": data.userInfo.appsercet}))
             localStorage.setItem("appid", "dxwebf0a37ed1ae96deef")
             window.localStorage.setItem("dxRightsList", JSON.stringify(data.userInfo.dxRightsList.dxRightsCategoryList));
@@ -345,5 +346,77 @@
             $("#error").text("用户名或密码错误");
         }
     }
+//记住密码功能实现
+function checkInCorrect()      //判断用户名和密码是否为空
+    {
+        if (document.getElementById('username').value == "") {
+            alert('请输入用户名！')
+            document.getElementById('username').focus();
+            return false
+        }
+        if (document.getElementById('password').value == "") {
+            alert('请输入密码！')
+            document.getElementById('password').focus();
+            return false
+        }
+        else {
+            saveInfo();
+            return true;
+        }
+    }
 
+    saveInfo = function () {
+        try {
+            var isSave = document.getElementById('remember_password').checked;   //保存按键是否选中
+            if (isSave) {
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+                if (username != "" && password != "") {
+                    SetCookie(username, password);
+                }
+            } else {
+                SetCookie("", "");
+            }
+        } catch (e) {
+
+        }
+    }
+
+    function SetCookie(username, password) {
+        var Then = new Date();
+        Then.setTime(Then.getTime() + 1866240000000);
+        sessionStorage.setItem("key","username=" + username + "%%" + password + ";expires=" + Then.toGMTString());
+    }
+
+    function GetCookie() {
+        debugger
+        var nmpsd;
+        var nm;
+        var psd;
+        var cookieString = new String(window.sessionStorage.getItem("key"));
+        var cookieHeader = "username=";
+        var beginPosition = cookieString.indexOf(cookieHeader);
+        cookieString = cookieString.substring(beginPosition);
+        var ends = cookieString.indexOf(";");
+        if (ends != -1) {
+            cookieString = cookieString.substring(0, ends);
+        }
+        if (beginPosition > -1) {
+            nmpsd = cookieString.substring(cookieHeader.length);
+            if (nmpsd != "") {
+                beginPosition = nmpsd.indexOf("%%");
+                nm = nmpsd.substring(0, beginPosition);
+                psd = nmpsd.substring(beginPosition + 2);
+                document.getElementById('username').value = nm;
+                document.getElementById('password').value = psd;
+                if (nm != "" && psd != "") {
+                    // document.forms[0].checkbox.checked = true;
+                    document.getElementById('remember_password').checked = true;
+                }
+            }
+        }
+    }
+</script>
+  <script language="javascript" type="text/javascript">
+   
 </script>

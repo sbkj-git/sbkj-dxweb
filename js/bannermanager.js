@@ -93,7 +93,7 @@ $(document).ready(function(){
                        
                     }, 2000);
 
-                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList";
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList&currentPage="+currentPage;
                     var data = getSign(url, par);
                     bannerList1(data);
                 }
@@ -218,10 +218,11 @@ $(document).ready(function(){
             var bannerList = getSign(url, par);
             if(bannerList.msg && bannerList.msg.code == "10"){
                 $(".bannerList").html("");
-                
+                $(".bannerName12").val("");
             }else{
                 bannerList1(bannerList);
                 pageJudge(bannerList);
+                $(".bannerName12").val("");
             }
             
         })
@@ -280,6 +281,7 @@ $(document).ready(function(){
                                         
                                         $(".nv91-mask").show();
                                         $(".nv91").show();
+                                        $("body").css({"height":"100%","position":"fixed","top":"0","left":"0"})
                                         $(".upload1").click(function (event) {
                                             event.stopPropagation();
                                             $("#fileUpload").show().css({"height":"50px","border":"none"});
@@ -410,6 +412,7 @@ $(document).ready(function(){
                                     //banner编辑修改事件
                                     $(".isEdit").click(function () {
                                         debugger
+                                        $("body").css({"height":"100%","position":"fixed","top":"0","left":"0"})
                                         var id = $(this).attr("data-id")
                                         // var index = $(this).index;
                                         $(".nv91-mask").show();
@@ -432,8 +435,8 @@ $(document).ready(function(){
                                         }
                                         debugger
                                            $(".updateimg").attr("src",details.msg.pic_img)
-                                        $(".start").val(details.msg.begin_time);
-                                        $(".end").val(details.msg.end_time);
+                                        $(".start1").val(details.msg.begin_time);
+                                        $(".end1").val(details.msg.end_time);
                                         $(".url").val(details.msg.pic_url);
                                         var radio = document.querySelectorAll(".b6 ");
                                         for (var i = 0; i < radio.length; i++) {
@@ -514,8 +517,8 @@ $(document).ready(function(){
             var bannerName, starttime, erdtime, cateId, picurl, state, picImg,isUp
             bannerName = $(".bannerName").val();
             cateId = $(".cateId option:checked").val();
-            starttime = $(".start").val();
-            erdtime = $(".end").val();
+            starttime = $(".start1").val();
+            erdtime = $(".end1").val();
             picurl = $(".url").val();
             // var radio1 = document.querySelectorAll(".b61 ");
             // for (var i = 0; i < radio1.length; i++) {
@@ -602,6 +605,10 @@ $(document).ready(function(){
     function formValidater(){
         var success = true;
        debugger
+       //获取当前时间戒指时分秒
+var now = new Date().getTime();//当前时间戳
+var time_1 = new Date(document.getElementById('start1').value).getTime();//1的时间戳
+var time_2 = new Date(document.querySelector('.end1').value).getTime();//1的时间戳
         var url = $(".url").val();
         var reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
         if($(".updateimg").attr("src") == "" ||$(".updateimg").attr("src") == "undefined" ){
@@ -664,7 +671,7 @@ $(document).ready(function(){
             return;
          
         }
-        else if($(".start").val() == 0){
+        else if($(".start1").val() == 0){
             $(".prompt ").text("请选择开始时间");
             $(".nv91-mask").show();
             $(".confirm1 ").show();
@@ -676,7 +683,7 @@ $(document).ready(function(){
             return;
          
         }
-        else if($(".end").val() == 0){
+        else if($(".end1").val() == 0){
             $(".prompt ").text("请选择结束时间");
             $(".nv91-mask").show();
             $(".confirm1 ").show();
@@ -687,6 +694,18 @@ $(document).ready(function(){
             success = false;
             return;
          
+        }
+        else if (time_2 < time_1) {
+
+            $(".prompt ").text("开始时间应小于结束时间");
+            $(".nv91-mask").show();
+            $(".confirm1 ").show();
+            setTimeout(function () {
+                
+                $(".confirm1 ").hide();
+            }, 2000);
+            success = false;
+            return;
         }
         return success;
     }    

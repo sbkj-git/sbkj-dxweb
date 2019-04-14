@@ -208,10 +208,14 @@ $(document).ready(function () {
 
             //进入父级目录
             $(".returnBack").click(function () {
-
+                debugger
                 var folderId = localStorage.getItem("florId");
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll&folderId=" + folderId + "&isUp=1";
-
+                
+                if(folderId == 0 || folderId == "underfind" || folderId == null){
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll" 
+                }else{
+                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll&folderId=" + folderId + "&isUp=1";
+                }
                 var data = getSign(url, par);
                 render3(data);
                 localStorage.setItem("florId", data.mag.folderId);
