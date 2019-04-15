@@ -298,8 +298,8 @@ $(document).ready(function () {
                         var isEnable;
                         var warmask = document.querySelector(".warmask");
                         $(".addImg").show();
-
-                        $(".addImg").click(function () {
+                        $(".addImg").unbind('click').bind("click",function(){
+                        // $(".addImg").click(function () {
 
                             $(".nv91-mask").show();
                             $(".nv93").show();
@@ -334,7 +334,8 @@ $(document).ready(function () {
                             // } else {
                             //     isEnable = 2;
                             // }
-                            $(".fileSure1").click(function () {
+                            $(".fileSure1").unbind('click').bind("click",function(){
+                            // $(".fileSure1").click(function () {
 
 
                                 var sign1 = sign("get.dxWeb.uploadImgs");
@@ -348,7 +349,7 @@ $(document).ready(function () {
                                 console.log($(".folderId option:checked").val())
                                 
                                 formData.append("method", "get.dxWeb.uploadImgs");
-                                formData.append("method", "get.dxWeb.uploadImgs");
+                               
                                 //     formData.append("imgsName",$(".galleryImg")[0].files[0].name);
                                 //    console.log($(".galleryImg")[0].files[0].name)
                                 formData.append("isEnable", isEnable);

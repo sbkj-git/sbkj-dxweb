@@ -67,7 +67,7 @@
                 </div>
                 <div class="div">
                     <img src="./image/l3.png" alt="" class="img" style="margin-left: 10px">
-                    <input style="padding-left: 50px" type="password" class="input1 pass" placeholder="请输入用户密码" id="password"/>
+                    <input style="padding-left: 50px" type="password" class="input1 pass" placeholder="请输入用户密码" id="password" onkeydown="enterLogin();"/>
                 </div>
                 <div style="width: 100%;" class="hide flex div">
                     <img src="./image/l4.png" alt="" class="img" style="margin-left: 10px">
@@ -352,6 +352,16 @@
             $("#error").text("用户名或密码错误");
         }
     }
+    //使用回车键登录
+
+   function enterLogin (e) {
+            var oEvent = e || event;
+            if (oEvent.keyCode == '13') {
+                var val = oEvent.target.value;
+                $(".btnLogin").click();
+                
+            }
+        };
 //记住密码功能实现
 function checkInCorrect()      //判断用户名和密码是否为空
     {

@@ -410,7 +410,13 @@ var url = src + url1;
            
             $(".reviewImg3").attr("src",detail.msg.small_img);
           }
+          if(detail.msg.small_img == ""){
+           
+            $(".imgcov1").hide();
+          // $(".reviewImg3").show();
          
+          $(".reviewImg3").attr("src",detail.msg.small_img);
+        }
          if(method === "get.dxWeb.updateSkill"){
             var opt = document.querySelectorAll(".changeSelect option");
             for (var i = 0; i < opt.length; i++) {
