@@ -150,7 +150,41 @@ a{color: #959595;}
 <script src="../js/MD5.js"></script>
 <script src="../js/sign.js"></script>
 <script src="../js/api.js"></script>
-
+<script src="../js/getRequest.js"></script>
+<script src="../js/count/Column.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#demo').daterangepicker({
+            "startDate": "03-13-2019",
+            "endDate": "03-19-2019"
+        }, function (start, end, label) {
+            console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+        });
+        updateConfig();
+        function updateConfig() {
+            var options = {};
+            if ($('#ranges').is(':checked')) {
+              option.ranges = {
+                    '今日': [moment(), moment()],
+                    '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '最近7日': [moment().subtract(6, 'days'), moment()],
+                    '最近30日': [moment().subtract(29, 'days'), moment()],
+                    '本月': [moment().startOf('month'), moment().endOf('month')],
+                    '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+                // startDate: moment().subtract(29, 'days'),
+                // endDate: moment()
+            }
+            $('#demo').click(function () {
+                $(".daterangepicker").show();
+            })
+            $('#config-demo1').daterangepicker(options, function (start, end, label) {
+                
+                $('#config-demo1').val(start.format('YYYY-MM-DD') + "~" + end.format('YYYY-MM-DD'))
+            }).click();
+        }
+    });
+</script>
 <script type="text/javascript">
     function changeState(el) {
         if (el.readOnly) el.checked=el.readOnly=false;
