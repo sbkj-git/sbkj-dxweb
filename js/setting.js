@@ -65,7 +65,7 @@ function list(data){
 }
 //封装添加公司职工修改公司职工方法
 function see(method,url){
-    debugger
+    
     var corporateName, corporateWeb,lat,lnt,  address,corporateId,position,username,modilePhone,email;
     //公司信息
     corporateName = $(".s1").val();
@@ -173,7 +173,7 @@ var radio = document.querySelectorAll(".st1");
     var radio1 = document.querySelectorAll(".st2");
            
            $(".st1").change(function(){
-               debugger
+               
                var value1,obj  
             for (var i = 0; i < radio.length; i++) {
                obj = radio[i];
@@ -202,7 +202,7 @@ var radio = document.querySelectorAll(".st1");
            })
            $(".st2").change(function(){
             var value2,obj1;
-            debugger
+            
             for (var i = 0; i < radio1.length; i++) {
                obj1 = radio1[i];
              
@@ -345,7 +345,7 @@ var radio = document.querySelectorAll(".st1");
 
                         }
                         $(".sure12").click(function () {
-                        debugger
+                        
                         //公司信息
                         var corporateName, corporateWeb, lat, lnt, address;
                         //公司信息

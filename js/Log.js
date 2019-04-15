@@ -35,7 +35,7 @@ $(document).ready(function(){
        var data = getSign(url,par);
        if(data.msg.code == "10"){
         $(".log").html("");
-        alert("该用户下没有数据");
+        
        }
        if (data.productList) {
             $(".log").html("");
@@ -47,10 +47,10 @@ $(document).ready(function(){
         }
         if(val == 0){
             par = "appsercet="+newAppsercet+"&method=get.dxWeb.logList";
-            debugger
+            
             logsgin(url2,par);
         }else{
-            debugger
+            
             logsgin(url2,par);
         }
     })
@@ -61,7 +61,7 @@ $(document).ready(function(){
     $(".searvh").click(function(){
         //console.log(sensoperation)
         par = "appsercet="+newAppsercet+"&method=get.dxWeb.logList&sensoperation="+sensoperation;
-        debugger
+        
         // logsgin(url2,par);
         var data = getSign(url2,par);
         $(".log").html("");

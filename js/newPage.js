@@ -38,7 +38,7 @@ function Page(_ref) {
     }
 };Page.prototype = {
     init: function init() {
-        debugger
+        
         var pagination = document.getElementById(this.id);
         pagination.innerHTML = '';
         this.ul.innerHTML = '';
@@ -163,7 +163,7 @@ function Page(_ref) {
                     that.curPage = val;
                     that.getPage(that.curPage);
                 } else {
-                    debugger
+                    
                     input.value = that.pageTotal;
                    localStorage.setItem("pageNow1",that.pageTotal);
                     // location.reload();
@@ -179,7 +179,7 @@ function Page(_ref) {
                     that.curPage = val;
                     that.getPage(that.curPage);
                 } else {
-                    debugger
+                    
                     input.value = that.pageTotal;
                    localStorage.setItem("pageNow1",that.pageTotal);
                     // location.reload();

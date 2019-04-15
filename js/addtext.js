@@ -209,7 +209,7 @@ var url = src + url1;
         })
 
         $(".addMessage").click(function () {
-            debugger
+            
             var data = formvalidar(method);
             console.log(data);
            if(data){
@@ -322,7 +322,7 @@ var url = src + url1;
           }else{
            formData.append('articleId', id);  //添加其他参数  
           }
-         debugger
+         
           console.log(url)
              
           var data = post(url, formData);
@@ -370,7 +370,7 @@ var url = src + url1;
           $(".title").val(detail.msg.title);
           // $("#summernote").summernote("code") = detail.msg.article;
           // $(".articleDetail").text(detail.msg.article);
-              debugger 
+               
           var ue = UE.getEditor('editor');//初始化对象
 	$(document).ready(function(){
 		var ue = UE.getEditor('editor');
@@ -478,7 +478,7 @@ var url = src + url1;
 }else if(method === "get.dxWeb.addWebOperation" ){
    var id = "";
    $(".addMessage").click(function () {
-    debugger
+    
        var data = formvalidar(method);
        console.log(data);
        if (data) {
@@ -491,7 +491,7 @@ var url = src + url1;
    else if(method === "get.dxWeb.addNotice"){
     var id = "";
     $(".addMessage").click(function () {
-     debugger
+     
         var data = formvalidar(method);
         console.log(data);
         if (data) {
@@ -579,7 +579,7 @@ else if(method === "get.dxWeb.addSkill"){
     }  
     //封装校验表单方法
     function formvalidar(method){
-        debugger
+        
 
     //获取当前时间戒指时分秒
     var now = new Date().getTime();//当前时间戳

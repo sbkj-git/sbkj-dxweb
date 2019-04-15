@@ -100,7 +100,7 @@
         pageChange("get.dxWeb.helpList",data2,"pagination4");
         var ind = 0;
         $(".sort").click(function(){
-            debugger
+            
             ind++;
             if (ind % 2 == 1) {
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.helpList&currentPage=" + currentPage + "&timeSort=1";

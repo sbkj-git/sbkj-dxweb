@@ -1,7 +1,7 @@
 
 //get请求签名
 function logsgin(url,par){ 
-   debugger
+   
     if(url && par){
         var appid="dxwebf0a37ed1ae96deef";
         var accessKey="eU5cO72vwSW3avZdaHpWpKJdT5iEubXu";
@@ -20,7 +20,7 @@ function logsgin(url,par){
     //利用数组的join()方法转换为字符串 
     var str=arrstr.join("");
     par_sp=par_sp+'&sign='+str;
-    debugger
+    
     // document.write(str);
      $.ajax({                  
             url: url+"?"+par_sp,
@@ -149,9 +149,9 @@ function logsgin(url,par){
                             })
                            $(".qx").append(qx)
                            $(".openBtn").each(function(index){
-                               debugger
+                               
                            $(this).click(function(){
-                               debugger
+                               
                            $(this).hide();
                             $(".closeBtn1").eq(index).show();
                             $(".show").eq(index).slideDown();
@@ -159,9 +159,9 @@ function logsgin(url,par){
                           
                         })
                         $(".closeBtn1").each(function(index){
-                            debugger
+                            
                             $(this).click(function(){
-                                debugger
+                                
                                 $(this).hide();
                                 $(".openBtn").eq(index).show();
                                 $(".show").eq(index).slideUp();
@@ -388,8 +388,25 @@ function deleteM(method){
             url = src+"/adminInterface.dx";
         par = "appsercet="+newAppsercet+"&method="+method+"&type=2&userIdList="+value;
         location.reload()
-        
-        logsgin(url,par)
+            if (value.length == 0) {
+
+                $(".confirm").hide();
+                $(".nv91-mask").show();
+                $(".confirm1").show();
+                $(".prompt").text("请至少选择一条数据");
+                setTimeout(function () {
+                    $(".nv91-mask").hide();
+                    $(".confirm1").hide();
+                    location.reload();
+                }, 2000);
+
+              
+
+
+            }else{
+                logsgin(url,par)
+            }
+      
         }
     }
     //console.log(value)
@@ -754,6 +771,25 @@ function  hasOperate(callback, second) { //second是检测未操作的时间，�
         }, second);
     }
     countTime();
+}
+//多选框
+function t1(){
+    var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
+    var IdList;
+    var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+    for (var i = 0; i < inputs.length; i++) {
+        var obj = inputs[i];
+        if (obj.type == 'checkbox') {
+            checkboxArray.push(obj);
+        }
+    }
+    IdList = new Array();
+    for (var i = 0; i < checkboxArray.length; i++) {
+        if (checkboxArray[i].checked) {
+            IdList.push(checkboxArray[i].getAttribute("data-id"));
+        }
+    }
+    return IdList;
 }
 
 

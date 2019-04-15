@@ -110,7 +110,7 @@
     $(document).ready(function(){
         //封装添加修改方法
         function addUpdate(method,id){
-            debugger
+            
             var appsercet = window.localStorage.getItem("appsercet");
             appsercet = JSON.parse(appsercet);
             var newAppsercet = appsercet.data;
@@ -147,7 +147,7 @@
                 $(".fileid").html("");
                 var str = "";
                 var str1 = "";
-                debugger
+                
                 str1+="<option value='0' selected>请选择</option>"
                 $.each(list.dxFolderList,function(i,item){
                     str1+="<option value='"+item.id+"' >"+item.brand_name+"</option>"
@@ -197,7 +197,7 @@
         $(".isDelete").click(function(){
             id = $(this).attr("data-id");
             par = "appsercet="+newAppsercet+"&method=get.dxWeb.daleteFolder&id="+id;
-            debugger
+            
             getSign(url,par);
             var status = getSign(url,par);
             if(status.msg.code == "200"){

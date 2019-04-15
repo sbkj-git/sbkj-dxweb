@@ -28,7 +28,7 @@ $(document).ready(function(){
     // input标签对象 
              var url1 = src + "/adminInterface.dx";
              par = "appsercet="+newAppsercet+"&method=get.dxWeb.querysetup&type=6";
-             debugger
+             
              var data = getSign(url1,par); 
              console.log(data);
              var da = localStorage.getItem("nowType1");
@@ -57,7 +57,7 @@ $(document).ready(function(){
                 }
             }   
            
-            debugger
+            
              //查看投诉和反馈验证码设置详情
              var validate = document.querySelectorAll(".validate");//获取所有的
              for(var i = 0 ;i<validate.length;i++){
@@ -75,11 +75,11 @@ $(document).ready(function(){
         //选项卡切换
          ////修改投诉和反馈功能设置
          $(".saveBtn").click(function(){
-            debugger
+            
             var value = $("input[name='radioll']:checked").val();
             var url = src + "/adminInterface.dx";
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.validate&validate=" + value;
-                debugger
+                
                 var data = getSign(url, par);
                 console.log(data);
                 if(data.msg.code == "200"){
@@ -127,12 +127,25 @@ $(document).ready(function(){
                     if (checkboxArray[i].checked)
                     IdList.push(checkboxArray[i].getAttribute("data-id"));
                 }
-                url = noapi + "/dxExportComplaint.dx";
-                par = "IdList="+IdList;
-                
-                console.log(url+"?"+par);
-                $(".export1").attr("href",url+"?"+par).click();
-                // var data = getSign(url,par);
+                if(IdList.length == 0){
+                    $(".confirm").hide(); 
+                    $(".nv91-mask").show();
+                    $(".confirm1").show();
+                    $(".prompt").text("请至少选择一条数据");
+                    setTimeout(function(){
+                        $(".nv91-mask").hide();
+                        $(".confirm1").hide();
+                       location.reload();
+                    },2000);
+                }else{
+                    url = noapi + "/dxExportComplaint.dx";
+                    par = "IdList="+IdList;
+                    
+                    console.log(url+"?"+par);
+                    $(".export1").attr("href",url+"?"+par).click();
+                    // var data = getSign(url,par);
+                }
+               
             })
     
 
@@ -400,7 +413,7 @@ data = JSON.parse(data);
                             $(".nv91-mask").fadeIn();
                             $(".nv91").show();
                             $(".addProject").click(function(){
-                                debugger
+                                
                                 var cateName,state
                                 cateName = $(".newProject").val();
                                 var state  = document.querySelectorAll(".state");
@@ -426,7 +439,7 @@ data = JSON.parse(data);
                                 par = "appsercet="+newAppsercet+"&cateName="+cateName+"&state="+state+"&method=get.dxWeb.addDxComplaintCate&mustFill="+state1+"&enabled="+state2;
                                 
                                 var data = getSign(url,par);
-                               debugger
+                               
                                 if(data.msg.code == "200"){
                                     // 添加成功
                                     location.reload();
@@ -442,7 +455,7 @@ data = JSON.parse(data);
                            var id = $(this).attr("data-id");
                            url = src+"/complaintInterface.dx";
                         par = "appsercet="+newAppsercet+"&method=get.dxWeb.deleteDxComplaintCate&cateId="+id;
-                        debugger
+                        
                         var data = getSign(url,par);
                         if(data.msg.code === "10"){
                              $(".confirm").hide();
@@ -467,4 +480,69 @@ data = JSON.parse(data);
         }
     })
 }
+//时间查询
+$('#demo2').daterangepicker({
+    "showWeekNumbers": true,
+    "showISOWeekNumbers": true,
+    "timePicker": true,
+    "timePickerSeconds": true,
+    "locale": {
+        "direction": "ltr",
+        "format": "YYYY-MM-DD HH:mm:ss",
+        "separator": " ~ ",
+        "applyLabel": "确定",
+        "cancelLabel": "取消",
+        "fromLabel": "From",
+        "toLabel": "To",
+        "customRangeLabel": "Custom",
+        "daysOfWeek": [
+            "日",
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六"
+        ],
+        "monthNames": [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月"
+        ],
+        "firstDay": 1
+    },
+    // "startDate": "04-11-2019",
+    // "endDate": "04-11-2019"
+}, function(start, end, label) {
+    var starttime = start.format('YYYY-MM-DD ');
+    var endTime = end.format('YYYY-MM-DD ');
+        var url = src + "/complaintInterface.dx";
+        var appsercet = window.localStorage.getItem("appsercet");
+        appsercet = JSON.parse(appsercet);
+        newAppsercet = appsercet.data;
+        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.feedbackList&starttime=" + starttime + "&erdtime=" + endTime;
+
+        var bannerList = getSign(url, par);
+        if (bannerList.msg && bannerList.msg.code == "200") {
+            $(".feedback").html("");
+            $("#demo").val("");
+        } else {
+            render(bannerList);
+            judgePower();
+            $("#demo2").val("");
+        }
+    console.log(start.format('YYYY-MM-DD '));
+    console.log(end.format('YYYY-MM-DD '));
+//   console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+
+});
 })

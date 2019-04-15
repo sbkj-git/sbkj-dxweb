@@ -166,7 +166,7 @@ $(document).ready(function(){
             currentPage = $(this).html();   
            localStorage.setItem("pageNow1",currentPage);
             par = "appsercet="+newAppsercet+"&method=get.dxWeb.bannerList&currentPage="+currentPage;
-                 debugger
+                 
                 var data2 = getSign(url, par);
                 bannerList1(data2);
                 
@@ -219,7 +219,9 @@ $(document).ready(function(){
             if(bannerList.msg && bannerList.msg.code == "10"){
                 $(".bannerList").html("");
                 $(".bannerName12").val("");
+                $(".paging").css({"opacity":"0"});
             }else{
+                $(".paging").css({"opacity":"1"});
                 bannerList1(bannerList);
                 pageJudge(bannerList);
                 $(".bannerName12").val("");
@@ -272,7 +274,7 @@ $(document).ready(function(){
                         }
                         else {
                             $.each(item.dxRightsTwoList, function (i, obj) {
-                                //判断该用户是否有添加管理员权限                     debugger      
+                                //判断该用户是否有添加管理员权限                           
                                 if (obj.method === "get.dxWeb.addhelp") {
                                     $(".add").show();
                                     //Banner添加事件
@@ -296,13 +298,13 @@ $(document).ready(function(){
                                         imgPreview(fileDom);
                                         })
                                         $(".updateimg").click(function () {
-                                            debugger
+                                            
                                             $(".needHide").show();
                                             $(".slideImg").hide();
                                            
                                         })
                                         $(".BannerSure").click(function () {
-                                            debugger
+                                            
                                            var success = formValidater();
                                            if(success == true){
                                             getContentTwo("get.dxWeb.addhelp", 1);
@@ -362,7 +364,7 @@ $(document).ready(function(){
                                     //banner置顶事件  
                                     $(".toTop").unbind('click').bind("click",function(){ 
                                    
-                                        debugger
+                                        
                                         var index = $(this).index();
                                         
                                         var id = $(this).attr("data-id");
@@ -412,7 +414,7 @@ $(document).ready(function(){
                                     $(".isEdit").show();
                                     //banner编辑修改事件
                                     $(".isEdit").click(function () {
-                                        debugger
+                                        
                                         
                                         $("body").css({"height":"100%","position":"fixed","top":"0","left":"0","overflow":"scroll"})
                                         var id = $(this).attr("data-id")
@@ -435,7 +437,7 @@ $(document).ready(function(){
                                                 item.selected = true;
                                             }
                                         }
-                                        debugger
+                                        
                                            $(".updateimg").attr("src",details.msg.pic_img)
                                         $(".start1").val(details.msg.begin_time);
                                         $(".end1").val(details.msg.end_time);
@@ -448,7 +450,7 @@ $(document).ready(function(){
                                             }
                                         }
                                         $(".updateimg").click(function () {
-                                            debugger
+                                            
                                             $(".needHide").show();
                                             $(".slideImg").hide();
                                             $(".upload1").unbind('click').bind("click",function(){ 
@@ -695,7 +697,7 @@ $(document).ready(function(){
     //表单校验
     function formValidater(){
         var success = true;
-        debugger
+        
        //获取当前时间戒指时分秒
         var now = new Date().getTime();//当前时间戳
         var time_1 = new Date(document.getElementById('start1').value).getTime();//1的时间戳
@@ -703,7 +705,7 @@ $(document).ready(function(){
         var url = $(".url").val();
         var reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
         if($(".updateimg").attr("src") == "" ||$(".updateimg").attr("src") == "undefined" ){
-            debugger
+            
             $(".prompt ").text("请选择banner图片");
             $(".nv91-mask").show();
             $(".confirm1 ").show();

@@ -24,7 +24,7 @@ $(document).ready(function(){
         pageChange("get.dxWeb.qAndAList",data2,"pagination7");
         var ind = 0;
         $(".sort").click(function(){
-            debugger
+            
             ind++;
             if (ind % 2 == 1) {
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList&currentPage=" + currentPage + "&timeSort=1";
@@ -137,8 +137,11 @@ $(document).ready(function(){
         if (data.msg && data.msg.code == "200") {
             
             $(".textList").html("");
+           $(".paging").css({"opacity":"0"});
         } else {
-            render(data);   
+            $(".paging").css({"opacity":"1"});
+            render(data);
+            pageJudge(data,"pagination7");   
         }
     })
     //渲染问题分类下拉框
@@ -176,15 +179,18 @@ $(document).ready(function(){
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList";
                 var data = getSign(url, par);
                 render(data);
+
                
             } else {
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.qAndAList&productId=" + productId;
                 var data = getSign(url, par);
                 if (data.msg && data.msg.code == "200") {
                     $(".textList").html("");
+                    $(".paging").css({"opacity":"0"});
                 } else {
+                    $(".paging").css({"opacity":"1"});
                     render(data);
-                    
+                    pageJudge(data,"pagination7");
                 }
             }
             
@@ -231,123 +237,111 @@ $(document).ready(function(){
         }
        
             $(".operater").change(function(){
-                
-                
-                var val = $(".operater option:checked").val();
-                if(val == 1){
-                    //展示发布日期弹框
+                var IdList = t1();
+                if(IdList.length == 0){
+                    $(".confirm").hide();
+                    $(".nv91").hide();
+                    $(".nv92").hide();
+                    $(".nv93").hide();
+                    $(".prompt").text("请至少选择一条数据");
                     $(".nv91-mask").show();
-                    $(".nv91").show();
-                    $(".addType").click(function () {
+                    $(".confirm1").show();
+                    setTimeout(function () {
+                        $(".nv91-mask").hide();
+                        $(".confirm1").hide();
                         
-                        var IdList = t1();
-                        var releaseTime = $(".releaseTime").val();
-                        if(IdList.length == 0){
-                            $(".confirm").hide();
-                            $(".prompt").text("请至少选择一条数据");
-                            $(".nv91-mask").show();
-                            $(".confirm1").show();
-                            setTimeout(function () {
-                                $(".nv91-mask").hide();
-                                $(".confirm1").hide();
-                                
-    
-                            }, 2000);
-                        }
-                        par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&releaseTime=" + releaseTime;
-                        var data = getSign(url, par);
-                        if (data.msg.code == "200") {
-                            $(".confirm").hide();
-                            $(".prompt").text("操作成功");
-                            $(".nv91-mask").show();
-                            $(".nv1").show();
-                            setTimeout(function () {
-                                $(".nv91-mask").hide();
-                                $(".nv1").hide();
-                                location.reload();
-    
-                            }, 2000);
-                        }else{
-                            $(".confirm").hide();
-                            $(".prompt").text("修改失败");  
-                            $(".nv1").show();
-                            setTimeout(function(){
-                                $(".nv91-mask").hide();
-                                $(".nv1").hide();
-                            },2000);  
-                        }
 
-                    })
-                   
-                }
-                if(val == 2){
-                    //展示来源弹框
-                    $(".nv91-mask").show();
-                    $(".nv92").show();
-                    $(".addType").click(function () {
-                        var IdList = t1();
-                        $(".confirm").hide();
-                            $(".prompt").text("请至少选择一条数据");
-                            $(".nv91-mask").show();
-                            $(".confirm1").show();
-                            setTimeout(function () {
-                                $(".nv91-mask").hide();
-                                $(".confirm1").hide();
-                                
+                    }, 2000);
+                }else{
+                    var val = $(".operater option:checked").val();
+                    if(val == 1){
+                        //展示发布日期弹框
+                        $(".nv91-mask").show();
+                        $(".nv91").show();
+                        $(".addType").click(function () {
+                            
+                            var IdList = t1();
+                            var releaseTime = $(".releaseTime").val();
+                            
+                            par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&releaseTime=" + releaseTime;
+                            var data = getSign(url, par);
+                            if (data.msg.code == "200") {
+                                $(".confirm").hide();
+                                $(".prompt").text("操作成功");
+                                $(".nv91-mask").show();
+                                $(".nv1").show();
+                                setTimeout(function () {
+                                    $(".nv91-mask").hide();
+                                    $(".nv1").hide();
+                                    location.reload();
+        
+                                }, 2000);
+                            }else{
+                                $(".confirm").hide();
+                                $(".prompt").text("修改失败");  
+                                $(".nv1").show();
+                                setTimeout(function(){
+                                    $(".nv91-mask").hide();
+                                    $(".nv1").hide();
+                                },2000);  
+                            }
     
-                            }, 2000);
-                        var source = $(".source").val();
-                        par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&source=" + source;
-                        var data = getSign(url, par);
-                        if (data.msg.code == "200") {
-                            $(".confirm").hide();
-                            $(".prompt").text("操作成功");
-                            $(".nv91-mask").show();
-                            $(".nv1").show();
-                            setTimeout(function () {
-                                $(".nv91-mask").hide();
-                                $(".nv1").hide();
-                                location.reload();
+                        })
+                       
+                    }
+                    if(val == 2){
+                        //展示来源弹框
+                        $(".nv91-mask").show();
+                        $(".nv92").show();
+                        $(".addType").click(function () {
+                            var IdList = t1();
+                           
+                            var source = $(".source").val();
+                            par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&source=" + source;
+                            var data = getSign(url, par);
+                            if (data.msg.code == "200") {
+                                $(".confirm").hide();
+                                $(".prompt").text("操作成功");
+                                $(".nv91-mask").show();
+                                $(".nv1").show();
+                                setTimeout(function () {
+                                    $(".nv91-mask").hide();
+                                    $(".nv1").hide();
+                                    location.reload();
+        
+                                }, 2000);
+                            }
+                        })
+                        
+                    }
+                    if(val == 3){
+                        //展示作者弹框
+                        $(".nv91-mask").show();
+                        $(".nv93").show();
+                        $(".addType").click(function () {
+                            var IdList = t1();
+                           
+                            var author = $(".author").val();
+                            par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&author=" + author;
+                            var data = getSign(url, par);
+                            if (data.msg.code == "200") {
+                                $(".confirm").hide();
+                                $(".prompt").text("操作成功");
+                                $(".nv91-mask").show();
+                                $(".nv1").show();
+                                setTimeout(function () {
+                                    $(".nv91-mask").hide();
+                                    $(".nv1").hide();
+                                    location.reload();
     
-                            }, 2000);
-                        }
-                    })
-                    
+                                }, 2000);
+                            }
+                        })
+                        
+                    }
                 }
-                if(val == 3){
-                    //展示作者弹框
-                    $(".nv91-mask").show();
-                    $(".nv93").show();
-                    $(".addType").click(function () {
-                        var IdList = t1();
-                        $(".confirm").hide();
-                            $(".prompt").text("请至少选择一条数据");
-                            $(".nv91-mask").show();
-                            $(".confirm1").show();
-                            setTimeout(function () {
-                                $(".nv91-mask").hide();
-                                $(".confirm1").hide();
-                                
-    
-                            }, 2000);
-                        var author = $(".author").val();
-                        par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&author=" + author;
-                        var data = getSign(url, par);
-                        if (data.msg.code == "200") {
-                            $(".confirm").hide();
-                            $(".prompt").text("操作成功");
-                            $(".nv91-mask").show();
-                            $(".nv1").show();
-                            setTimeout(function () {
-                                $(".nv91-mask").hide();
-                                $(".nv1").hide();
-                                location.reload();
-
-                            }, 2000);
-                        }
-                    })
-                    
-                }
+                
+                
                 
             })
            
@@ -613,4 +607,36 @@ function judgePower(){
         })
         
 }
+ //封装查询事件分页效果
+ function pageJudge(data2,pagination){
+    var pageCount,pageN;
+    if(data2.pageInfo&&data2.pageInfo.totalRows){
+        pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+    }else{
+        pageCount == 0;
+    }
+    if(data2.pageInfo&&data2.pageInfo.totalRows){
+        pageN = data2.pageInfo.totalRows;
+    }else{
+        pageN == 0;
+    }
+    if(data2.pageInfo&&data2.pageInfo.totalRows){
+        new Page({
+            id: pagination,
+            pageTotal: pageCount, //必填,总页数
+            pageAmount: 10,  //每页多少条
+            dataTotal: pageN, //总共多少条数据
+            curPage:1, //初始页码,不填默认为1
+            pageSize: 5, //分页个数,不填默认为5
+            showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+            showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+            getPage: function (page) {
+                //获取当前页数
+               console.log(page);
+            }
+        })
+    }else{
+        pageN == 0;
+    }
+   }
 })

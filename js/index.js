@@ -319,7 +319,7 @@ $(document).ready(function(){
         })
    //左侧菜单栏点击事件
 $(".treeview-menu li a ").each(function(index){
-    debugger
+    
    $(this).click(function(){
     $(".treeview-menu li a ").removeClass("activeCol").eq(index).addClass("activeCol");
    })

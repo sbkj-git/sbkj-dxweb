@@ -28,6 +28,10 @@
             bottom: 0%;
             margin: auto;
         }
+        .table td:first-child{
+    text-align: left;
+    padding-left: 30px;
+    }
     </style>
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
@@ -168,16 +172,31 @@
             </div>
         </form>
     </div>
-    <div class="nv" style="padding:10px;">
-        <div class="nv91-close">X</div>
-        <form action="" class="form-horizontal" role="form" >
-            <div class="prompt" style="padding-bottom:30px;">
-                <p style="font-size: 20px;">提示</p>
-                <img src="" alt="" ><span>操作成功</span>
+    <div class="confirm">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete">确定要删除这条消息吗?</span>
+                </div>
+                <div class="dele">
+                <button class="roleRefu  roleRefuse5">取消</button>
+                <button class="roleSur roleSure">确定</button>
             </div>
-           
-        </form>
-    </div>
+        </div>
+        <div class="confirm1">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete prompt">确定要删除这条消息吗?</span>
+                </div>
+               
+        </div>
+        <div class="nv1">
+            <img src="../image/success.png" class="success1"/>
+            <span class="referMes prompt">删除成功</span>
+        </div>
+        <div class="nv3">
+            <img src="../image/close12.png" class="success1"/>
+            <span class="referMes prompt">操作失败</span>
+        </div>
 </div>
 <footer class="footer">
     <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司

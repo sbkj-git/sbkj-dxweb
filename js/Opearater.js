@@ -7,7 +7,10 @@
         //页面初次渲染加载数据
         $(".btn1").each(function(index){
             $(this).click(function(){
-                $(".btn1").removeClass("btn-primary").eq(index).addClass("btn-primary");
+                setTimeout(function(){
+                    $(".btn1").removeClass("btn-primary").eq(index).addClass("btn-primary");
+                },500);
+                
             })
        })
         var data = window.localStorage.getItem("dxRightsList");
@@ -57,15 +60,18 @@
                        
                         var data = getSign(url,par);
                         render(data);
+                         
                     }else{
                         par = "appsercet="+newAppsercet+"&method=get.dxWeb.operation&roleId="+val;
                         var data = getSign(url,par);
                         console.log(data)
-                        if(data.msg.code == "10"){
+                        if(data.msg && data.msg.code == "10"){
                             $(".operater").html("");
+                           
                         }else{
                             render(data);
-                           
+                            //底部页码
+                            
                         }
                        
 
@@ -120,7 +126,7 @@
                                     user4 = $(this).val()
                                 })
                                 $(".roleSure").click(function(){
-                                    debugger
+                                    
                                     var inputs = document.querySelectorAll(".item3 input");//获取所有的input标签对象
                                     var radio = document.querySelectorAll(".status ");
                                     var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
@@ -149,7 +155,7 @@
 
                                     par = "appsercet="+newAppsercet+"&method=get.dxWeb.addOperation&status="+status+"&roleIds="+rightsIds+"&username="+user1+"&pwd="+user2+"&roleId="+roleId+"&modilePhone="+user4+"&trueName="+user3;
                                    var data =  logsgin(url,par);
-                                    // debugger
+                                    // 
                                     // var data = getSign(url,par);
                                     if(data.msg.code == "200"){
                                          $(".confirm").hide();
@@ -180,10 +186,39 @@
                             $(".qy").show();
                             $(".jy").show();
                             $(".qy").click(function(){
-                                open("get.dxWeb.isAdminEnableOrProhibit", 1)
+                                var t12 = t1();
+                                if(t12.length == 0){
+                                    $(".confirm").hide(); 
+                                    $(".nv91-mask").show();
+                                    $(".confirm1").show();
+                                    $(".prompt").text("请至少选择一条数据");
+                                    setTimeout(function(){
+                                        $(".nv91-mask").hide();
+                                        $(".confirm1").hide();
+                                       location.reload();
+                                    },2000);
+                                }else{
+                                    open("get.dxWeb.isAdminEnableOrProhibit", 1)
+
+                                }
                             })
                             $(".jy").click(function(){
-                                open("get.dxWeb.isAdminEnableOrProhibit",2)
+                                var t12 = t1();
+                                if(t12.length == 0){
+                                    $(".confirm").hide(); 
+                                    $(".nv91-mask").show();
+                                    $(".confirm1").show();
+                                    $(".prompt").text("请至少选择一条数据");
+                                    setTimeout(function(){
+                                        $(".nv91-mask").hide();
+                                        $(".confirm1").hide();
+                                       location.reload();
+                                    },2000);
+                                }else{
+                                    open("get.dxWeb.isAdminEnableOrProhibit",2)
+
+                                }
+                               
                             })
                         }
                         //判断该用户是否有删除权限 
@@ -221,7 +256,24 @@
                 }
             }
         })
-
+        function t1(){
+            var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
+            var IdList;
+            var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+            for (var i = 0; i < inputs.length; i++) {
+                var obj = inputs[i];
+                if (obj.type == 'checkbox') {
+                    checkboxArray.push(obj);
+                }
+            }
+            IdList = new Array();
+            for (var i = 0; i < checkboxArray.length; i++) {
+                if (checkboxArray[i].checked) {
+                    IdList.push(checkboxArray[i].getAttribute("data-id"));
+                }
+            }
+            return IdList;
+        }
 //页面渲染
         function render(data) {
             var role2 = "";
@@ -245,5 +297,8 @@
         }
         //底部页码
         getPage()
+
+
+        
     }
 

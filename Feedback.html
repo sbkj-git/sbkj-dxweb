@@ -9,17 +9,19 @@
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/setting.css">
     <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="css/dataSelect.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="./js/date/css/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" type="text/css" href="./css/buind.css">
-    <link rel="stylesheet" href="./js/js/daterangepicker.css">
+   
     <link rel="stylesheet" href="./css/newPage.css">
-    <link rel="stylesheet" href="./css/datePicker.css">
-    <script type="text/javascript" src="./js/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/jquery.date_input.pack.js"></script>
-    <script>
-       
-    </script>
+ 
+    <script src="./js/jquery-1.10.2.min.js"></script>
+    
+    <script src="./js/bootstrap.min.js"></script>
+	<script src="./js/date/js/moment.js"></script>
+
+<script src="./js/date/js/daterangepicker.js"></script>
+   
     <style>
         /*.date_picker{width: auto!important;}*/
         .lookType, .details {
@@ -30,6 +32,11 @@
             top: 50px !important;
             left: 0 !important;
         }
+        .table td:first-child{
+    text-align: left;
+    padding-left: 30px;
+    
+}
     </style>
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
@@ -60,23 +67,11 @@
                            style="margin-left: -5px;line-height:37px;font-size: 17px">选择时间:</label>
                 </div>
                 <div class="position col-sm-9 flex">
-                    <div class="col-sm-5">
-                        <input type="text" id="datePicker" style="width: 100%" class="date_picker start1 "
+                    <div class="col-sm-12">
+                        <input type="text" id="demo2" style="width: 100%" class="form-control" 
                                placeholder="点击选择日期"/>
                     </div>
-                    <p style="line-height:37px">&nbsp;&nbsp;—&nbsp;&nbsp;</p>
-                    <div class="col-sm-5">
-                        <input type="text" id="datePicker2" style="width: 100%" class="date_picker end1 "
-                               placeholder="点击选择日期"/>
-                    </div>
-
-                    <!--<input type="text" class=" form-control start1" style="width: 70%;margin-left: 72px;margin-top: -34px;" />-->
-
-
-                    <!--<input type="text" class="form-control end1"/>-->
-
-                    <!--<button class="btn sec1">查询</button>-->
-                    <!--<span style="font-family: iconfont;position: absolute;right: 5%;top:0;font-size: 24px;" >&#xe73a;</span>-->
+                   
                 </div>
             </div>
 
@@ -268,7 +263,7 @@
      <!--确认 取消-->
      <div class="confirm">
             <div  class="boxTotal">
-                <img src="../image/hint.png" class="boxImg"/>
+                <img src="./image/hint.png" class="boxImg"/>
                 <span class="boxDelete">确定要删除这条消息吗?</span>
                 </div>
                 <div class="dele">
@@ -278,17 +273,17 @@
         </div>
         <div class="confirm1">
             <div  class="boxTotal">
-                <img src="../image/hint.png" class="boxImg"/>
+                <img src="./image/hint.png" class="boxImg"/>
                 <span class="boxDelete prompt">确定要删除这条消息吗?</span>
                 </div>
                
         </div>
         <div class="nv1">
-            <img src="../image/success.png" class="success1"/>
+            <img src="./image/success.png" class="success1"/>
             <span class="referMes prompt">删除成功</span>
         </div>
         <div class="nv3">
-            <img src="../image/close12.png" class="success1"/>
+            <img src="./image/close12.png" class="success1"/>
             <span class="referMes prompt">删除失败</span>
         </div>
 </div>
@@ -301,25 +296,19 @@
 </footer>
 </body>
 </html>
-<script src="./js/jquery-1.10.2.min.js"></script>
+
 <script src="./js/MD5.js"></script>
 <script src="./js/sign.js"></script>
 <script src="./js/api.js"></script>
 <script src="./js/page.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/js/moment.min.js"></script>
-<script src="./js/js/daterangepicker.js"></script>
-<script src="./js/js/package.js"></script>
+
 <script src="./js/getRequest.js"></script>
 <script src="./js/newPage.js"></script>
 <script src="./js/Feedback.js"></script>
 <script src="./js/radioAllChoose.js"></script>
-<script src="./js/time.js"></script>
-<script src="js/dataSelect.js"></script>
+
 <script>
-    //选择发布时间
-    $("#datePicker").dateSelect();
-    $("#datePicker2").dateSelect();
+   
 </script>
 
 

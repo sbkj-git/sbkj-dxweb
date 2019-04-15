@@ -23,10 +23,12 @@ $(document).ready(function(){
                 var data2 = getSign(url, par);
                 if (data2.msg && data2.msg.code == "200") {
                     $(".textList").html("");
+                    $(".paging").html('');
                     
                 } else {
                     render(data2);
                     pageJudge(data2);
+                  
                 }
             })
        
@@ -283,21 +285,34 @@ $(document).ready(function(){
                     }
                 }
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteCate&IdList=" + IdList;
-                
-                var data = getSign(url, par);
-                if (data.msg.code == "200") {
-                     $(".confirm").hide();
-                            $(".prompt").text("操作成功");
-                            $(".nv91-mask").show();
-                            $(".nv1").show();
-                            setTimeout(function () {
-                                $(".nv91-mask").hide();
-                                $(".nv1").hide();
-                                location.reload();
+                if(IdList.length == 0){
+                    $(".confirm").hide();
+                    $(".prompt").text("请至少选择一条数据");
+                    $(".nv91-mask").show();
+                    $(".confirm1").show();
+                    setTimeout(function () {
+                        $(".nv91-mask").hide();
+                        $(".confirm1").hide();
+                       
 
-                            }, 2000);;
-                    location.reload();
+                    }, 2000);;
+                }else{
+                    var data = getSign(url, par);
+                    if (data.msg.code == "200") {
+                         $(".confirm").hide();
+                                $(".prompt").text("操作成功");
+                                $(".nv91-mask").show();
+                                $(".nv1").show();
+                                setTimeout(function () {
+                                    $(".nv91-mask").hide();
+                                    $(".nv1").hide();
+                                    location.reload();
+    
+                                }, 2000);;
+                       
+                    }
                 }
+               
             }
 
 })

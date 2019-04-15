@@ -23,7 +23,7 @@ $(document).ready(function(){
         pageChange("get.dxWeb.noticeList",data2,"pagination12");
         var ind = 0;
         $(".sort").click(function(){
-            debugger
+            
             ind++;
             if (ind % 2 == 1) {
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.noticeList&currentPage=" + currentPage + "&timeSort=1";
@@ -113,8 +113,11 @@ $(document).ready(function(){
         if (data.msg && data.msg.code == "200") {
             
             $(".textList").html("");
+            $(".paging").css({"opacity":"0"});
         } else {
-            render(data);   
+            $(".paging").css({"opacity":"1"});
+            render(data);  
+            pageJudge(data,"pagination12"); 
         }
     })
     
@@ -253,7 +256,7 @@ function judgePower(){
         //判断是否有添加管理员操作权限
         var data = window.localStorage.getItem("dxRightsList");    
         data = JSON.parse(data); 
-        debugger
+        
         var arr = [];
         $.each(data,function(i,item){
             //console.log(item)
@@ -263,7 +266,7 @@ function judgePower(){
         })
         console.log(arr[0]);
         $.each(arr[0].dxRightsList,function(i,item){
-            debugger
+            
             //console.log(arr[0].dxRightsList)
             url = src + "/" +item.link_path
             if(item.method === "get.dxWeb.noticeList"){
@@ -287,9 +290,9 @@ function judgePower(){
                           
                             }
                         //判断该用户是否有删除权限 
-                        debugger
+                        
                         if(obj.method === "get.dxWeb.delNotice"){
-                            debugger
+                            
                             $(".Delete").show();
                             $(".isDelete").show();
                             $(".Delete").click(function(){
@@ -320,7 +323,7 @@ function judgePower(){
                             })
                            
                             $(".isDelete").click(function () {
-                                debugger
+                                
                                 $(".nv91-mask").show();
                                 $(".confirm").show();
                                 var IdList = $(this).attr("data-id");
@@ -393,4 +396,36 @@ function judgePower(){
         })
         
 }
+//封装查询事件分页效果
+function pageJudge(data2,pagination){
+    var pageCount,pageN;
+    if(data2.pageInfo&&data2.pageInfo.totalRows){
+        pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+    }else{
+        pageCount == 0;
+    }
+    if(data2.pageInfo&&data2.pageInfo.totalRows){
+        pageN = data2.pageInfo.totalRows;
+    }else{
+        pageN == 0;
+    }
+    if(data2.pageInfo&&data2.pageInfo.totalRows){
+        new Page({
+            id: pagination,
+            pageTotal: pageCount, //必填,总页数
+            pageAmount: 10,  //每页多少条
+            dataTotal: pageN, //总共多少条数据
+            curPage:1, //初始页码,不填默认为1
+            pageSize: 5, //分页个数,不填默认为5
+            showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+            showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+            getPage: function (page) {
+                //获取当前页数
+               console.log(page);
+            }
+        })
+    }else{
+        pageN == 0;
+    }
+   }
 })

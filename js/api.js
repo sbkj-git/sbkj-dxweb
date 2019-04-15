@@ -17,7 +17,7 @@ var zt = "http://10.18.3.11:28080/middle/"
 // http://10.18.3.11:28080/operationSupport/getCompanyAuthInfo
 // http://10.18.3.11:28080/report/getFinanceProfile
 // $(".btn").click(function(){
-//     debugger
+//     
 //     $(this).addClass(".btn-primary");
 //     $(".btn").removeClass(".btn-primary");
 // })

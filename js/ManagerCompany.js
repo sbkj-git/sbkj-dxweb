@@ -129,7 +129,7 @@
                 else{
                     $.each(item.dxRightsTwoList,function(i,obj){
                        //判断该用户是否有添加权限
-                       debugger
+                       
                         if(obj.method === "get.dxWeb.addWebBottom"){
                           $(".addInput").show();
                            
@@ -152,11 +152,11 @@
                             object(url,newAppsercet);
                                 $(".addBanner").unbind('click').bind("click",function(){
                                    
-                                    debugger
+                                    
                                     var url = document.getElementById("url").value;
                                     var reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
                                     if($(".companyName").val() == ""){
-                                        debugger
+                                        
                                         $(".prompt ").text("请填写客户案例");
                                         $(".nv91-mask").show();
                                         $(".confirm1 ").show();
@@ -168,6 +168,16 @@
                                     }
                                     else if($(".remarks").val() == ""){
                                         $(".prompt ").text("请填写客户案例内容");
+                                        $(".nv91-mask").show();
+                                        $(".confirm1 ").show();
+                                        setTimeout(function () {
+                                            
+                                            $(".confirm1 ").hide();
+                                        }, 2000);
+                                        return;
+                                    }
+                                    else if($(".titles").val() == ""){
+                                        $(".prompt ").text("请填写客户案例标题");
                                         $(".nv91-mask").show();
                                         $(".confirm1 ").show();
                                         setTimeout(function () {
@@ -338,7 +348,7 @@
                     
                     $.each(data.dxBannerList,function(i,item){
                         str+='<tr style="border-bottom: 1px solid #d8d8d8;">';
-                            str+='<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="'+item.id+'"   aria-label="Single checkbox Two" data-id="'+item.id+'"><label for="'+item.id+'"><img src="'+item.pic_img+'" alt="" style="width: 82px;height:56px;display: table-column;vertical-align: middle;"></label></div></td><td>'+item.pic_title+'</td><td>' + item.remarks + '</td><td>'+item.cate_name+'</td><td>'+item.pic_url+'</td>';
+                            str+='<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="'+item.id+'"   aria-label="Single checkbox Two" data-id="'+item.id+'"><label for="'+item.id+'"><img src="'+item.pic_img+'" alt="" style="width: 82px;height:56px;display: table-column;vertical-align: middle;"></label></div></td><td>'+item.pic_title+'</td><td>'+item.title+'</td><td>' + item.remarks + '</td><td>'+item.cate_name+'</td><td>'+item.pic_url+'</td>';
                             if(item.state == 1){
                                 str+="<td><input class='switch switch-anim' type='checkbox' checked data-id='" + item.id + "'></td>";
                             }else{
@@ -387,7 +397,7 @@
       
          //删除函数封装
          function deleteText(id) {
-               debugger
+               
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteWebBottom&id=" + id;
                 var data = getSign(url, par);
                 if (data.msg.code == "200") {
@@ -396,7 +406,7 @@
                         $(".prompt").text("删除成功");  
                         $(".nv1").show();
                         setTimeout(function(){
-                            debugger
+                            
                             $(".nv91-mask").hide();
                             $(".nv1").hide();
                             location.reload();
@@ -408,7 +418,7 @@
 
         // 添加修改函数封装
         function addorupdate(method,id) {
-            debugger
+            
 
                 var formData = new FormData();
                 var appid = localStorage.getItem("appid");
@@ -436,7 +446,7 @@
                 // var status = document.querySelectorAll(".status");
                 // var state = $("input[name='bm2']:checked").val()
                 var state ;
-                debugger
+                
                 var statu = $(".status").eq(0).prop("checked");
                 if(statu == true){
                     state = 1;
@@ -447,13 +457,14 @@
                 
                 formData.append("state", state);
                 formData.append("remarks", $(".remarks").val());
+                formData.append("title", $(".titles").val());//内容
                 formData.append("picImg", $("#picImg")[0].files[0]);
                 formData.append("picurl", $(".companyUrl").val());
                 console.log($(".companyUrl").val())
                 var data = post(url, formData);
                 console.log(data);
                 data = JSON.parse(data)
-                debugger
+                
                 if(data.msg.code == "200"){
                     
                         $(".confirm").hide();

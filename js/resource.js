@@ -49,7 +49,7 @@ $(document).ready(function () {
     var urlSrc1, urlId1
 
     $(".addPhone").click(function () {
-        debugger
+        
         $(".nv91-mask").show();
         $(".nv91").show();
         $(".nv92").hide();
@@ -177,7 +177,7 @@ $(document).ready(function () {
                 render3(data);
 
                 $(".imgCover").unbind('click').bind("click", function () {
-                    debugger
+                    
                     // $(".imgCover").click(function(){
                     $(".nv91-mask").hide();
                     $(".nv91").hide();
@@ -200,7 +200,7 @@ $(document).ready(function () {
                 })
 
                 $(".imgCover1").unbind('click').bind("click", function () {
-                    debugger
+                    
                     // $(".imgCover1").on("click",function(){
                     $(".nv91-mask").hide();
                     $(".nv91").hide();
@@ -219,7 +219,7 @@ $(document).ready(function () {
             $(".returnBack").unbind('click').bind("click",function(){
 
             // $(".returnBack").click(function () {
-                debugger
+                
                 var folderId = localStorage.getItem("florId");
                 
                 if(folderId == 0 || folderId == "underfind" || folderId == null){
@@ -231,7 +231,7 @@ $(document).ready(function () {
                 render3(data);
                 localStorage.setItem("florId", data.mag.folderId);
                 $(".imgCover").unbind('click').bind("click", function () {
-                    debugger
+                    
                     // $(".imgCover").click(function(){
                     $(".nv91-mask").hide();
                     $(".nv91").hide();
@@ -254,7 +254,7 @@ $(document).ready(function () {
                 })
 
                 $(".imgCover1").unbind('click').bind("click", function () {
-                    debugger
+                    
                     // $(".imgCover1").on("click",function(){
                     $(".nv91-mask").hide();
                     $(".nv91").hide();
@@ -346,7 +346,7 @@ $(document).ready(function () {
                                 console.log($(".galleryImg")[0].files[0])
                                 formData.append("folderId", $(".folderId option:checked").val());
                                 console.log($(".folderId option:checked").val())
-                                debugger
+                                
                                 formData.append("method", "get.dxWeb.uploadImgs");
                                 formData.append("method", "get.dxWeb.uploadImgs");
                                 //     formData.append("imgsName",$(".galleryImg")[0].files[0].name);
@@ -556,7 +556,7 @@ $(document).ready(function () {
     //渲染页面
     function render3(list) {
 
-        debugger
+        
         $(".imgBox1").html("");
         $(".imgBox2").html("");
         $(".imgBox3").html("");
@@ -639,7 +639,7 @@ $(document).ready(function () {
 
         })
         $(".imgCover").unbind('click').bind("click", function () {
-            debugger
+            
             // $(".imgCover").click(function(){
             $(".nv91-mask").hide();
             $(".nv91").hide();
@@ -662,7 +662,7 @@ $(document).ready(function () {
         })
 
         $(".imgCover1").unbind('click').bind("click", function () {
-            debugger
+            
             // $(".imgCover1").on("click",function(){
             $(".nv91-mask").hide();
             $(".nv91").hide();

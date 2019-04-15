@@ -172,8 +172,10 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
        var data2 = getSign(url,par);
        if (data2.msg && data2.msg.code == "200") {
         $(".textList").html("");
-        
+        $(".paging").css({"opacity":"0"});
+        pageJudge(data2)
     } else {
+        $(".paging").css({"opacity":"1"});
         render(data2);
         pageJudge(data2)
     }
@@ -213,7 +215,8 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
                             //判断该用户是否有添加权限
                             if (obj.method === "get.dxWeb.addCate") {
                                 $(".addText").show();
-                                $(".addText").click(function () {
+                                $(".addText").unbind('click').bind("click",function(){
+                                // $(".addText").click(function () {
                                     //添加分类事件
                                     
                                     $(".nv91-mask").show();
@@ -226,7 +229,8 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
                                         })
 
                                     })
-                                    $(".addType").click(function () {
+                                    $(".addType").unbind('click').bind("click",function(){
+                                    // $(".addType").click(function () {
                                         
                                         //添加点击事件操作
                                         addorup("get.dxWeb.addCate","get.dxWeb.addTwoCate",1,1);
@@ -326,21 +330,35 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
                 }
             }
             par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteTwoCate&IdList=" + IdList;
-            
-            var data = getSign(url, par);
-            if (data.msg.code == "200") {
-                 $(".confirm").hide();
-                            $(".prompt").text("操作成功");
-                            $(".nv91-mask").show();
-                            $(".nv1").show();
-                            setTimeout(function () {
-                                $(".nv91-mask").hide();
-                                $(".nv1").hide();
-                                location.reload();
+            if(IdList.length == 0){
+                $(".confirm").hide();
+                $(".prompt").text("请至少选择一条数据");
+                $(".nv91-mask").show();
+                $(".confirm1").show();
+                setTimeout(function () {
+                    $(".nv91-mask").hide();
+                    $(".confirm1").hide();
+                   
 
-                            }, 2000);;
-                location.reload();
+                }, 2000);;
+            } else {
+                var data = getSign(url, par);
+                if (data.msg.code == "200") {
+                    $(".confirm").hide();
+                    $(".prompt").text("操作成功");
+                    $(".nv91-mask").show();
+                    $(".nv1").show();
+                    setTimeout(function () {
+                        $(".nv91-mask").hide();
+                        $(".nv1").hide();
+                        location.reload();
+
+                    }, 2000);;
+
+                }
             }
+            
+            
         }
 
    //封装post请求获取签名
@@ -380,6 +398,7 @@ function render(data) {
     }
 //添加修改操作
 function addorup(method,method2,pid,id){
+    
     var radio = document.querySelectorAll(".status");
             for (var i = 0; i < radio.length; i++) {
                 if (radio[0].checked) {
@@ -397,30 +416,7 @@ function addorup(method,method2,pid,id){
                    
                     formData.append("cateName", $(".cateName").val());
                     
-                    var data = post(url, formData);
-                    $(".nv91-mask").hide();
-                        $(".nv91").hide();
-                    data = JSON.parse(data);
-                    if (data.msg.code == "200") {
-                        $(".nv91-mask").show();
-                        $(".nv").show();
-                        $(".prompt span").text("操作成功");
-                        setTimeout(function () {
-                            $(".nv91-mask").hide();
-                            $(".nv").hide();
-                            // location.reload();
-                        }, 2000);
-                        
-                    } else {
-                        $(".prompt span").text("操作失败");
-                        $(".nv91-mask").show();
-                        $(".nv").show();
-                        setTimeout(function () {
-                            $(".nv91-mask").hide();
-                            $(".nv").hide();
-                            // location.reload();
-                        }, 2000);
-                    }
+                    
                 } else {
                     
                     var formData = postFormdata(method2);
@@ -429,29 +425,32 @@ function addorup(method,method2,pid,id){
                     }
                     formData.append("cateName", $(".cateName1").val());
                     formData.append("id", $(".cateId2 option:checked").attr("data-id"));
-                    var data = post(url, formData);
+                   
+                }
+
+            }
+            var data = post(url, formData);
+                    $(".nv91-mask").hide();
+                        $(".nv91").hide();
                     data = JSON.parse(data);
                     if (data.msg.code == "200") {
                         $(".nv91-mask").show();
-                        $(".nv").show();
+                        $(".nv1").show();
                         $(".prompt span").text("操作成功");
                         setTimeout(function () {
                             $(".nv91-mask").hide();
-                            $(".nv").hide();
+                            $(".nv1").hide();
                             location.reload();
                         }, 2000);
                         
                     } else {
                         $(".prompt span").text("操作失败");
                         $(".nv91-mask").show();
-                        $(".nv").show();
+                        $(".nv1").show();
                         setTimeout(function () {
                             $(".nv91-mask").hide();
-                            $(".nv").hide();
-                            location.reload();
+                            $(".nv1").hide();
+                            // location.reload();
                         }, 2000);
                     }
-                }
-
-            }
         }

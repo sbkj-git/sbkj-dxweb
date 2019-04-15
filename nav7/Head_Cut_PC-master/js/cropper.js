@@ -2814,7 +2814,7 @@ var Cropper = function () {
       var rotate = 0;
       var scaleX = 1;
       var scaleY = 1;
-debugger
+
       if (orientation > 1) {
         self.url = arrayBufferToDataURL(arrayBuffer);
 
@@ -2873,7 +2873,7 @@ debugger
   }, {
     key: 'clone',
     value: function clone() {
-      debugger
+      
       var self = this;
       var options = self.options;
       var $this = self.$element;
@@ -2887,7 +2887,7 @@ debugger
         if (crossOrigin) {
           crossOriginUrl = url;
         } else {
-          debugger
+          
           crossOrigin = 'anonymous';
 
           // Bust cache (#148) when there is not a "crossOrigin" property
@@ -2897,7 +2897,7 @@ debugger
 
       self.crossOrigin = crossOrigin;
       self.crossOriginUrl = crossOriginUrl;
-      debugger
+      
       var $clone = $('<img ' + getCrossOrigin(crossOrigin) + ' src="' + (crossOriginUrl || url) + '">');
       // var $clone = $('<img ' + getCrossOrigin(crossOrigin) + ' src="http://47.105.116.237:8001/pinfo/gallery//19/4/1/1516501653.png">');
       self.$clone = $clone;

@@ -18,7 +18,7 @@ $(document).ready(function(){
             pageChange("get.dxWeb.skillList",data2,"pagination5");
             var ind = 0;
             $(".sort").click(function(){
-                debugger
+                
                 ind++;
                 if (ind % 2 == 1) {
                     par = "appsercet=" + newAppsercet + "&method=get.dxWeb.skillList&currentPage=" + currentPage + "&timeSort=1";
@@ -125,10 +125,11 @@ $(document).ready(function(){
         }else {
             var data = getSign(url, par);
             render(data);
+           pageJudge(data,"pagination5")
             if(data.msg&&data.msg.codeMsg){
             
                 $(".textList").html("");
-                
+                pageJudge(data,"pagination5")
             }
  
         }
@@ -151,9 +152,10 @@ $(document).ready(function(){
                 var data = getSign(url, par);
                 if (data.msg && data.msg.code == "200") {
                     $(".textList").html("");
+                    pageJudge(data,"pagination5")
                 } else {
                     render(data);
-                   
+                    pageJudge(data,"pagination5")
                 }
             }
             
@@ -423,4 +425,37 @@ $(document).ready(function(){
                     },2000);
         }
     }
+        //封装查询事件分页效果
+        function pageJudge(data2,pagination){
+            var pageCount,pageN;
+            if(data2.pageInfo&&data2.pageInfo.totalRows){
+                pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+            }else{
+                pageCount == 0;
+            }
+            if(data2.pageInfo&&data2.pageInfo.totalRows){
+                pageN = data2.pageInfo.totalRows;
+            }else{
+                pageN == 0;
+            }
+            if(data2.pageInfo&&data2.pageInfo.totalRows){
+                new Page({
+                    id: pagination,
+                    pageTotal: pageCount, //必填,总页数
+                    pageAmount: 10,  //每页多少条
+                    dataTotal: pageN, //总共多少条数据
+                    curPage:1, //初始页码,不填默认为1
+                    pageSize: 5, //分页个数,不填默认为5
+                    showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                    showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                    getPage: function (page) {
+                        //获取当前页数
+                       console.log(page);
+                    }
+                })
+            }else{
+                pageN == 0;
+            }
+           }
+          
 })

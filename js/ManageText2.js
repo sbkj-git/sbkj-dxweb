@@ -27,7 +27,7 @@ $(document).ready(function(){
                 var str = "";
                 $(".textList").html("");
                 $.each(data.dxWebList, function (i, item) {
-                    debugger
+                    
                     str += '<tr style="border-bottom: 1px solid #d8d8d8;">';
                     str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.id + '"   aria-label="Single checkbox Two" data-id="' + item.id + '">';
                     var title;
@@ -120,7 +120,7 @@ $(document).ready(function(){
         pageJudge(data2);
         var ind = 0;
         $(".sort").click(function(){
-            debugger
+            
             ind++;
             if (ind % 2 == 1) {
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webOperationList&currentPage=" + currentPage + "&timeSort=1";
@@ -138,7 +138,7 @@ $(document).ready(function(){
 
      //通过banner名称查询
      $(".banner1").click(function(){
-         debugger
+         
         var title = $(".titleText").val();
         if(title == "" || title == null){
             par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList";
@@ -153,7 +153,7 @@ $(document).ready(function(){
             
         }
         else if(bannerList.dxWebList){
-            debugger
+            
             bannerList1(bannerList);
             pageJudge(bannerList);
         }
@@ -232,7 +232,7 @@ $(document).ready(function(){
                         if(obj.method === "get.dxWeb.addWebOperation"){
                           $(".Add").show();
                           $(".Add").click(function(){
-                              debugger
+                              
                             $(this).addClass("btn-primary");
                             $(".Delete").removeClass("btn-primary");
                             localStorage.setItem("method","get.dxWeb.addWebOperation");
@@ -328,7 +328,7 @@ $(document).ready(function(){
                                   
                             $(".isEdit").show();
                               $(".isEdit").click(function(){
-                               debugger
+                               
                                   var id = $(this).attr("data-id");
                                   par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationDetails&articleId="+id;
                                 var data = getSign(url,par);

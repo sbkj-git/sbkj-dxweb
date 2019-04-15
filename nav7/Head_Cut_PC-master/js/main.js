@@ -1,5 +1,5 @@
 $(function () {
-debugger
+
   // 'use strict';//表示强规则
 
   var console = window.console || { log: function () {} };
@@ -27,7 +27,7 @@ debugger
           $dataScaleY.val(e.scaleY);
         }
       };
-      debugger
+      
   var originalImageURL = $image.attr('src');
   var uploadedImageURL;
 
@@ -75,7 +75,7 @@ debugger
     $download.addClass('disabled');
   }
 
-debugger
+
   // Options
   $('.docs-toggles').on('change', 'input', function () {
     var $this = $(this);
@@ -83,7 +83,7 @@ debugger
     var type = $this.prop('type');
     var cropBoxData;
     var canvasData;
-debugger
+
     if (!$image.data('cropper')) {
       return;
     }
@@ -149,13 +149,13 @@ debugger
 
         case 'getCroppedCanvas'://上传头像
           if (result) {
-            debugger
+            
             // console.log(result)
             var size = $(".img-preview").html();
             localStorage.setItem("size",size);
             // console.log($(".cropper-crop-box").width())
             // console.log($(".cropper-crop-box").height())
-            // debugger
+            // 
             // var imgBase=result.toDataURL('image/jpeg');
             // var data={imgBase:imgBase};
             // console.log(data)
