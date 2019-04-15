@@ -201,7 +201,7 @@ function logsgin(url,par){
                             isHas(); 
                                 $(".operater").html("")
                                 var role2 = "";                           
-                                $.each(data.roleList,function(i,item){                                  
+                                $.each(data.roleList,function(i,item){                   $(".operater").html("")                
                                     //console.log(item)
                                     role2+="<tr style='border-bottom: 1px solid #d8d8d8;' class='rolename1' data-id='"+item.user_id+"'>"; 
                                     role2+="<td><div class='checkbox checkbox-primary'><input type='checkbox' class='styled styled-primary r1 t1' id='role"+i+"'"+"value='"+item.user_id+"' aria-label='Single checkbox Two'><label for='role"+i+"' class='test'>"+item.user_id+"</label></div></td><td class='r2'>"+item.role_name+"</td><td class='r3'>"+item.true_name+"</td><td class='r4'>"+item.modile_phone+"</td>";

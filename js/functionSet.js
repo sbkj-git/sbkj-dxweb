@@ -13,7 +13,7 @@ $(document).ready(function(){
   //获取现在是哪个节点下的url
   var src1 = window.localStorage.getItem("url");
    //渲染页面标题
-  $(".title").html(title);
+  $(".color_8d").html(title);
   // 定义请求URL
   url = src+"/adminInterface.dx";
   //定义方法、种类

@@ -1,12 +1,10 @@
 $(document).ready(function() {
-    //jquery创建一个summernote实例
-//  $('.summernote').summernote({
-//     height: 200,
-//     tabsize: 2,
-//     lang: 'zh-CN'
-//     //回调函数
-
-// });
+    $(".addPhone").hover(function(){
+        $(".addimg").addClass("disnone").eq(1).removeClass("disnone");
+    })
+    $(".addPhone2").hover(function(){
+        $(".addimage").addClass("disnone").eq(1).removeClass("disnone");
+    })
 var i = 1 ;
 $(".wauto").click(function(){
     i = 1;
@@ -136,6 +134,8 @@ else if(method === "get.dxWeb.addWebOperation"){
 }
 else if(method === "get.dxWeb.addNotice"){
     $(".color_8d").text("公告");
+    $(".color_5a").text("添加公告");
+    $(".newColor").text("添加公告");
 }
 else if(method === "get.dxWeb.addHelp"){
     $(".color_8d").text("帮助文档");
@@ -180,8 +180,8 @@ var url = src + url1;
         $(".changeFlex").removeClass("column");
         $(".show1").show();
         $(".show2").show();
-        $(".changeTitle").text("问题描述");
-        $(".changeTitle1").text("对应产品");
+        $(".changeTitle").text("问题描述:");
+        $(".changeTitle1").text("对应产品:");
         var id = "";
 
         url = src + url1;

@@ -216,17 +216,33 @@
             </div>
         </div>
     </div>
-    <div class="nv" style="padding:10px;">
-        <div class="nv91-close">X</div>
-        <form action="" class="form-horizontal" role="form">
-            <div class="prompt" style="padding-bottom:30px;">
-                <p style="font-size: 20px;">警告</p>
-                <img src="" alt=""><span>操作成功</span>
+     <!--确认 取消-->
+     <div class="confirm">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete">确定要删除这条消息吗?</span>
+                </div>
+                <div class="dele">
+                <button class="roleRefu  roleRefuse5">取消</button>
+                <button class="roleSur roleSure">确定</button>
             </div>
+        </div>
+        <div class="confirm1">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete prompt">确定要删除这条消息吗?</span>
+                </div>
+               
+        </div>
+        <div class="nv1">
+            <img src="../image/success.png" class="success1"/>
+            <span class="referMes prompt">删除成功</span>
+        </div>
+        <div class="nv3">
+            <img src="../image/close12.png" class="success1"/>
+            <span class="referMes prompt">删除失败</span>
+        </div>
 
-        </form>
-    </div>
-</div>
 <div class="nv92">
     <h1>公司信息</h1>
     <form action="" class="form-horizontal" role="form">
@@ -279,9 +295,9 @@
         </div>
     </form>
 </div>
-
+</div>
 <footer class="footer">
-    <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
     </p>
     <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
 
@@ -295,7 +311,8 @@
 <script src="../js/getRequest.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/getRequest.js"></script>
-<script>
+<script src="../js/setting.js"></script>
+<!-- <script>
     $(document).ready(function () {
         // judge(href = "../login1.html");
         //页面初次加载渲染页面
@@ -337,7 +354,16 @@
         var data = getSign(url, par);
         console.log(data);
         if (data.msg.code == "10") {
-            alert("添加成功");
+             $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
         } else {
             alert("添加失败");
         }
@@ -387,7 +413,16 @@
         var data = getSign(url, par);
         console.log(data);
         if (data.msg.code == "200") {
-            alert("修改成功");
+             $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
             $(".nv91-mask3").hide();
             $(".nv91").hide();
             $(".nv92").hide();
@@ -668,4 +703,4 @@
         }
     })
 
-</script>
+</script> -->

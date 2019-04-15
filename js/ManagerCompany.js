@@ -157,7 +157,7 @@
                                     var reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
                                     if($(".companyName").val() == ""){
                                         debugger
-                                        $(".prompt ").text("请填写合作伙伴");
+                                        $(".prompt ").text("请填写客户案例");
                                         $(".nv91-mask").show();
                                         $(".confirm1 ").show();
                                         setTimeout(function(){
@@ -166,8 +166,8 @@
                                         },2000);
                                         return;
                                     }
-                                    else if ($(".companyUrl").val() == "") {
-                                        $(".prompt ").text("请填写合作伙伴链接");
+                                    else if($(".remarks").val() == ""){
+                                        $(".prompt ").text("请填写客户案例内容");
                                         $(".nv91-mask").show();
                                         $(".confirm1 ").show();
                                         setTimeout(function () {
@@ -176,7 +176,17 @@
                                         }, 2000);
                                         return;
                                     }
-                                    else if (!reg.test(url)) {
+                                    // else if ($(".companyUrl").val() == "") {
+                                    //     $(".prompt ").text("请填写客户案例链接");
+                                    //     $(".nv91-mask").show();
+                                    //     $(".confirm1 ").show();
+                                    //     setTimeout(function () {
+                                            
+                                    //         $(".confirm1 ").hide();
+                                    //     }, 2000);
+                                        
+                                    // }
+                                    else if ($(".companyUrl").val() !== "" &&!reg.test(url)) {
 
                                         $(".prompt ").text("请以http://或者https://开头");
                                         $(".nv91-mask").show();
@@ -188,7 +198,7 @@
                                         return;
                                     }
                                     else if($(".companyType option:checked").attr("data-id") == 0){
-                                        $(".prompt ").text("请选择合作伙伴类型");
+                                        $(".prompt ").text("请选择客户案例类型");
                                         $(".nv91-mask").show();
                                         $(".confirm1 ").show();
                                         setTimeout(function(){
@@ -199,7 +209,17 @@
                                      
                                     }
                                     
-                                    else if($("#picImg")[0].files[0] == "" || $("#picImg")[0].files[0] == "undefined"){
+                                    // else if($("#picImg")[0].files[0] == "" || $("#picImg")[0].files[0] == "undefined"){
+                                    //     $(".prompt ").text("请上传banner图");
+                                    //     $(".nv91-mask").show();
+                                    //     $(".confirm1 ").show();
+                                    //     setTimeout(function(){
+                                            
+                                    //         $(".confirm1 ").hide();
+                                    //     },2000);
+                                    //     return;
+                                    // }
+                                    else if($("#pic").attr("src") == "" || $("#pic").attr("src") == "undefined"){
                                         $(".prompt ").text("请上传banner图");
                                         $(".nv91-mask").show();
                                         $(".confirm1 ").show();
@@ -208,7 +228,8 @@
                                             $(".confirm1 ").hide();
                                         },2000);
                                         return;
-                                    }else{
+                                    }
+                                    else{
                                         addorupdate("get.dxWeb.addWebBottom",1);
     
                                     }
@@ -229,6 +250,7 @@
                             $(".isDelete").click(function () {
                                 $(".nv91-mask").show();
                                 $(".prompt").text("确定要删除这条消息吗?");
+                                $(".nv91").hide();
                                 $(".confirm").show();
                                 var IdList = $(this).attr("data-id");
                                 $(".roleSure").click(function(){
@@ -316,7 +338,7 @@
                     
                     $.each(data.dxBannerList,function(i,item){
                         str+='<tr style="border-bottom: 1px solid #d8d8d8;">';
-                            str+='<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="'+item.id+'"   aria-label="Single checkbox Two" data-id="'+item.id+'"><label for="'+item.id+'"><img src="'+item.pic_img+'" alt="" style="width: 82px;height:56px;display: table-column;vertical-align: middle;"></label></div></td><td>'+item.pic_title+'</td><td>'+item.cate_name+'</td><td>'+item.pic_url+'</td>';
+                            str+='<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="'+item.id+'"   aria-label="Single checkbox Two" data-id="'+item.id+'"><label for="'+item.id+'"><img src="'+item.pic_img+'" alt="" style="width: 82px;height:56px;display: table-column;vertical-align: middle;"></label></div></td><td>'+item.pic_title+'</td><td>' + item.remarks + '</td><td>'+item.cate_name+'</td><td>'+item.pic_url+'</td>';
                             if(item.state == 1){
                                 str+="<td><input class='switch switch-anim' type='checkbox' checked data-id='" + item.id + "'></td>";
                             }else{
@@ -374,20 +396,19 @@
                         $(".prompt").text("删除成功");  
                         $(".nv1").show();
                         setTimeout(function(){
+                            debugger
                             $(".nv91-mask").hide();
                             $(".nv1").hide();
-                            par = "appsercet="+newAppsercet+"&method=get.dxWeb.webOperationList&currentPage=" + currentPage; 
-                            var data2 = getSign(url, par);
-                            bannerList1(data2);
-                            pageJudge(data2);
+                            location.reload();
                         },2000);
+                       
                     }
                 }
             }
 
         // 添加修改函数封装
         function addorupdate(method,id) {
-            
+            debugger
 
                 var formData = new FormData();
                 var appid = localStorage.getItem("appid");
@@ -425,6 +446,7 @@
                
                 
                 formData.append("state", state);
+                formData.append("remarks", $(".remarks").val());
                 formData.append("picImg", $("#picImg")[0].files[0]);
                 formData.append("picurl", $(".companyUrl").val());
                 console.log($(".companyUrl").val())

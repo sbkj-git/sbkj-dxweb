@@ -35,6 +35,10 @@ $(document).ready(function(){
         //右上角点击退出
         //点击跳转到设置页面
         $(".set").click(function(){
+            $(".set").addClass("dis").eq(1).removeClass("dis");
+            setTimeout(function(){
+                $(".set").addClass("dis").eq(0).removeClass("dis");
+            },2000);
             $("#iframe").attr("src", "./nav9/setting.html");
             $("#iframe1").attr("src", "./nav9/setting.html"); 
         })
@@ -49,7 +53,7 @@ $(document).ready(function(){
         $(".person").html(truename);
         var type = localStorage.getItem("type");
         $(".back").click(function () {
-            par = "username=" + username + "&type=" + type + "&method=get.dxWeb.logout"
+            par = "username=" + username + "&type=" + type + "&method=get.dxWeb.logout";
             var data = getSign(log, par);
 
             if (data.msg.code == "200") {
@@ -88,10 +92,13 @@ $(document).ready(function(){
                     str1 += "<li id='" + item.id + "'><img src='./image/lf" + item.id + ".png' alt='' style='width:20px;height:20px;'></li>"
                 }
                
-                str += "<li class='treeview' id='" + item.id + "'><a href='#'><i class='fa fa-dashboard'>";
+                str += "<li class='treeview' id='" + item.id + "'><a style='color:#fff;'><i class='fa fa-dashboard'>";
                 if(item.id == 8){
                     str+="<img src='./image/lf" + item.id + ".png' style='width:20px;height:15px;margin:0 10px 0 26px'/>"
-                }else{
+                }else if(item.id == 3){
+                    str+="<img src='./image/lf" + item.id + ".png' style='width:20px;height:20px;margin:-5px 10px 0 26px'/>"
+                }
+                else{
                     str+="<img src='./image/lf" + item.id + ".png' style='width:20px;height:20px;margin:0 10px 0 26px'/>"
                 }
                
@@ -121,9 +128,40 @@ $(document).ready(function(){
         //左侧栏 导航动效
         $.sidebarMenu($('.sidebar-menu'));
         //左侧栏导航点击事件跳转页面
-        $("#9 .treeview-menu li a i").click(function () {
+        $("#1 .treeview-menu li a i").click(function () {
             var index = $(this).index();
             var value = $(this).attr("data-id")
+            if (value == "get.dxWeb.webSurvey") {
+                $("#iframe").attr("src", "./nav1/aboutWeb.html");
+                window.localStorage.setItem("title", "统计");
+                localStorage.setItem("url", "/dxVisitInterface.dx");
+                window.localStorage.setItem("method", "get.dxWeb.webSurvey");
+            }
+            if (value == "get.dxWeb.columnStatistics") {
+                $("#iframe").attr("src", "./nav1/Column.html");
+                window.localStorage.setItem("method", "get.dxWeb.columnStatistics");
+                window.localStorage.setItem("title", "栏目统计");
+                localStorage.setItem("url", "/dxVisitInterface.dx");
+            }
+            if (value == "get.dxWeb.helpStatistics") {
+                $("#iframe").attr("src", "./nav1/Column.html");
+                window.localStorage.setItem("title", "帮助文档统计");
+                window.localStorage.setItem("method", "get.dxWeb.helpStatistics");
+                localStorage.setItem("url", "/dxVisitInterface.dx");
+    
+            }
+            if (value == "get.dxWeb.articleSurvey") {
+                $("#iframe").attr("src", "./nav1/Column.html");
+                window.localStorage.setItem("title", "文章统计");
+                window.localStorage.setItem("method", "get.dxWeb.articleSurvey");
+                localStorage.setItem("url", "/dxVisitInterface.dx");
+    
+            }
+        });
+        
+        $("#9 .treeview-menu li a i").click(function () {
+            var index = $(this).index();
+            var value = $(this).attr("data-id");
             if (value == "get.dxWeb.basics") {
                 $("#iframe").attr("src", "./nav9/setting.html");
             }
@@ -279,16 +317,25 @@ $(document).ready(function(){
                 $("#iframe").attr("src", "./nv10/Identification.html");
             }
         })
-   
+   //左侧菜单栏点击事件
+$(".treeview-menu li a ").each(function(index){
+    debugger
+   $(this).click(function(){
+    $(".treeview-menu li a ").removeClass("activeCol").eq(index).addClass("activeCol");
+   })
+     
+})
     //个人信息下拉弹框
     $(".person").hover(function () {
         $(".selectDown").slideDown();
-
+        $(".img1").addClass("dis").eq(1).removeClass("dis");
     })
-    $(".selectDown").mouseleave(function () {
+    $(".fl-right").mouseleave(function () {
         $(".selectDown").slideUp();
+        $(".img1").addClass("dis").eq(0).removeClass("dis");
 
     });
+    
     //面包屑导航切换 后点击事件以及以及动效
     var bread = document.querySelector(".bread");
     var n = 0;
@@ -301,7 +348,35 @@ $(document).ready(function(){
             $(".remove2").addClass("hidenow");
             $(".nav-slide-o li span").click(function () {
 
-                var value = $(this).attr("data-id")
+                var value = $(this).attr("data-id");
+                //1
+                if (value == "get.dxWeb.webSurvey") {
+                    $("#iframe1").attr("src", "./nav1/aboutWeb.html");
+                    window.localStorage.setItem("title", "统计");
+                    window.localStorage.setItem("method", "get.dxWeb.webSurvey");
+                    window.localStorage.setItem("url", "dxVisitInterface.dx");
+                }
+                if (value == "get.dxWeb.columnStatistics") {
+                    $("#iframe1").attr("src", "./nav1/Column.html");
+                    window.localStorage.setItem("title", "栏目统计");
+                    window.localStorage.setItem("method", "get.dxWeb.columnStatistics");
+                    localStorage.setItem("url", "/dxVisitInterface.dx");
+                }
+                if (value == "get.dxWeb.helpStatistics") {
+                    $("#iframe1").attr("src", "./nav1/Column.html");
+                    window.localStorage.setItem("title", "帮助文档统计");
+                    window.localStorage.setItem("method", "get.dxWeb.helpStatistics");
+                    localStorage.setItem("url", "/dxVisitInterface.dx");
+
+                }
+                if (value == "get.dxWeb.articleSurvey") {
+                    $("#iframe1").attr("src", "./nav1/Column.html");
+                    window.localStorage.setItem("title", "文章统计");
+                    window.localStorage.setItem("method", "get.dxWeb.articleSurvey");
+                    localStorage.setItem("url", "/dxVisitInterface.dx");
+
+                }
+                
                 //2
                 if (value == "get.dxWeb.websetup") {
                     $("#iframe1").attr("src", "./nav2/FunctionSet.html");
@@ -457,19 +532,20 @@ $(document).ready(function(){
         $('.nav-slide').removeClass('hover');
     }
 
-    $('.nav-slide').mouseenter(function () {
-        clearTimeout(thisTime);
-        $('.nav-slide').addClass('hover');
-    })
-    $('.nav-slide').mouseleave(function () {
-        $('.nav-slide').removeClass('hover');
-    })
-    $(".nav-slide-o").mouseleave(function () {
-        $('.nav-slide-o').hide();
-    })
-    $(".nav-slide-o li").click(function () {
-        $('.nav-slide-o').hide();
-    })
+    // $('.nav-slide').mouseenter(function () {
+    //     clearTimeout(thisTime);
+    //     $('.nav-slide').addClass('hover');
+    // })
+    // $('.nav-slide').mouseleave(function () {
+    //     $('.nav-slide').removeClass('hover');
+    // })
+    // $(".nav-slide-o").mouseleave(function () {
+    //     $('.nav-slide-o').hide();
+    // })
+    // $(".nav-slide-o li").click(function () {
+    //     $('.nav-slide-o').hide();
+    // })
+
 
 })
 

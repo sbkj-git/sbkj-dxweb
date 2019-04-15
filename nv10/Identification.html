@@ -60,9 +60,9 @@
                 </div>
             </div>
             <div class="flex" style="font-size: 18px;">
-                <button class="btn isVerify" style="color:#fff;background-color: #E2302B;font-size: 18px;">审核通过</button>
-                <button class="btn isVerify" style="margin:0 10px;font-size: 18px;">审核不通过</button>
-                <button class="btn Delete" style="font-size: 18px;">删除</button>
+                <button class="btn isVerify btn1" style="color:#fff;background-color: #E2302B;font-size: 18px;">审核通过</button>
+                <button class="btn isVerify btn1" style="margin:0 10px;font-size: 18px;">审核不通过</button>
+                <button class="btn Delete btn1" style="font-size: 18px;">删除</button>
 
             </div>
         </div>
@@ -87,7 +87,7 @@
 
             </tbody>
         </table>
-        <div class=" flex " style="width:100%;justify-content: space-between;" >
+        <div class=" flex " style="width:100%;justify-content: flex-end;" >
             <div  style="font-size:14px;margin-top:30px;">
                 <span>共<i class="totalCount">100</i>条数据</span>
                 <span>第<i class="nowNum">1</i>/<i class="pagenumber">80</i>页</span>
@@ -113,26 +113,35 @@
 
 </div>
 <div class="nv91-mask" >
-    <div class="nv" style="padding:10px;">
-        <div class="nv91-close">X</div>
-        <form action="" class="form-horizontal" role="form" >
-            <div class="prompt" style="padding-bottom:30px;">
-                <p style="font-size: 20px;">提示</p>
-                <img src="" alt="" ><span style="font-size:18px;"></span>
-            </div>
-            <div class="form-group flex butto" style="justify-content: flex-end;box-sizing: border-box;">
-                <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn btn-primary roleSure">确定</button>
+     <!--确认 取消-->
+     <div class="confirm">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete">确定要删除这条消息吗?</span>
                 </div>
-                <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                    <button class="btn  roleRefuse">取消</button>
-                </div>
+                <div class="dele">
+                <button class="roleRefu  roleRefuse5">取消</button>
+                <button class="roleSur roleSure">确定</button>
             </div>
-        </form>
-    </div>
+        </div>
+        <div class="confirm1">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete prompt">确定要删除这条消息吗?</span>
+                </div>
+               
+        </div>
+        <div class="nv1">
+            <img src="../image/success.png" class="success1"/>
+            <span class="referMes prompt">删除成功</span>
+        </div>
+        <div class="nv3">
+            <img src="../image/close12.png" class="success1"/>
+            <span class="referMes prompt">删除失败</span>
+        </div>
 </div>
 <footer class="footer">
-    <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
     </p>
     <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
 
@@ -147,6 +156,11 @@
 <script type="text/javascript">
     localStorage.setItem("pageNow1",1);
     //radio点击取消选中
+    $(".btn1").each(function(index){
+            $(this).click(function(){
+                $(".btn1").removeClass("btn-primary").eq(index).addClass("btn-primary");
+            })
+       })
     $(function () {
         $('input:radio').click(function () {
             //alert(this.checked);

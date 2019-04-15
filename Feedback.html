@@ -18,18 +18,7 @@
     <script type="text/javascript" src="./js/jquery.min.js"></script>
     <script type="text/javascript" src="./js/jquery.date_input.pack.js"></script>
     <script>
-        // $('.laydate-icon').blur(function(){
-        // 	var ret = contrastTime("date");//获取返回值
-        // 	if(ret == 0){
-        // 		alert("请选择正确的时间。");
-        // 		$(this).val('');
-        // 		return;
-        // 	}else{
-
-        //     }
-        // })
-        $('#datePicker').date_input();
-        $('#datePicker2').date_input();
+       
     </script>
     <style>
         /*.date_picker{width: auto!important;}*/
@@ -276,19 +265,35 @@
             </div>
         </form>
     </div>
-    <div class="nv" style="padding:10px;">
-        <div class="nv91-close">X</div>
-        <form action="" class="form-horizontal" role="form">
-            <div class="prompt" style="padding-bottom:30px;">
-                <p style="font-size: 20px;">警告</p>
-                <img src="" alt=""><span>操作成功</span>
+     <!--确认 取消-->
+     <div class="confirm">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete">确定要删除这条消息吗?</span>
+                </div>
+                <div class="dele">
+                <button class="roleRefu  roleRefuse5">取消</button>
+                <button class="roleSur roleSure">确定</button>
             </div>
-
-        </form>
-    </div>
+        </div>
+        <div class="confirm1">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete prompt">确定要删除这条消息吗?</span>
+                </div>
+               
+        </div>
+        <div class="nv1">
+            <img src="../image/success.png" class="success1"/>
+            <span class="referMes prompt">删除成功</span>
+        </div>
+        <div class="nv3">
+            <img src="../image/close12.png" class="success1"/>
+            <span class="referMes prompt">删除失败</span>
+        </div>
 </div>
 <footer class="footer">
-    <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
     </p>
     <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
 

@@ -39,16 +39,16 @@
     <div class="col-sm-10 col-sm-pull-1">
         <div class="form-group flex" style="padding-bottom: 2%;padding-top: 38px;">
             <div class="col-sm-2" style="text-align: center;">
-                <button class="btn btn-primary add" style="display: none;">添加新角色</button>
+                <button class="btn  add btn1" style="display: none;height:40px;">添加新角色</button>
             </div>
             <div class="col-sm-1 " style="text-align: center;" >
-                <button class="btn qy" style="background:#fff;height:40px;width:100px;display: none;">启用</button>
+                <button class="btn qy btn1" style="height:40px;width:100px;display: none;">启用</button>
             </div>
             <div class="col-sm-1 " style="text-align: center;margin-left: 30px">
-                <button class="btn jy" style="background:#fff;height:40px;width:100px;display: none;">禁用</button>
+                <button class="btn jy btn1" style="height:40px;width:100px;display: none;">禁用</button>
             </div>
             <div class="col-sm-1 " style="text-align: center;margin-left: 30px">
-                <button class="btn delete" style="background:#fff;height:40px;width:100px;display: none;">删除</button>
+                <button class="btn delete btn1" style="height:40px;width:100px;display: none;">删除</button>
             </div>
         </div>
         <table class="table" style="width: 100%;overflow: hidden;">
@@ -71,11 +71,10 @@
             </tbody>
         </table>
 
-        <div class="paging flex justify"  >
-            <div style="color:#929292;font-size: 14px;padding-left: 20px;">共<span class="total"></span>条数据&nbsp;第<span class="current">1</span>/<span class="pagenum">80</span>页</div>
-            <div>
-                <div class="box" id="box" style="width:auto;justify-content: flex-end;"></div>
-            </div>
+        <div class="paging flex " style="width:100%;justify-content: flex-end;" >
+            <div class="box" id="box" style="width:auto;justify-content: flex-end;">
+             </div>
+            <div class="totelPag"><span>每页10条</span>&nbsp;&nbsp;总共<span class="total"></span>个项目</div>
         </div>
     </div>
     <div class="nv91-mask" >
@@ -117,19 +116,35 @@
                 </div>
             </form>
         </div>
-        <div class="nv" style="padding:10px;">
-            <div class="nv91-close">X</div>
-            <form action="" class="form-horizontal" role="form" >
-                <div class="prompt" style="padding-bottom:30px;">
-                    <p style="font-size: 20px;">警告</p>
-                    <img src="" alt="" ><span>操作成功</span>
+        <!--确认 取消-->
+     <div class="confirm">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete">确定要删除这条消息吗?</span>
                 </div>
-
-            </form>
+                <div class="dele">
+                <button class="roleRefu  roleRefuse5">取消</button>
+                <button class="roleSur roleSure">确定</button>
+            </div>
+        </div>
+        <div class="confirm1">
+            <div  class="boxTotal">
+                <img src="../image/hint.png" class="boxImg"/>
+                <span class="boxDelete prompt">确定要删除这条消息吗?</span>
+                </div>
+               
+        </div>
+        <div class="nv1">
+            <img src="../image/success.png" class="success1"/>
+            <span class="referMes prompt">删除成功</span>
+        </div>
+        <div class="nv3">
+            <img src="../image/close12.png" class="success1"/>
+            <span class="referMes prompt">删除失败</span>
         </div>
     </div>
     <footer class="footer">
-        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+        <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
         </p>
         <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
 
@@ -151,13 +166,11 @@
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
     window.onload = function(){
-        // $("item .item2").click(function(){
-        //     if ($(this).val() == item.id) {
-        //         $(this).parent().parent().find("input:checkbox").each(function (i, item) {
-        //             item.attr("checked", true)
-        //         })
-        //     }
-        // })
+       $(".btn1").each(function(index){
+            $(this).click(function(){
+                $(".btn1").removeClass("btn-primary").eq(index).addClass("btn-primary");
+            })
+       })
         //页面初次渲染加载数据
         var data = window.localStorage.getItem("dxRightsList");
         data = JSON.parse(data);

@@ -247,7 +247,16 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
             
                                     var data = getSign(url, par);
                                     if (data.msg.code == "200") {
-                                        alert("删除成功");
+                                         $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                                         location.reload();
                                     }
                                 })
@@ -320,7 +329,16 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
             
             var data = getSign(url, par);
             if (data.msg.code == "200") {
-                alert("删除成功");
+                 $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                 location.reload();
             }
         }
@@ -351,7 +369,7 @@ function render(data) {
             $(".textList").html("");
             $.each(data.dxWebList, function (i, item) {
                 str += '<tr style="border-bottom: 1px solid #d8d8d8;">';
-                str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.cate_id + '"   aria-label="Single checkbox Two" data-id="' + item.cate_id + '"><label for="' + item.cate_id + '"><img src="' + item.product_img + '" class="product_img"/>' + item.product_name + '</label></div></td><td>"' + item.classify_name + '"</td><td>"' + item.problem_sum + '"</td>';
+                str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.cate_id + '"   aria-label="Single checkbox Two" data-id="' + item.cate_id + '"><label for="' + item.cate_id + '">&nbsp;<img src="' + item.product_img + '" class="product_img"/>' + item.product_name + '</label>&nbsp;</div></td><td>"' + item.classify_name + '"</td><td>"' + item.problem_sum + '"</td>';
 
                 str += '<td style="color:#FF5456;"><span class="isDelete" data-id="' + item.cate_id + '">删除</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.cate_id + '" data-name="' + item.product_id + '">编辑</span></td>'
                 str += "</tr>";

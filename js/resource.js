@@ -112,7 +112,8 @@ $(document).ready(function () {
             url = src + "/" + item.link_path;
            
             //添加图片点击事件
-            $(".newImg").click(function () {
+            $(".newImg").unbind('click').bind("click",function(){ 
+            // $(".newImg").click(function () {
                 //请求全部文件夹并且渲染
 
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.libraryList";
@@ -136,12 +137,20 @@ $(document).ready(function () {
 
                 $(".nv91-mask").show();
                 $(".nv92").show();
-                $(".fileSure").click(function () {
+                $(".fileSure").unbind('click').bind("click",function(){ 
+                // $(".fileSure").click(function () {
 
                     var data = addUpdate("get.dxWeb.addFolder");
                     if (data.msg.code == "200") {
-                        alert("添加成功");
-                        location.reload();
+                        $(".nv91-mask").show();
+                        $(".prompt").text("添加成功");
+                        $(".confirm").hide();
+                        $(".nv1").show();
+                        setTimeout(function () {
+                            $(".nv91-mask").hide();
+                            $(".nv1").hide();
+                            location.reload();
+                        }, 2000);
                     }
                 })
             })
@@ -151,8 +160,8 @@ $(document).ready(function () {
 
             //进入子集目录操作
             var width = document.querySelectorAll(".w200center");
-
-            $(document).on("dblclick", ".w200center", function () {
+            $(".w200center").unbind('click').bind("click",function(){
+            // $(document).on("dblclick", ".w200center", function () {
                 var id = $(this).attr("data-id");
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll&folderId=" + id + "&isUp=2";
 
@@ -207,7 +216,9 @@ $(document).ready(function () {
 
 
             //进入父级目录
-            $(".returnBack").click(function () {
+            $(".returnBack").unbind('click').bind("click",function(){
+
+            // $(".returnBack").click(function () {
                 debugger
                 var folderId = localStorage.getItem("florId");
                 
@@ -371,12 +382,12 @@ $(document).ready(function () {
                     }
                     //判断该用户是否有删除权限
                     if (obj.method === "get.dxWeb.deleteImgs") {
-                        $(".w200h145").each(function (index) {
+                        $(".manage12").each(function (index) {
                             $(this).mouseenter(function () {
-                                $(".w200center .close12").hide().eq(index).css({"opacity": "1"}).show();
+                                $(".manage12 .close12").hide().eq(index).css({"opacity": "1"}).show();
                             })
                             $(this).mouseleave(function () {
-                                $(".w200center .close12").hide();
+                                $(".manage12 .close12").hide();
                             })
                         })
                         $(".imgHover").each(function (index) {
@@ -387,17 +398,41 @@ $(document).ready(function () {
                                 $(".imgHover .close12").hide();
                             })
                         })
-
-                        $(".close12").click(function () {
+                        $(".imgHover .close12").unbind('click').bind("click",function(){
+                        // $(".imgHover .close12").click(function () {
 
                             var id = $(this).attr("data-id")
                             par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteImgs&id=" + id;
                             var data = getSign(url, par);
                             if (data.msg.code == "10") {
-                                alert("删除成功");
-                                location.reload();
+                                $(".nv91-mask").show();
+                                $(".confirm").hide(); 
+                                $(".nv1").show();
+                                setTimeout(function(){
+                                    $(".nv91-mask").hide();
+                                    $(".nv1").hide();
+                                   location.reload();
+                                },2000);
                             }
                         })
+                        $(".manage12 .close12").unbind('click').bind("click",function(){ 
+                        // $(".manage12 .close12").click(function () {
+                                    
+                            var id = $(this).attr("data-id")
+                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.daleteFolder&id=" + id;
+                            var data = getSign(url, par);
+                            if (data.msg.code == "200") {
+                                $(".confirm").hide();
+                                $(".nv91-mask").show();
+                                $(".nv1").show();
+                                setTimeout(function () {
+                                    $(".nv91-mask").hide();
+                                    $(".nv1").hide();
+                                    location.reload();
+                                }, 2000);
+                            }
+                        })
+                        
                     }
                     //判断是否有设置水印
                     if (obj.method === "get.dxWeb.addWatermark") {
@@ -534,7 +569,7 @@ $(document).ready(function () {
         if (list.dxFolderList && list.dxFolderList.length > 0) {
 
             $.each(list.dxFolderList, function (i, obj) {
-                str1 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p><img src="../image/close12.png" alt="" style="width: 20px;height:20px;" class="close12"></div>';
+                str1 += '<div class="position manage12"><div class="w200center " data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p></div><img src="../image/close12.png" alt="" style="width: 20px;height:20px;" class="close12" data-id="'+obj.id+'"></div>';
                 str3 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p></div>'
             })
             $(".imgBox1").append(str1);
@@ -544,7 +579,7 @@ $(document).ready(function () {
         if (list.dximgList && list.dximgList.length > 0) {
 
             $.each(list.dximgList, function (i, obj) {
-                str += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover" ><div class="imgHover2"  data-id="' + obj.id + '"><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" style="width:80px;height:80px" class="imgHover1"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99;display:block" class="close12" data-id="' + obj.id + '"/></div>';
+                str += '<div class="imgHover position" data-id="' + obj.id + '" style="margin:0 40px 30px 0;overflow: visible"><div class="imgCover" ><div class="imgHover2"  data-id="' + obj.id + '"><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" style="width:80px;height:80px" class="imgHover1"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99;display:block" class="close12" data-id="' + obj.id + '"/></div>';
                 //添加那块逻辑处理补充
                 str2 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover1" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/></div>'
 
@@ -583,12 +618,12 @@ $(document).ready(function () {
                 $(".imgHover .close12").hide();
             })
         })
-        $(".w200h145").each(function (index) {
+        $(".manage12").each(function (index) {
             $(this).mouseenter(function () {
-                $(".w200center .close12").hide().eq(index).css({"opacity": "1"}).show();
+                $(".manage12 .close12").hide().eq(index).css({"opacity": "1"}).show();
             })
             $(this).mouseleave(function () {
-                $(".w200center .close12").hide();
+                $(".manage12 .close12").hide();
             })
         })
         $(".imgHover").each(function (index) {

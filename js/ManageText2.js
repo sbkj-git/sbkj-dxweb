@@ -232,6 +232,7 @@ $(document).ready(function(){
                         if(obj.method === "get.dxWeb.addWebOperation"){
                           $(".Add").show();
                           $(".Add").click(function(){
+                              debugger
                             $(this).addClass("btn-primary");
                             $(".Delete").removeClass("btn-primary");
                             localStorage.setItem("method","get.dxWeb.addWebOperation");

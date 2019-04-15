@@ -4,11 +4,11 @@ $(document).ready(function(){
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     } 
     //点击弹窗关闭时间
-    $(".BannerRefuse1").click(function(){
-        
+    $(".BannerRefuse").click(function(e){
+        e.preventDefault();
         $(".nv91-mask").hide();
         $(".nv91").hide();
-        $(".nv91").reset();
+       
         $(".updateimg").attr("src","");
         $(".needHide").show();
         $(".slideImg").hide();
@@ -21,8 +21,8 @@ $(document).ready(function(){
         $(".nv").hide();
        
     })
-    $(".nv91-close").click(function(){
-        
+    $(".nv91-close").click(function(e){
+        e.preventDefault();
         $(".nv91-mask").hide();
         $(".nv91").hide();
         $(".nv91 input").val("");
@@ -276,12 +276,13 @@ $(document).ready(function(){
                                 if (obj.method === "get.dxWeb.addhelp") {
                                     $(".add").show();
                                     //Banner添加事件
+                                    formBlur();
                                     $(".addInput").unbind('click').bind("click",function(){
                                     // $(".addInput").click(function () {
                                         
                                         $(".nv91-mask").show();
                                         $(".nv91").show();
-                                        $("body").css({"height":"100%","position":"fixed","top":"0","left":"0"})
+                                        $("body").css({"height":"100%","position":"fixed","top":"0","left":"0","overflow":"scroll"})
                                         $(".upload1").click(function (event) {
                                             event.stopPropagation();
                                             $("#fileUpload").show().css({"height":"50px","border":"none"});
@@ -412,7 +413,8 @@ $(document).ready(function(){
                                     //banner编辑修改事件
                                     $(".isEdit").click(function () {
                                         debugger
-                                        $("body").css({"height":"100%","position":"fixed","top":"0","left":"0"})
+                                        
+                                        $("body").css({"height":"100%","position":"fixed","top":"0","left":"0","overflow":"scroll"})
                                         var id = $(this).attr("data-id")
                                         // var index = $(this).index;
                                         $(".nv91-mask").show();
@@ -514,12 +516,13 @@ $(document).ready(function(){
             var sign1 = sign(method);
             var sign2 = sign1.parameter;
             var timestamp = sign1.timestamp;
-            var bannerName, starttime, erdtime, cateId, picurl, state, picImg,isUp
+            var bannerName, starttime, erdtime, cateId, picurl, state, picImg,isUp,remarks
             bannerName = $(".bannerName").val();
             cateId = $(".cateId option:checked").val();
             starttime = $(".start1").val();
             erdtime = $(".end1").val();
             picurl = $(".url").val();
+            remarks = $(".remarks").val();
             // var radio1 = document.querySelectorAll(".b61 ");
             // for (var i = 0; i < radio1.length; i++) {
             //     if (radio1[0].checked) {
@@ -601,14 +604,102 @@ $(document).ready(function(){
 
         }   
         
+    //失去焦点验证
+    function formBlur(){
+        var reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
+        $(".bannerName").blur(function(){
+            setTimeout(function () {
+                if ($(".bannerName").val() == "") {
+                    $(".prompt ").text("请填写banner名称");
+                    $(".nv91-mask").show();
+                    $(".confirm1 ").show();
+                    setTimeout(function () {
+                        
+                        $(".confirm1 ").hide();
+                    }, 2000);
+                    $(this).focus();
+                } 
+                    },100);//延迟100ms
+           
+        })
+        $(".url").blur(function(){
+            setTimeout(function () {
+                var url = $(".url").val();
+                
+                if ($(".url").val() !== "" && !reg.test(url)) {
+    
+                    $(".prompt ").text("URL地址请以http://或者https://开头");
+                    $(".nv91-mask").show();
+                    $(".confirm1 ").show();
+                    setTimeout(function () {
+                        
+                        $(".confirm1 ").hide();
+                    }, 2000);
+                    success = false;
+                    $(this).focus();
+                }
+            },100)
+           
+        })
+        $(".start1").blur(function(){
+            setTimeout(function () {
+                if($(".start1").val() == 0){
+                    $(".prompt ").text("请选择开始时间");
+                    $(".nv91-mask").show();
+                    $(".confirm1 ").show();
+                    setTimeout(function(){
+                        
+                        $(".confirm1 ").hide();
+                    },2000);
+                    success = false;
+                    $(this).focus();
+                 
+                } 
+            },100);
+            
+        })
+        $(".end1").blur(function(){
+            setTimeout(function () {
+                if($(".end1").val() == 0){
+                    $(".prompt ").text("请选择结束时间");
+                    $(".nv91-mask").show();
+                    $(".confirm1 ").show();
+                    setTimeout(function(){
+                        
+                        $(".confirm1 ").hide();
+                    },2000);
+                    success = false;
+                    $(this).focus();
+                 
+                }
+                var time_1 = new Date(document.getElementById('start1').value).getTime();//1的时间戳
+                var time_2 = new Date(document.querySelector('.end1').value).getTime();//1的时间戳
+                if (time_2 < time_1) {
+    
+                    $(".prompt ").text("开始时间应小于结束时间");
+                    $(".nv91-mask").show();
+                    $(".confirm1 ").show();
+                    setTimeout(function () {
+                        
+                        $(".confirm1 ").hide();
+                    }, 2000);
+                    success = false;
+                    $(this).focus();
+                }  
+            },100);
+           
+        })
+        
+       
+    }
     //表单校验
     function formValidater(){
         var success = true;
-       debugger
+        debugger
        //获取当前时间戒指时分秒
-var now = new Date().getTime();//当前时间戳
-var time_1 = new Date(document.getElementById('start1').value).getTime();//1的时间戳
-var time_2 = new Date(document.querySelector('.end1').value).getTime();//1的时间戳
+        var now = new Date().getTime();//当前时间戳
+        var time_1 = new Date(document.getElementById('start1').value).getTime();//1的时间戳
+        var time_2 = new Date(document.querySelector('.end1').value).getTime();//1的时间戳
         var url = $(".url").val();
         var reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
         if($(".updateimg").attr("src") == "" ||$(".updateimg").attr("src") == "undefined" ){
@@ -634,21 +725,10 @@ var time_2 = new Date(document.querySelector('.end1').value).getTime();//1的时
             success = false;
             return;
         }
-        else if (url == "") {
+    
+        else if ($(".url").val() !== "" && !reg.test(url)) {
 
-            $(".prompt ").text("请填写链接");
-            $(".nv91-mask").show();
-            $(".confirm1 ").show();
-            setTimeout(function () {
-                
-                $(".confirm1 ").hide();
-            }, 2000);
-            success = false;
-            return;
-        }
-        else if (!reg.test(url)) {
-
-            $(".prompt ").text("请以http://或者https://开头");
+            $(".prompt ").text("URL地址请以http://或者https://开头");
             $(".nv91-mask").show();
             $(".confirm1 ").show();
             setTimeout(function () {

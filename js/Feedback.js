@@ -83,7 +83,16 @@ $(document).ready(function(){
                 var data = getSign(url, par);
                 console.log(data);
                 if(data.msg.code == "200"){
-                    alert("修改成功");
+                     $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                 }
         })
         $(".chooseCard li").click(function(){
@@ -436,7 +445,16 @@ data = JSON.parse(data);
                         debugger
                         var data = getSign(url,par);
                         if(data.msg.code === "10"){
-                            alert("删除成功");
+                             $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                             par = "appsercet=" + newAppsercet + "&method=get.dxWeb.dxComplaintCateList";
                             var bannerList = getSign(url, par);
                             render(bannerList);

@@ -38,7 +38,16 @@ var corporateName, corporateWeb,lat,lnt,  address,corporateId,position,username,
     var  data = getSign(url, par);
     console.log(data);
     if(data.msg.code == "10"){
-        alert("添加成功");
+         $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
     }else{
         alert("添加失败");
     }
@@ -83,16 +92,29 @@ function see(method,url){
         par = "appsercet=" + newAppsercet + "&method=" + method + "&corporateId=" + corporateId + "&position=" + position + "&username=" + username + "&modilePhone=" + modilePhone + "&email=" + email;
     }
 
-    var  data = getSign(url, par);
+    var data = getSign(url, par);
     console.log(data);
-    if(data.msg.code == "200"){
-        alert("修改成功");
+    if (data.msg.code == "200") {
+        $(".confirm").hide();
         $(".nv91-mask3").hide();
-        $(".nv91").hide();
-        $(".nv92").hide();
-        location.reload();
+        $(".prompt").text("操作成功");
+        $(".nv1").show();
+        setTimeout(function () {
+            $(".nv1").hide();
+            location.reload();
+
+        }, 2000);;
+       
     }else{
-        alert("修改失败"); 
+        $(".confirm").hide();
+        $(".nv91-mask3").hide();
+        $(".prompt").text("操作失败");
+        $(".nv3").show();
+        setTimeout(function () {
+            $(".nv3").hide();
+            location.reload();
+
+        }, 2000);;
     }
 
 }
@@ -163,7 +185,16 @@ var radio = document.querySelectorAll(".st1");
            }
            var data  = getSign(url,par);
                 if(data.msg.code == "200"){
-                    alert("操作成功");
+                     $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                     location.reload();
                 }else{
                     alert("修改失败");
@@ -184,7 +215,16 @@ var radio = document.querySelectorAll(".st1");
            } 
            var data  = getSign(url,par);
            if(data.msg.code == "200"){
-               alert("操作成功");
+                $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                location.reload();
            }else{
                alert("修改失败");

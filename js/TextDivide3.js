@@ -8,34 +8,7 @@ $(document).ready(function(){
         $(".nv91-mask").fadeOut();
         $(".nv91").hide();
     });
-   //按照发布时间排序
-   var ul = $(".ul_sort ul");
-    var lis = [];
-
-    lis = $(".ul_sort ul li");
-    var ux = [];
-    //循环提取时间，并调用排序方法进行排序
-    for (var i=0; i<lis.length; i++){
-        var tmp = {};
-        tmp.dom = lis.eq(i);
-        tmp.date = new Date(lis.eq(i).find("span").eq(0).html().replace(/-/g,'/'));
-        ux.push(tmp);
-    }
-    //数组排序，支持年的比较
-    ux.sort(function(a,b){
-       var myDate = new Date();
-       var year = myDate.getYear();
-       if(a.date.getYear < year && b.date.getYear == year){
-          return true;
-       }
-       return b.date - a.date;
-    });
-    //移除原先顺序错乱的li内容
-    $('.ul_sort ul li').remove();
-    //重新填写排序好的内容
-    for (var i=0; i<ux.length; i++){
-       ul.append(ux[i].dom);
-    }
+  
     //页面初次渲染
     url = src + "/skillInterface.dx";
     var appsercet = window.localStorage.getItem("appsercet");
@@ -108,7 +81,7 @@ $(document).ready(function(){
             $(".textList").html("");
             $.each(data.dxWebList, function (i, item) {
                 str += '<tr style="border-bottom: 1px solid #d8d8d8;">';
-                str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.cate_id + '"   aria-label="Single checkbox Two" data-id="' + item.cate_id + '"><label for="' + item.cate_id + '"></label></div></td>';
+                str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.cate_id + '"   aria-label="Single checkbox Two" data-id="' + item.cate_id + '"><label for="' + item.cate_id + '">&nbsp;</label></div></td>';
                 str += '<td>' + item.cate_name + '</td>';
                 str+='<td>"' + item.cate_num + '"</td>';
                 str+='<td style="color:#FF5456;"><span class="isDelete" data-id="' + item.cate_id + '">删除</span>&nbsp;&nbsp;<span class="isEdit" data-id="' + item.cate_id + '">编辑</span></td>'
@@ -198,7 +171,16 @@ $(document).ready(function(){
                             par = "appsercet="+newAppsercet+"&method=get.dxWeb.addCate&cateName="+cateName;
                             var data = getSign(url,par);
                             if(data.msg.code == "200"){
-                                alert("添加成功");
+                                 $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                             }
                         })
                           
@@ -218,7 +200,16 @@ $(document).ready(function(){
 
                                 var data = getSign(url, par);
                                 if (data.msg.code == "200") {
-                                    alert("删除成功");
+                                     $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                                     location.reload();
                                 }
                             })
@@ -248,7 +239,16 @@ $(document).ready(function(){
                                     var data = getSign(url,par);
                                     console.log(data);
                                     if(data.msg.code == "200"){
-                                        alert("修改成功");
+                                         $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                                         location.reload();
                                     }
                                 })
@@ -286,7 +286,16 @@ $(document).ready(function(){
                 
                 var data = getSign(url, par);
                 if (data.msg.code == "200") {
-                    alert("删除成功");
+                     $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                     location.reload();
                 }
             }

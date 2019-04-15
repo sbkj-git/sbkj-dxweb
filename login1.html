@@ -49,16 +49,16 @@
     </style>
 </head>
 <script src="./js/remberPass.js"></script>
-<body id="body" onload="document.getElementById('username').focus();GetCookie();">
+<body id="body" onload="GetCookie();">
 <div class="banner3" style="height: 100%">
 
     <div>
         <div class="banners">
             <div class="jx">
                 <img src="./image/l1.png" alt="">
-                <p>东信在线，让企业运转更高效</p>
+                <p>东信在线门户运营后台</p>
             </div>
-            <div class="login flex justify login_p" style="padding-top: 30px;margin-right: 56px;">
+            <div class="login flex justify login_p" style="padding-top: 30px;margin-right: 100px;">
                 <p>登录</p>
 
                 <div class="div">
@@ -84,14 +84,15 @@
                     <span><a href="./forgetPass.html" class="forgetPass" style="font-size: 15px;">忘记密码</a></span>
                 </div>
             </div>
+            <footer class="footer" >
+                <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+                </p>
+                <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+                <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+            </footer>
         </div>
     </div>
-    <footer class="footer" style=" position: absolute;bottom: 0px;">
-        <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-        </p>
-        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-        <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
-    </footer>
+    
 </div>
 <div class="nv" style="padding:10px;">
     <div class="nv91-close">X</div>
@@ -112,6 +113,7 @@
 <script src="./js/getRequest.js"></script>
 <script type="text/javascript">
     window.onload = function () {
+        GetCookie();
         var height = document.documentElement.clientHeight;
         $("#body").height(height);
 
@@ -124,9 +126,9 @@
         //提交用户信息
         // window.localStorage.clear();
         var par, url, visterName, username, pwd, type, methods;
-        $(".user").focus(function(){
-            GetCookie();
-        })
+        // $(".user").focus(function(){
+        //     GetCookie();
+        // })
         $(".user").blur(function () {
             username = $(this).val()
             if (username==null||username.trim()=="") {
@@ -158,6 +160,8 @@
             window.sessionStorage.setItem("n", 0)
             //重新判断什么时候显示验证码
             $(".btnLogin").click(function () {
+                pwd = $(".pass").val();
+                username = $(".user").val(); 
                 if (username==null||username.trim()=="") {
                     $("#error").text("用户名不能为空!");
                 }
@@ -185,20 +189,19 @@
                         $(".hide").show();
                         x == 3;
                     }
-
-                    //console.log(x)
                 } else {
                     return false
                 }
-                $(".user").val("");
-                $(".pass").val("");
+                // $(".user").val("");
+                // $(".pass").val("");
             })
         } else {
             if (x == 3) {
                 x == 3;
                 $(".hide").show();
                 $(".btnLogin").click(function () {
-
+                    pwd = $(".pass").val();
+                username = $(".user").val();
                     if (username==null||username.trim()=="") {
                         $("#error").text("用户名不能为空!");
                     }
@@ -221,12 +224,14 @@
                         return false
                     }
                 })
-                $(".user").val("");
-                $(".pass").val("");
+                // $(".user").val("");
+                // $(".pass").val("");
             }
             if (x < 3) {
                 $(".hide").hide();
                 $(".btnLogin").click(function () {
+                    pwd = $(".pass").val();
+                username = $(".user").val();
                     if (username==null||username.trim()=="") {
                         $("#error").text("用户名不能为空!");
                     }
@@ -255,8 +260,8 @@
                     } else {
                         return false
                     }
-                    $(".user").val("");
-                    $(".pass").val("");
+                    // $(".user").val("");
+                    // $(".pass").val("");
                 })
             }
         }
@@ -409,7 +414,7 @@ function checkInCorrect()      //判断用户名和密码是否为空
                 nm = nmpsd.substring(0, beginPosition);
                 psd = nmpsd.substring(beginPosition + 2);
                 document.getElementById('username').value = nm;
-                document.getElementById('password').value = psd;
+                // document.getElementById('password').value = psd;
                 if (nm != "" && psd != "") {
                     // document.forms[0].checkbox.checked = true;
                     document.getElementById('remember_password').checked = true;

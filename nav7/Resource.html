@@ -64,7 +64,8 @@
         }
 
         .returnBack {
-            font-size: 40px;
+            font-size: 24px;
+            line-height: 40px;
         }
 
         .f14 {
@@ -118,6 +119,8 @@
             margin-top: -2px;
             border-radius: 50%;
         }
+        /* .manage12{width: 100px;height:100px;} */
+        .manage12 .close12{right:50px;top:3px;}
     </style>
 
 </head>
@@ -168,7 +171,7 @@
                 </div>
             </div>
         </div>
-        <p class="returnBack">&larr;<span class="f14">返回上一级</span></p>
+        <p class="returnBack">&larr;&nbsp;&nbsp;&nbsp;<span class="f14">返回上一级</span></p>
         <div class="flex between" style="width: 100%">
             <div class="imgBox1 flex">
 
@@ -179,7 +182,7 @@
     </div>
 </div>
 <footer class="footer">
-    <p>Copyright 2017 中国东信云通信平台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
     </p>
     <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
 
@@ -318,15 +321,20 @@
             </div>
         </form>
     </div>
-    <div class="nv" style="padding:10px;">
-        <div class="nv91-close">X</div>
-        <form action="" class="form-horizontal" role="form">
-            <div class="prompt" style="padding-bottom:30px;">
-                <p style="font-size: 20px;">警告</p>
-                <img src="" alt=""><span>操作成功</span>
+   <!--确认 取消-->
+   <div class="confirm">
+        <div  class="boxTotal">
+            <img src="../image/hint.png" class="boxImg"/>
+            <span class="boxDelete">确定要删除这条消息吗?</span>
             </div>
-
-        </form>
+            <div class="dele">
+            <button class="roleRefu  roleRefuse5">取消</button>
+            <button class="roleSur roleSure">确定</button>
+        </div>
+    </div>
+    <div class="nv1">
+        <img src="../image/success.png" class="success1"/>
+        <span class="referMes prompt">删除成功</span>
     </div>
 </div>
 </body>

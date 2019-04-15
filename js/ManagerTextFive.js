@@ -3,7 +3,7 @@ $(document).ready(function(){
         if (el.readOnly) el.checked=el.readOnly=false;
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
-    $("#date1").dateSelect();
+  
     $(".nv91-close").click(function(){
         $(".nv91-mask").hide();
         $(".nv91").hide();
@@ -242,17 +242,31 @@ $(document).ready(function(){
                         
                         var IdList = t1();
                         var releaseTime = $(".releaseTime").val();
+                        if(IdList.length == 0){
+                            $(".confirm").hide();
+                            $(".prompt").text("请至少选择一条数据");
+                            $(".nv91-mask").show();
+                            $(".confirm1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".confirm1").hide();
+                                
+    
+                            }, 2000);
+                        }
                         par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&releaseTime=" + releaseTime;
                         var data = getSign(url, par);
                         if (data.msg.code == "200") {
                             $(".confirm").hide();
-                            $(".prompt").text("修改成功");  
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
                             $(".nv1").show();
-                            setTimeout(function(){
+                            setTimeout(function () {
                                 $(".nv91-mask").hide();
                                 $(".nv1").hide();
-                               location.reload();
-                            },2000);
+                                location.reload();
+    
+                            }, 2000);
                         }else{
                             $(".confirm").hide();
                             $(".prompt").text("修改失败");  
@@ -272,12 +286,30 @@ $(document).ready(function(){
                     $(".nv92").show();
                     $(".addType").click(function () {
                         var IdList = t1();
+                        $(".confirm").hide();
+                            $(".prompt").text("请至少选择一条数据");
+                            $(".nv91-mask").show();
+                            $(".confirm1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".confirm1").hide();
+                                
+    
+                            }, 2000);
                         var source = $(".source").val();
                         par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&source=" + source;
                         var data = getSign(url, par);
                         if (data.msg.code == "200") {
-                            alert("操作成功");
-                            location.reload();
+                            $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+    
+                            }, 2000);
                         }
                     })
                     
@@ -288,12 +320,30 @@ $(document).ready(function(){
                     $(".nv93").show();
                     $(".addType").click(function () {
                         var IdList = t1();
+                        $(".confirm").hide();
+                            $(".prompt").text("请至少选择一条数据");
+                            $(".nv91-mask").show();
+                            $(".confirm1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".confirm1").hide();
+                                
+    
+                            }, 2000);
                         var author = $(".author").val();
                         par = "method=get.dxWeb.batchUpdateQAndA&appsercet=" + newAppsercet + "&IdList=" + IdList + "&author=" + author;
                         var data = getSign(url, par);
                         if (data.msg.code == "200") {
-                            alert("操作成功");
-                            location.reload();
+                            $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);
                         }
                     })
                     

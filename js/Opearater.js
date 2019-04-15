@@ -5,7 +5,11 @@
     }
     window.onload = function(){
         //页面初次渲染加载数据
-
+        $(".btn1").each(function(index){
+            $(this).click(function(){
+                $(".btn1").removeClass("btn-primary").eq(index).addClass("btn-primary");
+            })
+       })
         var data = window.localStorage.getItem("dxRightsList");
         data = JSON.parse(data);
 
@@ -48,14 +52,23 @@
                     var htm = $(".chOperator option:checked").html();
                     role = htm;
 
-                    par = "appsercet="+newAppsercet+"&method=get.dxWeb.operation&roleId="+val;
-                    
-                    logsgin(url,par);
-
                     if(val == 0){
                         par = "appsercet="+newAppsercet+"&method=get.dxWeb.operation";
                        
-                        logsgin(url,par);
+                        var data = getSign(url,par);
+                        render(data);
+                    }else{
+                        par = "appsercet="+newAppsercet+"&method=get.dxWeb.operation&roleId="+val;
+                        var data = getSign(url,par);
+                        console.log(data)
+                        if(data.msg.code == "10"){
+                            $(".operater").html("");
+                        }else{
+                            render(data);
+                           
+                        }
+                       
+
                     }
                 })
                 $(".opName").blur(function(){
@@ -139,7 +152,16 @@
                                     // debugger
                                     // var data = getSign(url,par);
                                     if(data.msg.code == "200"){
-                                        alert("添加成功");
+                                         $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask").hide();
+                                $(".nv1").hide();
+                                location.reload();
+
+                            }, 2000);;
                                         $(".nv91").reset();
                                         $(".nv91-mask").fadeOut();
                                         $(".nv91").hide();
@@ -200,7 +222,27 @@
             }
         })
 
+//页面渲染
+        function render(data) {
+            var role2 = "";
+            $.each(data.roleList, function (i, item) {
+                $(".operater").html("");
+                //console.log(item)
+                role2 += "<tr style='border-bottom: 1px solid #d8d8d8;' class='rolename1' data-id='" + item.user_id + "'>";
+                role2 += "<td><div class='checkbox checkbox-primary'><input type='checkbox' class='styled styled-primary r1 t1' id='role" + i + "'" + "value='" + item.user_id + "' aria-label='Single checkbox Two'><label for='role" + i + "' class='test'>" + item.user_id + "</label></div></td><td class='r2'>" + item.role_name + "</td><td class='r3'>" + item.true_name + "</td><td class='r4'>" + item.modile_phone + "</td>";
+                if (item.status == 1) {
+                    role2 += "<td class='r5' data-id='1'>启用</td>";
+                }
+                if (item.status == 2) {
+                    role2 += "<td class='r5' data-id='1'>禁用</td>";
+                }
+                role2 += " <td style='color:#FF5456;' ><span class='isEdit' data-id='" + item.user_id + "' >编辑</span>&nbsp;<span class='isDelete' data-id='" + item.user_id + "'>删除</span></td>";
 
+                role2 += "</tr>";
+
+            })
+            $(".operater").html(role2);
+        }
         //底部页码
         getPage()
     }
