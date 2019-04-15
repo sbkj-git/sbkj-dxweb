@@ -59,8 +59,8 @@
                    style="text-align: left;line-height: 2;padding: 0;margin:0">选择日期:</label>
             <div class=" col-sm-8">
                 <div class="position" style="height:40px;">
-                    <input type="text" class="form-control dateChange" id="start1" style="height:inherit;"/>
-                    <span style="font-family: iconfont;position: absolute;right: 1%;top:-30px;font-size: 24px;"
+                    <input type="text" class="form-control dateChange" id="startAndEnd" style="height:inherit;width: 120%"/>
+                    <span style="font-family: iconfont;position: absolute;right: -15%;top:-30px;font-size: 24px;"
                           id="datetimepicker1">&#xe73a;</span>
                 </div>
 
@@ -231,16 +231,16 @@
     }
 
 
-    // 日历插件
-    $('#start1').daterangepicker({
-        "singleDatePicker": true,
+    // 开始时间和结束时间日历插件
+    $('#startAndEnd').daterangepicker({
+        "showWeekNumbers": true,
         "showISOWeekNumbers": true,
         "timePicker": true,
         "timePickerSeconds": true,
         "locale": {
             "direction": "ltr",
             "format": "YYYY-MM-DD HH:mm:ss",
-            "separator": " - ",
+            "separator": " ~ ",
             "applyLabel": "确定",
             "cancelLabel": "取消",
             "fromLabel": "From",
@@ -271,9 +271,30 @@
             ],
             "firstDay": 1
         },
-    }, function (start, end, label) {
-        console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+// "startDate": "04-11-2019",
+// "endDate": "04-11-2019"
+    }, function(start, end, label) {
+        var starttime = start.format('YYYY-MM-DD HH:mm:ss');
+        var endTime = end.format('YYYY-MM-DD HH:mm:ss');
+        var url = src + "/bannerGetInterface.dx";
+        var appsercet = window.localStorage.getItem("appsercet");
+        appsercet = JSON.parse(appsercet);
+        newAppsercet = appsercet.data;
+        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList&starttime=" + starttime + "&erdtime=" + endTime;
+        var bannerList = getSign(url, par);
+        if (bannerList.msg && bannerList.msg.code == "10") {
+            $(".bannerList").html("");
+            $("#startAndEnd").val("");
+        } else {
+            bannerList1(bannerList);
+            firstRender();
+            $("#startAndEnd").val("");
+        }
+        console.log(start.format('YYYY-MM-DD '));
+        console.log(end.format('YYYY-MM-DD '));
+// console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
     });
+
 </script>
 <script type="text/javascript">
     // 获取data数据中的时间

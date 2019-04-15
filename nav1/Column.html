@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,141 +9,183 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-<link rel="stylesheet" type="text/css" href="../css/buind.css">
-<script src="../js/jquery-1.10.2.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/echarts.js"></script>
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-<style>
-.btn-default{border:1px solid #D9D9D9;}
-.p24{font-size:24px;font-weight: 600;}
-.btn-nowClick{border: 1px solid #FF5456;color:#FF5456;}
-.p20{padding:0 20px;}
-a{color: #959595;}
-.f100{width: 100%;justify-content: space-between;border-bottom: 1px dashed #D4D4D4;line-height: 100px;box-sizing: border-box;padding: 0 100px 0 30px;height: 100px;}
-</style>
+    <link rel="stylesheet" type="text/css" media="all" href="../js/date/css/daterangepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="../css/buind.css">
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/echarts.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="../js/date/js/moment.js"></script>
+    <script src="../js/date/js/daterangepicker.js"></script>
+    <![endif]-->
+    <style>
+        .btn-default {
+            border: 1px solid #D9D9D9;
+        }
+
+        .p24 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .btn-nowClick {
+            border: 1px solid #FF5456;
+            color: #FF5456;
+        }
+
+        .p20 {
+            padding: 0 20px;
+        }
+
+        a {
+            color: #959595;
+        }
+
+        .f100 {
+            width: 100%;
+            justify-content: space-between;
+            border-bottom: 1px dashed #D4D4D4;
+            line-height: 100px;
+            box-sizing: border-box;
+            padding: 0 100px 0 30px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
-    <div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
-        <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
-            <li><a href="#">统计/</a></li>
-            <li><a href="#">渠道统计</a></li>
-            <h1 style="width:100%;margin-top:25px;">渠道统计</h1>
-        </ul>
-        
-    </div>  
-    <div style="background-color:#fff;width:100%;margin-bottom: 50px;height:200px;">  
-        <div class="form-group flex f100"
-           >
-            <div class="flex" style="width:50%">
-                <div class="text-center">
-                    <span style="line-height: 2;">快速查看:</span>
-                </div>
-                <div class="text-center">
-                    <button class="btn ">今日</button>
-                </div>
-                <div class="text-center">
-                    <button class="btn ">昨日</button>
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-primary">最近7日</button>
-                </div>
-                <div class="text-center">
-                    <button class="btn ">最近30日</button>
-                </div>
-        
+<div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
+    <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
+        <li><a href="#" class="text1">统计/</a></li>
+        <li><a href="#" class="text2">渠道统计</a></li>
+        <h1 style="width:100%;margin-top:25px;" class="text3">渠道统计</h1>
+    </ul>
+
+</div>
+<div style="background-color:#fff;width:100%;margin-bottom: 50px;height:200px;">
+    <div class="form-group flex f100"
+    >
+        <div class="flex" style="width:50%">
+            <div class="text-center">
+                <span style="line-height: 2;">快速查看:</span>
             </div>
-        
-            <div class="col-sm-1" style="text-align: center;float: right;">
-                <span style="font-size:14px;color:#FF5456;">收起</span>
+            <div class="text-center">
+                <button class="btn btnClick1">今日</button>
             </div>
+            <div class="text-center">
+                <button class="btn btnClick2">昨日</button>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary btnClick3">最近7日</button>
+            </div>
+            <div class="text-center">
+                <button class="btn btnClick4">最近30日</button>
+            </div>
+
         </div>
-        <div class="form-group flex" style="width: 100%;justify-content: space-between;">
-            <div class="flex" style="width:50%;margin-top: 20px;">
-                <div class="text-center col-sm-1">
-                    <span style="line-height: 2;">设备:</span>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-nowClick">全部 </button>
-                    <button type="button" class="btn btn-default">计算机 2</button>
-                    <button type="button" class="btn btn-default">移动设备 3</button>
-                </div>
-                <div class="text-center col-sm-1">
-                    <span style="line-height: 2;">访客:</span>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-nowClick">全部 </button>
-                    <button type="button" class="btn btn-default">新访客 </button>
-                    <button type="button" class="btn btn-default">就访客 </button>
-                </div>
-            </div>
+
+        <div class="col-sm-1" style="text-align: center;float: right;">
+            <span style="font-size:14px;color:#FF5456;">收起</span>
         </div>
     </div>
-    <div style="padding:0px 70px;">
-        <div style="width: 100%;background-color: #fff;box-sizing: border-box;padding:50px 70px;">
-            <div class="col-sm-12" style="font-size:16px;">平台小号&nbsp;今日访问量</div>
-            <div id="main4" style="width: 100%;height:400px;" class="col-sm-12"></div>       
-        </div>
-    </div>
-    <div style="padding:50px 70px;">
-        <table class="table" style="width: 100%;overflow: hidden;background-color: #fff;">
-            <thead>
-                <tr style="border-bottom: 1px solid #d8d8d8;background-color: #F3F3F3;">
-                    <td class="position">
-                        名称
-                    </td>
-                    <td></td>
-                    <td>浏览量</td>
-                    <td>百度爬虫</td>
-                    <td>Google</td>
-                    <td>其他爬虫</td>
-                    <td>时段统计</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="border-bottom: 1px solid #d8d8d8;">
-                    <td>
-                        首页
-                    </td>
-                    <td><img src="../image/u1294.png" alt="" style="width: 25px;height:20px;"></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td style="color:#FF5456;"><span class="b1">查看</span></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="paging flex justify">
-            <div style="color:#929292;font-size: 14px;padding-left: 20px;">
-                共<span>400</span>条数据&nbsp;第<span>1</span>/<span>80</span>页</div>
-            <div style="width:50%;">
-                <ul class="pageList flex " style="width:auto;justify-content: flex-end;">
-                    <li>&lt;</li>
-                    <li class="colorActive">1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>&gt;</li>
-                    <li>10条/页</li>
-                    <li>跳至<input type="number" class="btn" style="width:30px;height:30px;border-radius:5px;">页</li>
-                </ul>
+    <!--<div class="form-group flex" style="width: 100%;justify-content: space-between;">-->
+    <!--<div class="flex" style="width:50%;margin-top: 20px;">-->
+    <!--<div class="text-center col-sm-1">-->
+    <!--<span style="line-height: 2;">设备:</span>-->
+    <!--</div>-->
+    <!--<div class="btn-group">-->
+    <!--<button type="button" class="btn btn-nowClick">全部 </button>-->
+    <!--<button type="button" class="btn btn-default">计算机 2</button>-->
+    <!--<button type="button" class="btn btn-default">移动设备 3</button>-->
+    <!--</div>-->
+    <!--<div class="text-center col-sm-1">-->
+    <!--<span style="line-height: 2;">访客:</span>-->
+    <!--</div>-->
+    <!--<div class="btn-group">-->
+    <!--<button type="button" class="btn btn-nowClick">全部 </button>-->
+    <!--<button type="button" class="btn btn-default">新访客 </button>-->
+    <!--<button type="button" class="btn btn-default">就访客 </button>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="col-sm-5 flex"
+         style="line-height: 100px;box-sizing: border-box;padding: 0 100px 0 30px;height:100px">
+        <label for="name" class="control-label col-sm-3"
+               style="text-align: left;line-height: 2;padding: 0;margin:0">选择日期:</label>
+        <div class=" col-sm-8">
+            <div class="position" style="height:40px;">
+                <input type="text" class="form-control dateChange" id="startAndEnd" style="height:inherit;width: 120%"/>
+                <span style="font-family: iconfont;position: absolute;right: -15%;top:-30px;font-size: 24px;"
+                      id="datetimepicker1">&#xe73a;</span>
             </div>
+
         </div>
     </div>
-   <footer class="footer">
-        <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-         </p>
-        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-         
-         <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
-    </footer>
+</div>
+<div style="padding:0px 70px;">
+    <div style="width: 100%;background-color: #fff;box-sizing: border-box;padding:50px 70px;">
+        <div class="col-sm-12" style="font-size:16px;">平台小号&nbsp;今日访问量</div>
+        <div id="main4" style="width: 100%;height:400px;" class="col-sm-12"></div>
+    </div>
+</div>
+<div style="padding:50px 70px;">
+    <table class="table" style="width: 100%;overflow: hidden;background-color: #fff;">
+        <thead>
+        <tr style="border-bottom: 1px solid #d8d8d8;background-color: #F3F3F3;">
+            <td class="position">
+                名称
+            </td>
+            <td></td>
+            <td>浏览量</td>
+            <td>百度爬虫</td>
+            <td>Google</td>
+            <td>其他爬虫</td>
+            <td>时段统计</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr style="border-bottom: 1px solid #d8d8d8;">
+            <td>
+                首页
+            </td>
+            <td><img src="../image/u1294.png" alt="" style="width: 25px;height:20px;"></td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td style="color:#FF5456;"><span class="b1">查看</span></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="paging flex justify">
+        <div style="color:#929292;font-size: 14px;padding-left: 20px;">
+            共<span>400</span>条数据&nbsp;第<span>1</span>/<span>80</span>页
+        </div>
+        <div style="width:50%;">
+            <ul class="pageList flex " style="width:auto;justify-content: flex-end;">
+                <li>&lt;</li>
+                <li class="colorActive">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>&gt;</li>
+                <li>10条/页</li>
+                <li>跳至<input type="number" class="btn" style="width:30px;height:30px;border-radius:5px;">页</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
+    </p>
+    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
+
+    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+</footer>
 </body>
 </html>
 <script src="../js/MD5.js"></script>
@@ -153,18 +194,80 @@ a{color: #959595;}
 <script src="../js/getRequest.js"></script>
 <script src="../js/count/Column.js"></script>
 <script type="text/javascript">
+
+
     $(document).ready(function () {
-        $('#demo').daterangepicker({
-            "startDate": "03-13-2019",
-            "endDate": "03-19-2019"
-        }, function (start, end, label) {
-            console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+
+        // 开始时间和结束时间日历插件
+        $('#startAndEnd').daterangepicker({
+            "showWeekNumbers": true,
+            "showISOWeekNumbers": true,
+            "timePicker": true,
+            "timePickerSeconds": true,
+            "locale": {
+                "direction": "ltr",
+                "format": "YYYY-MM-DD HH:mm:ss",
+                "separator": " ~ ",
+                "applyLabel": "确定",
+                "cancelLabel": "取消",
+                "fromLabel": "From",
+                "toLabel": "To",
+                "customRangeLabel": "Custom",
+                "daysOfWeek": [
+                    "日",
+                    "一",
+                    "二",
+                    "三",
+                    "四",
+                    "五",
+                    "六"
+                ],
+                "monthNames": [
+                    "一月",
+                    "二月",
+                    "三月",
+                    "四月",
+                    "五月",
+                    "六月",
+                    "七月",
+                    "八月",
+                    "九月",
+                    "十月",
+                    "十一月",
+                    "十二月"
+                ],
+                "firstDay": 1
+            },
+// "startDate": "04-11-2019",
+// "endDate": "04-11-2019"
+        }, function(start, end, label) {
+            var starttime = start.format('YYYY-MM-DD HH:mm:ss');
+            var endTime = end.format('YYYY-MM-DD HH:mm:ss');
+            var url = src + "/bannerGetInterface.dx";
+            var appsercet = window.localStorage.getItem("appsercet");
+            appsercet = JSON.parse(appsercet);
+            newAppsercet = appsercet.data;
+            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList&starttime=" + starttime + "&erdtime=" + endTime;
+            var bannerList = getSign(url, par);
+            if (bannerList.msg && bannerList.msg.code == "10") {
+                $(".bannerList").html("");
+                $("#startAndEnd").val("");
+            } else {
+                bannerList1(bannerList);
+                firstRender();
+                $("#startAndEnd").val("");
+            }
+            console.log(start.format('YYYY-MM-DD '));
+            console.log(end.format('YYYY-MM-DD '));
+// console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
         });
+
         updateConfig();
+
         function updateConfig() {
             var options = {};
             if ($('#ranges').is(':checked')) {
-              option.ranges = {
+                option.ranges = {
                     '今日': [moment(), moment()],
                     '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
                     '最近7日': [moment().subtract(6, 'days'), moment()],
@@ -179,7 +282,7 @@ a{color: #959595;}
                 $(".daterangepicker").show();
             })
             $('#config-demo1').daterangepicker(options, function (start, end, label) {
-                
+
                 $('#config-demo1').val(start.format('YYYY-MM-DD') + "~" + end.format('YYYY-MM-DD'))
             }).click();
         }
@@ -187,27 +290,28 @@ a{color: #959595;}
 </script>
 <script type="text/javascript">
     function changeState(el) {
-        if (el.readOnly) el.checked=el.readOnly=false;
-        else if (!el.checked) el.readOnly=el.indeterminate=true;
+        if (el.readOnly) el.checked = el.readOnly = false;
+        else if (!el.checked) el.readOnly = el.indeterminate = true;
     }
 </script>
 
 <script>
-var myChart = echarts.init(document.getElementById('main4'));
-option = {
-    xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line'
-    }]
-};
-myChart.setOption(option);
+    var myChart = echarts.init(document.getElementById('main4'));
+    option = {
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+        }]
+    };
+    myChart.setOption(option);
+
 
 </script>
 
