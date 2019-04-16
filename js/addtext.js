@@ -115,9 +115,7 @@ $("#upload2").change(function(){
    
 
     
-    //选择发布时间
-    // $("#date").dateSelect();
-   
+ 
    function changeState(el) {
        if (el.readOnly) el.checked=el.readOnly=false;
        else if (!el.checked) el.readOnly=el.indeterminate=true;
@@ -332,10 +330,15 @@ var url = src + url1;
             $(".prompt ").text("保存成功");
             $(".nv91-mask").show();
                $(".nv1").show();
+               
+               $(".nv92").hide();
+               $(".nv91").hide();
             //    $(".confirm1 ").hide();
                setTimeout(function(){
                 $(".nv91-mask").hide();
                $(".nv1").hide();
+               $(".nv92").hide();
+               $(".nv91").hide();
                },2000); 
         }
         if(data.msg.code == "10"){
@@ -345,6 +348,8 @@ var url = src + url1;
                setTimeout(function(){
                 $(".nv91-mask").hide();
                $(".nv3").hide();
+               $(".nv92").hide();
+               $(".nv91").hide();
                },2000); 
         }
         document.getElementById("resetInput").reset();

@@ -436,7 +436,7 @@ function addorup(method,method2,pid,id){
                     if (data.msg.code == "200") {
                         $(".nv91-mask").show();
                         $(".nv1").show();
-                        $(".prompt span").text("操作成功");
+                        $(".prompt").text("操作成功");
                         setTimeout(function () {
                             $(".nv91-mask").hide();
                             $(".nv1").hide();
@@ -444,7 +444,7 @@ function addorup(method,method2,pid,id){
                         }, 2000);
                         
                     } else {
-                        $(".prompt span").text("操作失败");
+                        $(".prompt").text("操作失败");
                         $(".nv91-mask").show();
                         $(".nv1").show();
                         setTimeout(function () {

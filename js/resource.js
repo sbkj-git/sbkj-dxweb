@@ -3,7 +3,10 @@ $(document).ready(function () {
         if (el.readOnly) el.checked = el.readOnly = false;
         else if (!el.checked) el.readOnly = el.indeterminate = true;
     }
-   
+   $(".nv91-close").clone(function(){
+       $(".nv91-mask").hide();
+       $(".nv91").hide();
+   })
     //封装添加修改方法
     function addUpdate(method, id, embel) {
         var appsercet = window.localStorage.getItem("appsercet");
@@ -276,7 +279,8 @@ $(document).ready(function () {
             })
 
             //通过文件名称获取该名下所有文件夹
-            $(".searchName").click(function () {
+            $(".searchName").unbind('click').bind("click",function(){ 
+            // $(".searchName").click(function () {
 
                 var val = $(".searchName1").val();
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll&fileNmae=" + val;
@@ -329,11 +333,7 @@ $(document).ready(function () {
                             } else {
                                 isEnable = 2;
                             }
-                            // if (warmask.checked == true) {
-                            //     isEnable = 1;
-                            // } else {
-                            //     isEnable = 2;
-                            // }
+                            
                             $(".fileSure1").unbind('click').bind("click",function(){
                             // $(".fileSure1").click(function () {
 
@@ -366,19 +366,34 @@ $(document).ready(function () {
                     if (obj.method === "get.dxWeb.editdImgs") {
                         $(".editImg").show();
                         $(".editImg").click(function () {
-                            var radio = document.querySelectorAll(".radio12");
-                            for (var i = 0; i < radio.length; i++) {
-                                var obj = radio[i];
 
-                                if (obj.checked == true) {
-
-                                    var value = obj.getAttribute("data-name");
-                                    var id = obj.getAttribute("data-id");
-                                    localStorage.setItem("imgUrl", $(".imgHover1 ").eq(value).attr("src"));
-                                    localStorage.setItem("nowId", id);
-                                    location.href = "./Head_Cut_PC-master/index.html";
+                            var judge = false;
+                                
+                           
+                                var radio = document.querySelectorAll(".radio12");
+                                for (var i = 0; i < radio.length; i++) {
+                                    var obj = radio[i];
+    
+                                    if (obj.checked == true) {
+                                        judge = true;
+                                        var value = obj.getAttribute("data-name");
+                                        var id = obj.getAttribute("data-id");
+                                        localStorage.setItem("imgUrl", $(".imgHover1 ").eq(value).attr("src"));
+                                        localStorage.setItem("nowId", id);
+                                        location.href = "./Head_Cut_PC-master/index.html";
+                                    }else{
+                                        $(".nv91-mask").show();
+                                        $(".prompt").text("请选择图片");
+                                        $(".confirm1").show(); 
+                                        setTimeout(function(){
+                                            $(".nv91-mask").hide();
+                                            $(".confirm1").hide();
+                                           
+                                        },2000);
+                                    }
                                 }
-                            }
+                            
+                           
                         })
                     }
                     //判断该用户是否有删除权限
@@ -417,21 +432,35 @@ $(document).ready(function () {
                             }
                         })
                         $(".manage12 .close12").unbind('click').bind("click",function(){ 
+                            debugger
                         // $(".manage12 .close12").click(function () {
-                                    
-                            var id = $(this).attr("data-id")
-                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.daleteFolder&id=" + id;
-                            var data = getSign(url, par);
-                            if (data.msg.code == "200") {
-                                $(".confirm").hide();
-                                $(".nv91-mask").show();
-                                $(".nv1").show();
-                                setTimeout(function () {
+                            $(".prompt").text("文件夹中的图片也将一并删除");
+                             $(".nv91-mask").show();
+                             $(".confirm").show();
+                             var id = $(this).attr("data-id");
+                                $(".roleSur").click(function(){
+                                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.daleteFolder&id=" + id;
+                                    var data = getSign(url, par);
+                                    if (data.msg.code == "200") {
+                                       debugger
+                                       $(".prompt").text("删除成功");
+                                        $(".confirm").hide();
+                                        $(".nv91-mask").show();
+                                        
+                                        $(".nv1").show();
+                                        setTimeout(function () {
+                                            $(".nv91-mask").hide();
+                                            $(".nv1").hide();
+                                            location.reload();
+                                        }, 2000);
+                                    }
+                                }) 
+                                $(".roleRefuse5").click(function(){
                                     $(".nv91-mask").hide();
-                                    $(".nv1").hide();
-                                    location.reload();
-                                }, 2000);
-                            }
+                                    $(".confirm").hide();
+                                })   
+                           
+                           
                         })
                         
                     }
@@ -468,7 +497,7 @@ $(document).ready(function () {
                                 }
                             }
                             for (var i = 0; i < status.length; i++) {
-                                var obj = hyaline[i];
+                                var obj = status[i];
                                 if (obj.value == data.type) {
                                     obj.checked = true;
                                 }
@@ -550,9 +579,12 @@ $(document).ready(function () {
         $(this).mouseleave(function () {
             $(".search2").hide();
         })
-        $(this).dblclick(function () {
-            location.href = "../nav7/ImgReview.html"
-        })
+        // $(this).dblclick(function () {
+        //     var img = $(this).find(".imgHover1").attr("src");
+        //     console.log(img);
+        //     localStorage.setItem("imgDetail",img);
+        //     location.href = "../nav7/ImgReview.html"
+        // })
     })
     //渲染页面
     function render3(list) {

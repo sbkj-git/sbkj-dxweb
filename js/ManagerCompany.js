@@ -292,7 +292,8 @@
                                 
                                 object(url, newAppsercet)
                                 $(".companyName").val(data.msg.pic_title);
-                              
+                                $(".titles").val(data.msg.title);
+                                $(".remarks").val(data.msg.remarks);
                                 $(".companyUrl").val(data.msg.pic_url);
                                 var option = document.querySelectorAll(".companyType option");
                                 
@@ -348,7 +349,20 @@
                     
                     $.each(data.dxBannerList,function(i,item){
                         str+='<tr style="border-bottom: 1px solid #d8d8d8;">';
-                            str+='<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="'+item.id+'"   aria-label="Single checkbox Two" data-id="'+item.id+'"><label for="'+item.id+'"><img src="'+item.pic_img+'" alt="" style="width: 82px;height:56px;display: table-column;vertical-align: middle;"></label></div></td><td>'+item.pic_title+'</td><td>'+item.title+'</td><td>' + item.remarks + '</td><td>'+item.cate_name+'</td><td>'+item.pic_url+'</td>';
+                        str += '<td><div class="checkbox checkbox-primary"><input type="checkbox" class="styled styled-primary t1" id="' + item.id + '"   aria-label="Single checkbox Two" data-id="' + item.id + '"><label for="' + item.id + '"><img src="' + item.pic_img + '" alt="" style="width: 82px;height:56px;display: table-column;vertical-align: middle;"></label></div></td><td>' + item.pic_title + '</td>';
+                        var title;
+                        if (item.title.length > 5) {
+                            title = item.title.substring(0, 5) + "...";
+                        } else {
+                            title = item.title;
+                        }
+                        var remarks;
+                        if (item.remarks.length > 10) {
+                            remarks = item.remarks.substring(0, 10) + "...";
+                        } else {
+                            remarks = item.remarks;
+                        }
+                            str+='<td>' + title + '</td><td>' + remarks + '</td><td>'+item.cate_name+'</td><td>'+item.pic_url+'</td>';
                             if(item.state == 1){
                                 str+="<td><input class='switch switch-anim' type='checkbox' checked data-id='" + item.id + "'></td>";
                             }else{

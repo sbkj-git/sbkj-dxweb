@@ -9,79 +9,71 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" media="all" href="../js/date/css/daterangepicker.css"/>
-    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-    <link rel="stylesheet" type="text/css" href="../css/buind.css">
-    <script src="../js/jquery-1.10.2.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/echarts.js"></script>
-    <script src="../js/date/js/moment.js"></script>
-    <script src="../js/date/js/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+<link rel="stylesheet" type="text/css" href="../css/buind.css">
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/echarts.js"></script>
 
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
-<div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
-    <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
-        <li><a href="#">统计/</a></li>
-        <li><a href="#">网站概况</a></li>
-    </ul>
-    <h1>网站概况</h1>
-</div>
-<div style="width:100%;">
+    <div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
+        <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
+            <li><a href="#">统计/</a></li>
+            <li><a href="#">网站概况</a></li>
+        </ul>
+        <h1>网站概况</h1>
+    </div>
+   <div style="width:100%;" >
     <div style="background-color:#fff;margin-bottom: 50px;height:200px;">
-        <div class="form-group flex"
-             style="width: 100%;justify-content: space-between;border-bottom: 1px dashed #D4D4D4;line-height: 100px;box-sizing: border-box;padding: 0 100px 0 30px;height: 100px;">
+        <div class="form-group flex" style="width: 100%;justify-content: space-between;border-bottom: 1px dashed #D4D4D4;line-height: 100px;box-sizing: border-box;padding: 0 100px 0 30px;height: 100px;">
             <div class="flex" style="width:50%">
                 <div class="text-center">
                     <span style="line-height: 2;">快速查看:</span>
-                </div>
-                <div class="text-center">
-                    <button class="btn btnClick1">今日</button>
-                </div>
-                <div class="text-center">
-                    <button class="btn btnClick2">昨日</button>
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-primary btnClick3">最近7日</button>
-                </div>
-                <div class="text-center">
-                    <button class="btn btnClick4">最近30日</button>
-                </div>
+                 </div>
+                 <div class="text-center" >
+                     <button class="btn ">今日</button>
+                 </div>
+                 <div class="text-center">
+                     <button class="btn ">昨日</button>
+                 </div>
+                 <div class="text-center" >
+                     <button class="btn btn-primary">最近7日</button>
+                 </div>
+                 <div class="text-center" >
+                     <button class="btn ">最近30日</button>
+                 </div>
             </div>
             <div class="col-sm-1" style="text-align: center;float: right;">
                 <span style="font-size:14px;color:#FF5456;">收起</span>
             </div>
-        </div>
-        <div class="col-sm-5 flex"
-             style="line-height: 100px;box-sizing: border-box;padding: 0 100px 0 30px;height:100px">
-            <label for="name" class="control-label col-sm-3"
-                   style="text-align: left;line-height: 2;padding: 0;margin:0">选择日期:</label>
+        </div >
+        <div class="col-sm-5 flex" style="line-height: 100px;box-sizing: border-box;padding: 0 100px 0 30px;height:100px" >
+            <label for="name" class="control-label col-sm-3" style="text-align: left;line-height: 2;padding: 0;margin:0">选择日期:</label>
             <div class=" col-sm-8">
                 <div class="position" style="height:40px;">
-                    <input type="text" class="form-control dateChange" id="startAndEnd" style="height:inherit;width: 120%"/>
-                    <span style="font-family: iconfont;position: absolute;right: -15%;top:-30px;font-size: 24px;"
-                          id="datetimepicker1">&#xe73a;</span>
+                    <input type="text" class="form-control" id="nowdate" style="height:inherit;"/>
+                    <span style="font-family: iconfont;position: absolute;right: 1%;top:-30px;font-size: 24px;" id="datetimepicker1">&#xe73a;</span>
                 </div>
-
-            </div>
-        </div>
+                
+            </div> 
+        </div> 
     </div>
-    <ul class="flex justify" style="width:100%;box-sizing: border-box;padding:0 70px;">
-        <li class="li33 flex" style="height:200px;">
-            <div class="bag1 w36 flex column" style="justify-content: center;height:200px;">
+     <ul class="flex justify" style="width:100%;box-sizing: border-box;padding:0 70px;">
+       <li class="li33 flex" style="height:200px;">
+           <div class="bag1 w36 flex column" style="justify-content: center;height:200px;">
                 <img src="" alt="">
                 <p>独立访客</p>
-            </div>
-            <div class="flex column" style="padding:60px 0;width: 64%;box-sizing: border-box;">
-                <p class="data">今日0<span style="color:#E33935;">0</span></p>
-                <p class="data">累计<span>0</span></p>
-            </div>
-        </li>
-        <li class="li33 flex" style="height:200px;">
+           </div>
+           <div class="flex column" style="padding:60px 0;width: 64%;box-sizing: border-box;">
+               <p class="data">今日0<span style="color:#E33935;">0</span></p>
+               <p class="data">累计<span>0</span></p>
+           </div>
+       </li>
+       <li class="li33 flex" style="height:200px;">
             <div class="bag2 w36 flex column" style="justify-content: center;height:200px;">
-                <img src="" alt="">
-                <p>独立访客</p>
+                 <img src="" alt="">
+                 <p>独立访客</p>
             </div>
             <div class="flex column" style="padding:60px 0; ">
                 <p class="data">今日0<span style="color:#E33935;">0</span></p>
@@ -95,27 +87,35 @@
             </div>
             <div class="flex column" style="padding:60px 0; ">
                 <p class="data">今日0<span style="color:#E33935;">0</span></p>
-                <p class="data">累计<span>0</span></p>
+                 <p class="data">累计<span>0</span></p>
             </div>
         </li>
-    </ul>
-    <div class="mainBox">
-        <div id="main"></div>
-    </div>
-    <div class="flex" style="width:100%;padding: 50px 70px;box-sizing: border-box;">
-        <dl class="flex column www">
+     </ul>
+     <div class="mainBox">
+        <div id="main" ></div>
+     </div> 
+     <div class="flex" style="width:100%;padding: 50px 70px;box-sizing: border-box;">
+         <dl class="flex column www" >
             <!-- <img src="../image/u923.png" alt="" class="nextImg"> -->
             <dt style="width:100%;font-size: 16px;"> Top10来源网站</dt>
             <div class="flex justify margin30" style="width:100%;font-size: 14px;">
                 <span>来源网站</span>
-                <span> <i>浏览量(PV)</i>&nbsp;&nbsp;<i>占比</i></span>
+                <span> <i>浏览量(PV)</i>&nbsp;&nbsp;<i>占比</i></span> 
             </div>
-            <dd class="flex justify ED6264">
+            <dd class="flex justify ED6264" >
                 <span class="FF5456">http:baidu.com</span>
                 <span>
                     <i>5</i>
                     &nbsp;&nbsp;
-                    <i>50%</i>
+                    <i >50%</i>
+                </span>
+            </dd>
+            <dd class="flex justify ED6264" >
+                <span class="FF5456">http:baidu.com</span>
+                <span>
+                    <i>5</i>
+                    &nbsp;&nbsp;
+                    <i >50%</i>
                 </span>
             </dd>
             <dd class="flex justify ED6264">
@@ -123,20 +123,12 @@
                 <span>
                     <i>5</i>
                     &nbsp;&nbsp;
-                    <i>50%</i>
+                    <i >50%</i>
                 </span>
             </dd>
-            <dd class="flex justify ED6264">
-                <span class="FF5456">http:baidu.com</span>
-                <span>
-                    <i>5</i>
-                    &nbsp;&nbsp;
-                    <i>50%</i>
-                </span>
-            </dd>
-        </dl>
-        <dl class="flex column www">
-            <!-- <img src="../image/u923.png" alt="" class="nextImg"> -->
+         </dl>
+         <dl class="flex column www" >
+                <!-- <img src="../image/u923.png" alt="" class="nextImg"> -->
             <dt style="width:100%;font-size: 16px;"> Top10来源网站</dt>
             <div class="flex justify margin30" style="width:100%;font-size: 14px;">
                 <span>来源网站</span>
@@ -220,349 +212,140 @@
 </body>
 </html>
 <script src="../js/MD5.js"></script>
-<script src="../js/sign.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/getRequest.js"></script>
-<script src="../js/count/aboutWeb.js"></script>
 <script type="text/javascript">
     function changeState(el) {
-        if (el.readOnly) el.checked = el.readOnly = false;
-        else if (!el.checked) el.readOnly = el.indeterminate = true;
+        if (el.readOnly) el.checked=el.readOnly=false;
+        else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
-
-
-    // 开始时间和结束时间日历插件
-    $('#startAndEnd').daterangepicker({
-        "showWeekNumbers": true,
-        "showISOWeekNumbers": true,
-        "timePicker": true,
-        "timePickerSeconds": true,
-        "locale": {
-            "direction": "ltr",
-            "format": "YYYY-MM-DD HH:mm:ss",
-            "separator": " ~ ",
-            "applyLabel": "确定",
-            "cancelLabel": "取消",
-            "fromLabel": "From",
-            "toLabel": "To",
-            "customRangeLabel": "Custom",
-            "daysOfWeek": [
-                "日",
-                "一",
-                "二",
-                "三",
-                "四",
-                "五",
-                "六"
-            ],
-            "monthNames": [
-                "一月",
-                "二月",
-                "三月",
-                "四月",
-                "五月",
-                "六月",
-                "七月",
-                "八月",
-                "九月",
-                "十月",
-                "十一月",
-                "十二月"
-            ],
-            "firstDay": 1
-        },
-// "startDate": "04-11-2019",
-// "endDate": "04-11-2019"
-    }, function(start, end, label) {
-        var starttime = start.format('YYYY-MM-DD HH:mm:ss');
-        var endTime = end.format('YYYY-MM-DD HH:mm:ss');
-        var url = src + "/bannerGetInterface.dx";
-        var appsercet = window.localStorage.getItem("appsercet");
-        appsercet = JSON.parse(appsercet);
-        newAppsercet = appsercet.data;
-        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList&starttime=" + starttime + "&erdtime=" + endTime;
-        var bannerList = getSign(url, par);
-        if (bannerList.msg && bannerList.msg.code == "10") {
-            $(".bannerList").html("");
-            $("#startAndEnd").val("");
-        } else {
-            bannerList1(bannerList);
-            firstRender();
-            $("#startAndEnd").val("");
-        }
-        console.log(start.format('YYYY-MM-DD '));
-        console.log(end.format('YYYY-MM-DD '));
-// console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
-    });
-
 </script>
 <script type="text/javascript">
-    // 获取data数据中的时间
-    function getDate(data) {
-        var dates = new Array();
-        var pvs = new Array();
-        var uvs = new Array();
-        var ips = new Array();
-        var result = new Array();
-        var pvList = data.pvList;
-        for (var i = 0; i < pvList.length; i++) {
-            dates.push(pvList[i].datetime);
-            pvs.push(pvList[i].pv);
-            uvs.push(pvList[i].uv);
-            ips.push(pvList[i].ip);
+     // 基于准备好的dom，初始化echarts实例
+     var myChart = echarts.init(document.getElementById('main'));
+// 指定图表的配置项和数据
+// app.title = '多 X 轴示例';
+var colors = ['#5793f3', '#d14a61', '#675bba'];
+option = {
+    color: colors,
+
+    tooltip: {
+        trigger: 'none',
+        axisPointer: {
+            type: 'cross'
         }
-        result.push(dates,pvs,uvs,ips);
-
-        return result;
-    }
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-    // 指定图表的配置项和数据
-    // app.title = '多 X 轴示例';
-    var colors = ['#5793f3', '#d14a61', '#675bba'];
-    option = {
-        color: colors,
-
-        tooltip: {
-            trigger: 'none',
-            axisPointer: {
-                type: 'cross'
-            }
-        },
-        legend: {
-            data: ['PV', 'UV', 'IP']
-        },
-        grid: {
-            top: 70,
-            bottom: 50
-        },
-        xAxis: [
-            {
-                type: 'category',
-                axisTick: {
-                    alignWithLabel: true
-                },
-                axisLine: {
-                    onZero: false,
-                    lineStyle: {
-                        color: colors[1]
-                    }
-                },
-                axisPointer: {
-                    label: {
-                        formatter: function (params) {
-                            return '降水量  ' + params.value
-                                + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
-                        }
-                    }
-                },
-                data: getDate(data)[0]
+    },
+    legend: {
+        data:['PV', 'UV','IP']
+    },
+    grid: {
+        top: 70,
+        bottom: 50
+    },
+    xAxis: [
+        {
+            type: 'category',
+            axisTick: {
+                alignWithLabel: true
             },
-            {
-                type: 'category',
-                axisTick:
-                    {
-                        alignWithLabel: true
-                    }
-                ,
-                axisLine: {
-                    onZero: false,
-                    lineStyle:
-                        {
-                            color: colors[0]
-                        }
+            axisLine: {
+                onZero: false,
+                lineStyle: {
+                    color: colors[1]
                 }
-                ,
-                axisPointer: {
-                    label: {
-                        formatter: function (params) {
-                            return '降水量  ' + params.value
-                                + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
-                        }
+            },
+            axisPointer: {
+                label: {
+                    formatter: function (params) {
+                        return '降水量  ' + params.value
+                            + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
                     }
                 }
-                ,
-                data: getDate(data)[0]
-            }
-            ,
-            {
-                type: 'category',
-                axisTick:
-                    {
-                        alignWithLabel: true
-                    }
-                ,
-                axisLine: {
-                    onZero: false,
-                    lineStyle:
-                        {
-                            color: colors[2]
-                        }
+            },
+            data: ["2016-1", "2016-2", "2016-3", "2016-4", "2016-5", "2016-6", "2016-7", "2016-8", "2016-9", "2016-10", "2016-11", "2016-12"]
+        },
+        {
+            type: 'category',
+            axisTick: {
+                alignWithLabel: true
+            },
+            axisLine: {
+                onZero: false,
+                lineStyle: {
+                    color: colors[0]
                 }
-                ,
-                axisPointer: {
-                    label: {
-                        formatter: function (params) {
-                            return '降水量  ' + params.value
-                                + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
-                        }
+            },
+            axisPointer: {
+                label: {
+                    formatter: function (params) {
+                        return '降水量  ' + params.value
+                            + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
                     }
                 }
-                ,
-                data: getDate(data)[0]
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value'
-            }
-        ],
-        series:
-            [
-                {
-                    name: 'PV',
-                    type: 'line',
-                    xAxisIndex: 1,
-                    smooth: true,
-                    data: getDate(data)[1]
-                },
-                {
-                    name: 'UV',
-                    type: 'line',
-                    smooth: true,
-                    data: getDate(data)[2]
-                },
-                {
-                    name: 'IP',
-                    type: 'line',
-                    smooth: true,
-                    data: getDate(data)[3]
+            },
+            data: ["2015-1", "2015-2", "2015-3", "2015-4", "2015-5", "2015-6", "2015-7", "2015-8", "2015-9", "2015-10", "2015-11", "2015-12"]
+        },
+        {
+            type: 'category',
+            axisTick: {
+                alignWithLabel: true
+            },
+            axisLine: {
+                onZero: false,
+                lineStyle: {
+                    color: colors[2]
                 }
-            ]
-    }
-    ;
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+            },
+            axisPointer: {
+                label: {
+                    formatter: function (params) {
+                        return '降水量  ' + params.value
+                            + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                    }
+                }
+            },
+            data: ["2015-1", "2015-2", "2015-3", "2015-4", "2015-5", "2015-6", "2015-7", "2015-8", "2015-9", "2015-10", "2015-11", "2015-12"]
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+    series: [
+        {
+            name:'PV',
+            type:'line',
+            xAxisIndex: 1,
+            smooth: true,
+            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+        },
+        {
+            name:'UV',
+            type:'line',
+            smooth: true,
+            data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
+        },
+        {
+            name:'IP',
+            type:'line',
+            smooth: true,
+            data: [1.2, 8.6, 48.1, 25.7, 48.3,70.7, 101.2, 165.2, 58.7, 63.8, 6.0, 2.3]
+        }
+    ]
+};
+  // 使用刚指定的配置项和数据显示图表。
+  myChart.setOption(option);
 </script>
 
-<script>
 
-    option = {
-        title: {
-            text: '2011全国GDP（亿元）',
-            subtext: '数据来自国家统计局'
-        },
-        tooltip: {
-            trigger: 'item'
-        },
-        legend: {
-            x: 'right',
-            selectedMode: false,
-            data: ['北京', '上海', '广东']
-        },
-        dataRange: {
-            orient: 'horizontal',
-            min: 0,
-            max: 55000,
-            text: ['高', '低'],           // 文本，默认为数值文本
-            splitNumber: 0
-        },
-        toolbox: {
-            show: true,
-            orient: 'vertical',
-            x: 'right',
-            y: 'center',
-            feature: {
-                mark: {show: true},
-                dataView: {show: true, readOnly: false}
-            }
-        },
-        series: [
-            {
-                name: '2011全国GDP分布',
-                type: 'map',
-                mapType: 'china',
-                mapLocation: {
-                    x: 'left'
-                },
-                selectedMode: 'multiple',
-                itemStyle: {
-                    normal: {label: {show: true}},
-                    emphasis: {label: {show: true}}
-                },
-                data: [
-                    {name: '西藏', value: 605.83},
-                    {name: '青海', value: 1670.44},
-                    {name: '宁夏', value: 2102.21},
-                    {name: '海南', value: 2522.66},
-                    {name: '甘肃', value: 5020.37},
-                    {name: '贵州', value: 5701.84},
-                    {name: '新疆', value: 6610.05},
-                    {name: '云南', value: 8893.12},
-                    {name: '重庆', value: 10011.37},
-                    {name: '吉林', value: 10568.83},
-                    {name: '山西', value: 11237.55},
-                    {name: '天津', value: 11307.28},
-                    {name: '江西', value: 11702.82},
-                    {name: '广西', value: 11720.87},
-                    {name: '陕西', value: 12512.3},
-                    {name: '黑龙江', value: 12582},
-                    {name: '内蒙古', value: 14359.88},
-                    {name: '安徽', value: 15300.65},
-                    {name: '北京', value: 16251.93, selected: true},
-                    {name: '福建', value: 17560.18},
-                    {name: '上海', value: 19195.69, selected: true},
-                    {name: '湖北', value: 19632.26},
-                    {name: '湖南', value: 19669.56},
-                    {name: '四川', value: 21026.68},
-                    {name: '辽宁', value: 22226.7},
-                    {name: '河北', value: 24515.76},
-                    {name: '河南', value: 26931.03},
-                    {name: '浙江', value: 32318.85},
-                    {name: '山东', value: 45361.85},
-                    {name: '江苏', value: 49110.27},
-                    {name: '广东', value: 53210.28, selected: true}
-                ]
-            },
-            {
-                name: '2011全国GDP对比',
-                type: 'pie',
-                roseType: 'area',
-                tooltip: {
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
-                },
-                center: [document.getElementById('main1').offsetWidth - 250, 225],
-                radius: [30, 120],
-                data: [
-                    {name: '北京', value: 16251.93},
-                    {name: '上海', value: 19195.69},
-                    {name: '广东', value: 53210.28}
-                ]
-            }
-        ],
-        animation: false
-    };
-    var ecConfig = require('echarts/config');
-    myChart.on(ecConfig.EVENT.MAP_SELECTED, function (param) {
-        var selected = param.selected;
-        var mapSeries = option.series[0];
-        var data = [];
-        var legendData = [];
-        var name;
-        for (var p = 0, len = mapSeries.data.length; p < len; p++) {
-            name = mapSeries.data[p].name;
-            //mapSeries.data[p].selected = selected[name];
-            if (selected[name]) {
-                data.push({
-                    name: name,
-                    value: mapSeries.data[p].value
-                });
-                legendData.push(name);
-            }
-        }
-        option.legend.data = legendData;
-        option.series[1].data = data;
-        myChart.setOption(option, true);
-    });
+<script>
+var url = src + "/dxVisitInterface.dx";
+var appsercet = window.localStorage.getItem("appsercet");
+    appsercet = JSON.parse(appsercet);
+    var newAppsercet = appsercet.data;
+    
+    par = "appsercet="+newAppsercet+"&method=get.dxWeb.webSurvey";
+    var data = getSign(url,par);
+    console.log(data);
 </script>

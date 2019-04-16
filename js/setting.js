@@ -37,19 +37,21 @@ var corporateName, corporateWeb,lat,lnt,  address,corporateId,position,username,
     
     var  data = getSign(url, par);
     console.log(data);
-    if(data.msg.code == "10"){
-         $(".confirm").hide();
-                            $(".prompt").text("操作成功");
-                            $(".nv91-mask").show();
-                            $(".nv1").show();
-                            setTimeout(function () {
-                                $(".nv91-mask").hide();
-                                $(".nv1").hide();
-                                location.reload();
+    if (data.msg.code == "10") {
+        $(".confirm").hide();
+        $(".prompt").text("操作成功");
+        $(".nv91-mask3").show();
+        $(".nv1").show();
+        setTimeout(function () {
+            $(".nv91-mask3").hide();
+            $(".nv91").hide();
+            $(".nv92").hide();
+            $(".nv1").hide();
+            location.reload();
 
-                            }, 2000);;
-    }else{
-        alert("添加失败");
+        }, 2000);
+    } else {
+
     }
 }
 //处理设置节点下基础设置公司人员添加点击事件触发查询的所有公司信息   
@@ -80,7 +82,7 @@ function see(method,url){
     modilePhone = $(".s14").val();
     email = $(".s15").val();
     if(corporateId == "" || position == "" || username == "" ||modilePhone == "" || email == ""){
-        alert("请填写所有信息");
+       
         return;
     }
     if(method === "get.dxWeb.updateCompanyStaff"){
@@ -187,17 +189,25 @@ var radio = document.querySelectorAll(".st1");
                 if(data.msg.code == "200"){
                      $(".confirm").hide();
                             $(".prompt").text("操作成功");
-                            $(".nv91-mask").show();
+                            $(".nv91-mask3").show();
                             $(".nv1").show();
                             setTimeout(function () {
-                                $(".nv91-mask").hide();
+                                $(".nv91-mask3").hide();
                                 $(".nv1").hide();
                                 location.reload();
 
                             }, 2000);;
-                    location.reload();
+                   
                 }else{
-                    alert("修改失败");
+                    $(".confirm").hide();
+                    $(".nv3").text("操作失败");
+                    $(".nv91-mask3").show();
+                    $(".nv3").show();
+                    setTimeout(function () {
+                        $(".nv91-mask3").hide();
+                        $(".nv3").hide();
+                        
+                    }, 2000);   
                 }
            })
            $(".st2").change(function(){
@@ -217,17 +227,25 @@ var radio = document.querySelectorAll(".st1");
            if(data.msg.code == "200"){
                 $(".confirm").hide();
                             $(".prompt").text("操作成功");
-                            $(".nv91-mask").show();
+                            $(".nv91-mask3").show();
                             $(".nv1").show();
                             setTimeout(function () {
-                                $(".nv91-mask").hide();
+                                $(".nv91-mask3").hide();
                                 $(".nv1").hide();
                                 location.reload();
 
                             }, 2000);;
-               location.reload();
+             
            }else{
-               alert("修改失败");
+            $(".confirm").hide();
+            $(".nv3").text("操作失败");
+            $(".nv91-mask3").show();
+            $(".nv3").show();
+            setTimeout(function () {
+                $(".nv91-mask3").hide();
+                $(".nv3").hide();
+                
+            }, 2000); 
            } 
             })
               
@@ -320,8 +338,31 @@ var radio = document.querySelectorAll(".st1");
                         var id = $(this).attr("data-id");
                         par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteCompanyWeb&id=" + id;
 
-                        getSign(url, par);
-                        location.reload()
+                        var data = getSign(url, par);
+                        if(data.msg.code == "200"){
+                            $(".confirm").hide();
+                            $(".prompt").text("删除成功");
+                            $(".nv91-mask3").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask3").hide();
+                                $(".nv1").hide();
+                                location.reload();
+    
+                            }, 2000);;
+                        }else{
+                            $(".confirm").hide();
+                            $(".prompt").text("删除失败");
+                            $(".nv91-mask3").show();
+                            $(".nv3").show();
+                            setTimeout(function () {
+                                $(".nv91-mask3").hide();
+                                $(".nv3").hide();
+                              
+    
+                            }, 2000);;  
+                        }
+                        
                     }) 
                }
                 if(obj.method === "get.dxWeb.updateCompanyWeb"){
@@ -358,10 +399,29 @@ var radio = document.querySelectorAll(".st1");
 
                         par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateCompanyWeb&corporateName=" + corporateName + "&corporateWeb=" + corporateWeb + "&lat=" + lat + "&lnt=" + lnt + "&address=" + address+"&id="+id;
                         console.log(par)
-                        var data  = getSign(url,par);
+                        var data = getSign(url, par);
                         if(data.msg.code == "200"){
-                            // alert("")
-                            location.reload();
+                            $(".confirm").hide();
+                            $(".prompt").text("操作成功");
+                            $(".nv91-mask3").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask3").hide();
+                                $(".nv1").hide();
+                                location.reload();
+    
+                            }, 2000);;
+                        }else{
+                            $(".confirm").hide();
+                            $(".prompt").text("操作失败");
+                            $(".nv91-mask3").show();
+                            $(".nv3").show();
+                            setTimeout(function () {
+                                $(".nv91-mask3").hide();
+                                $(".nv3").hide();
+                              
+    
+                            }, 2000); 
                         }
                         
                     })
@@ -475,8 +535,30 @@ var radio = document.querySelectorAll(".st1");
                         var id = $(this).attr("data-id");
                         par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteCompanyStaff&id=" + id;
 
-                        getSign(url, par);
-                        location.reload()
+                        var data = getSign(url, par);
+                        if(data.msg.code == "200"){
+                            $(".confirm").hide();
+                            $(".prompt").text("删除成功");
+                            $(".nv91-mask3").show();
+                            $(".nv1").show();
+                            setTimeout(function () {
+                                $(".nv91-mask3").hide();
+                                $(".nv1").hide();
+                                location.reload();
+    
+                            }, 2000);;
+                        }else{
+                            $(".confirm").hide();
+                            $(".prompt").text("删除失败");
+                            $(".nv91-mask3").show();
+                            $(".nv3").show();
+                            setTimeout(function () {
+                                $(".nv91-mask3").hide();
+                                $(".nv3").hide();
+                              
+    
+                            }, 2000);;  
+                        }
                     })
                 }
             })

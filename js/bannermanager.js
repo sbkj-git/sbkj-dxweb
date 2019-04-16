@@ -242,8 +242,10 @@ $(document).ready(function(){
             }
             bannerList = getSign(url, par);
             if (bannerList.msg && bannerList.msg.code == "10") {
+                $(".paging").css({"opacity":"0"});
                 $(".bannerList").html("");
             } else {
+                $(".paging").css({"opacity":"1"});
                 bannerList1(bannerList);
                 pageJudge(bannerList);
                
@@ -302,9 +304,12 @@ $(document).ready(function(){
     
             var bannerList = getSign(url, par);
             if (bannerList.msg && bannerList.msg.code == "10") {
+                $(".paging").css({"opacity":"0"});
                 $(".bannerList").html("");
                 $("#demo").val("");
             } else {
+                $(".paging").css({"opacity":"1"});
+                pageJudge(bannerList);
                 bannerList1(bannerList);
                 firstRender();
                 $("#demo").val("");

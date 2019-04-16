@@ -128,15 +128,16 @@ $(document).ready(function(){
                     IdList.push(checkboxArray[i].getAttribute("data-id"));
                 }
                 if(IdList.length == 0){
-                    $(".confirm").hide(); 
-                    $(".nv91-mask").show();
-                    $(".confirm1").show();
-                    $(".prompt").text("请至少选择一条数据");
-                    setTimeout(function(){
-                        $(".nv91-mask").hide();
-                        $(".confirm1").hide();
-                       location.reload();
-                    },2000);
+                    // $(".confirm").hide(); 
+                    // $(".nv91-mask").show();
+                    // $(".confirm1").show();
+                    // $(".prompt").text("请至少选择一条数据");
+                    // setTimeout(function(){
+                    //     $(".nv91-mask").hide();
+                    //     $(".confirm1").hide();
+                    //    location.reload();
+                    // },2000);
+                    return;
                 }else{
                     url = noapi + "/dxExportComplaint.dx";
                     par = "IdList="+IdList;
@@ -240,8 +241,11 @@ data = JSON.parse(data);
                     var data2 = getSign(url, par);
                     if(data2.msg && data2.msg.code == "200"){
                         $(".feedback").html("");
+                        $(".paging").css({"opacity":"0"})
                     }else{
+                        $(".paging").css({"opacity":"1"})
                         render(data2);
+                        pageChange("get.dxWeb.feedbackList",data2,"pagination10");
                     }
                    
                     
@@ -260,9 +264,12 @@ data = JSON.parse(data);
                     
                     var data2 = getSign(url, par);
                     if(data2.msg && data2.msg.code == "200"){
+                        $(".paging").css({"opacity":"0"})
                         $(".feedback").html("");
                     }else{
                         render(data2);
+                        $(".paging").css({"opacity":"1"}) 
+                        pageChange("get.dxWeb.feedbackList",data2,"pagination10");
                     }
                     
                 }
@@ -360,12 +367,25 @@ data = JSON.parse(data);
                                 if (checkboxArray[i].checked)
                                 IdList.push(checkboxArray[i].getAttribute("data-id"));
                             }
-                            url = src + "/complaintInterface.dx";
-                            par = "IdList="+IdList+"&method=get.dxWeb.deleteFfeedback&appsercet="+newAppsercet;
-                            var data = getSign(url,par);
-                            if(data.msg.code == "200"){
-                                location.reload();
+                            if(IdList.length == 0){
+                                $(".confirm").hide();
+                                $(".prompt").text("至少选择一条数据");
+                                $(".nv91-mask").show();
+                                $(".confirm1").show();
+                                setTimeout(function () {
+                                    $(".nv91-mask").hide();
+                                    $(".confirm11").hide();
+                                    
+                                },2000);
+                            }else{
+                                url = src + "/complaintInterface.dx";
+                                par = "IdList="+IdList+"&method=get.dxWeb.deleteFfeedback&appsercet="+newAppsercet;
+                                var data = getSign(url,par);
+                                if(data.msg.code == "200"){
+                                    location.reload();
+                                }  
                             }
+                            
                        })                   
                             }
                     //判断该用户是否有分类反馈查看类别权限 
@@ -441,8 +461,27 @@ data = JSON.parse(data);
                                 var data = getSign(url,par);
                                
                                 if(data.msg.code == "200"){
-                                    // 添加成功
-                                    location.reload();
+                                    $(".confirm").hide();
+                                    $(".prompt").text("添加成功");
+                                    $(".nv91-mask").show();
+                                    $(".nv1").show();
+                                    setTimeout(function () {
+                                        $(".nv91-mask").hide();
+                                        $(".nv1").hide();
+                                        location.reload();
+        
+                                    },2000);
+                                }else{
+                                    $(".confirm").hide();
+                                    $(".prompt").text("添加失败");
+                                    $(".nv91-mask").show();
+                                    $(".nv3").show();
+                                    setTimeout(function () {
+                                        $(".nv91-mask").hide();
+                                        $(".nv3").hide();
+                                        location.reload();
+        
+                                    },2000); 
                                 }
                             })
                            
@@ -467,7 +506,7 @@ data = JSON.parse(data);
                                 $(".nv1").hide();
                                 location.reload();
 
-                            }, 2000);;
+                            },2000);
                             par = "appsercet=" + newAppsercet + "&method=get.dxWeb.dxComplaintCateList";
                             var bannerList = getSign(url, par);
                             render(bannerList);

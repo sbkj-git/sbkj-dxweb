@@ -5,17 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>图片预览</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/public.css">
+    <style>
+    .blue{color: #1890FF;}
+    </style>
 </head>
 <body>
     
-    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="border:1px solid #FFE58F;background-color:#FFFBE6;">
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="border:1px solid #FFE58F;background-color:#FFFBE6;padding: 20px;">
         <img src="" alt="">
        <p>文件名称：123123.jpeg</p>
        <p>文件大小：22.64KB</p>
        <p>文件类型：图片</p>
        <p>创建时间：2019-02-20 09:40</p>
-       <p>下载文件：点击下载 | 复制地址</p>     
+       <p>下载文件：<a class="blue downL" >点击下载</a> | <span class="blue copyClick">复制地址</span></p>     
     </div>
-    <img src="../image/fileimg.png" alt="" style="width: inherit;height: auto;margin-top: 25px;" class="col-sm-6">
+    <input type="hidden" id="needhid" name="hiddenValue">
+    <img src="" alt="" style="width: 750px;height: auto;margin-top: 25px;" class="col-sm-6 renderImg">
+    <div class="nv91-mask">
+            <div class="confirm">
+                    <div  class="boxTotal">
+                        <img src="../image/hint.png" class="boxImg"/>
+                        <span class="boxDelete">确定要删除这条消息吗?</span>
+                        </div>
+                        <div class="dele">
+                        <button class="roleRefu  roleRefuse5">取消</button>
+                        <button class="roleSur roleSure">确定</button>
+                    </div>
+                </div>
+                <div class="nv1">
+                    <img src="../image/success.png" class="success1"/>
+                    <span class="referMes prompt">删除成功</span>
+                </div>
+    </div>
+    
 </body>
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/api.js"></script>
+
+<script>
+    //下载方法
+    $(document).ready(function(){
+        var photo = localStorage.getItem("imgDetail");
+        $("#needhid").val(photo);
+        $(".renderImg").attr("src",phone);
+        $(".downL").click(function(){
+    
+    var photo = localStorage.getItem("imgDetail");
+    var url1 = noapi + "/adminLogin/downloadFile.dx";
+    // var hres = url1 + "&imgPath="+photo;
+    var hres = photo;
+
+    $(".downL").attr("href",hres).click();
+})
+//复制方法
+$(".copyClick").click(function(){
+    debugger
+    copyUrl();
+})
+
+ function copyUrl(){
+    debugger
+     var ele = document.getElementById("needhid");
+     ele.select();
+     document.execCommand("Copy");
+    $(".prompt ").text("复制成功");
+     $(".nv91-mask").show();
+     $(".nv1 ").show();
+     setTimeout(function () {
+        $(".nv91-mask").hide();
+         $(".nv1 ").hide();
+     }, 2000);
+ }
+    })
+    
+
+
+</script>
 </html>
