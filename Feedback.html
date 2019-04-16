@@ -302,6 +302,7 @@
 <script src="./js/MD5.js"></script>
 <script src="./js/sign.js"></script>
 <script src="./js/api.js"></script>
+<script src="./js/login.js"></script>
 <script src="./js/page.js"></script>
 
 <script src="./js/getRequest.js"></script>
@@ -310,7 +311,12 @@
 <script src="./js/radioAllChoose.js"></script>
 
 <script>
-  
+  var appsercet = window.localStorage.getItem("appsercet");
+// appsercet = JSON.parse(appsercet);
+// var newAppsercet = appsercet.data;
+if(appsercet == "undefined" || appsercet == "" || appsercet == null){
+    location.href = "./login1.html";
+}
 </script>
 
 

@@ -579,12 +579,12 @@ $(document).ready(function () {
         $(this).mouseleave(function () {
             $(".search2").hide();
         })
-        // $(this).dblclick(function () {
-        //     var img = $(this).find(".imgHover1").attr("src");
-        //     console.log(img);
-        //     localStorage.setItem("imgDetail",img);
-        //     location.href = "../nav7/ImgReview.html"
-        // })
+        $(this).dblclick(function () {
+            var img = $(this).find(".imgHover1").attr("src");
+            console.log(img);
+            localStorage.setItem("imgDetail",img);
+            location.href = "../nav7/ImgReview.html"
+        })
     })
     //渲染页面
     function render3(list) {
@@ -666,9 +666,9 @@ $(document).ready(function () {
             $(this).mouseleave(function () {
                 $(".search2").hide();
             })
-            $(this).dblclick(function () {
-                location.href = "../nav7/ImgReview.html"
-            })
+            // $(this).dblclick(function () {
+            //     location.href = "../nav7/ImgReview.html"
+            // })
 
         })
         $(".imgCover").unbind('click').bind("click", function () {

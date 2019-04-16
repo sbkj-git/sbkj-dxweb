@@ -45,7 +45,50 @@ $("#upload2").change(function(){
       }
 //   }
 })
+   //上传日期插件修改
+   $('#date8').daterangepicker({
+    "singleDatePicker": true,
+    "showISOWeekNumbers": true,
+    "timePicker": true,
+    "timePickerSeconds": true,
+    "locale": {
+        "direction": "ltr",
+        "format": "YYYY-MM-DD HH:mm:ss",
+        "separator": " - ",
+        "applyLabel": "确定",
+        "cancelLabel": "取消",
+        "fromLabel": "From",
+        "toLabel": "To",
+        "customRangeLabel": "Custom",
+        "daysOfWeek": [
+            "日",
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六"
+        ],
+        "monthNames": [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月"
+        ],
+        "firstDay": 1
+    },
    
+}, function(start, end, label) {
+  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+});
     //切换自定义还是和正文头图一致
     var add1 = document.querySelectorAll(".add1");
     var value
@@ -479,7 +522,7 @@ var url = src + url1;
           $(".detailsDescribe").text(detail.msg.details_describe);
       }
       //判断如果是查看的清空不允许进行修改
-      if(method === "get.dxWeb.helpDetails" || method === "get.dxWeb.skillDetails" || method === "get.dxWeb.qAndADetails" || method === "get.dxWeb.webOperationDetails" ){
+      if(method === "get.dxWeb.helpDetails" || method === "get.dxWeb.skillDetails" || method === "get.dxWeb.qAndADetails" || method === "get.dxWeb.webOperationDetails" || method === "get.dxWeb.noticeDetails" ){
        $(".message1").hide();
       }
       $(".addMessage").click(function () {

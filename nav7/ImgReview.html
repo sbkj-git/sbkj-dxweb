@@ -43,19 +43,26 @@
 </body>
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="../js/api.js"></script>
+<script src="../js/login.js"></script>
 
 <script>
     //下载方法
     $(document).ready(function(){
-        var photo = localStorage.getItem("imgDetail");
-        $("#needhid").val(photo);
-        $(".renderImg").attr("src",phone);
+        var phone1;
+        if(phone1 == "undefined" || phone1 == null || phone1 == ""){
+
+        }else{
+            $("#needhid").val(photo1);
+            $(".renderImg").attr("src",phone1);
+        }
+       
         $(".downL").click(function(){
+         
+     photo1 = localStorage.getItem("imgDetail");
     
-    var photo = localStorage.getItem("imgDetail");
-    var url1 = noapi + "/adminLogin/downloadFile.dx";
-    // var hres = url1 + "&imgPath="+photo;
-    var hres = photo;
+    var url1 = noapi + "/downloadFile.dx";
+    var hres = url1 + "?imgPath="+photo1;
+    // var hres = photo;
 
     $(".downL").attr("href",hres).click();
 })

@@ -1,4 +1,10 @@
 $(document).ready(function(){
+    var appsercet = window.localStorage.getItem("appsercet");
+// appsercet = JSON.parse(appsercet);
+// var newAppsercet = appsercet.data;
+if(appsercet == "undefined" || appsercet == "" || appsercet == null){
+    location.href = "./login1.html";
+}
     //进入页面判断是否有设置权限如果没有设置权限右上角权限不显示
     var data = localStorage.getItem("dxRightsList");
    data = JSON.parse(data);

@@ -18,6 +18,13 @@ $(".redux").click(function(){
     $(".nv93").hide();
     $(".nv91").hide();
 })
+//取消事件隐藏弹窗
+$(".refuse").click(function(){
+    $(".nv93 input").val("");
+    $(".nv91-mask3").hide();
+    $(".nv93").hide();
+    $(".nv91").hide();
+})
 function change(){
 var corporateName, corporateWeb,lat,lnt,  address,corporateId,position,username,modilePhone,email;
     //公司信息
@@ -66,7 +73,7 @@ function list(data){
     }
 }
 //封装添加公司职工修改公司职工方法
-function see(method,url){
+function see(method,url,id){
     
     var corporateName, corporateWeb,lat,lnt,  address,corporateId,position,username,modilePhone,email;
     //公司信息
@@ -98,23 +105,24 @@ function see(method,url){
     console.log(data);
     if (data.msg.code == "200") {
         $(".confirm").hide();
-        $(".nv91-mask3").hide();
+        $(".nv91-mask3").show();
         $(".prompt").text("操作成功");
         $(".nv1").show();
         setTimeout(function () {
             $(".nv1").hide();
+            $(".nv91-mask3").hide();
             location.reload();
 
         }, 2000);;
        
     }else{
         $(".confirm").hide();
-        $(".nv91-mask3").hide();
+        $(".nv91-mask3").show();
         $(".prompt").text("操作失败");
         $(".nv3").show();
         setTimeout(function () {
             $(".nv3").hide();
-            location.reload();
+          
 
         }, 2000);;
     }
@@ -467,13 +475,7 @@ var radio = document.querySelectorAll(".st1");
                             localStorage.setItem("lnt", "");
                             localStorage.setItem("lat", "");
                         }
-                        // $(".sure11").click(function () {
-                        //
-                        //     see("get.dxWeb.addCompanyWeb", url)
-                        // })
-                        // $(".sure12").unbind('click').bind("click",function(){ 
-                    
-
+                        
                     }
                    
                 }
@@ -488,7 +490,7 @@ var radio = document.querySelectorAll(".st1");
                         var data = getSign(url, par);
                         list(data);
                         $(".sure2").click(function () {
-                            see("get.dxWeb.addCompanyStaff", url)
+                            see("get.dxWeb.addCompanyStaff", url,"");
                         })
                     })
                 }
@@ -522,7 +524,7 @@ var radio = document.querySelectorAll(".st1");
                             $(".s15").val(y.email);
                         }
                         $(".sure2").click(function () {
-                            see("get.dxWeb.updateCompanyStaff", url)
+                            see("get.dxWeb.updateCompanyStaff", url,id)
                         })
                     })
 
