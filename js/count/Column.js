@@ -1,3 +1,123 @@
+//引入该页面需要echarts图标
+
+$(document).ready(function () {
+
+    // 开始时间和结束时间日历插件
+    $('#startAndEnd').daterangepicker({
+        "showWeekNumbers": true,
+        "showISOWeekNumbers": true,
+        "timePicker": true,
+        "timePickerSeconds": true,
+        "locale": {
+            "direction": "ltr",
+            "format": "YYYY-MM-DD HH:mm:ss",
+            "separator": " ~ ",
+            "applyLabel": "确定",
+            "cancelLabel": "取消",
+            "fromLabel": "From",
+            "toLabel": "To",
+            "customRangeLabel": "Custom",
+            "daysOfWeek": [
+                "日",
+                "一",
+                "二",
+                "三",
+                "四",
+                "五",
+                "六"
+            ],
+            "monthNames": [
+                "一月",
+                "二月",
+                "三月",
+                "四月",
+                "五月",
+                "六月",
+                "七月",
+                "八月",
+                "九月",
+                "十月",
+                "十一月",
+                "十二月"
+            ],
+            "firstDay": 1
+        },
+// "startDate": "04-11-2019",
+// "endDate": "04-11-2019"
+    }, function(start, end, label) {
+        var starttime = start.format('YYYY-MM-DD HH:mm:ss');
+        var endTime = end.format('YYYY-MM-DD HH:mm:ss');
+        var url = src + "/dxVisitInterface.dx";
+        var appsercet = window.localStorage.getItem("appsercet");
+        appsercet = JSON.parse(appsercet);
+        newAppsercet = appsercet.data;
+        // par = "appsercet=" + newAppsercet + "&method=get.dxWeb.bannerList&starttime=" + starttime + "&erdtime=" + endTime;
+        getParToReplace("&starttime=",starttime);
+        getParToReplace("&erdtime=",endTime);
+        var bannerList = getSign(url, par);
+        if (bannerList.msg && bannerList.msg.code == "10") {
+            $(".bannerList").html("");
+            $("#startAndEnd").val("");
+        } else {
+            bannerList1(bannerList);
+            firstRender();
+            $("#startAndEnd").val("");
+        }
+        console.log(start.format('YYYY-MM-DD '));
+        console.log(end.format('YYYY-MM-DD '));
+// console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+    });
+
+    updateConfig();
+
+    function updateConfig() {
+        var options = {};
+        if ($('#ranges').is(':checked')) {
+            option.ranges = {
+                '今日': [moment(), moment()],
+                '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                '最近7日': [moment().subtract(6, 'days'), moment()],
+                '最近30日': [moment().subtract(29, 'days'), moment()],
+                '本月': [moment().startOf('month'), moment().endOf('month')],
+                '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+            // startDate: moment().subtract(29, 'days'),
+            // endDate: moment()
+        }
+        $('#demo').click(function () {
+            $(".daterangepicker").show();
+        })
+        $('#config-demo1').daterangepicker(options, function (start, end, label) {
+
+            $('#config-demo1').val(start.format('YYYY-MM-DD') + "~" + end.format('YYYY-MM-DD'))
+        }).click();
+    }
+});
+
+
+function changeState(el) {
+    if (el.readOnly) el.checked = el.readOnly = false;
+    else if (!el.checked) el.readOnly = el.indeterminate = true;
+}
+
+
+
+var myChart = echarts.init(document.getElementById('main4'));
+option = {
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line'
+    }]
+};
+myChart.setOption(option);
+
 //获取页面参数
 var htmlTitle = window.localStorage.getItem("title");
 var title = $("title").get(0);

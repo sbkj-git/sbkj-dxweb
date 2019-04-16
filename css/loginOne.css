@@ -4,9 +4,17 @@
 }
 
 .banner3 {
-    background: url("../image/login.jpg") no-repeat;
+    /* background: url("../image/login.jpg") no-repeat; */
     background-size: 100% 100%;
+    background: url("../image/login.jpg") no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+    -webkit-background-size:100% 100%;
+    -o-background-size:100% 100%;
     padding-top: 1px;
+    background-image: url("../image/login.jpg");
+        background-size: cover;
+        filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../image/login.jpg",  sizingMethod='scale');
 }
 
 .login {
@@ -20,6 +28,13 @@
     float: right;
     margin-top: 16px;
     margin-right: 110px;
+
+filter: progid:DXImageTransform.Microsoft.Shadow(color='rgba(239, 239, 239, 0.9)', Direction=135, Strength=5);/*for ie6,7,8*/
+background-color: #fff;
+-moz-box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*firefox*/
+-webkit-box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*webkit*/
+box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*opera或ie9*/
+
 }
 
 .login h1 {
@@ -37,6 +52,7 @@
 .login .input1, .login .input2 {
     font-size: 18px;
     line-height: 50px;
+    height: 50px;
     background-color: #fff;
     border-radius: 5px;
     padding-left: 30px;

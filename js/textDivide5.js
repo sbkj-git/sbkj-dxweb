@@ -382,7 +382,7 @@ par = "appsercet=" + newAppsercet + "&method=get.dxWeb.cateTwoList&currentPage="
     }
 //第一次渲染页面
 function render(data) {
-        if (data.dxWebList.length > 0) {
+        if (data.dxWebList && data.dxWebList.length > 0) {
             var str = "";
             $(".textList").html("");
             $.each(data.dxWebList, function (i, item) {

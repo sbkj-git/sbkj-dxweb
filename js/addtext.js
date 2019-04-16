@@ -2,8 +2,14 @@ $(document).ready(function() {
     $(".addPhone").hover(function(){
         $(".addimg").addClass("disnone").eq(1).removeClass("disnone");
     })
+    $(".addPhone").mouseleave(function(){
+        $(".addimg").addClass("disnone").eq(0).removeClass("disnone");
+    })
     $(".addPhone2").hover(function(){
         $(".addimage").addClass("disnone").eq(1).removeClass("disnone");
+    })
+    $(".addPhone2").hover(function(){
+        $(".addimage").addClass("disnone").eq(0).removeClass("disnone");
     })
 var i = 1 ;
 $(".wauto").click(function(){

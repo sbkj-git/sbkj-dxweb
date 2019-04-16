@@ -9,7 +9,8 @@ var log = "http://47.105.116.237:8001/dongxin-network-admin/adminLoginInterface.
 // 验证码
 var yzm = "http://47.105.116.237:8001/dongxin-network-admin/atohCode.dx"
 //中台接口
-var zt = "http://10.18.3.11:28080/middle/"
+// var zt = "http://10.18.3.11:28080/middle/"
+var zt = "console.online.caih.com/middle/"
 
 
  //判断是否选中了值
@@ -32,5 +33,11 @@ var zt = "http://10.18.3.11:28080/middle/"
  }
  return IdList;
 }
+//安全问题校验
+// 地下重定向
+// var appsercet = window.localStorage.getItem("appsercet");
+// if(appsercet == "undefined" || appsercet == "" || appsercet == null){
+//     location.href = noapi +"/dxzx/login1.html";
+// }
 
 
