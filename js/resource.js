@@ -432,7 +432,7 @@ $(document).ready(function () {
                             }
                         })
                         $(".manage12 .close12").unbind('click').bind("click",function(){ 
-                            debugger
+                            
                         // $(".manage12 .close12").click(function () {
                             $(".prompt").text("文件夹中的图片也将一并删除");
                              $(".nv91-mask").show();
@@ -442,7 +442,7 @@ $(document).ready(function () {
                                     par = "appsercet=" + newAppsercet + "&method=get.dxWeb.daleteFolder&id=" + id;
                                     var data = getSign(url, par);
                                     if (data.msg.code == "200") {
-                                       debugger
+                                       
                                        $(".prompt").text("删除成功");
                                         $(".confirm").hide();
                                         $(".nv91-mask").show();

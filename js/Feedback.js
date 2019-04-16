@@ -113,39 +113,11 @@ $(document).ready(function(){
             })
             //导出数据到本地
             $(".export").click(function(){     
-                var IdList;
-                var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
-                    for (var i = 0; i < inputs.length; i++) {
-                    var obj = inputs[i];
-                    if (obj.type == 'checkbox') {
-                        checkboxArray.push(obj);
-                    }
-                }
-                
-               IdList = new Array();
-                for (var i = 0; i < checkboxArray.length; i++) {
-                    if (checkboxArray[i].checked)
-                    IdList.push(checkboxArray[i].getAttribute("data-id"));
-                }
-                if(IdList.length == 0){
-                    // $(".confirm").hide(); 
-                    // $(".nv91-mask").show();
-                    // $(".confirm1").show();
-                    // $(".prompt").text("请至少选择一条数据");
-                    // setTimeout(function(){
-                    //     $(".nv91-mask").hide();
-                    //     $(".confirm1").hide();
-                    //    location.reload();
-                    // },2000);
-                    return;
-                }else{
+               
                     url = noapi + "/dxExportComplaint.dx";
-                    par = "IdList="+IdList;
-                    
-                    console.log(url+"?"+par);
-                    $(".export1").attr("href",url+"?"+par).click();
+                 
+                    $(".export1").attr("href",url).click();
                     // var data = getSign(url,par);
-                }
                
             })
     

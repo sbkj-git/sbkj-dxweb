@@ -2,7 +2,7 @@ var url = src + "/dxVisitInterface.dx";
 var appsercet = window.localStorage.getItem("appsercet");
 appsercet = JSON.parse(appsercet);
 var newAppsercet = appsercet.data;
-debugger;
+;
 // 网站概括
 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webSurvey";
 var data = getSign(url, par);

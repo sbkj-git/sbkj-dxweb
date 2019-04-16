@@ -9,7 +9,7 @@ var url = src + "/dxVisitInterface.dx";
 var appsercet = window.localStorage.getItem("appsercet");
 appsercet = JSON.parse(appsercet);
 var newAppsercet = appsercet.data;
-debugger;
+;
 
 
 var par = null;

@@ -46,11 +46,12 @@
             -o-transition: border .15s ease-in-out, color .15s ease-in-out;
             transition: border .15s ease-in-out, color .15s ease-in-out;
         }
+        .footer1{position: fixed;bottom: 15px;left: 0;right: 0;margin:auto;text-align: center;color:#fff;}
     </style>
 </head>
 <script src="./js/remberPass.js"></script>
 <body id="body" onload="GetCookie();">
-<div class="banner3" style="height: 100%">
+<div class="banner3" style="height: 100vh;">
 
     <div>
         <div class="banners">
@@ -84,11 +85,10 @@
                     <span><a href="./forgetPass.html" class="forgetPass" style="font-size: 15px;">忘记密码</a></span>
                 </div>
             </div>
-            <footer class="footer" >
+            <footer class="footer1" >
                 <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
                 </p>
-                <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-                <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+              
             </footer>
         </div>
     </div>
@@ -115,7 +115,7 @@
     window.onload = function () {
         GetCookie();
         var height = document.documentElement.clientHeight;
-        $("#body").height(height);
+        // $("#body").height(height);
 
         // $(".login").height(height/1.75);
         function changeState(el) {
