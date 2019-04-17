@@ -1,3 +1,26 @@
+var url = src + "/dxVisitInterface.dx";
+var appsercet = window.localStorage.getItem("appsercet");
+appsercet = JSON.parse(appsercet);
+var newAppsercet = appsercet.data;
+;
+
+
+var par = null;
+
+if (htmlTitle == "栏目统计") {
+// 栏目统计
+    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.columnStatistics";
+} else if (htmlTitle == "帮助文档统计") {
+    // 帮助文档统计
+    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.helpStatistics";
+} else if (htmlTitle == "文章统计") {
+    // 文章统计
+    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.articleSurvey";
+}
+
+var data = getSign(url, par);
+console.log(data);
+
 //引入该页面需要echarts图标
 
 $(document).ready(function () {
@@ -125,28 +148,6 @@ $(document).attr("title",htmlTitle);
 $(".text2").text(htmlTitle);
 $(".text3").text(htmlTitle);
 
-var url = src + "/dxVisitInterface.dx";
-var appsercet = window.localStorage.getItem("appsercet");
-appsercet = JSON.parse(appsercet);
-var newAppsercet = appsercet.data;
-;
-
-
-var par = null;
-
-if (htmlTitle == "栏目统计") {
-// 栏目统计
-    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.columnStatistics";
-} else if (htmlTitle == "帮助文档统计") {
-    // 帮助文档统计
-    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.helpStatistics";
-} else if (htmlTitle == "文章统计") {
-    // 文章统计
-    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.articleSurvey";
-}
-
-var data = getSign(url, par);
-console.log(data);
 
 // 分页
 function pageColumnStatistics(currentPage) {

@@ -21,15 +21,17 @@
 .mask-d1,.mask-d2,.mask-d3{width:618px;height:324px;background:rgba(255,255,255,1);box-shadow:0px 3px 7px 0px rgba(0, 0, 0, 0.35);border-radius:5px;position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin:auto;display: none;text-align: center;font-size: 35px;text-align: center;justify-content: space-between;box-sizing: border-box;padding:66px 0 92px 0;z-index: 99;}
 .btn1{width:110px; height:40px; background:rgba(226,48,43,1);border-radius:5px;}
 .w74{width:74px;height:74px;display:inline-block;vertical-align: middle;}
+
 </style>
 </head>
-<body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
-        <div class="brand" style="background-color:#fff!important;height:135px;margin-bottom: 50px;">
-            <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
-            <li><a href="#" class="color">中台用户管理</a>&nbsp;/&nbsp;</li>
-            <li><a href="#" class="changeText color">企业认证详情</a></li>
+<body class="bgf3">
+    <div class="brand h135">
+        <ul class="breadcrumb f14">
+            <li><a href="#" class="color color_8d">中台用户管理</a>&nbsp;/&nbsp;</li>
+            <li><a href="#"  class="color color_5a">企业认证详情</a></li>
         </ul>
-        <p class="changeText">企业认证详情</p>  </div>
+        <h1>企业认证详情</h1>
+</div>
    <div class="" style="margin-top:50px;padding: 0 70px;width: 100%;box-sizing: border-box;">
     <div style="width: 100%;padding:40px 20px;box-sizing: border-box;">
         <div class="form-group flex justify" style="padding-bottom: 2%;background-color: #fff;font-size:18px;font-family:PingFangSC-Regular;color:rgba(34,34,34,1);">
@@ -98,7 +100,7 @@
 
             </div>
             
-            <div class="flex" style="justify-content: center;width: 100%;height: 50px;font-size: 14px;">
+            <div class="flex" style="justify-content: center;width: 100%;height: 50px;font-size: 14px;margin-top: 30px;">
                     <button class="btn btn1 nopass" style="color:#fff;">审核不通过</button>
                     <button class="btn btn1 pass" style="color:#222;margin:0 10px;background: none;border:1px solid rgba(204,204,204,);">审核通过</button> 
                     <button class="btn btn1 delete" style="color:#222;background: none;width: 65px;border:1px solid rgba(204,204,204,);">删除</button>
@@ -106,7 +108,7 @@
     </div>
         
    </div>
-   <div  class="mask" >
+   <div  class="nv91-mask" >
         <div class="mask-d1  flex column" >
             <img src="../image/success.png" alt=""  class="w74">
             <p style="font-size:35px;">操作成功</p>
@@ -166,9 +168,9 @@ $(".createTime").text(detail.createTime);
 $(".hasSubmit").text(detail.hasSubmit);
 $(".idName").text(detail.idName);
 $(".idCode").text(detail.idCode);
-$(".licencePath img").attr("src",detail.licencePath);
-$(".photoPath").attr("src",detail.photoPath);
-$(".idenPath").attr("src",detail.idenPath);
+$(".licencePath img").attr("src","http://image.caih.com/"+ detail.licencePath);
+$(".photoPath").attr("src","http://image.caih.com/"+ detail.photoPath);
+$(".idenPath").attr("src","http://image.caih.com/"+ detail.idenPath);
 $(".refuseReason").text(detail.refuseReason);
 $(".registerPhone").text(detail.registerPhone);
 $(".registerTime").text(detail.registerTime);
@@ -223,8 +225,10 @@ $(".pass").click(function(){
     var data1 = ajax(url,data12);
     console.log(data1);
     if(data1.success){
+        $(".nv91-mask").show();
         $(".mask-d1").show();
         setTimeout(function(){
+            $(".nv91-mask").hide();
             $(".mask-d1").hide(); 
             if(personType == "no"){
                 location.href = "./Identification.html";
@@ -242,8 +246,10 @@ $(".nopass").click(function(){
     var data1 = ajax(url,data);
     console.log(data1);
     if(data1.success){
+        $(".nv91-mask").show();
         $(".mask-d2").show();
         setTimeout(function(){
+            $(".nv91-mask").hide();
             $(".mask-d2").hide(); 
             if(personType == "no"){
                 location.href = "./Identification.html";
@@ -261,8 +267,10 @@ $(".delete").click(function(){
     var data1 = ajax(url,data);
     console.log(data1);
     if(data1.success){
+        $(".nv91-mask").show();
         $(".mask-d3").show();
         setTimeout(function(){
+            $(".nv91-mask").hide();
             $(".mask-d3").hide();
             if(personType == "no"){
                 location.href = "./Identification.html";

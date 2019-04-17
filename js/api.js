@@ -10,7 +10,8 @@ var log = "http://47.105.116.237:8001/dongxin-network-admin/adminLoginInterface.
 var yzm = "http://47.105.116.237:8001/dongxin-network-admin/atohCode.dx"
 //中台接口
 // var zt = "http://10.18.3.11:28080/middle/"
-var zt = "console.online.caih.com/middle/"
+var zt = "http://console.online.caih.com/middle/"
+
 
 
  //判断是否选中了值

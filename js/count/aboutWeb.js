@@ -1,3 +1,13 @@
+var url = src + "/dxVisitInterface.dx";
+var appsercet = window.localStorage.getItem("appsercet");
+appsercet = JSON.parse(appsercet);
+var newAppsercet = appsercet.data;
+;
+// 网站概括
+par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webSurvey";
+var data = getSign(url, par);
+console.log(data);
+
 //引入该页面需要echarts表
 
     function changeState(el) {
@@ -345,15 +355,6 @@
     });
 
 
-var url = src + "/dxVisitInterface.dx";
-var appsercet = window.localStorage.getItem("appsercet");
-appsercet = JSON.parse(appsercet);
-var newAppsercet = appsercet.data;
-;
-// 网站概括
-par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webSurvey";
-var data = getSign(url, par);
-console.log(data);
 
 // 快速查看
 // 今天
