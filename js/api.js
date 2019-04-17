@@ -15,17 +15,17 @@ var zt = "http://console.online.caih.com/middle/"
 
 
  //判断是否选中了值
- function judgeChoose(){
+function judgeChoose() {
     var IdList;
- var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
- var IdList;
- var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
- for (var i = 0; i < inputs.length; i++) {
-     var obj = inputs[i];
-     if (obj.type == 'checkbox') {
-         checkboxArray.push(obj);
-     }
- }
+    var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
+    var IdList;
+    var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+    for (var i = 0; i < inputs.length; i++) {
+        var obj = inputs[i];
+        if (obj.type == 'checkbox') {
+            checkboxArray.push(obj);
+        }
+    }
  IdList = new Array();
  for (var i = 0; i < checkboxArray.length; i++) {
      if (checkboxArray[i].checked) {

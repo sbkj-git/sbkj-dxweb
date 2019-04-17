@@ -36,7 +36,8 @@ function Page(_ref) {
     } else {
         console.error("鎬婚〉鏁版垨鑰呮€绘暟鎹弬鏁颁笉瀵�")
     }
-};Page.prototype = {
+};
+Page.prototype = {
     init: function init() {
         
         var pagination = document.getElementById(this.id);
@@ -83,15 +84,16 @@ function Page(_ref) {
         var that = this;
         var li = document.createElement('li');
         li.innerHTML = '<';
+        li.className = 'pagePrev';
         if (parseInt(that.curPage) > 1) {
             li.onclick = function () {
                 that.curPage = parseInt(that.curPage) - 1;
                 that.init();
                 that.getPage(that.curPage);
             };
-            li.className = '';
+            // li.className = '';
         } else {
-            li.className = '';
+            // li.className = '';
         }
         this.ul.appendChild(li);
     }, getPages: function getPages() {
@@ -121,6 +123,7 @@ function Page(_ref) {
     }, nextPage: function nextPage() {
         var that = this;
         var li = document.createElement('li');
+        li.className = 'pageNext';
         li.innerHTML = '>';
         if (parseInt(that.curPage) < parseInt(that.pageTotal)) {
             li.onclick = function () {
@@ -132,7 +135,10 @@ function Page(_ref) {
             li.className = '';
         }
         this.ul.appendChild(li);
+        var num1 = parseInt(that.pageTotal) + 1;
         $(".pagination ul li").addClass("pageItem");
+        $(".pagination ul li").eq(0).removeClass("pageItem");
+        $(".pagination ul li").eq(6).removeClass("pageItem");
     }, finalPage: function finalPage() {
         var that = this;
         // var li = document.createElement('li');
@@ -173,18 +179,17 @@ function Page(_ref) {
         };
         input.onblur = function (e) {
             var oEvent = e || event;
-         
-                var val = parseInt(oEvent.target.value);
-                if (typeof val === 'number' && val <= that.pageTotal && val > 0) {
-                    that.curPage = val;
-                    that.getPage(that.curPage);
-                } else {
-                    
-                    input.value = that.pageTotal;
-                   localStorage.setItem("pageNow1",that.pageTotal);
-                    // location.reload();
-                }
-                that.init();
+            var val = parseInt(oEvent.target.value);
+            if (typeof val === 'number' && val <= that.pageTotal && val > 0) {
+                that.curPage = val;
+                that.getPage(that.curPage);
+            } else {
+                
+                input.value = that.pageTotal;
+               localStorage.setItem("pageNow1",that.pageTotal);
+                // location.reload();
+            }
+            that.init();
            
         };
         li.appendChild(input);
