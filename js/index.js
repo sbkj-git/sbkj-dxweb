@@ -3,7 +3,7 @@ $(document).ready(function(){
 // appsercet = JSON.parse(appsercet);
 // var newAppsercet = appsercet.data;
 if(appsercet == "undefined" || appsercet == "" || appsercet == null){
-    location.href = "./login1.html";
+    location.href = "./login.html";
 }
     //进入页面判断是否有设置权限如果没有设置权限右上角权限不显示
     var data = localStorage.getItem("dxRightsList");
@@ -47,17 +47,18 @@ if(appsercet == "undefined" || appsercet == "" || appsercet == null){
      })
      $(".set").hover(function(){
         $(".set").addClass("dis").eq(1).removeClass("dis");
-        setTimeout(function(){
-            $(".set").addClass("dis").eq(0).removeClass("dis");
-        },2000);
-       
     })
+    $(".set").mouseleave(function(){
+        $(".set").addClass("dis").eq(0).removeClass("dis");
+    })
+   
     $(".back").hover(function(){
         $(".back").addClass("dis").eq(1).removeClass("dis");
-        setTimeout(function(){
-            $(".back").addClass("dis").eq(0).removeClass("dis");
-        },2000);
+        
        
+    })
+    $(".back").mouseleave(function(){
+        $(".back").addClass("dis").eq(0).removeClass("dis");
     })
      //获取缓存中存入的姓名
      var user_name = localStorage.getItem("user_name");
@@ -86,7 +87,7 @@ if(appsercet == "undefined" || appsercet == "" || appsercet == null){
      $(function () { changeFrameHeight(); });
      //监听用户一个小时没有进行操作清除缓存返回到登录页面
      function refer() {
-         location.href = "./login1.html";
+         location.href = "./login.html";
          localStorage.clear();
          // sessionStorage.clear();
      }
@@ -126,8 +127,16 @@ if(appsercet == "undefined" || appsercet == "" || appsercet == null){
          }
 
          $.each(item.dxRightsList, function (i, LittleItem) {
-
-             str2 += "<li><span data-id='" + LittleItem.method + "'>" + LittleItem.name + "</span></li>"
+             
+             console.log(LittleItem);
+            if(LittleItem.name === "个人认证审核"){
+                str2 += "<li><span data-id='" + LittleItem.link_path + "'>" + LittleItem.name + "</span></li>";
+            }else if(LittleItem.name === "企业认证审核"){
+                str2 += "<li><span data-id='" + LittleItem.link_path + "'>" + LittleItem.name + "</span></li>";
+            }else{
+                str2 += "<li><span data-id='" + LittleItem.method + "'>" + LittleItem.name + "</span></li>";
+            }
+             
              if (LittleItem.method == "") {
                  str += "<li><a ><i class='fa fa-circle-o' data-id='" + LittleItem.link_path + "'>" + LittleItem.name + "</i></a></li>"
              } else {
@@ -198,7 +207,8 @@ if(appsercet == "undefined" || appsercet == "" || appsercet == null){
          if (value == "get.dxWeb.websetup") {
              $("#iframe").attr("src", "./nav2/FunctionSet.html");
              window.localStorage.setItem("title", "网站运营");
-             window.localStorage.setItem("url", "get.dxWeb.websetup");
+             window.localStorage.setItem("method", "get.dxWeb.websetup");
+             window.localStorage.setItem("url", "/webInterface.dx");
          }
          if (value == "get.dxWeb.bannerList") {
              $("#iframe").attr("src", "./nav2/BannerManager.html")
@@ -225,7 +235,9 @@ if(appsercet == "undefined" || appsercet == "" || appsercet == null){
          if (value == "get.dxWeb.tesetup") {
              $("#iframe").attr("src", "./nav2/FunctionSet.html");
              window.localStorage.setItem("title", "帮助文档");
-             window.localStorage.setItem("url", "get.dxWeb.tesetup");
+             window.localStorage.setItem("method", "get.dxWeb.tesetup");
+             window.localStorage.setItem("url", "/helpInterface.dx");
+             
          }
          if (value == "get.dxWeb.addHelp") {
              $("#iframe").attr("src", "./nav2/AddText.html");
@@ -249,7 +261,8 @@ if(appsercet == "undefined" || appsercet == "" || appsercet == null){
          if (value == "get.dxWeb.helpsetup") {
              $("#iframe").attr("src", "./nav2/FunctionSet.html");
              window.localStorage.setItem("title", "技术文档");
-             window.localStorage.setItem("url", "get.dxWeb.helpsetup");
+             window.localStorage.setItem("method", "get.dxWeb.helpsetup");
+             window.localStorage.setItem("url", "/skillInterface.dx");
          }
          if (value == "get.dxWeb.addSkill") {
              $("#iframe").attr("src", "./nav2/AddText.html");
@@ -272,8 +285,8 @@ if(appsercet == "undefined" || appsercet == "" || appsercet == null){
          if (value == "get.dxWeb.qsetup") {
              $("#iframe").attr("src", "./nav2/FunctionSet.html");
              window.localStorage.setItem("title", "Q&A文档");
-             window.localStorage.setItem("url", "get.dxWeb.qsetup");
-
+             window.localStorage.setItem("method", "get.dxWeb.qsetup");
+             window.localStorage.setItem("url", "/qAndAInterface.dx");
          }
          if (value == "get.dxWeb.addQAndA") {
              $("#iframe").attr("src", "./nav2/AddText.html");
@@ -354,6 +367,12 @@ $(this).click(function(){
  });
  
  //面包屑导航切换 后点击事件以及以及动效
+ $(".nav-ul li").each(function(index){
+     $(this).hover(function(){
+        $(".nav-slide-o ul").hide().eq(index).show();
+     })
+     
+ })
  var bread = document.querySelector(".bread");
  var n = 0;
  bread.addEventListener("click", function () {
@@ -362,11 +381,13 @@ $(this).click(function(){
          $(".nhide").hide();
          $(".nav-main").show();
          $(".remove1").removeClass("hidenow");
+         var src =  $(".remove2 iframe").attr("src");
+         $(".remove1 iframe").attr("src",src);
          $(".remove2").addClass("hidenow");
          $(".nav-slide-o li span").click(function () {
-
+            
              var value = $(this).attr("data-id");
-             //1
+             $(".nav-slide-o ul").hide();
              if (value == "get.dxWeb.webSurvey") {
                  $("#iframe1").attr("src", "./nav1/aboutWeb.html");
                  window.localStorage.setItem("title", "统计");
@@ -398,7 +419,8 @@ $(this).click(function(){
              if (value == "get.dxWeb.websetup") {
                  $("#iframe1").attr("src", "./nav2/FunctionSet.html");
                  window.localStorage.setItem("title", "网站运营");
-                 window.localStorage.setItem("url", "get.dxWeb.websetup");
+                 window.localStorage.setItem("method", "get.dxWeb.websetup");
+                 window.localStorage.setItem("url", "/webInterface.dx");
              }
              if (value == "get.dxWeb.bannerList") {
                  $("#iframe1").attr("src", "./nav2/BannerManager.html")
@@ -423,8 +445,8 @@ $(this).click(function(){
              if (value == "get.dxWeb.tesetup") {
                  $("#iframe1").attr("src", "./nav2/FunctionSet.html");
                  window.localStorage.setItem("title", "帮助文档");
-                 window.localStorage.setItem("url", "get.dxWeb.tesetup");
-
+                 window.localStorage.setItem("method", "get.dxWeb.tesetup");
+                 window.localStorage.setItem("url", "/helpInterface.dx");
              }
              if (value == "get.dxWeb.addHelp") {
                  $("#iframe1").attr("src", "./nav2/AddText.html");
@@ -445,7 +467,9 @@ $(this).click(function(){
              if (value == "get.dxWeb.helpsetup") {
                  $("#iframe1").attr("src", "./nav2/FunctionSet.html");
                  window.localStorage.setItem("title", "技术文档");
-                 window.localStorage.setItem("url", "get.dxWeb.helpsetup");
+        
+                 window.localStorage.setItem("method", "get.dxWeb.helpsetup");
+                window.localStorage.setItem("url", "/skillInterface.dx");
              }
              if (value == "get.dxWeb.addSkill") {
                  $("#iframe1").attr("src", "./nav2/AddText.html");
@@ -465,8 +489,8 @@ $(this).click(function(){
              if (value == "get.dxWeb.qsetup") {
                  $("#iframe1").attr("src", "./nav2/FunctionSet.html");
                  window.localStorage.setItem("title", "Q&A文档");
-                 window.localStorage.setItem("url", "get.dxWeb.qsetup");
-
+                 window.localStorage.setItem("method", "get.dxWeb.qsetup");
+                 window.localStorage.setItem("url", "/qAndAInterface.dx");
              }
              if (value == "get.dxWeb.addQAndA") {
                  $("#iframe1").attr("src", "./nav2/AddText.html");
@@ -521,11 +545,12 @@ $(this).click(function(){
              }
              //10
              if (value == "personalAddList") {
-                 $("#iframe1").attr("src", "./nv10/PersonIdentification.html");
-             }
-             if (value == "enterpriseAaddList") {
-                 $("#iframe1").attr("src", "./nv10/Identification.html");
-             }
+                $("#iframe1").attr("src", "./nv10/PersonIdentification.html");
+            }
+            if (value == "enterpriseAaddList") {
+                $("#iframe1").attr("src", "./nv10/Identification.html");
+            }
+            
          })
      }
      if (n % 2 == 0) {

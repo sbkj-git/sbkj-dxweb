@@ -135,7 +135,7 @@ function RGBColor(color_string)
         plum: 'dda0dd',
         powderblue: 'b0e0e6',
         purple: '800080',
-        red: 'ff0000',
+        red: '48a4ea',
         rosybrown: 'bc8f8f',
         royalblue: '4169e1',
         saddlebrown: '8b4513',

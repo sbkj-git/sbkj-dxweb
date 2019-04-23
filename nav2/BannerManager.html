@@ -7,23 +7,16 @@
     <title>Banner管理</title>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
-
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
 	<link rel="stylesheet" type="text/css" media="all" href="../js/date/css/daterangepicker.css" />
 
     <link rel="stylesheet" type="text/css" href="../css/buind.css">
+    <!-- switch css -->
     <link rel="stylesheet" href="../css/simple.switch.three.css">
-    <script src="../js/jquery-1.10.2.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- <script src="../js/183.js"></script> -->
-    <script src="../js/simple.switch.min.js"></script>
+    <!-- 分页 -->
     <link rel="stylesheet" href="../css/newPage.css">
 
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/laydate.js"></script>
-   
     <style>
         .date_selector{top:50px!important;left: 0!important;}
         .date_picker{width: auto!important;}
@@ -55,9 +48,9 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         }
         .switch:checked {
-            border-color: #8A111A;
-            box-shadow: #8A111A 0 0 0 16px inset;
-            background-color: #8A111A;
+            border-color: #36404c;
+            box-shadow: #36404c 0 0 0 16px inset;
+            background-color: #36404c;
         }
         .switch:checked:before {
             /* content: '\2715';
@@ -72,8 +65,8 @@
             transition: left 0.3s;
         }
         .switch.switch-anim:checked {
-            box-shadow: #8A111A 0 0 0 16px inset;
-            background-color: #8A111A;
+            box-shadow: #36404c 0 0 0 16px inset;
+            background-color: #36404c;
             transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
         }
         .switch.switch-anim:checked:before {
@@ -96,16 +89,13 @@
         /* .nv91-close{position: absolute;right: 0;top: 0;} */
     </style>
 </head>
-<body style="background: #f3f3f3;">
-<div class="row">
-
-</div>
-<div class="brand" style="background: #fff;">
-    <ul class="breadcrumb fff14">
-        <li><a href="#" class="color_8d" class="color">网站运营</a>&nbsp;/&nbsp;</li>
-        <li><a href="#" class="color_5a" class="color">Banner管理</a></li>
-    </ul>
-    <h1>Banner管理</h1>
+<body class="bgf3">
+    <div class="brand h135">
+        <ul class="breadcrumb f14">
+            <li><a href="./BannerManager.html" class="color color_8d">网站运营</a>&nbsp;/&nbsp;</li>
+            <li><a  href="./BannerManager.html"  class="color color_5a">Banner管理</a></li>
+        </ul>
+        <h1>Banner管理</h1>
 </div>
 <div class="nv91-mask" >
     <!--确认 取消-->
@@ -221,29 +211,23 @@
 
         </div>
 
-        <div class="flex textRight textLeft col-sm-12 col-md-6 col-lg-4">
+        <div class="flex textRight textLeft col-sm-12 col-md-6 col-lg-5">
 
             <div class="col-sm-3" style="max-width: 80px;">
                 <label for="name" class="control-label lh15 mr5" style="margin-left: -5px;line-height:40px;font-size: 18px">到期时间:</label>
             </div>
             <div class="position col-sm-9 flex" >
-                <!-- <div class="col-sm-5" style="width: 100px;">
-                    <input class="inline laydate-icon form-control start"  placeholder="开始时间"/>
-                </div>
-                <p style="line-height:37px">&nbsp;&nbsp;—&nbsp;&nbsp;</p>
-                <div class="col-sm-5" >
-                        <input class="inline laydate-icon form-control end3" placeholder="结束时间" />
-                </div> -->
+              
                 <input type="text" class="form-control" id="demo" style="height: 40px;"/>
             </div>
         </div>
-        <div class="flex textRight col-sm-12 col-md-6 col-lg-4 position">
+        <div class="flex textRight col-sm-12 col-md-6 col-lg-3 position">
             <input type="text" class="form-control bannerName12" placeholder="请输入banner名称" style="height: 40px;max-width: 80%"/>
             <span style="font-family: iconfont;position: absolute;right: 21%;top:0;font-size: 24px;" class="banner1">&#xe615;</span>
         </div>
     </div>
-    <hr style="width: 120%;background-color: #f3f3f3;height: 50px;margin-right: -15px;border: none"/>
-    <div class="b_list" style="padding-left: 31px;">
+    <hr style="width: 120%;background-color: #eaedf1;height: 50px;margin-right: -15px;border: none"/>
+    <div class="b_list" >
         <p class="pr2">任务列表</p>
     </div>
     <div class="addInput">+添加</div>
@@ -275,35 +259,32 @@
 
 </div>
 <footer class="footer">
-    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-    </p>
-    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    东信在线门户运营后台
 </footer>
 <script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/date/js/moment.js"></script>
+
+<script src="../js/date/js/daterangepicker.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- <script src="../js/183.js"></script> -->
+    <script src="../js/simple.switch.min.js"></script>
 
 <script src="../js/MD5.js"></script>
 <script src="../js/sign.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/login.js"></script>
+<!-- //post算签名 -->
 <script src="../js/postSign.js"></script>
 <script src="../js/getRequest.js"></script>
+<!-- //本页面js -->
 <script src="../js/bannermanager.js"></script>
 <script src="../js/newPage.js"></script>
-<script src="../js/date/js/moment.js"></script>
-
-<script src="../js/date/js/daterangepicker.js"></script>
-
-
-
-</body>
-</html>
-
-
 
 
 <script src="../js/addtext.js"></script>
+</body>
+</html>
+
 
 
 

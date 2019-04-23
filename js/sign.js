@@ -175,25 +175,14 @@ function logsgin(url,par){
                         }                      
                         //请求日志根据返回条数确定页数
                         else if(data.pageInfo){                      
-                            window.sessionStorage.setItem("pageInfo",JSON.stringify(data.pageInfo))
-                            var pageNum = Math.ceil(data.pageInfo.totalRows / 10);
-                            $('#box').paging({
-                                initPageNo: data.pageInfo.currentPage, // 初始页码
-                                totalPages: pageNum, //总页数
-                                totalCount: '合计' + data.pageInfo.totalRows + '条数据', // 条目总数
-                                // slideSpeed: 600, // 缓动速度。单位毫秒
-                                jump: true, //是否支持跳转
-                                callback: function (page) { // 回调函数
-                                    //console.log(page);
-                                }
-                            })
+                           
                             if(data.roleList && data.pageInfo){
                                 $("manager1").html("")
                                 var role = "";
                                 $.each(data.roleList,function(i,item){
                                     //console.log(item)
                                     role+="<tr style='border-bottom: 1px solid #d8d8d8;' class='rolename1' data-id='"+item.id+"'>"; 
-                                    role+="<td><div class='checkbox checkbox-primary'><input type='checkbox' class='styled styled-primary t1' id='role"+i+"'"+"value='"+item.id+"' aria-label='Single checkbox Two'><label for='role"+i+"' class='rolen'>"+item.name+"</label></div></td><td>"+item.admin_num+"</td><td class='stcode' data-id='"+item.status+"'>"+item.status_code+"</td><td style='color:#FF5456;' ><span class='isEdit' data-id='"+item.id+"' >编辑</span>&nbsp;<span class='isDelete' data-id='"+item.id+"'>删除</span></td>";
+                                    role+="<td><div class='checkbox checkbox-primary'><input type='checkbox' class='styled styled-primary t1' id='role"+i+"'"+"value='"+item.id+"' aria-label='Single checkbox Two'><label for='role"+i+"' class='rolen'>"+item.name+"</label></div></td><td>"+item.admin_num+"</td><td class='stcode' data-id='"+item.status+"'>"+item.status_code+"</td><td style='color:#48a4ea;' ><span class='isEdit' data-id='"+item.id+"' >编辑</span>&nbsp;<span class='isDelete' data-id='"+item.id+"'>删除</span></td>";
                                     role+="</tr>";
                                                         
                             })
@@ -211,7 +200,7 @@ function logsgin(url,par){
                                     if(item.status == 2){
                                         role2+="<td class='r5' data-id='1'>禁用</td>";
                                     }
-                                    role2+=" <td style='color:#FF5456;' ><span class='isEdit' data-id='"+item.user_id+"' >编辑</span>&nbsp;<span class='isDelete' data-id='"+item.user_id+"'>删除</span></td>";
+                                    role2+=" <td style='color:#48a4ea;' ><span class='isEdit' data-id='"+item.user_id+"' >编辑</span>&nbsp;<span class='isDelete' data-id='"+item.user_id+"'>删除</span></td>";
                                 
                                     role2+="</tr>";
                                                         
@@ -249,14 +238,14 @@ function logsgin(url,par){
                         var company1 = "";
                         $.each(data.dxbasics.dxcompanywebList,function(i,item){
                             company1+="<tr>";
-                            company1+="<td>"+item.corporate_name+"</td><td>"+item.corporate_web+"</td><td>"+item.lat+","+item.lnt+"</td><td>"+item.ip_addr+"<td style='color:#FF5456;' data-id='"+item.id+"' class='edits'>编辑</td>";
+                            company1+="<td>"+item.corporate_name+"</td><td>"+item.corporate_web+"</td><td>"+item.lat+","+item.lnt+"</td><td>"+item.ip_addr+"<td style='color:#48a4ea;' data-id='"+item.id+"' class='edits'>编辑</td>";
                             company1+="/<tr >"
                         });
                         $(".company1").append(company1)
                         var company2 = "";
                         $.each(data.dxbasics.dxCompanyStaffList,function(i,item){
                             company2+="<tr >";
-                            company2+="<td>"+item.corporate_name+"</td><td>"+item.position+"</td><td>"+item.username+"</td><td>"+item.modile_phone+"</td><td>"+item.email+"<td style='color:#FF5456;'><span data-id='"+item.id+"' class='edit2'>编辑</span><span data-id='"+item.id+"' class='delete2'>删除</span></td>";
+                            company2+="<td>"+item.corporate_name+"</td><td>"+item.position+"</td><td>"+item.username+"</td><td>"+item.modile_phone+"</td><td>"+item.email+"<td style='color:#48a4ea;'><span data-id='"+item.id+"' class='edit2'>编辑</span><span data-id='"+item.id+"' class='delete2'>删除</span></td>";
                             company2+="/<tr >"
                         })
                         $(".company2").append(company2)
@@ -348,7 +337,7 @@ function open(method,type){
    
 }
 //角色  操作员删除操作
-function deleteM(method){
+function deleteM(method,id){
     
     //页面初次加载渲染页面
     var url,par,value;
@@ -374,47 +363,25 @@ function deleteM(method){
          //console.log(value)
     if(value.length == 0){
         //console.log(value.length)
-        return
-    }
-    if(value.length == 1){
-        //console.log(value.length)
         url = src+"/adminInterface.dx";
-        par = "appsercet="+newAppsercet+"&method="+method+"&type=1&userId="+value;
+        par = "appsercet="+newAppsercet+"&method="+method+"&type=1&userId="+id;
         logsgin(url,par);
         location.reload()
-        }
+    }
+    
         if(value.length > 1){
             //console.log(value.length)
             url = src+"/adminInterface.dx";
         par = "appsercet="+newAppsercet+"&method="+method+"&type=2&userIdList="+value;
-        location.reload()
-            if (value.length == 0) {
-
-                $(".confirm").hide();
-                $(".nv91-mask").show();
-                $(".confirm1").show();
-                $(".prompt").text("请至少选择一条数据");
-                setTimeout(function () {
-                    $(".nv91-mask").hide();
-                    $(".confirm1").hide();
-                    location.reload();
-                }, 2000);
-
-              
-
-
-            }else{
-                logsgin(url,par)
-            }
+      
+          
+        logsgin(url,par)
+          location.reload();
       
         }
     }
-    //console.log(value)
+   
     if(value.length == 0){
-        //console.log(value.length)
-        return
-    }
-    if(value.length == 1){
         //console.log(value.length)
         url = src+"/adminInterface.dx";
     par = "appsercet="+newAppsercet+"&method="+method+"&type=1&roleId="+value;
@@ -432,202 +399,7 @@ function deleteM(method){
     //console.log(value)
   
 }
- //编辑操作
- function edit(method,method1){
-    var url,par,rolename;
-
-    // Datetime();
-    var appsercet = window.localStorage.getItem("appsercet");
-    appsercet = JSON.parse(appsercet);
-    var newAppsercet = appsercet.data;
-    $(".isEdit").click(function(){
-        
-        var userid;
-            add();
-            var val = $(this).parent().parent().find(".test").html();
-            rolename = $(this).parent().parent().find(".rolen").html();
-            console.log(sta)
-            // var sta = $(this).parent().parent().attr("data-id");
-            var sta = $(this).attr("data-id");
-           var  roleId = sta;
-            userid =val;
-            $(".role1").val(rolename)
-            var code = $(this).parent().parent().find(".stcode").attr('data-id');
-            // var id = $(".isEdit").attr("data-id");
-            //console.log(id);
-            url = src+"/adminInterface.dx";
-            par = "appsercet="+newAppsercet+"&method=get.dxWeb.leftMenuAll";  
-            
-            logsgin(url,par);   
-              if(method1 === "get.dxWeb.updateOperation"){
-                par = "appsercet="+newAppsercet+"&method="+method+"&userId="+userid;
-                
-                logsgin(url,par);
-               }else{
-                par = "appsercet="+newAppsercet+"&method="+method+"&roleId="+roleId;
-                
-                logsgin(url,par);
-               }   
-           
-            var dxRoleRightsLists = window.localStorage.getItem("dxRoleRightsLists");
-            if(dxRoleRightsLists){
-                dxRoleRightsLists = JSON.parse(dxRoleRightsLists);
-
-            }
-            //console.log(dxRoleRightsLists);
-            var dxRightsCategoryList = window.localStorage.getItem("userole");
-           
-                update = JSON.parse(dxRightsCategoryList);
-            if(update){
-                var uparr = update.dxRightsList.dxRightsCategoryList;
-                console.log(uparr);
-            }
-            
-            var inputs = document.querySelectorAll(".roleLis input");//获取所有的input标签对象
-            var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
-   
-                for (var i = 0; i < inputs.length; i++) {
-                    var obj = inputs[i];
-                    if (obj.type == 'checkbox') {
-                        checkboxArray.push(obj);
-                    }
-                }
-           
-               
-            if(method === "get.dxWeb.adminDetails"){
-              
-               $(".user1").val(update.username);
-               $(".user2").val("......");
-               $(".user3").val(update.trueName);
-               $(".user4").val(update.modilePhone);
-               var radio = document.querySelectorAll(".status");
-               var radios = [];
-               for (var i = 0; i < radio.length; i++) {
-                   var obj1 = radio[i];
-                   if (obj1.type == 'radio') {
-                       radios.push(obj1);
-                   }
-               }
-               for (var i = 0; i < radios.length; i++) {
-                   var obj1 = radios[i];
-                 
-                       if (obj1.value == update.status) {
-                           obj1.checked = true;
-                       }  
-               }
-               var  manRole1 = document.querySelectorAll(".manRole1 option");
-               for (var i = 0; i < manRole1.length; i++) {
-                var obj1 = manRole1[i];
-              
-                    if (obj1.value == update.roleId) {
-                        obj1.selected = true
-                    }  
-            }
-            
-            for (var i = 0; i < checkboxArray.length; i++) {
-                var obj = checkboxArray[i];
-                $.each(uparr,function(i,item){
-                    //console.log(obj.value)
-                    if (obj.value == item.id) {
-                        obj.checked = true;
-                    }
-                })   
-            }
-            }else{
-                var item1 =  document.querySelectorAll(".show");
-                var checkboxArray1 = [];//初始化空数组，用来存放checkbox对象。
-                // for (var i = 0; i < item1.length; i++) {
-                //     var obj = item1[i];
-                //     if (obj.getAttribute("data-id") == item.rights_id) {
-                //         checkboxArray1.push(obj);
-                //     }
-                // }
-                for (var i = 0; i < checkboxArray.length; i++) {
-                    var obj = checkboxArray[i];
-                    if(dxRoleRightsLists.length>0){
-                        $.each(dxRoleRightsLists,function(i,item){
-                            //console.log(obj.value)
-                            // if (obj.value == item.rights_id) {
-                            //     obj.checked = true;
-                            // }
-                            if (obj.value == item.rights_id) {
-                                obj.checked = true;
-                            }
-                            
-                        })
-                    }
-                    
-                
-                }
-                var radio = document.querySelectorAll(".status");
-               var radios = [];
-               for (var i = 0; i < radio.length; i++) {
-                   var obj1 = radio[i];
-                   if (obj1.type == 'radio') {
-                       radios.push(obj1);
-                   }
-               }
-               for (var i = 0; i < radios.length; i++) {
-                   var obj1 = radios[i];
-                 
-                       if (obj1.value == code) {
-                           obj1.checked = true;
-                       }  
-               }
-            }
-    $(".roleSure").click(function(){
-                                                 
-            var rightsId,status,rolename;
-            var user1,user2,user3,user4
-            var val = $(".manRole1 option:checked").val()
-            if(val == 0){
-                return
-            }
-           
-            user1 =  $(".user1").val();
-            user2 =  $(".user2").val();
-            user3 =  $(".user3").val();
-            user4 =  $(".user4").val();
-          
-            rolename = $(".role1").val()
-            var inputs = document.querySelectorAll(".roleLis input");//获取所有的input标签对象
-            var radio = document.querySelectorAll(".status ");
-            var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
-            for (var i = 0; i < inputs.length; i++) {
-                var obj = inputs[i];
-                if (obj.type == 'checkbox') {
-                    checkboxArray.push(obj);
-                }
-            }
-             rightsId = new Array();
-            for (var i = 0; i < radio.length; i++) {
-                if (radio[0].checked){
-                    status = 1;
-                }else{
-                    status = 2;
-                }
-                
-            }
-            for (var i = 0; i < checkboxArray.length; i++) {
-                if (checkboxArray[i].checked)
-                rightsId.push(checkboxArray[i].value);
-            }
-            url = src+"/adminInterface.dx";
-       if(method1 === "get.dxWeb.updateOperation"){
-        par = "appsercet="+newAppsercet+"&method="+method1+"&status="+status+"&roleIds="+rightsId+"&username="+user1+"&pwd="+user2+"&roleId="+roleId+"&modilePhone="+user4+"&trueName="+user3+"&userId="+userid;
-       }else{
-        par = "appsercet=" + newAppsercet + "&method="+method1+"&roleName=" + rolename + "&status=" + status + "&rightsIds=" + rightsId + "&roleId=" + roleId;
-       }
-        logsgin(url, par);
-    })
-    $(".roleRefuse").click(function(){
-        $(".nv91-mask").fadeOut();
-        $(".nv91").hide();
-    })
-})
-
-
-}
+ 
 //点击分页完成后判断显示内容
 function isHas(){
     
@@ -687,60 +459,8 @@ function isHas(){
 }
  
 }
-//分页操作
-function pagenow(url,method){
-    // Datetime();
-    var par
-    var appsercet = window.localStorage.getItem("appsercet");
-    appsercet = JSON.parse(appsercet);
-    var newAppsercet = appsercet.data;
-    var pageNow = document.querySelectorAll("#pageSelect li");
-    $(document).on("click",".pageNow",function(){
-        var index = $(this).index()+1;
-        par = "appsercet="+newAppsercet+"&method="+method+"&currentPage="+index;
-        
-        logsgin(url,par);
-        $(document).on("click","#prePage",function(){
-            index--
-            par = "appsercet="+newAppsercet+"&method="+method+"&currentPage="+(index);
-            logsgin(url,par);
-            if(index == 1){
-                return;
-                    }
-    
-        });
-        $(document).on("click","#nextPage",function(){
-            index++
-            par = "appsercet="+newAppsercet+"&method="+method+"&currentPage="+(index);
-            logsgin(url,par);
-            var length = $("#pageSelect .pageNow").length;
-                     if(index > length){
-                         return;
-                     }
-    
-        });
-        
-       
-});
 
-$(document).on("click","#jumpBtn",function(){
-    
-    var index = $("#jumpText").val()
-    par = "appsercet="+newAppsercet+"&method="+method+"&currentPage="+(index);
-    logsgin(url,par);
-}); 
-  
-}
-//角色管理  操作员登录下边分页个数  总数  以及目前在正在显示第几页
-function getPage(){
-    var page = sessionStorage.getItem("pageInfo");
-    pageInfo = JSON.parse(page);
-    //console.log(pageInfo.totalRows)
-    var pageNum = Math.ceil(pageInfo.totalRows / 10);
-    $(".total").html(pageInfo.totalRows);
-    $(".pagenum").html(pageNum);
-    $(".current").html(pageInfo.currentPage);
-}
+
 //监测用户一小时未进行操作则退出页面
 function  hasOperate(callback, second) { //second是检测未操作的时间，秒为单位，callback是该时间段未点击需要执行的函数
     var status = true;

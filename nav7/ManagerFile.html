@@ -7,7 +7,7 @@
     <title>管理文件夹</title>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/setting.css">
+    
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" type="text/css" href="../css/buind.css">
@@ -19,14 +19,14 @@
     <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
 
 </head>
-<body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
-<div class="brand" style="padding-left: 20px;">
-    <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
-        <li><a href="#" class="color">资源库</a>&nbsp;/&nbsp;</li>
-        <li><a href="#" class="color">管理文件夹</a></li>
-    </ul>
-    <h1>管理文件夹</h1>
-</div>
+<body class="bgf3">
+        <div class="brand h135">
+            <ul class="breadcrumb f14">
+                <li><a href="#" class="color color_8d">资源库</a>&nbsp;/&nbsp;</li>
+                <li><a href="#"  class="color color_5a">管理文件夹</a></li>
+            </ul>
+            <h1>管理文件夹</h1>
+    </div>
 <div style="margin: 50px 70px 0 72px;background-color: #fff;">
     <p class="size" style="padding: 29px 0 0 20px;">任务列表</p>
     <div class="addInput" style="display: none">+添加</div>
@@ -75,23 +75,35 @@
             </div>
         </form>
     </div>
-    <div class="nv" style="padding:10px;">
-        <div class="nv91-close">X</div>
-        <form action="" class="form-horizontal" role="form" >
-            <div class="prompt" style="padding-bottom:30px;">
-                <p style="font-size: 20px;">警告</p>
-                <img src="" alt="" ><span>操作成功</span>
-            </div>
-            
-        </form>
+   <!--确认 取消-->
+   <div class="confirm">
+    <div  class="boxTotal">
+        <img src="../image/hint.png" class="boxImg"/>
+        <span class="boxDelete">确定要删除这条消息吗?</span>
+        </div>
+        <div class="dele">
+        <button class="roleRefu  roleRefuse5">取消</button>
+        <button class="roleSur roleSure">确定</button>
     </div>
 </div>
+<div class="confirm1">
+    <div  class="boxTotal">
+        <img src="../image/hint.png" class="boxImg"/>
+        <span class="boxDelete prompt">确定要删除这条消息吗?</span>
+        </div>
+       
+</div>
+<div class="nv1">
+    <img src="../image/success.png" class="success1"/>
+    <span class="referMes prompt">删除成功</span>
+</div>
+<div class="nv3">
+    <img src="../image/close12.png" class="success1"/>
+    <span class="referMes prompt">删除失败</span>
+</div>
+</div>
 <footer class="footer">
-    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-    </p>
-    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    东信在线门户运营后台
 </footer>
 </body>
 </html>
@@ -107,7 +119,184 @@
         if (el.readOnly) el.checked=el.readOnly=false;
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
-    $(document).ready(function(){
+  
+        $(document).ready(function(){
+            function judgeStatus(){
+              //页面初次渲染加载数据
+    var data = window.localStorage.getItem("dxRightsList");    
+    data = JSON.parse(data);  
+ //页面初次加载渲染页面
+ var url,par;      
+    var appsercet = window.localStorage.getItem("appsercet");
+    appsercet = JSON.parse(appsercet);
+    var newAppsercet = appsercet.data;
+            //判断是否有添加管理员操作权限
+        var arr = [];
+        $.each(data,function(i,item){
+            //console.log(item)
+            if(item.id == 7){
+                arr.push(item)
+            }
+        })
+        var help ;
+        
+        console.log(arr[0]);
+        $.each(arr[0].dxRightsList,function(i,item){
+            //console.log(arr[0].dxRightsList)
+            if(item.method === "get.dxWeb.libraryList"){
+                url = src+"/"+item.link_path;
+                help = "/"+item.link_path;
+               
+               
+                //判断该角色是否有权限操作
+                if(item.dxRightsTwoList.length == 0){
+                    return
+                }
+                else{
+                    $.each(item.dxRightsTwoList,function(i,obj){
+                       //判断该用户是否有添加权限
+                        if (obj.method === "get.dxWeb.addFolder") {
+                            $(".addInput").show();
+                            //添加按钮点击事件
+                            $(".addInput").unbind('click').bind("click", function () {
+                                // $(".addInput").click(function(){
+                                $(".nv91-mask").show();
+                                $(".nv91").show();
+                                $(".fileSure").unbind('click').bind("click", function () {
+
+                                    // $(".fileSure").click(function(){
+                                    var data = addUpdate("get.dxWeb.addFolder");
+                                    if (data.msg.code == "200") {
+                                        $(".prompt").text("添加成功");
+                                        $(".nv91-mask").show();
+                                        $(".nv1").show();
+
+                                        setTimeout(function () {
+                                            $(".nv91-mask").hide();
+                                            $(".nv1").hide();
+                                            render();
+                                            judgeStatus(7, "get.dxWeb.libraryList");
+                                        }, 2000);
+
+                                    } else {
+                                        $(".prompt").text("添加失败");
+                                        $(".nv91-mask").show();
+                                        $(".nv1").show();
+                                        setTimeout(function () {
+                                            $(".nv91-mask").hide();
+                                            $(".nv1").hide();
+
+                                        }, 2000);
+                                    }
+                                })
+                            })
+
+
+                        }
+                        //判断该用户是否有删除权限 
+                       if (obj.method === "get.dxWeb.daleteFolder") {
+                            //查看文章详情
+                            $(".isDelete").show();
+                            $(".isDelete").unbind('click').bind("click", function () {
+
+                                // $(".isDelete").click(function(){
+                                id = $(this).attr("data-id");
+                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.daleteFolder&id=" + id;
+                                var status = getSign(url, par);
+                                if (status.msg.code == "200") {
+                                    $(".prompt").text("删除成功");
+                                    $(".nv91-mask").show();
+                                    $(".nv1").show();
+
+                                    setTimeout(function () {
+                                        $(".nv91-mask").hide();
+                                        $(".nv1").hide();
+                                        render();
+
+                                        judgeStatus();
+                                    }, 2000);
+
+                                } else {
+                                    $(".prompt").text("删除失败");
+                                    $(".nv91-mask").show();
+                                    $(".nv1").show();
+                                    setTimeout(function () {
+                                        $(".nv91-mask").hide();
+                                        $(".nv1").hide();
+
+                                    }, 2000);
+                                }
+
+                            })
+
+
+
+                        }  
+                            //判断是否有编辑权限
+                        if (obj.method === "get.dxWeb.updateFolder") {
+
+                            $(".isEdit").show();
+                            $(".isEdit").unbind('click').bind("click", function () {
+
+                                // $(".isEdit").click(function(){
+                                id = $(this).attr("data-id");
+                                $(".nv91-mask").show();
+                                $(".nv91").show();
+                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getFolder&id=" + id;
+                                var data = getSign(url, par);
+
+                                console.log(data)
+                                $(".filename").val(data.msg.brand_name);
+                                var li = document.querySelectorAll(".fileid option");
+                                for (var i = 0; i < li.length; i++) {
+                                    var obj = li[i]
+                                    if (data.msg.father_brand_name == "" || data.msg.father_brand_name == null || data.msg.father_brand_name == "--") {
+                                        li[0].checked = true;
+                                    } else if (obj.value == data.msg.father_brand_name) {
+                                        obj.checked = true;
+                                    }
+                                }
+                                $(".fileSure").unbind('click').bind("click", function () {
+
+                                    // $(".fileSure").click(function(){
+                                    var data = addUpdate("get.dxWeb.updateFolder", id);
+                                    if (data.msg.code == "200") {
+                                        $(".prompt").text("修改成功");
+                                        $(".nv91-mask").show();
+                                        $(".nv1").show();
+
+                                        setTimeout(function () {
+                                            $(".nv91-mask").hide();
+                                            $(".nv1").hide();
+                                            render();
+                                            judgeStatus();
+                                        }, 2000);
+
+                                    } else {
+                                        $(".prompt").text("修改失败");
+                                        $(".nv91-mask").show();
+                                        $(".nv1").show();
+                                        setTimeout(function () {
+                                            $(".nv91-mask").hide();
+                                            $(".nv1").hide();
+
+                                        }, 2000);
+                                    }
+                                })
+                            })
+                          
+                        }
+
+
+                    })
+
+                }
+            }
+           
+
+        })
+        }
+    
         //封装添加修改方法
         function addUpdate(method,id){
             
@@ -151,7 +340,7 @@
                 str1+="<option value='0' selected>请选择</option>"
                 $.each(list.dxFolderList,function(i,item){
                     str1+="<option value='"+item.id+"' >"+item.brand_name+"</option>"
-                    str+="<tr style='border-bottom: 1px solid #d8d8d8;color:#8D8D8D;'><td>"+item.brand_name+"</td><td>"+item.father_brand_name+"</td><td style='color:#FF5456;'><span class='isDelete' data-id='"+item.id+"'>删除</span>&nbsp;<span class='isEdit' data-id='"+item.id+"'>编辑</span>&nbsp;</td></tr>"
+                    str+="<tr style='border-bottom: 1px solid #d8d8d8;color:#8D8D8D;'><td>"+item.brand_name+"</td><td>"+item.father_brand_name+"</td><td style='color:#48a4ea;'><span class='isDelete' data-id='"+item.id+"'>删除</span>&nbsp;<span class='isEdit' data-id='"+item.id+"'>编辑</span>&nbsp;</td></tr>"
                 })
                 $(".bannerList").html(str);
                 $(".fileid").html(str1);
@@ -159,55 +348,7 @@
         }
         render();
         //判断是否有添加删除编辑查看属性 
-        judgeStatus(7,"get.dxWeb.libraryList");
-
-        //添加按钮点击事件
-        $(".addInput").click(function(){
-            $(".nv91-mask").show();
-            $(".nv91").show();
-            $(".fileSure").click(function(){
-                addUpdate("get.dxWeb.addFolder");
-            })
-        })
-        //修改文件夹
-        $(".isEdit").click(function(){
-            id = $(this).attr("data-id");
-            $(".nv91-mask").show();
-            $(".nv91").show();
-            par = "appsercet="+newAppsercet+"&method=get.dxWeb.getFolder&id="+id;
-            var data = getSign(url,par);
-
-            console.log(data)
-            $(".filename").val(data.msg.brand_name);
-            var li = document.querySelectorAll(".fileid option");
-            for(var i = 0;i < li.length;i++){
-                var obj = li[i]
-                if(data.msg.father_brand_name == "" || data.msg.father_brand_name == null || data.msg.father_brand_name == "--"){
-                    li[0].checked = true;
-                }else if(obj.value == data.msg.father_brand_name){
-                    obj.checked = true;
-                }
-            }
-
-            $(".fileSure").click(function(){
-                addUpdate("get.dxWeb.updateFolder",id);
-            })
-        })
-        //删除文件夹
-        $(".isDelete").click(function(){
-            id = $(this).attr("data-id");
-            par = "appsercet="+newAppsercet+"&method=get.dxWeb.daleteFolder&id="+id;
-            
-            getSign(url,par);
-            var status = getSign(url,par);
-            if(status.msg.code == "200"){
-
-                render();
-                judgeStatus(7,"get.dxWeb.libraryList");
-
-            }
-        })
-
+        judgeStatus();
 
 
     })

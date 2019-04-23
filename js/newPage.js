@@ -153,50 +153,63 @@ Page.prototype = {
         // };
     }, showSkipInput: function showSkipInput() {
         var that = this;
+        console.log("-----")
+        console.log(that);
         var li = document.createElement('li');
         li.className = 'totalPage';
         var span1 = document.createElement('span');
         span1.innerHTML = '跳转至';
         li.appendChild(span1);
         var input = document.createElement('input');
-        input.setAttribute("type", "number");
+        input.setAttribute("type", "text");
         input.className = 'returnPage';
-        input.onkeydown = function (e) {
-            var oEvent = e || event;
-            if (oEvent.keyCode == '13') {
-                var val = parseInt(oEvent.target.value);
-                if (typeof val === 'number' && val <= that.pageTotal && val > 0) {
-                    that.curPage = val;
-                    that.getPage(that.curPage);
-                } else {
-                    
-                    input.value = that.pageTotal;
-                   localStorage.setItem("pageNow1",that.pageTotal);
-                    // location.reload();
-                }
-                that.init();
-            }
-        };
-        input.onblur = function (e) {
-            var oEvent = e || event;
-            var val = parseInt(oEvent.target.value);
-            if (typeof val === 'number' && val <= that.pageTotal && val > 0) {
-                that.curPage = val;
-                that.getPage(that.curPage);
-            } else {
+        input.onkeyup = function(){
+            input.value = input.value.replace(/^(0+)|[^\d]+/g,'')
+        }
+        // input.onkeydown = function (e) {
+        //     var oEvent = e || event;
+        //     if (oEvent.keyCode == '13') {
+        //         setTimeout(function(){
+        //             var val = parseInt(oEvent.target.value);
+        //             if (typeof val === 'number' && val <= that.pageTotal && val > 0) {
+        //                 that.curPage = val;
+        //                 that.getPage(that.curPage);
+        //             } else {
+                        
+        //                 input.value = that.pageTotal;
+        //                localStorage.setItem("pageNow1",that.pageTotal);
+        //                 // location.reload();
+        //             }
+        //             that.init();
+        //         },500);
                 
-                input.value = that.pageTotal;
-               localStorage.setItem("pageNow1",that.pageTotal);
-                // location.reload();
-            }
-            that.init();
+        //     }
+        // };
+        // input.onblur = function (e) {
+        //     var oEvent = e || event;
+        //     setTimeout(function(){
+        //         var val = parseInt(oEvent.target.value);
+        //         if (typeof val === 'number' && val <= that.pageTotal && val > 0) {
+        //             that.curPage = val;
+        //             that.getPage(that.curPage);
+        //         } else {
+                    
+        //             input.value = that.pageTotal;
+        //            localStorage.setItem("pageNow1",that.pageTotal);
+        //             // location.reload();
+        //         }
+        //         that.init();
+        //     },500);
            
-        };
+           
+        // };
+      
         li.appendChild(input);
         var span2 = document.createElement('span');
         span2.innerHTML = '页';
         li.appendChild(span2);
         this.ul.appendChild(li);
+        
     }, showPageTotal: function showPageTotal() {
         var that = this;
         var li = document.createElement('li');

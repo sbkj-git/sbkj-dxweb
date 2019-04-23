@@ -7,7 +7,7 @@
     <title>企业认证详情</title>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/setting.css">
+    
     <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
 <link rel="stylesheet" type="text/css" href="../css/buind.css">
@@ -26,10 +26,22 @@
 .btn{margin-right: 20px;font-size: 14px;color: rgba(34,34,34,1);}
 .type3,.type4{padding:40px 20px;border-bottom:2px solid rgba(204,204,204,1);width: 100%;display: none;}
 .btn-primary{color:#fff;}
-.disnone1{display: none;}
+.disnone1,.type6{display: none;}
+/* //点击放大图片 */
+
+
+        .bigimg{width:600px!important;height:500px!important;position: fixed;left: 0;top: 0; right: 0;bottom: 0;margin:auto;display: none;z-index:9999;border: 10px solid #fff;}
+        .mask{position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #000;opacity:0.5;filter: Alpha(opacity=50);z-index: 98;transition:all 1s;display: none}
+      
+        .smallimg:hover{cursor:zoom-in}
+        .mask:hover{cursor:zoom-out}
+        .mask>img{position: fixed;right:10px;top: 10px;width: 60px;}
+        .mask>img:hover{cursor:pointer}
+
 </style>
 </head>
 <body class="bgf3">
+    <div class="imgbox">
     <div class="brand h135">
         <ul class="breadcrumb f14">
             <li><a href="#" class="color color_8d">中台用户管理</a>&nbsp;/&nbsp;</li>
@@ -40,15 +52,15 @@
    <div class="" style="margin-top:50px;padding: 0 70px;width: 100%;box-sizing: border-box;">
     <div style="width: 100%;padding:40px 20px;box-sizing: border-box;">
         <div class="form-group flex justify" style="padding-bottom: 2%;background-color: #fff;font-size:18px;font-family:PingFangSC-Regular;color:rgba(34,34,34,1);">
-           <div style="padding:40px 20px;border-bottom:2px solid rgba(204,204,204,1);width: 100%;">
-               <p style="font-size:20px!important;">申请信息</p>
+           <div style="padding:40px 20px;border-bottom:2px solid rgba(204,204,204,1);width: 100%;" class="type7">
+               <p style="font-size:20px!important;">个人认证申请信息</p>
                <div class="flex" style="width: 100%;font-size:18px;">
-                   <li class="col-sm-4"><p>提交审核时间:&nbsp;&nbsp;<span class="createTime">2019-03-25</span></p></li>
-                   <li class="col-sm-4"><p>账号注册时间:&nbsp;&nbsp;<span class="registerTime"></span></p></li>
-                   <li class="col-sm-4"><p>审核完成时间:&nbsp;&nbsp;<span class="approveTime"></span></p></li>
-                   <li class="col-sm-4"><p>注册账号:&nbsp;&nbsp;<span class="registerPhone"></span></p></li>
-                   <li class="col-sm-4"><p>认证状态:&nbsp;&nbsp;<span class="authState"></span></p></li>
-                   <li class="col-sm-4"><p>用户类型:&nbsp;&nbsp;<span class="type"></span></p></li>
+                   <li class="col-sm-4"><p>提交审核时间:&nbsp;&nbsp;<span class="createTime1">2019-03-25</span></p></li>
+                   <li class="col-sm-4"><p>账号注册时间:&nbsp;&nbsp;<span class="registerTime1"></span></p></li>
+                   <li class="col-sm-4"><p>审核完成时间:&nbsp;&nbsp;<span class="approveTime1"></span></p></li>
+                   <li class="col-sm-4"><p>注册账号:&nbsp;&nbsp;<span class="registerPhone1"></span></p></li>
+                   <li class="col-sm-4"><p>认证状态:&nbsp;&nbsp;<span class="authState1"></span></p></li>
+                   <li class="col-sm-4"><p>用户类型:&nbsp;&nbsp;<span class="type1"></span></p></li>
 
                </div>
                
@@ -63,29 +75,41 @@
                         <div style="width:114px;
                         height:150px;
                         background:rgba(235,235,235,1);">
-                            <img src="" alt="" class="idenPath" style="width: 102px;height:64px;display: block;margin:48px 5px;">
+                            <img src="" alt="" class="idenPath smallimg" style="width: 102px;height:64px;display: block;margin:48px 5px;">
                         </div>
                         <div style="width:114px;
                         height:150px;
                         background:rgba(235,235,235,1);margin-left: 10px;">
-                            <img src="" alt="" class="photoPath" style="width: 102px;height:64px;display: block;margin:48px 5px;">
+                            <img src="" alt="" class="photoPath smallimg" style="width: 102px;height:64px;display: block;margin:48px 5px;">
                         </div>
                     </div>
 
             </div>
+            <div style="padding:40px 20px;border-bottom:2px solid rgba(204,204,204,1);width: 100%;" class="type6">
+                    <p style="font-size:20px!important;">企业认证申请信息</p>
+                    <div class="flex" style="width: 100%;font-size:18px;">
+                        <li class="col-sm-4"><p>提交审核时间:&nbsp;&nbsp;<span class="createTime">2019-03-25</span></p></li>
+                        <li class="col-sm-4"><p>账号注册时间:&nbsp;&nbsp;<span class="registerTime"></span></p></li>
+                        <li class="col-sm-4"><p>审核完成时间:&nbsp;&nbsp;<span class="approveTime"></span></p></li>
+                        <li class="col-sm-4"><p>注册账号:&nbsp;&nbsp;<span class="registerPhone"></span></p></li>
+                        <li class="col-sm-4"><p>认证状态:&nbsp;&nbsp;<span class="authState"></span></p></li>
+                        <li class="col-sm-4"><p>用户类型:&nbsp;&nbsp;<span class="type"></span></p></li>
+     
+                    </div>
+                    
+                    
+                </div>
            <div  class="type4">
                 <h4>企业信息</h4>
-                <p style="margin-top: 20px;">企业名称:&nbsp;&nbsp;<span class="companyName">北京市无限测试有限公司</span></p>
-                <p>统一社会信用代码:&nbsp;&nbsp;<span class="businessLicense">1234567890123456</span></p>
-                <p>企业简介:&nbsp;&nbsp;<span class="companyDesc">这是企业简介最多150个字Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
-                        dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis 
-                        dis parturient montes, nascetur ridiculus mus.</span></p>
+                <p style="margin-top: 20px;">企业名称:&nbsp;&nbsp;<span class="companyName"></span></p>
+                <p>统一社会信用代码:&nbsp;&nbsp;<span class="businessLicense"></span></p>
+                <p>企业简介:&nbsp;&nbsp;<span class="companyDesc"></span></p>
                 <div class="flex">
-                    <p>营业执照:</p>
+                    <p>营业执照:&nbsp;&nbsp;</p>
                     <div style="width:114px;
                         height:150px;
                         background:rgba(235,235,235,1);">
-                        <img src="" alt="" class="licencePath" >
+                        <img src="" alt="" class="licencePath smallimg" >
                     </div>
                 </div>
                 
@@ -93,19 +117,14 @@
             </div>
             <div style="padding:40px 20px;width: 100%" class="type5">
                     <h4>法人信息</h4>
-                    <p style="margin-top: 20px;">中文姓名:&nbsp;&nbsp;<span class="corporateName">路人甲</span></p>
+                    <p style="margin-top: 20px;">姓名:&nbsp;&nbsp;<span class="corporateName">路人甲</span></p>
                     <!-- <p>英文名称:<span class="">LU REN JIA</span></p> -->
                     <div class="flex">
                         <p>身份证复印件:&nbsp;&nbsp;</p>
                         <div style="width:114px;
                         height:150px;
                         background:rgba(235,235,235,1);">
-                            <img src="" alt="" class="idenPath" style="width: 104px;height:64px;display: block;margin:48px 5px;">
-                        </div>
-                        <div style="width:114px;
-                        height:150px;
-                        background:rgba(235,235,235,1);margin-left: 10px">
-                            <img src="" alt="" class="photoPath" style="width: 104px;height:64px;display: block;margin:48px 5px;">
+                            <img src="" alt="" class="idenPath1 smallimg" style="width: 104px;height:64px;display: block;margin:48px 5px;">
                         </div>
                     </div>
                     
@@ -114,7 +133,7 @@
             
             <div class="flex contMenu" style="justify-content: center;width: 100%;height: 50px;font-size: 14px;margin-top: 50px;">
                    
-                    <button class="btn btn1 pass btn-primary"><img src="../image/pass1.png" class="disnone1"/>审核通过</button> 
+                    <button class="btn btn1 pass"><img src="../image/pass1.png" class="disnone1"/>审核通过</button> 
                     <button class="btn btn1 nopass" ><img src="../image/pass1.png" class="disnone1"/>审核不通过</button>
                    
                 </div>
@@ -149,6 +168,12 @@
 <div class="mask">
 <img src="../image/close1.png" alt=""> -->
 </div>
+</div>
+<img src="" alt="" class="bigimg" style="z-index:9999">
+<div class="mask">
+   
+<img src="../image/close.png" alt="">
+</div>
 </body>
 </html>
 <script src="../js/jquery-1.10.2.min.js"></script>
@@ -156,7 +181,19 @@
 <script src="../js/api.js"></script>
 <script src="../js/login.js"></script>
 <script src="../js/getRequest.js"></script>
+<script src="../js/zoom.js"></script>
+
 <script type="text/javascript">
+// 点击放大图片
+    $(function () {
+        /*
+         smallimg   // 小图
+         bigimg  //点击放大的图片
+         mask   //黑色遮罩
+         */
+        var obj = new zoom('mask', 'bigimg', 'smallimg');
+        obj.init();
+    })
 url = zt +"operationSupport/updateIdentityInfo"
 //初次加载页面从缓存获取数据并将其渲染到页面
 var detail = localStorage.getItem("companyDetail");
@@ -164,23 +201,50 @@ var detail = localStorage.getItem("companyDetail");
 var type3 = localStorage.getItem("type3");
 detail = JSON.parse(detail);
 //根据类型进行页面显示
-if(type3 && type3 == "yes"){
+// 个人转企业
+if(type3 && type3 == "yes" ){
+var qyPerson = localStorage.getItem("qyPerson")
+qyPerson = JSON.parse(qyPerson);
+$(".idName").text(qyPerson.idName);
+$(".idCode").text(qyPerson.idCode);
+$(".photoPath").attr("src","http://image.caih.com/"+ qyPerson.photoPath);
+$(".createTime1").text(qyPerson.createTime);
+$(".registerTime1").text(qyPerson.registerTime);
+$(".approveTime1").text(qyPerson.approveTime);
+$(".registerPhone1").text(qyPerson.registerPhone);
+if (qyPerson.hasSubmit == true) {
+       
+       $(".authState1").text("审核通过");
+   } else  {
+      
+       $(".authState1").text("审核未通过");
+   } 
+   if (qyPerson.type == 2) {
+            $(".type1").text("企业认证");
+        } else {
+            $(".type1").text("个人转企业认证");
+        }
+        $(".idenPath").attr("src","http://image.caih.com/"+qyPerson.personalFrontPath);
+$(".idenPath1").attr("src","http://image.caih.com/"+qyPerson.idenPath);
+$(".type6").show();
 $(".type3").show();
 $(".type4").show();
 $(".type5").show();
-$(".idName").text(detail.idName);
-$(".idCode").text(detail.idCode);
-$(".photoPath").attr("src","http://image.caih.com/"+ detail.photoPath);
-$(".idenPath").attr("src","http://image.caih.com/"+detail.idenPath);
+
 }
+// qiye
 if(type3 && type3 == "no"){
 $(".type4").show();
 $(".type5").show();
+$(".type6").show();
+$(".type7").hide();
 $(".idName").text(detail.idName);
 $(".idCode").text(detail.idCode);
 $(".photoPath").attr("src","http://image.caih.com/"+detail.photoPath);
 $(".idenPath").attr("src","http://image.caih.com/"+detail.idenPath);
+
 }
+
 //判断状态时来控制按钮的选择
 
 var type3 = localStorage.getItem("nowStatus");
@@ -189,39 +253,38 @@ if(parseInt(type3) == 0){
 }else{
     $(".contMenu").hide();
 }
-console.log(detail)
-    $(".approveTime").text(detail.approveTime);
-    if (detail.authStateValue == 0) {
-       
-        $(".authState").text("未审核");
-    } else if (detail.authStateValue == 1) {
-       
-        $(".authState").text("已通过");
-    } else if (detail.authStateValue == 2) {
-       
-        $(".authState").text("未通过");
-    }
-
+console.log(detail);
+if(detail){
+    $(".idenPath1").attr("src","http://image.caih.com/"+ detail.idenPath);
+$(".approveTime").text(detail.approveTime);
 $(".businessLicense").text(detail.businessLicense);
 $(".companyDesc").text(detail.companyDesc);
 $(".corporateName").text(detail.corporateName);
 $(".createTime").text(detail.createTime);
-$(".hasSubmit").text(detail.hasSubmit);
-$(".idName").text(detail.idName);
-$(".idCode").text(detail.idCode);
-$(".licencePath ").attr("src","http://image.caih.com/"+ detail.licencePath);
-$(".photoPath").attr("src","http://image.caih.com/"+ detail.photoPath);
-$(".idenPath").attr("src","http://image.caih.com/"+ detail.idenPath);
-$(".refuseReason").text(detail.refuseReason);
-$(".registerPhone").text(detail.registerPhone);
+//detail.hasSubmit预留字段
 $(".registerTime").text(detail.registerTime);
+$(".registerPhone").text(detail.registerPhone);
+$(".licencePath ").attr("src","http://image.caih.com/"+ detail.licencePath);
+$(".refuseReason").text(detail.refuseReason);
 $(".status").text(detail.status);
 $(".companyName").text(detail.companyName);
+if (detail.authStateValue == 0) {
+       
+       $(".authState").text("未审核");
+   } else if (detail.authStateValue == 1) {
+      
+       $(".authState").text("已通过");
+   } else if (detail.authStateValue == 2) {
+      
+       $(".authState").text("未通过");
+   }
 if (detail.type == 2) {
             $(".type").text("企业认证");
         } else {
-            $(".type").text("个人认证");
+            $(".type").text("个人转企业认证");
         }
+}
+
 
 //封装请求
     function ajax(url, data12) {
@@ -251,14 +314,42 @@ if (detail.type == 2) {
     }
     var detailId = localStorage.getItem("detailId");
     var personType = localStorage.getItem("personType");
+    var personDetail = localStorage.getItem("personDetail");
+    personDetail = JSON.parse(personDetail);
     if(personType == "yes"){
-       
+        $(".type6").hide();
+        $(".type7").show();
         $(".changeText1").html("个人认证详情");
         $(".type4").hide();
         $(".type5").hide();
         $(".type3").show();
         $(".type3").css({"border":"none"});
+        $(".createTime1").text(personDetail.createTime);
+$(".registerTime1").text(personDetail.registerTime);
+$(".approveTime1").text(personDetail.approveTime);
+$(".registerPhone1").text(personDetail.registerPhone);
+if (personDetail.authStateValue == 0) {
+       
+       $(".authState1").text("未审核");
+   } else if (personDetail.authStateValue == 1) {
+      
+       $(".authState1").text("已通过");
+   } else if (personDetail.authStateValue == 2) {
+      
+       $(".authState1").text("未通过");
+   }
+
+   if (personDetail.type == 2) {
+            $(".type1").text("企业认证");
+        } else {
+            $(".type1").text("个人认证");
+        }
+        $(".idName").text(personDetail.idName);
+$(".idCode").text(personDetail.idCode);
+$(".photoPath").attr("src","http://image.caih.com/"+personDetail.photoPath);
+$(".idenPath").attr("src","http://image.caih.com/"+personDetail.idenPath);
     }
+   
 //审核通过点击事件
 // 0未审核，1已通过，2未通过
 $(".pass").click(function(){

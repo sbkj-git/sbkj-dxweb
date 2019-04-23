@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    // judge(href = "../login1.html");
    
     //页面初次加载渲染页面
     var url,par;
@@ -10,6 +9,11 @@ $(document).ready(function(){
     var id;
 
 
+})
+$(".btn1").each(function(index){
+    $(this).click(function(){
+        $(".btn1").removeClass("btn-primary").eq(index).addClass("btn-primary");
+    })
 })
 //取消按钮点击事件
 $(".redux").click(function(){
@@ -262,14 +266,14 @@ var radio = document.querySelectorAll(".st1");
         var company1 = "";
         $.each(data.dxbasics.dxcompanywebList, function (i, item) {
             company1 += "<tr>";
-            company1 += "<td>" + item.corporate_name + "</td><td>" + item.corporate_web + "</td><td>" + item.lat + "," + item.lnt + "</td><td>" + item.ip_addr + "<td style='color:#FF5456;' data-id='" + item.id + "' ><span data-id='" + item.id + "' class='edits'>编辑</span>&nbsp;&nbsp;<span data-id='" + item.id + "' class='delete1'>删除</span></td>";
+            company1 += "<td>" + item.corporate_name + "</td><td>" + item.corporate_web + "</td><td>" + item.lat + "," + item.lnt + "</td><td>" + item.ip_addr + "<td style='color:#48a4ea;' data-id='" + item.id + "' ><span data-id='" + item.id + "' class='edits'>编辑</span>&nbsp;&nbsp;<span data-id='" + item.id + "' class='delete1'>删除</span></td>";
             company1 += "/<tr >"
         });
         $(".company1").append(company1)
         var company2 = "";
         $.each(data.dxbasics.dxCompanyStaffList, function (i, item) {
             company2 += "<tr >";
-            company2 += "<td>" + item.corporate_name + "</td><td>" + item.position + "</td><td>" + item.username + "</td><td>" + item.modile_phone + "</td><td>" + item.email + "<td style='color:#FF5456;'><span data-id='" + item.id + "' class='edit2'>编辑</span>&nbsp;&nbsp;<span data-id='" + item.id + "' class='delete2'>删除</span></td>";
+            company2 += "<td>" + item.corporate_name + "</td><td>" + item.position + "</td><td>" + item.username + "</td><td>" + item.modile_phone + "</td><td>" + item.email + "<td style='color:#48a4ea;'><span data-id='" + item.id + "' class='edit2'>编辑</span>&nbsp;&nbsp;<span data-id='" + item.id + "' class='delete2'>删除</span></td>";
             company2 += "/<tr >";
         })
         $(".company2").append(company2);

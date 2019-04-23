@@ -7,7 +7,7 @@
     <title>功能设置</title>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/setting.css">
+    
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" type="text/css" href="../css/buind.css">
@@ -80,12 +80,12 @@
             width: 30px;
             height: 27px;
             position: absolute;
-            left: 6px;
+            left: 20px;
             top: -3px;
             bottom: 0%;
             margin: auto;
         }
-
+        .w200{padding-right: 20px;text-align: right;}
         .flex {
             display: flex;
             /* flex-wrap: wrap; */
@@ -105,7 +105,7 @@
         }
 
         #checkId:checked + label::before {
-            background-color: #FF5456;
+            background-color: #48a4ea;
             text-align: center;
             /*border: 1px solid red;*/
             color: #fff;
@@ -120,17 +120,19 @@
         }
         /* .manage12{width: 100px;height:100px;} */
         .manage12 .close12{right:50px;top:3px;}
+        .setting1{margin-left: 10px;}
+        .lh28{line-height: 28px;}
     </style>
 
 </head>
-<body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
-<div class="brand" style="background-color:#fff!important;height:135px;">
-    <ul class="breadcrumb" style="font-size: 14px;margin:25px 0;">
-        <li><a href="#" class="color">资源库</a>&nbsp;/&nbsp;</li>
-        <li><a href="#" class="color">管理文件</a></li>
-    </ul>
-    <h1>管理文件</h1>
-</div>
+<body class="bgf3">
+        <div class="brand h135">
+            <ul class="breadcrumb f14">
+                <li><a href="#" class="color color_8d">资源库</a>&nbsp;/&nbsp;</li>
+                <li><a href="#"  class="color color_5a">管理文件</a></li>
+            </ul>
+            <h1>管理文件</h1>
+    </div>
 <div class="" style="width: 100%;
     box-sizing: border-box;
     padding: 50px 70px 0 70px;">
@@ -151,15 +153,15 @@
                     <input class="btn addColor w200" value="编辑图片" readonly/>
                 </div>
 
-                <div class="col-sm-4"
-                     style="line-height: 50px;position: relative;top: -50%;left:78%;margin-top:5px;font-size:14px;"
+                <div 
+                     style="font-size:14px;"
                      class="setting1">
-                     <div class="radio radio-info radio-inline ">
+                     <div class="radio radio-info radio-inline " style="margin-top:10px!important">
                         <input type="radio" id="check123" value="1" name="f6"  class="warmask" >
                         <label for="check123" style="line-height: 30px;"> <span >&nbsp;&nbsp;添加水印</span>
-                            <span style="color:#FF5456;" class="setting">【设置】</span> </label>
+                            <span style="color:#48a4ea;" class="setting">【设置】</span> </label>
                     </div>
-                   
+                    
                     
                 </div>
             </div>
@@ -184,15 +186,11 @@
     </div>
 </div>
 <footer class="footer">
-    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-    </p>
-    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    东信在线门户运营后台
 </footer>
 <div class="nv91-mask">
     <div class="nv91" style="padding:10px 0;height:460px;">
-        <div class="nv91-close">X</div>
+        <div class="nv91-close">✕</div>
         <form action="" class="form-horizontal" role="form" style="text-align:center;">
             <div class="form-group  flex">
                 <label for="name" class="control-label col-sm-3 star rolename"
@@ -204,15 +202,15 @@
                 </div>
             </div>
             <div class="form-group flex">
-                <label for="name" class="control-label col-sm-3"
-                       style="text-align: right;line-height: 1.5;">水印大小:</label>
+                <label for="name" class="control-label col-sm-3 lh28"
+                       style="text-align: right;">水印大小:</label>
                 <div class="radio radio-info radio-inline ">
                     <input type="radio" id="r1" value="1" name="r1" checked="" class="status">
-                    <label for="r1"> 按实际大小 </label>
+                    <label for="r1" class="lh28"> 按实际大小 </label>
                 </div>
                 <div class="radio radio-info radio-inline">
                     <input type="radio" id="r2" value="2" name="r1" checked="" class="status">
-                    <label for="r2"> 按比例缩放 </label>
+                    <label for="r2" class="lh28"> 按比例缩放 </label>
                 </div>
             </div>
             <div class="form-group flex">
@@ -250,7 +248,7 @@
                 </div>
             </div>
             <div class="form-group flex butto"
-                 style="border-top:1px solid #EBEBEB;margin-top: 10px;justify-content: flex-end;box-sizing: border-box;">
+                 style="margin-top: 10px;justify-content: flex-end;box-sizing: border-box;">
                 <div class="col-sm-2" style="margin-top: 1%;margin-right: -4%">
                     <button class="btn btn-primary roleSure" style="width: 60px;height: 40px">确定</button>
                 </div>

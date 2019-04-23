@@ -7,7 +7,7 @@
     <title>个人认证审核</title>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/setting.css">
+    
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/newPage.css">
 
@@ -34,11 +34,34 @@
 </div>
 <div class="" style="margin-top:50px;padding: 0 70px;width: 100%;box-sizing: border-box;">
     <div style="width: 100%;padding:40px 20px;box-sizing: border-box;">
-        
+        <div class="form-group flex justify" style="background-color: #fff;padding:40px 20px;margin:0;">
+            <div class="flex" style="width: 100%;justify-content: space-between;padding-bottom: 20px;">
+                <div class="col-sm-5 flex">
+                    <label for="" class="label-control" style="font-size: 20px;font-weight: normal;line-height: 1.5;">状态:&nbsp;&nbsp;</label>
+                    <div class="col-sm-8">
+                        <select name="" id="" class="form-control companyType" style="font-size: 18px;padding:0 0 0 15px;">
+                            <option value="3">请选择</option>
+                            <option value="0">未审核</option>
+                            <option value="1">已通过</option>
+                            <option value="2">未通过</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-5   " style="text-align: right;">
+                    <div class="position">
+                        <input type="text" class="form-control companyName" placeholder="请输入姓名" style="font-size: 18px;"/>
+                        <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;"
+                              class="companyName1">&#xe615;</span>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
        
         <table class="table" style="width: 100%;overflow: hidden;">
-            <thead style="background-color: #F3F3F3;border: 1px solid #CCCCCC;">
-            <tr style="border-bottom: 1px solid #d8d8d8;background-color: #F3F3F3;height:70px;font-size: 18px;">
+            <thead style="border: 1px solid #CCCCCC;">
+            <tr style="border-bottom: 1px solid #d8d8d8;height:70px;font-size: 18px;">
                 <td >
                     姓名 
                     </div>
@@ -88,11 +111,7 @@
         </div>
 </div>
 <footer class="footer">
-    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-    </p>
-    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    东信在线门户运营后台
 </footer>
 </body>
 </html>
@@ -111,7 +130,56 @@
     var data1 = ajax(url, data12);
     render3(data1);
     judge();
-    pageChange("operationSupport/getPersonalAuthInfoList",data1,"pagination13")
+    pageChange("operationSupport/getPersonalAuthInfoList",data1,"pagination13");
+    //通过种类请求公司
+$(".companyType").change(function () {
+    url = zt + "operationSupport/getPersonalAuthInfoList";
+    if ($(".companyType option:checked").val() == 3) {
+        url = zt + "operationSupport/getPersonalAuthInfoList";
+
+        var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1" }); var jsonData = ajax(url, data12);
+        render3(jsonData);
+        judge();
+        pageChange("operationSupport/getPersonalAuthInfoList",data1,"pagination13");
+
+    }
+    if ($(".companyType option:checked").val() == 0) {
+        url = zt + "operationSupport/getPersonalAuthInfoList";
+
+        var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1" ,"authStatus":"0"}); var jsonData = ajax(url, data12);
+        render3(jsonData);
+        judge();
+        pageChange("operationSupport/getPersonalAuthInfoList",jsonData,"pagination13");
+
+    } else if ($(".companyType option:checked").val() == 1) {
+
+        var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1", "authStatus":"1" });
+        var jsonData = ajax(url, data12);
+        render3(jsonData);
+        judge();
+        pageChange("operationSupport/getPersonalAuthInfoList",jsonData,"pagination13")
+    } else if ($(".companyType option:checked").val() == 2) {
+
+        var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1", "authStatus":"2" });
+        var jsonData = ajax(url, data12);
+        render3(jsonData);
+        judge();
+        pageChange("operationSupport/getPersonalAuthInfoList",jsonData,"pagination13");
+
+    }
+})
+//通过姓名请求公司
+$(".companyName1").click(function () {
+    var companyName = $(".companyName").val();
+    url = zt + "operationSupport/getPersonalAuthInfoList";
+    
+    var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1", "idName": companyName });
+    var jsonData = ajax(url, data12);
+    render3(jsonData);
+    judge();
+    pageChange("operationSupport/getPersonalAuthInfoList",jsonData,"pagination13")
+
+})
     $(".btn1").each(function(index){
     $(this).hover(function(){
         $(".btn1").removeClass("btn-primary").eq(index).addClass("btn-primary");
@@ -227,7 +295,7 @@
                         } else if (item.authStatus == 2) {
                             str += "<td>未通过</td>"
                         }
-                        str += '<td>' + item.updateTime + '</td><td style="color:#FF5456;">&nbsp;&nbsp;<span data-id="' + item.id + '" class="isEdit" data-statu="'+item.authStatus+'">详情</span>&nbsp;&nbsp;</td>'
+                        str += '<td>' + item.updateTime + '</td><td style="color:#48a4ea;">&nbsp;&nbsp;<span data-id="' + item.id + '" class="isEdit" data-statu="'+item.authStatus+'">详情</span>&nbsp;&nbsp;</td>'
                         str += "</tr>";
                     })
                     $(".textList").append(str);
@@ -334,10 +402,11 @@
                                     var data12 = JSON.stringify({ "id": id })
                                     var data = ajax(url, data12);
                                     if (data.success) {
-                                        localStorage.setItem("companyDetail", JSON.stringify(data.body));
+                                        localStorage.setItem("personDetail", JSON.stringify(data.body));
                                         localStorage.setItem("detailId", id);
                                         localStorage.setItem("personType", "yes");
-                                        location.href = "./Idetails.html"
+                                        localStorage.setItem("type3", "line");
+                                        location.href = "./Idetails.html";
                                     }
 
                                 })

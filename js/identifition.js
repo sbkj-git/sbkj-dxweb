@@ -1,6 +1,6 @@
   // 分页实现
   function pageChange(method,data2,pagination){      
-    debugger
+    
           var pageCount,pageN,pageNum;
           if(data2.body&&data2.body.totalCount){
               pageCount = Math.ceil(data2.body.totalCount / 10);//后台返回的总页数
@@ -33,7 +33,7 @@
           //初次加载页面数据
          
           $(document).on("click", ".pageItem", function () {
-              debugger
+              
               currentPage = $(this).html();
               localStorage.setItem("pageNow1", currentPage)
               url = zt + method;
@@ -43,7 +43,7 @@
           })
          //  $(".pagePrev").unbind('click').bind("click",function(){
           $(document).on("click", ".pagePrev", function () {
-             debugger
+             
              currentPage = localStorage.getItem("pageNow1");
              var num3 = parseInt(currentPage) - 1;
              url = zt + method;
@@ -61,7 +61,7 @@
          // $(".pageNext").unbind('click').bind("click",function(){
              
          $(document).on("click", ".pageNext", function () {
-             debugger
+             
              currentPage = localStorage.getItem("pageNow1");
             var num2 = parseInt(currentPage) + 1;
              url = zt + method;
@@ -102,7 +102,7 @@
                     
                      $(this).val(pageNum);
                   } else  if(pageNum > pageCount){
-                         debugger
+                         
                           $(this).val(pageCount);
                           $(".pageItem").removeClass("active");
                           $(".pageItem").eq(6).addClass("active");
@@ -185,7 +185,6 @@ $(".nv91").hide();
 //初次加载页面渲染页面
 
 url = zt + "operationSupport/getCompanyAuthInfoList";
-
 var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1" }); 
 var jsonData = ajax(url, data12);
 render3(jsonData);
@@ -342,28 +341,37 @@ if(item.link_path === "enterpriseAaddList"){
 //通过种类请求公司
 $(".companyType").change(function () {
     url = zt + "operationSupport/getCompanyAuthInfoList";
-
-    if ($(".companyType option:checked").val() == 0) {
+    if ($(".companyType option:checked").val() == 3) {
         url = zt + "operationSupport/getCompanyAuthInfoList";
 
         var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1" }); var jsonData = ajax(url, data12);
         render3(jsonData);
         editN();
-        
+        pageChange("operationSupport/getCompanyAuthInfoList",jsonData,"pagination14")
 
+    }
+    if ($(".companyType option:checked").val() == 0) {
+        url = zt + "operationSupport/getCompanyAuthInfoList";
+
+        var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1" ,"authStatus":"0"}); var jsonData = ajax(url, data12);
+        render3(jsonData);
+        editN();
+        pageChange("operationSupport/getCompanyAuthInfoList",jsonData,"pagination14")
+
+    } else if ($(".companyType option:checked").val() == 1) {
+
+        var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1", "authStatus":"1" });
+        var jsonData = ajax(url, data12);
+        render3(jsonData);
+        editN();
+        pageChange("operationSupport/getCompanyAuthInfoList",jsonData,"pagination14");
     } else if ($(".companyType option:checked").val() == 2) {
 
-        var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1", "type": 2 });
+        var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1", "authStatus":"2" });
         var jsonData = ajax(url, data12);
         render3(jsonData);
         editN();
-    } else if ($(".companyType option:checked").val() == 3) {
-
-        var data12 = JSON.stringify({ "pageSize": "10", "currentPage": "1", "type": 3 });
-        var jsonData = ajax(url, data12);
-        render3(jsonData);
-        editN();
-        
+        pageChange("operationSupport/getCompanyAuthInfoList",jsonData,"pagination14")
 
     }
 })
@@ -375,7 +383,7 @@ $(".companyName1").click(function () {
     var jsonData = ajax(url, data12);
     render3(jsonData);
     editN();
-    
+    pageChange("operationSupport/getCompanyAuthInfoList",jsonData,"pagination14")
 
 })
 
@@ -389,12 +397,27 @@ $(".isEdit").click(function(){
     var type = $(this).attr("data-name");
     var id = $(this).attr("data-id");
     var data12 = JSON.stringify({ "id": id });
-    var url = zt + "operationSupport/getCompanyAuthInfo"
-    var data = ajax(url, data12);
+    
     if(type == 2){
         localStorage.setItem("type3", "no");
+        var url = zt + "operationSupport/getCompanyAuthInfo"
+        var data = ajax(url, data12);
+        localStorage.setItem("companyDetail", JSON.stringify(data.body));
+        localStorage.setItem("personType", "no");
+        location.href = "./Idetails.html";
     }else{
+        
+        
         localStorage.setItem("type3", "yes");
+        url = zt + "operationSupport/getPersonToCompanyAuthInfo";
+        var data12 = JSON.stringify({ "id": id })
+        var data = ajax(url, data12);
+        if (data.success) {
+            localStorage.setItem("qyPerson", JSON.stringify(data.body));
+            localStorage.setItem("personType", "no");
+            location.href = "./Idetails.html";
+        }
+        
     }
     // 将公司详情暂存缓存
     if (data.success) {
@@ -421,7 +444,7 @@ if (jsonData.success) {
             
                 str += '<td>'+item.companyName+'</td><td>' + item.businessLicense + '</td><td>' + item.corporateName + '</td>';
                 if (item.type == 2) {
-                    str += "<td>企业</td>";
+                    str += "<td>企业审核</td>";
                 } else {
                     str += "<td>个人转企业</td>"
                 }
@@ -433,7 +456,7 @@ if (jsonData.success) {
                 } else if (item.authStatus == 2) {
                     str += "<td>未通过</td>"
                 }
-                str += '<td>' + item.updateTime + '</td><td style="color:#FF5456;">&nbsp;&nbsp;<span data-id="' + item.id + '" class="isEdit" data-value="' + i + '" data-name="'+item.type+'" data-statu="'+item.authStatus+'">详情</span>&nbsp;&nbsp;</td>'
+                str += '<td>' + item.updateTime + '</td><td style="color:#48a4ea;">&nbsp;&nbsp;<span data-id="' + item.id + '" class="isEdit" data-value="' + i + '" data-name="'+item.type+'" data-statu="'+item.authStatus+'">详情</span>&nbsp;&nbsp;</td>'
                 str += "</tr>";
             })
             $(".textList").html(str);

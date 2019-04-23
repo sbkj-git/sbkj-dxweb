@@ -34,11 +34,32 @@ function judgeChoose() {
  }
  return IdList;
 }
-//安全问题校验
-// 地下重定向
-// var appsercet = window.localStorage.getItem("appsercet");
-// if(appsercet == "undefined" || appsercet == "" || appsercet == null){
-//     location.href = noapi +"/dxzx/login1.html";
-// }
+// 安全问题校验
 
+// 点击事件
+//页面初次渲染加载数据
+$(".btn1").each(function (index) {
+    $(this).click(function () {
+        setTimeout(function () {
+            $(".btn1").removeClass("btn-primary").eq(index).addClass("btn-primary");
+        }, 500);
+        setTimeout(function () {
+            $(".btn1").removeClass("btn-primary")
+        }, 1000);
+    })
+    $(this).hover(function () { 
+        $(".btn1").removeClass("btn-primary").eq(index).addClass("btn-primary");
+    })
+    $(this).mouseleave(function () {
+        $(".btn1").removeClass("btn-primary");
+    })
+})
+
+//取消按钮点击
+$(".roleRefuse5").click(function(){
+    $(".nv91-mask").hide();
+})
+$(".nv91-close").click(function(){
+    $(".nv91-mask").hide();
+})
 

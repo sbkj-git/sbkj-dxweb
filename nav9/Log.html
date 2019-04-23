@@ -7,7 +7,7 @@
     <title>操作日志</title>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/setting.css">
+    
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" type="text/css" href="../css/buind.css">
@@ -17,9 +17,10 @@
     <script src="../js/moment-with-locales.js"></script>
     <script src="../js/bootstrap-datetimepicker.min.js"></script>
     <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
-    <link rel="stylesheet" href="../css/paging.css">
+   
+    <link rel="stylesheet" href="../css/newPage.css">
     <script src="../js/dataSelect.js"></script>
-
+    
 <style>
 .table td:first-child{
     text-align: left;
@@ -59,25 +60,29 @@
     <table class="table" style="width: 100%;overflow: hidden;">
         <thead>
         <tr style="border-bottom: 1px solid #d8d8d8;background: #f3f3f3;">
-            <th >
+            <td >
                 员工账号
-            </th>
-            <th class="center">敏感操作</th>
-            <th class="center">操作详情</th>
-            <th class="center">操作时间</th>
-            <th class="center">员工IP</th>
+            </td>
+            <td class="center">敏感操作</td>
+            <td class="center">操作详情</td>
+            <td class="center">操作时间</td>
+            <td class="center">员工IP</td>
         </tr>
         </thead>
         <tbody class="log">
 
         </tbody>
     </table>
-    <div class="paging flex " style="width:100%;justify-content: flex-end;" >
+    <!-- <div class="paging flex " style="width:100%;justify-content: flex-end;" >
         
 
         <div class="box" id="box" style="width:auto;justify-content: flex-end;">
         </div>
         <div class="totelPag"><span>每页10条</span>&nbsp;&nbsp;总共<span class="total"></span>个项目</div>
+    </div> -->
+    <div class="paging flex " style="width:100%;justify-content: flex-end;" >
+        <div id="pagination21" class="pagination"></div>
+
     </div>
 </div>
 <div class="nv91-mask">
@@ -93,11 +98,7 @@
     </div>
 </div>
 <footer class="footer">
-    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-    </p>
-    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    东信在线门户运营后台
 </footer>
 
 </body>
@@ -106,7 +107,8 @@
 <script src="../js/sign.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/login.js"></script>
-<script src="../js/paging.js"></script>
+
+<script src="../js/newPage.js"></script>
 <script src="../js/getRequest.js"></script>
 <script src="../js/Log.js"></script>
 <script src="../js/radioAllChoose.js"></script>

@@ -7,7 +7,7 @@
     <title>操作日志</title>
     <link rel="stylesheet" href="./css/public.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/setting.css">
+    
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" type="text/css" media="all" href="./js/date/css/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
@@ -57,10 +57,10 @@
     <div class="choose1">
         <div class="flex" style="    width: 100%;height: 100px;padding: 32px 0 28px 20px;">
             <div class="col-sm-3">
-                <button class="btn-primary btn export"
-                        style="margin-right: 1%;background-color:#fff;color: #0f0f0f;border:1px solid #d8d8d8"><a
+                <button class="btn1 btn export"
+                        style="margin-right: 1%;"><a
                         class="export1">导出反馈</a></button>
-                <button class="btn isDelete" style="width: 87px;height: 37px;font-weight: 500;font-size: 16px;color: #0f0f0f">删除反馈
+                <button class="btn btn1 isDelete" style="width: 87px;height: 37px;font-size: 16px;">删除反馈
                 </button>
             </div>
             <div class="flex textRight textLeft col-sm-12 col-md-6 col-lg-4">
@@ -116,15 +116,15 @@
         </div>
     </div>
     <div class="choose1 " style="display: none!important;">
-        <div class="col-sm-12 flex" style="border-bottom:1px solid #dddddd;padding: 23px 0 23px 20px;">
-            <span style="padding-top:5px;font-size: 18px">验证码:</span>
+        <div class="col-sm-12 flex" style="border-bottom:1px solid #dddddd;padding: 23px 0 23px 20px;font-size: 18px">
+            <span style="padding-top:5px;">验证码:</span>
             <div class="radio radio-info radio-inline">
                 <input type="radio" id="f1" value="1" name="radioll" checked="" class="validate">
-                <label for="f1" style="padding-top: 4px"> 必填 </label>
+                <label for="f1" > 必填 </label>
             </div>
             <div class="radio radio-info radio-inline">
                 <input type="radio" id="f2" value="2" name="radioll" class="validate">
-                <label for="f2" style="padding-top: 4px"> 防刷保护 </label>
+                <label for="f2" > 防刷保护 </label>
                 
             </div>
             <div>
@@ -148,8 +148,8 @@
 
             </tbody>
         </table>
-        <div class="flex" style="justify-content: center;">
-            <button class="btn btn-primary saveBtn" style="margin-right: 2%;">保存</button>
+        <div class="flex" style="justify-content: center;margin-top: 50px;padding-bottom: 30px;">
+            <button type="button" class="btn btn-primary saveBtn" style="margin-right: 2%;">保存</button>
             <!-- <button class="btn">取消</button> -->
 
         </div>
@@ -164,7 +164,7 @@
         <form action="" class="form-horizontal" role="form">
             <div class="form-group  flex">
                 <label for="name" class="control-label col-sm-2"
-                       style="text-align: right;line-height: 1.5;">新项名称：:</label>
+                       style="text-align: right;line-height: 1.5;">新项名称:&nbsp;&nbsp;</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control newProject" placeholder="请输入新项名称"/>
                 </div>
@@ -207,7 +207,7 @@
             <div class="form-group flex"
                  style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
                 <div class="col-sm-1" style="margin-top: 1%;">
-                    <button class="btn">取消</button>
+                    <button type="button" class="btn roleRefuse5">取消</button>
                 </div>
                 <div class="col-sm-1" style="margin-top: 1%;margin-right:2%;">
                     <button class="btn btn-primary addProject">确定</button>
@@ -251,7 +251,7 @@
                     <span class="re5">反馈内容</span>
                 </div>
             </div>
-            <div class="form-group flex"
+            <!-- <div class="form-group flex"
                  style="border-top:1px solid #EBEBEB;margin-top: 10px;justify-content: flex-end;box-sizing: border-box;">
                 <div class="col-sm-1" >
                     <button class="btn">取消</button>
@@ -259,7 +259,7 @@
                 <div class="col-sm-1" style="margin-right:2%;">
                     <button class="btn btn-primary nav2-sure">确定</button>
                 </div>
-            </div>
+            </div> -->
         </form>
     </div>
      <!--确认 取消-->
@@ -290,11 +290,7 @@
         </div>
 </div>
 <footer class="footer">
-    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-    </p>
-    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    东信在线门户运营后台
 </footer>
 </body>
 </html>
@@ -310,14 +306,7 @@
 <script src="./js/Feedback.js"></script>
 <script src="./js/radioAllChoose.js"></script>
 
-<script>
-  var appsercet = window.localStorage.getItem("appsercet");
-// appsercet = JSON.parse(appsercet);
-// var newAppsercet = appsercet.data;
-if(appsercet == "undefined" || appsercet == "" || appsercet == null){
-    location.href = "./login1.html";
-}
-</script>
+
 
 
 

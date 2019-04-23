@@ -22,20 +22,13 @@
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
 
-    <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" type="text/css" media="all" href="../js/date/css/daterangepicker.css" />
 
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-    <!-- <link href="./dist/summernote.css" rel="stylesheet"/> -->
-    <link rel="stylesheet" type="text/css" href="../css/buind.css"/>
-    <script src="../js/jquery-1.10.2.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/date/js/moment.js"></script>
 
-<script src="../js/date/js/daterangepicker.js"></script>
-    <!-- <script src="./dist/summernote.js"></script> -->
-    <!-- <script src="./dist/lang/summernote-zh-CN.js"></script>    中文 -->
+    <link rel="stylesheet" type="text/css" href="../css/buind.css"/>
+  
     <style type="text/css">
         .clear {
             clear: both;
@@ -46,16 +39,18 @@
         }
         textarea{resize:none;}
         .laydate-icon {height: auto;}
-        
-        .reviewImg1,.reviewImg3{width: 100px;height: 80px;}
-        .custom{justify-content: flex-start;height: auto;padding-left: 15%;}
+        .reviewImg1{left: 0;}
+        .reviewImg3{left: 0px;}
+        .reviewImg1,.reviewImg3{width: 100px;height: 100px;position: absolute;}
+        .custom{justify-content: flex-start;height: auto;padding-left: 12%;}
         .disnone{display: none;}
         .review1,.review2{padding-left: 10%;}
         .addPhone{height: inherit;}
         .iframe{width: inherit;height: inherit;}
         .imgcov,.imgcov1,.imgcov2{width: 100px;height: 100px;}
         .imgcov:hover,.imgcov1:hover,.imgcov2:hover{background: rgba(0, 0, 0, 0.6);}
-        .rigntop,.rigntop1,.rigntop2{position: absolute;right: 0;top: 0;display: none;}
+        .imgcov2{margin-left: 10px;margin-top: 10px;}
+        .rigntop,.rigntop1,.rigntop2{position: absolute;right: 0;top: 0;display: none;width: 14px;height: 14px;}
         .addimg,.addimg1{
             position: relative;
             left: 33px;
@@ -153,6 +148,7 @@
                 <textarea name="content" style="width:800px;height:400px;visibility:hidden;"></textarea>
             </div> -->
                 <script id="editor" type="text/plain" style="width:80%;height:500px;"></script>
+                
                 <h1 class="ceshi f16">高级设置</h1>
                 <div class="form-group flex w100" style="padding-top: 25px">
                     <label for="name" class="control-label w160lh22 content">来源:</label>
@@ -202,18 +198,20 @@
                     <div class="radio radio-info radio-inline" style="line-height:30px">
                         <input type="radio" id="radioB" name="radio1" value="2" class="add1" /><label for="radioB">自定义</label>
                     </div>
-                    <div class="col-sm-12 custom disnone">
+                    <div class="col-sm-12 custom disnone" style="padding-left: 170px;">
                         <div class="imgcov1 position ">
+                                &nbsp;&nbsp;
                             <img src="" alt="" class="reviewImg1" id="reviewImg1">
                             <img src="../image/close12.png" alt="" class="w24 rigntop1">
                         </div>
 
                     </div>
-                    <div class=" col-sm-12 disnone custom">
+                    <div class=" col-sm-12 disnone custom" style="padding-left: 160px;">
                         <div class="col-sm-4 position ">
-                            <img src="../image/photo.png" alt="" class="addimage w24h14">
+                                &nbsp;&nbsp;
+                            <img src="../image/photo.png" alt="" class="addimage w24h14" style="margin-left: -20px;">
                             <img src="../image/photo3.png" alt="" class="addimage w24h14 disnone" style="margin-left: -20px;">
-                            <input class="btn addColor w100_ addPhone2" value="添加图片" readonly style="width: 130px" />
+                            <input class="btn addColor w100_ addPhone2" value="添加图片" readonly style="width: 130px;height:40px;margin-left: -7px" />
                         </div>
                         <div class="imgcov2 position disnone">
                             <img src="" alt="" class="reviewImg3" id="reviewImg3">
@@ -341,18 +339,18 @@
         </div>
     </div>
     <footer class="footer">
-        <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-        </p>
-        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-        <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+        东信在线门户运营后台 
     </footer>
     <input type="file" class="disnone " id="upload2" />
 </body>
 
 </html>
 
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/date/js/moment.js"></script>
 
+<script src="../js/date/js/daterangepicker.js"></script>
 <script src="../js/MD5.js"></script>
 <script src="../js/postSign.js"></script>
 <script src="../js/getRequest.js"></script>
@@ -361,13 +359,9 @@
 <script src="../js/resource.js"></script>
 
 <script src="../js/addtext.js"></script>
-
+<!-- 上传图片js -->
 <script src="../js/imgReview.js"></script>
-<script src="../js/time.js"></script>
-<!--富文本编辑器-->
-<link rel="stylesheet" href="../plugins/kindeditor/themes/default/default.css"/>
-<script charset="utf-8" src="../plugins/kindeditor/kindeditor-min.js"></script>
-<script charset="utf-8" src="../plugins/kindeditor/lang/zh_CN.js"></script>
 
-    
+
+
 

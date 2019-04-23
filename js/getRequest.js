@@ -4,7 +4,7 @@
  * par  参数
  **/
 function getSign(url,par){ 
-    
+    debugger
     var result = "";  
     if(url && par){
         var appid="dxwebf0a37ed1ae96deef";
@@ -35,7 +35,7 @@ function getSign(url,par){
                 processData: false,
                 // dataType:"json",
                     success:function(data){
-                        
+                        debugger
                         console.log(data);
                         data = JSON.parse(data)
                         console.log(data);

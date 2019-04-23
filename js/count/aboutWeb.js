@@ -108,7 +108,7 @@ console.log(data);
     var myChart = echarts.init(document.getElementById('main'));
     // 指定图表的配置项和数据
     // app.title = '多 X 轴示例';
-    var colors = ['#FF5456', '#985AFF', '#FFB449'];
+    var colors = ['#48a4ea', '#985AFF', '#FFB449','#333333'];
     option = {
         color: colors,
 
@@ -131,10 +131,11 @@ console.log(data);
                 axisTick: {
                     alignWithLabel: true
                 },
+                
                 axisLine: {
                     onZero: false,
                     lineStyle: {
-                        color: colors[1]
+                        color: colors[3]
                     }
                 },
                 axisPointer: {
@@ -158,7 +159,7 @@ console.log(data);
                     onZero: false,
                     lineStyle:
                         {
-                            color: colors[0]
+                            color: colors[3]
                         }
                 }
                 ,
@@ -185,7 +186,7 @@ console.log(data);
                     onZero: false,
                     lineStyle:
                         {
-                            color: colors[2]
+                            color: colors[3]
                         }
                 }
                 ,
@@ -423,7 +424,7 @@ function formatDate(date, fmt) { //author: meizz
 function updateButColor(num) {
     for(var i=1;i<=4;i++){
         if(i==num){
-            $(".btnClick"+num).attr("style","background-color:#FF5456;color:#fff");
+            $(".btnClick"+num).attr("style","background-color:#48a4ea;color:#fff");
         }else {
             $(".btnClick"+i).attr("style","background-color:#fff;color:#000;border: 1px solid #d8d8d8;");
         }

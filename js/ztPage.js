@@ -1,7 +1,7 @@
  // 分页实现
  function pageChange(method,data2,pagination){
          
-       debugger
+       
              var pageCount,pageN,pageNum;
              if(data2.body&&data2.body.totalCount){
                  pageCount = Math.ceil(data2.body.totalCount / 10);//后台返回的总页数
@@ -34,7 +34,7 @@
              //初次加载页面数据
             
              $(document).on("click", ".pageItem", function () {
-                 debugger
+                 
                  currentPage = $(this).html();
                  localStorage.setItem("pageNow1", currentPage)
                  url = zt + method;
@@ -44,7 +44,7 @@
              })
             //  $(".pagePrev").unbind('click').bind("click",function(){
              $(document).on("click", ".pagePrev", function () {
-                debugger
+                
                 currentPage = localStorage.getItem("pageNow1");
                 var num3 = parseInt(currentPage) - 1;
                 url = zt + method;
@@ -56,13 +56,13 @@
                
                 render3(jsonData);
                 judge();
-                var num = parseInt(currentPage)+1;
+                var num = parseInt(currentPage)-1;
                 localStorage.setItem("pageNow1", num);
             })
             // $(".pageNext").unbind('click').bind("click",function(){
                 
             $(document).on("click", ".pageNext", function () {
-                debugger
+                
                 currentPage = localStorage.getItem("pageNow1");
                var num2 = parseInt(currentPage) + 1;
                 url = zt + method;
@@ -80,7 +80,7 @@
              var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
             
              $(".returnPage").blur(function () {
-                 debugger       
+                        
                  var value = $(this).val();
                  if (!re.test(value)) {
                      return false;
@@ -95,7 +95,7 @@
                         judge();
                         $(this).val(pageNum);
                      } else  if(pageNum > pageCount){
-                            debugger
+                            
                              $(this).val(pageCount);
                              $(".pageItem").removeClass("active");
                              $(".pageItem").eq(6).addClass("active");

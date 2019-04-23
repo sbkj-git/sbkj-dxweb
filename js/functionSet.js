@@ -11,7 +11,7 @@ $(document).ready(function(){
   //获取面包屑导航标题
   var title = window.localStorage.getItem("title");
   //获取现在是哪个节点下的url
-  var src1 = window.localStorage.getItem("url");
+  var src1 = window.localStorage.getItem("method");
    //渲染页面标题
   $(".color_8d").html(title);
   // 定义请求URL

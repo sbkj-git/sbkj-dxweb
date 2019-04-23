@@ -1,3 +1,4 @@
+// 全选全不选逻辑处理
 // $(function () {
     $('input[name="radio2"]').click(function () {
         //alert(this.checked);

@@ -4,17 +4,11 @@
 }
 
 .banner3 {
-    /* background: url("../image/login.jpg") no-repeat; */
-    background-size: 100% 100%;
-    background: url("../image/login.jpg") no-repeat;
-    background-size:100% 100%;
-    -moz-background-size:100% 100%;
-    -webkit-background-size:100% 100%;
-    -o-background-size:100% 100%;
-    padding-top: 1px;
-    background-image: url("../image/login.jpg");
-        background-size: cover;
-        filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../image/login.jpg",  sizingMethod='scale');
+    background-image: url("../image/login.png");
+    background-repeat: no-repeat;
+
+    background-size:cover;
+    
 }
 
 .login {
@@ -97,11 +91,11 @@ box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*opera或ie9*/
 }
 
 .btnLogin {
-    color: #fff;
-    width: inherit;
+    color: #ffffff;
+    width: 100%;
     border-radius: 25px;
     line-height: 50px;
-    background-color: #8A111A;
+    background-color: #48a4ea;
     text-align: center;
 }
 
@@ -119,7 +113,7 @@ box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*opera或ie9*/
 }
 
 .rolen {
-    color: #8A111A;
+    color: #36404c;
     line-height: 1;
 }
 
@@ -128,7 +122,7 @@ box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*opera或ie9*/
     text-align: right;
     width: 100%;
     padding-top: 10px;
-    color: #8A111A;
+    color: #36404c;
     font-size: 16px;
 }
 
@@ -136,7 +130,7 @@ box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*opera或ie9*/
     width: 359px;
     height: 76px;
     margin-left: 16%;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .jx p {
@@ -149,11 +143,11 @@ box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*opera或ie9*/
     width: 100%;
     height: 145px;
     background: rgba(44, 44, 44, 0.5);
-    margin-top: 55px;
+    /* margin-top: 55px; */
 }
-
+.banners{padding-top: 55px;}
 .login_p p {
-    color: #8A111A;
+    color: #36404c;
     font-size: 34px;
     text-align: center;
     width: 100%;
@@ -170,7 +164,7 @@ box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*opera或ie9*/
 }
 
 .bagActive {
-    background-color: #FF5456;
+    background-color: #48a4ea;
     color: #fff;
 }
 
@@ -186,14 +180,14 @@ box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*opera或ie9*/
 }
 
 .line {
-    width: 100%;
+    width: 90%;
     height: 1px;
     border-top: 1px solid #dddddd;
-    margin-top: 2%;
+    margin-top: 13px;
 }
 
 .forgetPass {
-    color: #8A111A;
+    color: #36404c;
 }
 
 /* e 忘记密码 */
@@ -241,7 +235,7 @@ box-shadow: 0px 3px 9px 0px rgba(239, 239, 239, 0.9);/*opera或ie9*/
     border-radius: 5px;
 }
 .updateNews:hover{
-    background-color: #E2302B;
+    background-color: #48a4ea;
     color:#fff;
 }
 

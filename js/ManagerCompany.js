@@ -13,11 +13,14 @@
     var appsercet = window.localStorage.getItem("appsercet");
     appsercet = JSON.parse(appsercet);
     var newAppsercet = appsercet.data;
+    // 关闭事件
     $(".roleRefuse5").click(function(){
         
         $(".nv91-mask").hide();
         $(".nv").hide();
+        $("body").removeClass("fixed2");
     })
+    // X点击事件
     $(".nv91-close").click(function(){
         
         $(".nv91-mask").hide();
@@ -25,82 +28,236 @@
         $(".nv91 input").val("");
        
         $("#pic").attr("src","");
+        $("body").removeClass("fixed2");
     })
+    // 取消按钮点击事件
     $(".closeBtn").click(function(){
         $(".nv91-mask").hide();
         $(".nv91").hide();
         $(".nv91 input").val("");
        
         $("#pic").attr("src","");
+        $("body").removeClass("fixed2");
     })
     var currentPage = localStorage.getItem("pageNow1")
         par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList" ;
+        debugger
         var data2 = getSign(url, par);
         console.log(data2);
         render(data2);
         firstRender();
-        pageJudge(data2);
-        function pageJudge(data2){
-        var pageCount,pageN;
-        if(data2.pageInfo && data2.pageInfo.totalRows){
-            pageCount = Math.ceil(data2.pageInfo.totalRows/10);
-        }else{
-            pageCount == 0;
-        }
-        if(data2.pageInfo && data2.pageInfo.totalRows){
-            pageN = Math.ceil(data2.pageInfo.totalRows/10);
-        }else{
-            pageN == 0;
-        }
-        if(data2.pageInfo && data2.pageInfo.totalRows){
-            new Page({
-                id: 'pagination1',
-                pageTotal: pageCount, //必填,总页数
-                pageAmount: 10,  //每页多少条
-                dataTotal:pageN, //总共多少条数据
-                curPage: 1, //初始页码,不填默认为1
-                pageSize: 5, //分页个数,不填默认为5
-                showPageTotalFlag: true, //是否显示数据统计,不填默认不显示
-                showSkipInputFlag: true, //是否支持跳转,不填默认不显示
-                getPage: function (page) {
-                    //获取当前页数
-                    console.log(page);
+        pageChange("get.dxWeb.webBottomList",data2,"pagination1",url);
+        function pageChange(method,data2,pagination,url2){
+            currentPage = localStorage.getItem("pageNow1");
+            if(currentPage == "undefined" || currentPage == "" || currentPage == null){
+               currentPage = 1;
+            }
+            var appsercet = window.localStorage.getItem("appsercet");
+                appsercet = JSON.parse(appsercet);
+                var newAppsercet = appsercet.data;
+                var pageCount,pageN;
+                if(data2.pageInfo&&data2.pageInfo.totalRows){
+                    pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+                }else{
+                    pageCount == 0;
                 }
-            })
-        }else{
-
-        }
-        $(document).on("click", ".pageItem", function () {
-
+                if(data2.pageInfo&&data2.pageInfo.totalRows){
+                    pageN = data2.pageInfo.totalRows;
+                }else{
+                    pageN == 0;
+                }
+    
+                if(data2.pageInfo&&data2.pageInfo.totalRows){
+                   new Page({
+                        id: pagination,
+                        pageTotal: pageCount, //必填,总页数
+                        pageAmount: 10,  //每页多少条
+                        dataTotal: pageN, //总共多少条数据
+                        curPage:currentPage, //初始页码,不填默认为1
+                        pageSize: 5, //分页个数,不填默认为5
+                        showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                        showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                        getPage: function (page) {
+                            //获取当前页数
+                           console.log(page);
+                        }
+                    })
+                }else{
+                    pageN == 0;
+                }
+                $(document).on("click", ".pageItem", function () {
+                    
+                    currentPage = $(this).html();
+                    localStorage.setItem("pageNow1", currentPage)
+                    par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
+                    var bannerList = getSign(url2, par);
+                    render(bannerList);
+                })
+                //上一页
+                 //  $(".pagePrev").unbind('click').bind("click",function(){
+                    $(document).on("click", ".pagePrev", function () {
+                        
+                        currentPage = localStorage.getItem("pageNow1");
+                        var num3 = parseInt(currentPage) - 1;
+                        if(currentPage  > 0 && currentPage  < pageCount){
+                            par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + num3;
+                             var bannerList = getSign(url2, par);
+                            render(bannerList);
+                        }else {
+                            par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=1";
+                            var bannerList = getSign(url2, par);
+                           render(bannerList); 
+                        }
+                       
+                        var num = parseInt(currentPage) - 1;
+                        localStorage.setItem("pageNow1", num);
+                    })
+                    //下一页
+                    // $(".pageNext").unbind('click').bind("click",function(){
+                        
+                    $(document).on("click", ".pageNext", function () {
+                        
+                        currentPage = localStorage.getItem("pageNow1");
+                        var num3 = parseInt(currentPage) + 1;
+                        if(currentPage  > 0 && currentPage  < pageCount){
+                            par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + num3;
+                             var bannerList = getSign(url2, par);
+                            render(bannerList);
+                        }else {
+                            par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage="+pageCount;
+                            var bannerList = getSign(url2, par);
+                           render(bannerList); 
+                        }
+                       
+                        var num = parseInt(currentPage)+1;
+                        localStorage.setItem("pageNow1", num);
+                    })
+                    
+                var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
+                var ret = document.querySelector(".returnPage");
+                $(document).on("blur", ".returnPage", function () {
+               
+                    var value = $(this).val();
             
-            currentPage = $(this).html();
-            localStorage.setItem("pageNow1", currentPage)
-            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList&currentPage=" + currentPage;
-            var bannerList = getSign(url, par);
-            render(bannerList);
-        })
+                    if (!re.test(value)) {
+                      
+                    }else if(value > 0 && value <=pageCount){
+                        currentPage = value;
+                        par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
+            
+                        var data3 = getSign(url2, par);
+                        render(data3);
+                        pageCount = Math.ceil(data3.pageInfo.totalRows/10);
+                        pageN = Math.ceil(data3.pageInfo.totalRows);
+                        
+                        $(this).val("");
+                        
+                        new Page({
+                            id: pagination,
+                            pageTotal: pageCount, //必填,总页数
+                            pageAmount: 10,  //每页多少条
+                            dataTotal: pageN, //总共多少条数据
+                            curPage:currentPage, //初始页码,不填默认为1
+                            pageSize: 5, //分页个数,不填默认为5
+                            showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                            showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                            getPage: function (page) {
+                                //获取当前页数
+                               console.log(page);
+                            }
+                        })
+                    }else{
+                        par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + pageCount;
+            
+                        var data3 = getSign(url2, par);
+                        render(data3);
+                        pageCount = Math.ceil(data3.pageInfo.totalRows/10);
+                        pageN = Math.ceil(data3.pageInfo.totalRows);
+                        
+                        $(this).val("");
+                        
+                        new Page({
+                            id: pagination,
+                            pageTotal: pageCount, //必填,总页数
+                            pageAmount: 10,  //每页多少条
+                            dataTotal: pageN, //总共多少条数据
+                            curPage:pageCount, //初始页码,不填默认为1
+                            pageSize: 5, //分页个数,不填默认为5
+                            showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                            showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                            getPage: function (page) {
+                                //获取当前页数
+                               console.log(page);
+                            }
+                        })
+                    }	
+                    
+                })
+                $(document).on("keydown", ".returnPage", function (event) {
+                // $('.returnPage').keydown(function(event) {
+                    if (event.keyCode == 13) {
+                        var value = $(".returnPage").val();
+            
+                    if (!re.test(value)) {
+                       
+                    } else if(value > 0 && value <=pageCount){
+                        currentPage = value;
+                        par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
+            
+                        var data3 = getSign(url2, par);
+                        render(data3);
+                        pageCount = Math.ceil(data3.pageInfo.totalRows/10);
+                        pageN = Math.ceil(data3.pageInfo.totalRows);
+                        
+                        $(this).val("");
+                        
+                        new Page({
+                            id: pagination,
+                            pageTotal: pageCount, //必填,总页数
+                            pageAmount: 10,  //每页多少条
+                            dataTotal: pageN, //总共多少条数据
+                            curPage:currentPage, //初始页码,不填默认为1
+                            pageSize: 5, //分页个数,不填默认为5
+                            showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                            showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                            getPage: function (page) {
+                                //获取当前页数
+                               console.log(page);
+                            }
+                        })
+                    }else{
+                        par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + pageCount;
+            
+                        var data3 = getSign(url2, par);
+                        render(data3);
+                        pageCount = Math.ceil(data3.pageInfo.totalRows/10);
+                        pageN = Math.ceil(data3.pageInfo.totalRows);
+                        
+                        $(this).val("");
+                        
+                        new Page({
+                            id: pagination,
+                            pageTotal: pageCount, //必填,总页数
+                            pageAmount: 10,  //每页多少条
+                            dataTotal: pageN, //总共多少条数据
+                            curPage:pageCount, //初始页码,不填默认为1
+                            pageSize: 5, //分页个数,不填默认为5
+                            showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                            showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                            getPage: function (page) {
+                                //获取当前页数
+                               console.log(page);
+                            }
+                        })
+                    }	
+                    }
+                });
+            
+               
+               
         }
         
-        var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
-        var ret = document.querySelector(".returnPage");
-        $(".returnPage").blur(function () {
             
-            var value = $(this).html();
-
-            if (!re.test(value)) {
-               
-
-                return false;
-            } else {
-                currentPage = value;
-                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList&currentPage=" + currentPage;
-
-                var data2 = getSign(url, par);
-                render(data2);
-                $(this).val("");
-            }
-
-        })          
     function firstRender(){
         //页面初次渲染加载数据
     var data = window.localStorage.getItem("dxRightsList");    
@@ -139,10 +296,10 @@
                             //添加管理合作伙伴操作
                             $(".nv91 input").val("");
                             $(".nv91 select").val("");
-                            // $("#pic").attr("src","");
+                            
                             $(".nv91-mask").show();
                             $(".nv91").show(); 
-                          
+                            $("body").addClass("fixed2");
                                 $("#picImg").change(function(){
                                     var fileDom = document.getElementById("picImg");
                                     imgPreview(fileDom);
@@ -186,16 +343,7 @@
                                         }, 2000);
                                         return;
                                     }
-                                    // else if ($(".companyUrl").val() == "") {
-                                    //     $(".prompt ").text("请填写客户案例链接");
-                                    //     $(".nv91-mask").show();
-                                    //     $(".confirm1 ").show();
-                                    //     setTimeout(function () {
-                                            
-                                    //         $(".confirm1 ").hide();
-                                    //     }, 2000);
-                                        
-                                    // }
+                                  
                                     else if ($(".companyUrl").val() !== "" &&!reg.test(url)) {
 
                                         $(".prompt ").text("请以http://或者https://开头");
@@ -219,16 +367,7 @@
                                      
                                     }
                                     
-                                    // else if($("#picImg")[0].files[0] == "" || $("#picImg")[0].files[0] == "undefined"){
-                                    //     $(".prompt ").text("请上传banner图");
-                                    //     $(".nv91-mask").show();
-                                    //     $(".confirm1 ").show();
-                                    //     setTimeout(function(){
-                                            
-                                    //         $(".confirm1 ").hide();
-                                    //     },2000);
-                                    //     return;
-                                    // }
+                                   
                                     else if($("#pic").attr("src") == "" || $("#pic").attr("src") == "undefined"){
                                         $(".prompt ").text("请上传banner图");
                                         $(".nv91-mask").show();
@@ -262,6 +401,7 @@
                                 $(".prompt").text("确定要删除这条消息吗?");
                                 $(".nv91").hide();
                                 $(".confirm").show();
+                                $("body").addClass("fixed2");
                                 var IdList = $(this).attr("data-id");
                                 $(".roleSure").click(function(){
                                     deleteText(IdList);
@@ -270,6 +410,7 @@
                                 $(".roleRefuse").click(function(){
                                     $(".nv91-mask").show();
                                     $(".confirm").show(); 
+                                    $("body").removeClass("fixed2");
                                 })
                                 
                             })
@@ -283,6 +424,7 @@
                                 $(".nv91 input").val("");
                                 $(".nv91-mask").show();
                                 $(".nv91").show();
+                                $("body").addClass("fixed2");
                                 // $("#picImg").hide();
                                 var id = $(this).attr("data-id");
                                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.getWebBottom&id=" + id;
@@ -368,7 +510,7 @@
                             }else{
                                 str+="<td><input class='switch switch-anim' type='checkbox' data-id='" + item.id + "'></td>";
                             }
-                            str+='<td>'+item.frequency+'</td><td style="color:#FF5456;"><span class="isDelete" data-id="'+item.id+'">删除</span>&nbsp;&nbsp;<span data-id="'+item.id+'" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="'+item.id+'">编辑</span></td>'
+                            str+='<td>'+item.frequency+'</td><td style="color:#48a4ea;"><span class="isDelete" data-id="'+item.id+'">删除</span>&nbsp;&nbsp;<span data-id="'+item.id+'" class="isLook">查看</span>&nbsp;&nbsp;<span class="isEdit" data-id="'+item.id+'">编辑</span></td>'
                         str+="</tr>";
                     })
                     $(".textList").html(str);
@@ -423,8 +565,12 @@
                             
                             $(".nv91-mask").hide();
                             $(".nv1").hide();
-                            location.reload();
+                           
                         },2000);
+                        $("body").removeClass("fixed2");
+                        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList&currentPage=" + currentPage;
+                        var bannerList = getSign(url, par);
+                        render(bannerList);
                        
                     }
                 }
@@ -488,11 +634,12 @@
                         setTimeout(function(){
                             $(".nv91-mask").hide();
                             $(".nv1").hide();
-                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList&currentPage=" + currentPage;
-                            var bannerList = getSign(url, par);
-                            render(bannerList);
+                           
                         },2000);
-                    
+                        $("body").removeClass("fixed2");
+                        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.webBottomList&currentPage=" + currentPage;
+                        var bannerList = getSign(url, par);
+                        render(bannerList);
                    
                     $(".nv91 input").val("");
                 

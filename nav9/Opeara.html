@@ -7,14 +7,14 @@
     <title>东信后台登陆</title>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/setting.css">
+    
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" type="text/css" href="../css/buind.css">
     <script src="../js/jquery.1.11.1.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/paging.css">
-    <script src="../js/paging.js"></script>
+    <link rel="stylesheet" href="../css/newPage.css">
+
     <style>
         .isEdit{display: none;}
         .isDelete{display: none;}
@@ -28,190 +28,303 @@
     text-align: left;
     padding-left: 30px;
     }
+        .openBtn,.closeBtn{margin-top: -6px;}
+        .item3{margin-bottom: 5px;}
+    .pl260{padding-left: 260px;}
+    .pl260 label{line-height: 40px;}
+    .pl260 label{width:120px;text-align: right;}
+    .qx{width: 740px;}
+    .qx li{background-color: rgba(243,243,243,1);}
     </style>
 </head>
-<body style="background-color: #f3f3f3;width: inherit;box-sizing: border-box;">
-<div class="brand" style="padding-left: 22px">
-    <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
-        <li><a href="#" class="color">设置/</a></li>
-        <li><a href="#" class="color">管理操作员</a></li>
-    </ul>
-    <h1>管理操作员</h1>
-</div>
-<div style="margin: 50px 70px 0 72px;background: #fff;">
-    <div class="col-sm-10 col-sm-pull-1" style="margin-top: 2%;">
-        <div style="height: 189px">
-            <div class="flex" style="padding-top: 38px;padding-bottom: 30px;">
-                <div class="form-group flex">
-                    <label for="name" class="control-label col-sm-3" style="text-align: center;line-height: 2.2;font-size: 16px;padding-left: 2%;">角色:</label>
-                    <div class="col-sm-8">
-                        <select class="form-control chOperator" style="width:400px">
-                            <option checked value="0">--请选择--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-3 flex " style="text-align: right;">
-                    <div class="position" style="width: 100%;position: absolute;left: 80%">
-                        <input type="text" class="form-control opName" placeholder="请输入员工姓名" />
-                        <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="searvh1">&#xe615;</span>
-                    </div>
-                </div>
-
-            </div>
-            <div class="form-group flex" style="padding-bottom: 41px;">
-                <div class="col-sm-2" style="text-align: right;    margin-left: 20px;">
-                    <button class="btn btn-primary add saveBtn addto btn1" style="display: none; ">添加操作员</button>
-                </div>
-                <div class="col-sm-1 " style="text-align: center;" >
-                    <button class="btn qy btngroup btn1" style="    margin-left: 40px;height:40px;width:100px;display: none;">启用</button>
-                </div>
-                <div class="col-sm-1 " style="text-align: center;">
-                    <button class="btn jy btngroup btn1" style="    margin-left: 70px;height:40px;width:100px;display: none;">禁用</button>
-                </div>
-                <div class="col-sm-1 " style="text-align: center;">
-                    <button class="btn delete btngroup btn1" style="    margin-left: 100px;height:40px;width:100px;display: none;">删除</button>
-                </div>
-            </div>
-        </div>
-
-        <table class="table" style="width: 100%;overflow: hidden;">
-            <thead>
-            <tr style="text-align:center;border-bottom: 1px solid #d8d8d8;background: #f3f3f3">
-                <th class="position loginId">
-                    <div class="radio radio-info radio-inline">
-                        <input type="radio" id="ink" value="" name="radioInl" >
-                        <label for="ink"> 登录ID </label>
-                    </div>
-                </th>
-                <th>角色</th>
-                <th>姓名</th>
-                <th>手机</th>
-                <th>状态</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody class="operater">
-
-
-            </tbody>
-        </table>
-
-        <div class="paging flex " style="width:100%;justify-content: flex-end;" >
-        
-
-                <div class="box" id="box" style="width:auto;justify-content: flex-end;">
-                </div>
-                <div class="totelPag"><span>每页10条</span>&nbsp;&nbsp;总共<span class="total"></span>个项目</div>
-            </div>
-    </div>
-    <div class="nv91-mask" >
-        <div class="nv91" style="padding:5% 0">
-                <div class="nv91-close">✕</div>
-            <form action="" class="form-horizontal" role="form" style="text-align:center;">
-                <div class="form-group  flex" style="justify-content: center">
-                    <label for="" class="control-label  col-sm-3 star" style="text-align: right;line-height: 33.3px;padding-right: 5px">操作人员用户名:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control user1" placeholder="" required style="width: 70%"/>
-                    </div>
-                </div>
-                <div class="form-group  flex" style="justify-content: center">
-                    <label for="" class="control-label col-sm-3 star" style="text-align: right;line-height: 33.3px;padding-right: 5px">操作人员密码:</label>
-                    <div class="col-sm-9">
-                        <input type="password" class="form-control user2" placeholder="" required style="width: 70%"/>
-                    </div>
-                </div>
-                <div class="form-group  flex" style="justify-content: center">
-                    <label for="" class="control-label col-sm-3 " style="text-align: right;line-height: 33.3px;padding-right: 5px">所属角色:</label>
-                    <div class="col-sm-9">
-                        <select  class="form-control manRole1" required style="width: 25%">
-                            <option selected="selected" value="0">--请选择-- </option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group  flex" style="justify-content: center">
-                    <label for="" class="control-label  col-sm-3" style="text-align: right;line-height: 33.3px;padding-right: 5px">姓名:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control user3" placeholder="" required style="width: 70%"/>
-                    </div>
-                </div>
-                <div class="form-group  flex" style="justify-content: center">
-                    <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.3px;padding-right: 5px">电话:</label>
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control user4" placeholder="" required style="width: 70%"/>
-                    </div>
-                </div>
-                <div class="form-group flex">
-                    <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.3px;padding-right: 5px">角色状态:</label>
-                    <div class="radio radio-info radio-inline " style="line-height: 33.3px">
-                        <input type="radio" id="o7" value="1" name="o7" checked="" class="status">
-                        <label for="o7"> 启用 </label>
-                    </div>
-                    <div class="radio radio-info radio-inline" style="line-height: 33.3px">
-                        <input type="radio" id="o8" value="2" name="o7" checked="" class="status">
-                        <label for="o8"> 禁用 </label>
-                    </div>
-                </div>
-                <div class="col-sm-9" style="margin-left: 12.5%;">
-                    <p >用户可以在此角色权限的基础上附加其他权限</p>
-                </div>
-                <div class="form-group flex" >
-                    <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.3px;padding-right: 5px">可用权限:</label>
-                    <ul class="list-group col-sm-9 qx">
-
+<body class="bgf3">
+    <div class="totalShow" style="display: none;">
+            <div class="brand h135">
+                    <ul class="breadcrumb f14">
+                        <li><a href="#" class="color color_8d">设置</a>&nbsp;/&nbsp;</li>
+                        <li><a href="#"  class="color color_5a">添加操作员</a></li>
                     </ul>
+                    <h1>添加操作员</h1>
+            </div>
+        <div style="margin: 50px 70px 0 72px;background: #fff;">
+                <div class="" style="padding:5% 0">
+                        <div class="nv91-close">✕</div>
+                    <form action="" class="form-horizontal pl260" role="form" >
+                        <div class="form-group  flex" >
+                            <label for="" class="control-label   star" style="padding-right: 5px">操作人员用户名:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control user1" placeholder="" required style="width: 600px"/>
+                            </div>
+                        </div>
+                        <div class="form-group  flex" >
+                            <label for="" class="control-label  star" style="padding-right: 5px">操作人员密码:</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control user2" placeholder="" required style="width: 600px"/>
+                            </div>
+                        </div>
+                        <div class="form-group  flex" >
+                            <label for="" class="control-label  " style="padding-right: 5px">所属角色:</label>
+                            <div class="col-sm-9">
+                                <select  class="form-control manRole1" required style="width: 25%">
+                                    <option selected="selected" value="0">--请选择-- </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group  flex" >
+                            <label for="" class="control-label  " style="padding-right: 5px">姓名:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control user3" placeholder="" required style="width: 600px"/>
+                            </div>
+                        </div>
+                        <div class="form-group  flex" >
+                            <label for="name" class="control-label " style="padding-right: 5px">电话:</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control user4" placeholder="" required style="width: 600px" maxlength="11" />
+                            </div>
+                        </div>
+                        <div class="form-group flex">
+                            <label for="name" class="control-label " style="padding-right: 5px">角色状态:</label>
+                            <div class="radio radio-info radio-inline " style="">
+                                <input type="radio" id="o7" value="1" name="o7" checked="" class="status">
+                                <label for="o7" style=
+                                "width: auto;line-height: 30px;"> 启用 </label>
+                            </div>
+                            <div class="radio radio-info radio-inline" style="">
+                                <input type="radio" id="o8" value="2" name="o7" checked="" class="status">
+                                <label for="o8"  style=
+                                "width: auto;line-height: 30px;"> 禁用 </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-9" style="margin-left: 12.5%;">
+                            <p >用户可以在此角色权限的基础上附加其他权限</p>
+                        </div>
+                        <div class="form-group flex" >
+                            <label for="name" class="control-label " style="padding-right: 5px">可用权限:</label>
+                            <ul class="list-group  qx">
+        
+                            </ul>
+                        </div>
+                        <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                            <div class="col-sm-2" style="margin-top: 1%;">
+                                <button type="button" class="btn btn-primary roleSure"style="width: 60px;height: 40px">确定</button>
+                            </div>
+                            <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
+                                <button type="button" class="btn  roleRefuse" style="width: 60px;height: 40px">取消</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                    <div class="col-sm-2" style="margin-top: 1%;">
-                        <button class="btn btn-primary roleSure"style="width: 60px;height: 40px">确定</button>
+         </div>  
+            <div class="nv91-mask" >
+              
+                 <!--确认 取消-->
+             <div class="confirm">
+                    <div  class="boxTotal">
+                        <img src="../image/hint.png" class="boxImg"/>
+                        <span class="boxDelete">确定要删除这条消息吗?</span>
+                        </div>
+                        <div class="dele">
+                        <button class="roleRefu  roleRefuse5">取消</button>
+                        <button class="roleSur roleSure">确定</button>
                     </div>
-                    <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                        <button class="btn  roleRefuse" style="width: 60px;height: 40px">取消</button>
+                </div>
+                <div class="confirm1">
+                    <div  class="boxTotal">
+                        <img src="../image/hint.png" class="boxImg"/>
+                        <span class="boxDelete prompt">确定要删除这条消息吗?</span>
+                        </div>
+                       
+                </div>
+                <div class="nv1">
+                    <img src="../image/success.png" class="success1"/>
+                    <span class="referMes prompt">删除成功</span>
+                </div>
+                <div class="nv3">
+                    <img src="../image/close12.png" class="success1"/>
+                    <span class="referMes prompt">删除失败</span>
+                </div>
+            </div>
+    </div>
+        
+    <div class="totalHide">
+            <div class="brand h135">
+                    <ul class="breadcrumb f14">
+                        <li><a href="#" class="color color_8d">设置</a>&nbsp;/&nbsp;</li>
+                        <li><a href="#"  class="color color_5a">管理操作员</a></li>
+                    </ul>
+                    <h1>管理操作员</h1>
+            </div>
+        <div style="margin: 50px 70px 0 72px;background: #fff;">
+            <div class="col-sm-10 col-sm-pull-1" style="margin-top: 2%;">
+                <div style="height: 189px">
+                    <div class="flex" style="padding:30px;justify-content: space-between;">
+                        <div class="form-group flex">
+                            <label for="name" class="control-label " style="line-height: 2.2;font-size: 16px;">角色:&nbsp;&nbsp;</label>
+                            <div class="col-sm-8">
+                                <select class="form-control chOperator" style="width:400px">
+                                    <option checked value="0">--请选择--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group flex " >
+                            <div class="position" style="width:400px">
+                                <input type="text" class="form-control opName" placeholder="请输入员工姓名" />
+                                <span style="font-family: iconfont;position: absolute;right: 1%;top:0;font-size: 24px;" class="searvh1">&#xe615;</span>
+                            </div>
+                        </div>
+        
+                    </div>
+                    <div class="form-group flex" style="padding-bottom: 41px;">
+                        
+                        <div class="col-sm-2" style="margin-left: 72px;" >
+                            <button class="btn btn1 add saveBtn addto btn1" style="display: none;">添加操作员</button>
+                        </div>
+                        <div class="col-sm-1 " style="text-align: center;" >
+                            <button class="btn qy btngroup btn1" style="    height:40px;width:100px;display: none;">启用</button>
+                        </div>
+                        <div class="col-sm-1 " style="text-align: center;">
+                            <button class="btn jy btngroup btn1" style="    height:40px;width:100px;display: none;">禁用</button>
+                        </div>
+                        <div class="col-sm-1 " style="text-align: center;">
+                            <button class="btn delete btngroup btn1" style="    height:40px;width:100px;display: none;">删除</button>
+                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
-         <!--确认 取消-->
-     <div class="confirm">
-            <div  class="boxTotal">
-                <img src="../image/hint.png" class="boxImg"/>
-                <span class="boxDelete">确定要删除这条消息吗?</span>
+        
+                <table class="table" style="width: 100%;overflow: hidden;">
+                    <thead>
+                    <tr style="text-align:center;border-bottom: 1px solid #cccccc;font-size: 18px;">
+                        <td class="position loginId">
+                            <div class="radio radio-info radio-inline">
+                                <input type="radio" id="ink" value="" name="radio2" >
+                                <label for="ink"> 登录ID </label>
+                            </div>
+                        </td>
+                        <td>角色</td>
+                        <td>姓名</td>
+                        <td>手机</td>
+                        <td>状态</td>
+                        <td style="font-weight: 600;">操作</td>
+                    </tr>
+                    </thead>
+                    <tbody class="operater">
+        
+        
+                    </tbody>
+                </table>
+        
+                <div class="paging flex " style="width:100%;justify-content: flex-end;" >
+                    <div id="pagination23" class="pagination"></div>
+            
                 </div>
-                <div class="dele">
-                <button class="roleRefu  roleRefuse5">取消</button>
-                <button class="roleSur roleSure">确定</button>
+            </div>
+            <div class="nv91-mask" >
+                <div class="nv91" style="padding:5% 0">
+                        <div class="nv91-close">✕</div>
+                    <form action="" class="form-horizontal" role="form" style="text-align:center;">
+                        <div class="form-group  flex" style="justify-content: center">
+                            <label for="" class="control-label  col-sm-3 star" style="text-align: right;line-height: 33.3px;padding-right: 5px">操作人员用户名:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control user1" placeholder="" required style="width: 70%"/>
+                            </div>
+                        </div>
+                        <div class="form-group  flex" style="justify-content: center">
+                            <label for="" class="control-label col-sm-3 star" style="text-align: right;line-height: 33.3px;padding-right: 5px">操作人员密码:</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control user2" placeholder="" required style="width: 70%"/>
+                            </div>
+                        </div>
+                        <div class="form-group  flex" style="justify-content: center">
+                            <label for="" class="control-label col-sm-3 " style="text-align: right;line-height: 33.3px;padding-right: 5px">所属角色:</label>
+                            <div class="col-sm-9">
+                                <select  class="form-control manRole1" required style="width: 25%">
+                                    <option selected="selected" value="0">--请选择-- </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group  flex" style="justify-content: center">
+                            <label for="" class="control-label  col-sm-3" style="text-align: right;line-height: 33.3px;padding-right: 5px">姓名:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control user3" placeholder="" required style="width: 70%"/>
+                            </div>
+                        </div>
+                        <div class="form-group  flex" style="justify-content: center">
+                            <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.3px;padding-right: 5px">电话:</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control user4" placeholder="" required style="width: 70%"/>
+                            </div>
+                        </div>
+                        <div class="form-group flex">
+                            <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.3px;padding-right: 5px">角色状态:</label>
+                            <div class="radio radio-info radio-inline " style="line-height: 33.3px">
+                                <input type="radio" id="o7" value="1" name="o7" checked="" class="status">
+                                <label for="o7"> 启用 </label>
+                            </div>
+                            <div class="radio radio-info radio-inline" style="line-height: 33.3px">
+                                <input type="radio" id="o8" value="2" name="o7" checked="" class="status">
+                                <label for="o8"> 禁用 </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-9" style="margin-left: 12.5%;">
+                            <p >用户可以在此角色权限的基础上附加其他权限</p>
+                        </div>
+                        <div class="form-group flex" >
+                            <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.3px;padding-right: 5px">可用权限:</label>
+                            <ul class="list-group col-sm-9 qx">
+        
+                            </ul>
+                        </div>
+                        <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                            <div class="col-sm-2" style="margin-top: 1%;">
+                                <button class="btn btn-primary roleSure"style="width: 60px;height: 40px">确定</button>
+                            </div>
+                            <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
+                                <button class="btn  roleRefuse" style="width: 60px;height: 40px">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                 <!--确认 取消-->
+             <div class="confirm">
+                    <div  class="boxTotal">
+                        <img src="../image/hint.png" class="boxImg"/>
+                        <span class="boxDelete">确定要删除这条消息吗?</span>
+                        </div>
+                        <div class="dele">
+                        <button class="roleRefu  roleRefuse5">取消</button>
+                        <button class="roleSur roleSure">确定</button>
+                    </div>
+                </div>
+                <div class="confirm1">
+                    <div  class="boxTotal">
+                        <img src="../image/hint.png" class="boxImg"/>
+                        <span class="boxDelete prompt">确定要删除这条消息吗?</span>
+                        </div>
+                       
+                </div>
+                <div class="nv1">
+                    <img src="../image/success.png" class="success1"/>
+                    <span class="referMes prompt">删除成功</span>
+                </div>
+                <div class="nv3">
+                    <img src="../image/close12.png" class="success1"/>
+                    <span class="referMes prompt">删除失败</span>
+                </div>
             </div>
         </div>
-        <div class="confirm1">
-            <div  class="boxTotal">
-                <img src="../image/hint.png" class="boxImg"/>
-                <span class="boxDelete prompt">确定要删除这条消息吗?</span>
-                </div>
-               
-        </div>
-        <div class="nv1">
-            <img src="../image/success.png" class="success1"/>
-            <span class="referMes prompt">删除成功</span>
-        </div>
-        <div class="nv3">
-            <img src="../image/close12.png" class="success1"/>
-            <span class="referMes prompt">删除失败</span>
-        </div>
+       
     </div>
-</div>
-<footer class="footer">
-    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-    </p>
-    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
-</footer>
-
+       
+    <footer class="footer">
+            东信在线门户运营后台 
+        </footer>
 </body>
 </html>
 <script src="../js/MD5.js"></script>
 <script src="../js/sign.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/login.js"></script>
+<script src="../js/newPage.js"></script>
 <script src="../js/getRequest.js"></script>
 <script src="../js/Opearater.js"></script>
 <script src="../js/radioAllChoose.js"></script>

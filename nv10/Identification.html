@@ -9,7 +9,7 @@
     <title>企业认证审核</title>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/setting.css">
+    
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" type="text/css" href="../css/buind.css">
@@ -25,10 +25,11 @@
         *{ margin:0px; padding:0px;}
         ul{ list-style:none;}
         body{ font-size:12px;}
-        .table td:first-child{
+        .table td:first-child,.table td:nth-child(2){
     text-align: left;
-    padding-left: 30px;
+    
     }
+    
     </style>
 </head>
 <body class="bgf3">
@@ -44,12 +45,13 @@
         <div class="form-group flex justify" style="background-color: #fff;padding:40px 20px;margin:0;">
             <div class="flex" style="width: 100%;justify-content: space-between;padding-bottom: 20px;">
                 <div class="col-sm-5 flex">
-                    <label for="" class="label-control" style="font-size: 20px;font-weight: normal;line-height: 1.5;">认证用户:&nbsp;&nbsp;</label>
+                    <label for="" class="label-control" style="font-size: 20px;font-weight: normal;line-height: 1.5;">状态:&nbsp;&nbsp;</label>
                     <div class="col-sm-8">
                         <select name="" id="" class="form-control companyType" style="font-size: 18px;padding:0 0 0 15px;">
-                            <option value="0">请选择</option>
-                            <option value="2">企业</option>
-                            <option value="3">个人转企业</option>
+                            <option value="3">请选择</option>
+                            <option value="0">未审核</option>
+                            <option value="1">已通过</option>
+                            <option value="2">未通过</option>
                         </select>
                     </div>
                 </div>
@@ -65,8 +67,8 @@
            
         </div>
         <table class="table" style="width: 100%;overflow: hidden;">
-            <thead style="background-color: #F3F3F3;border: 1px solid #CCCCCC;">
-            <tr style="border-bottom: 1px solid #d8d8d8;background-color: #F3F3F3;height: 70px;font-size: 18px;">
+            <thead style="border: 1px solid #CCCCCC;">
+            <tr style="border-bottom: 1px solid #d8d8d8;height: 70px;font-size: 18px;">
                 <td>
                      企业名称 
                     
@@ -118,11 +120,7 @@
         </div>
 </div>
 <footer class="footer">
-    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-    </p>
-    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+    东信在线门户运营后台
 </footer>
 </body>
 </html>

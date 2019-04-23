@@ -7,37 +7,93 @@
     <title>东信后台登陆</title>
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/setting.css">
+    
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" type="text/css" href="../css/buind.css">
     <script src="../js/jquery.1.11.1.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/paging.css">
-    <script src="../js/paging.js"></script>
+    <link rel="stylesheet" href="../css/newPage.css">
     <style>
-
+.isEdit{display: none;}
+        .isDelete{display: none;}
         .item{width: 100%;
             text-align: left;
             /* background-color: #fff; */
             padding: 0;
             height: 30px;
             line-height: 30px;}
-            
             .table td:first-child{
     text-align: left;
     padding-left: 30px;
     }
+        .openBtn,.closeBtn{margin-top: -6px;}
+        .item3{margin-bottom: 5px;}
+    .pl260{padding-left: 260px;}
+    .pl260 label{line-height: 40px;}
+    .pl260 label{width:120px;text-align: right;}
+    .qx{width: 740px;}
+    .qx li{background-color: rgba(243,243,243,1);}
     </style>
 </head>
-<body style="background-color: #f3f3f3;width: inherit;box-sizing: border-box;">
-<div class="brand"style="padding-left: 22px;">
-    <ul class="breadcrumb" style="background-color:#fff;font-size: 14px;">
-        <li><a href="#" class="color">设置/</a></li>
-        <li><a href="#" class="color">管理角色</a></li>
-    </ul>
-    <h1>管理角色</h1>
-</div>
+
+<body class="bgf3">
+        <div class="totalShow" style="display: none;">
+                <div class="brand h135">
+                    <ul class="breadcrumb f14">
+                        <li><a href="#" class="color color_8d">设置</a>&nbsp;/&nbsp;</li>
+                        <li><a href="#" class="color color_5a">管理角色</a></li>
+                    </ul>
+                    <h1>管理角色</h1>
+                </div>
+                <div class="" style="padding:3% 0">
+                    
+                    <div class="form-horizontal pl260" style="text-align:center;">
+                        <div class="form-group  flex">
+                            <label for="name" class="control-label star rolename" style="padding-right: 5px;">角色名称:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control role1" placeholder="" style="width:70%" />
+                            </div>
+                        </div>
+                        <div class="form-group flex">
+                            <label for="name" class="control-label " style="padding-right: 5px;">角色状态:</label>
+                            <div class="radio radio-info radio-inline " style="">
+                                <input type="radio" id="o1" value="1" name="o1" checked="" class="status">
+                                <label for="o1" style="line-height: 30px;width:auto;"> 启用 </label>
+                            </div>
+                            <div class="radio radio-info radio-inline" style="line-height: 33.3px;">
+                                <input type="radio" id="o2" value="2" name="o1" checked="" class="status">
+                                <label for="o2" style="line-height: 30px;width:auto;"> 禁用 </label>
+                            </div>
+                        </div>
+                        <div class="" style="margin-left: 260px;text-align: left;">
+                            <p>用户可以在此角色权限的基础上附加其他权限</p>
+                        </div>
+                        <div class="form-group flex">
+                            <label for="name" class="control-label " style="padding-right: 5px;">可用权限:</label>
+                            <ul class="list-group  qx">
+        
+                            </ul>
+                        </div>
+                        <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
+                            <div class="col-sm-2" style="margin-top: 1%;">
+                                <button type="button" class="btn btn-primary roleSure" style="width: 60px;height: 40px">确定</button>
+                            </div>
+                            <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
+                                <button type="button" class="btn  roleRefuse" style="width: 60px;height: 40px">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="totalHide" >
+                <div class="brand h135">
+                        <ul class="breadcrumb f14">
+                            <li><a href="#" class="color color_8d">设置</a>&nbsp;/&nbsp;</li>
+                            <li><a href="#"  class="color color_5a">管理角色</a></li>
+                        </ul>
+                        <h1>管理角色</h1>
+                </div>
 <div style="margin: 50px 70px 0 72px;background: #fff;">
     <div class="col-sm-10 col-sm-pull-1">
         <div class="form-group flex" style="padding-bottom: 2%;padding-top: 38px;">
@@ -59,7 +115,7 @@
             <tr style="border-bottom: 1px solid #d8d8d8;font-size: 18px">
                 <td class="position">
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" id="inlineRadio1" value="" name="" checked="">
+                        <input type="radio" id="inlineRadio1" value="" name="radio2" >
                         <label for="inlineRadio1"> 角色名称 </label>
                     </div>
                 </td>
@@ -75,51 +131,12 @@
         </table>
 
         <div class="paging flex " style="width:100%;justify-content: flex-end;" >
-            <div class="box" id="box" style="width:auto;justify-content: flex-end;">
-             </div>
-            <div class="totelPag"><span>每页10条</span>&nbsp;&nbsp;总共<span class="total"></span>个项目</div>
+            <div id="pagination22" class="pagination"></div>
+    
         </div>
     </div>
     <div class="nv91-mask" >
-        <div class="nv91 " style="padding:3% 0">
-            <div class="nv91-close">✕</div>
-            <form action="" class="form-horizontal" role="form" style="text-align:center;">
-                <div class="form-group  flex">
-                    <label for="name" class="control-label col-sm-3 star rolename" style="text-align: right;line-height: 33.3px;padding-right: 5px;">角色名称:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control role1" placeholder=""  style="width:70%"/>
-                    </div>
-                </div>
-                <div class="form-group flex">
-                    <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.3px;padding-right: 5px;">角色状态:</label>
-                    <div class="radio radio-info radio-inline " style="line-height: 33.3px;">
-                        <input type="radio" id="o1" value="1" name="o1" checked="" class="status">
-                        <label for="o1"> 启用 </label>
-                    </div>
-                    <div class="radio radio-info radio-inline" style="line-height: 33.3px;">
-                        <input type="radio" id="o2" value="2" name="o1" checked="" class="status">
-                        <label for="o2"> 禁用 </label>
-                    </div>
-                </div>
-                <div class="col-sm-9" style="margin-left: 12.5%;">
-                    <p >用户可以在此角色权限的基础上附加其他权限</p>
-                </div>
-                <div class="form-group flex" >
-                    <label for="name" class="control-label col-sm-3" style="text-align: right;line-height: 33.3px;padding-right: 5px;">可用权限:</label>
-                    <ul class="list-group col-sm-9 qx">
-
-                    </ul>
-                </div>
-                <div class="form-group flex butto" style="border-top:1px solid #EBEBEB;margin-top: 100px;justify-content: flex-end;box-sizing: border-box;">
-                    <div class="col-sm-2" style="margin-top: 1%;">
-                        <button class="btn btn-primary roleSure"style="width: 60px;height: 40px">确定</button>
-                    </div>
-                    <div class="col-sm-2" style="margin-top: 1%;margin-right:2%;">
-                        <button class="btn  roleRefuse" style="width: 60px;height: 40px">取消</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+     
         <!--确认 取消-->
      <div class="confirm">
             <div  class="boxTotal">
@@ -128,7 +145,7 @@
                 </div>
                 <div class="dele">
                 <button class="roleRefu  roleRefuse5">取消</button>
-                <button class="roleSur roleSure">确定</button>
+                <button type="button" class="roleSur roleSure">确定</button>
             </div>
         </div>
         <div class="confirm1">
@@ -148,169 +165,838 @@
         </div>
     </div>
     <footer class="footer">
-        <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-        </p>
-        <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-        <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+        东信在线门户运营后台 
     </footer>
 </div>
-
-
-
+        </div>
+      
 </body>
 </html>
 <script src="../js/MD5.js"></script>
 <script src="../js/sign.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/login.js"></script>
+<script src="../js/newPage.js"></script>
 <script src="../js/getRequest.js"></script>
 <script type="text/javascript">
     function changeState(el) {
         if (el.readOnly) el.checked=el.readOnly=false;
         else if (!el.checked) el.readOnly=el.indeterminate=true;
     }
-    window.onload = function(){
-       $(".btn1").each(function(index){
-            $(this).click(function(){
-                $(".btn1").removeClass("btn-primary").eq(index).addClass("btn-primary");
-            })
-       })
-        //页面初次渲染加载数据
-        var data = window.localStorage.getItem("dxRightsList");
-        data = JSON.parse(data);
-        //console.log(data);
-        //页面初次加载渲染页面
-        var url,par;
+    window.onload = function () {
+             var appsercet = window.localStorage.getItem("appsercet");
+            appsercet = JSON.parse(appsercet);
+            var newAppsercet = appsercet.data;
+            var url = src + "/adminInterface.dx"
+            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.managementRoles";
+            var data = getSign(url, par);
+            render(data);
+            judgePower();
+            pageChange("get.dxWeb.managementRoles",data,"pagination22",url);
+    function pageChange(method,data2,pagination,url2){
+        currentPage = localStorage.getItem("pageNow1");
+        if(currentPage == "undefined" || currentPage == "" || currentPage == null){
+           currentPage = 1;
+        }
         var appsercet = window.localStorage.getItem("appsercet");
-        appsercet = JSON.parse(appsercet);
-        var newAppsercet = appsercet.data;
-        //判断是否有添加管理员操作权限
-
-        var arr = [];
-        $.each(data,function(i,item){
-            //console.log(item)
-            if(item.id == 9){
-                arr.push(item)
+            appsercet = JSON.parse(appsercet);
+            var newAppsercet = appsercet.data;
+            var pageCount,pageN;
+            if(data2.pageInfo&&data2.pageInfo.totalRows){
+                pageCount = Math.ceil(data2.pageInfo.totalRows/10);
+            }else{
+                pageCount == 0;
             }
-        })
-        console.log(arr[0]);
-        $.each(arr[0].dxRightsList,function(i,item){
-            //console.log(arr[0].dxRightsList)
-            if(item.method === "get.dxWeb.managementRoles"){
-                url = src+"/"+item.link_path;
-                par = "appsercet="+newAppsercet+"&method="+item.method;
-              logsgin(url,par);
-               pagenow(url,"get.dxWeb.managementRoles")
-               
-                //判断该角色是否有权限操作
-                if(item.dxRightsTwoList.length == 0){
-                    return
+            if(data2.pageInfo&&data2.pageInfo.totalRows){
+                pageN = data2.pageInfo.totalRows;
+            }else{
+                pageN == 0;
+            }
+
+            if(data2.pageInfo&&data2.pageInfo.totalRows){
+               new Page({
+                    id: pagination,
+                    pageTotal: pageCount, //必填,总页数
+                    pageAmount: 10,  //每页多少条
+                    dataTotal: pageN, //总共多少条数据
+                    curPage:currentPage, //初始页码,不填默认为1
+                    pageSize: 5, //分页个数,不填默认为5
+                    showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                    showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                    getPage: function (page) {
+                        //获取当前页数
+                       console.log(page);
+                    }
+                })
+            }else{
+                pageN == 0;
+            }
+            $(document).on("click", ".pageItem", function () {
+                
+                currentPage = $(this).html();
+                localStorage.setItem("pageNow1", currentPage)
+                par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
+                var bannerList = getSign(url2, par);
+                render(bannerList);
+            })
+            //上一页
+             //  $(".pagePrev").unbind('click').bind("click",function(){
+                $(document).on("click", ".pagePrev", function () {
+                    
+                    currentPage = localStorage.getItem("pageNow1");
+                    var num3 = parseInt(currentPage) - 1;
+                    if(currentPage  > 0 && currentPage  < pageCount){
+                        par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + num3;
+                         var bannerList = getSign(url2, par);
+                        render(bannerList);
+                    }else {
+                        par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=1";
+                        var bannerList = getSign(url2, par);
+                       render(bannerList); 
+                    }
+                   
+                    var num = parseInt(currentPage) - 1;
+                    localStorage.setItem("pageNow1", num);
+                })
+                //下一页
+                // $(".pageNext").unbind('click').bind("click",function(){
+                    
+                $(document).on("click", ".pageNext", function () {
+                    
+                    currentPage = localStorage.getItem("pageNow1");
+                    var num3 = parseInt(currentPage) + 1;
+                    if(currentPage  > 0 && currentPage  < pageCount){
+                        par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + num3;
+                         var bannerList = getSign(url2, par);
+                        render(bannerList);
+                    }else {
+                        par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage="+pageCount;
+                        var bannerList = getSign(url2, par);
+                       render(bannerList); 
+                    }
+                   
+                    var num = parseInt(currentPage)+1;
+                    localStorage.setItem("pageNow1", num);
+                })
+                
+            var re = /^[0-9]+.?[0-9]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/ 
+            var ret = document.querySelector(".returnPage");
+            $(document).on("blur", ".returnPage", function () {
+           
+                var value = $(this).val();
+        
+                if (!re.test(value)) {
+                  
+                }else if(value > 0 && value <=pageCount){
+                    currentPage = value;
+                    par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
+        
+                    var data3 = getSign(url2, par);
+                    render(data3);
+                    pageCount = Math.ceil(data3.pageInfo.totalRows/10);
+                    pageN = Math.ceil(data3.pageInfo.totalRows);
+                    
+                    $(this).val("");
+                    
+                    new Page({
+                        id: pagination,
+                        pageTotal: pageCount, //必填,总页数
+                        pageAmount: 10,  //每页多少条
+                        dataTotal: pageN, //总共多少条数据
+                        curPage:currentPage, //初始页码,不填默认为1
+                        pageSize: 5, //分页个数,不填默认为5
+                        showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                        showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                        getPage: function (page) {
+                            //获取当前页数
+                           console.log(page);
+                        }
+                    })
+                }else{
+                    par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + pageCount;
+        
+                    var data3 = getSign(url2, par);
+                    render(data3);
+                    pageCount = Math.ceil(data3.pageInfo.totalRows/10);
+                    pageN = Math.ceil(data3.pageInfo.totalRows);
+                    
+                    $(this).val("");
+                    
+                    new Page({
+                        id: pagination,
+                        pageTotal: pageCount, //必填,总页数
+                        pageAmount: 10,  //每页多少条
+                        dataTotal: pageN, //总共多少条数据
+                        curPage:pageCount, //初始页码,不填默认为1
+                        pageSize: 5, //分页个数,不填默认为5
+                        showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                        showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                        getPage: function (page) {
+                            //获取当前页数
+                           console.log(page);
+                        }
+                    })
+                }	
+                
+            })
+            $(document).on("keydown", ".returnPage", function (event) {
+            // $('.returnPage').keydown(function(event) {
+                if (event.keyCode == 13) {
+                    var value = $(".returnPage").val();
+        
+                if (!re.test(value)) {
+                   
+                } else if(value > 0 && value <=pageCount){
+                    currentPage = value;
+                    par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + currentPage;
+        
+                    var data3 = getSign(url2, par);
+                    render(data3);
+                    pageCount = Math.ceil(data3.pageInfo.totalRows/10);
+                    pageN = Math.ceil(data3.pageInfo.totalRows);
+                    
+                    $(this).val("");
+                    
+                    new Page({
+                        id: pagination,
+                        pageTotal: pageCount, //必填,总页数
+                        pageAmount: 10,  //每页多少条
+                        dataTotal: pageN, //总共多少条数据
+                        curPage:currentPage, //初始页码,不填默认为1
+                        pageSize: 5, //分页个数,不填默认为5
+                        showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                        showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                        getPage: function (page) {
+                            //获取当前页数
+                           console.log(page);
+                        }
+                    })
+                }else{
+                    par = "appsercet=" + newAppsercet + "&method="+method+"&currentPage=" + pageCount;
+        
+                    var data3 = getSign(url2, par);
+                    render(data3);
+                    pageCount = Math.ceil(data3.pageInfo.totalRows/10);
+                    pageN = Math.ceil(data3.pageInfo.totalRows);
+                    
+                    $(this).val("");
+                    
+                    new Page({
+                        id: pagination,
+                        pageTotal: pageCount, //必填,总页数
+                        pageAmount: 10,  //每页多少条
+                        dataTotal: pageN, //总共多少条数据
+                        curPage:pageCount, //初始页码,不填默认为1
+                        pageSize: 5, //分页个数,不填默认为5
+                        showPageTotalFlag:true, //是否显示数据统计,不填默认不显示
+                        showSkipInputFlag:true, //是否支持跳转,不填默认不显示
+                        getPage: function (page) {
+                            //获取当前页数
+                           console.log(page);
+                        }
+                    })
+                }	
                 }
-                else{
-                    $.each(item.dxRightsTwoList,function(i,obj){
-                        //判断该用户是否有添加管理员权限
-                        if(obj.method === "get.dxWeb.addManagementRole"){
+            });
+        
+           
+           
+    }
+            
+    function judgePower() {
+            //页面初次加载渲染页面
+            var url, par;
+            //页面初次渲染加载数据
+            var data = window.localStorage.getItem("dxRightsList");
+            data = JSON.parse(data);
+            //console.log(data);
+            var appsercet = window.localStorage.getItem("appsercet");
+            appsercet = JSON.parse(appsercet);
+            var newAppsercet = appsercet.data;
+            //判断是否有添加管理员操作权限
+            var arr = [];
+            $.each(data, function (i, item) {
+                //console.log(item)
+                if (item.id == 9) {
+                    arr.push(item)
+                }
+            })
+            console.log(arr[0]);
+            $.each(arr[0].dxRightsList, function (i, item) {
+                //console.log(arr[0].dxRightsList)
+                if (item.method === "get.dxWeb.managementRoles") {
+                    url = src + "/" + item.link_path;
+                    //判断该角色是否有权限操作
+                    if (item.dxRightsTwoList.length == 0) {
+                        return
+                    }
+                    else {
+                        $.each(item.dxRightsTwoList, function (i, obj) {
+                            //判断该用户是否有添加管理员权限
+                            if (obj.method === "get.dxWeb.addManagementRole") {
 
-                            $(".add").show();
-                            $(".add").click(function(){
-                                add();
-                                url = src+"/adminInterface.dx";
-                                par = "appsercet="+newAppsercet+"&method=get.dxWeb.leftMenuAll";
-                                logsgin(url,par);
-                                var status,rightsIds,roleName
-                                $(".role1").blur(function(){
-                                    roleName = $(this).val()
+                                $(".add").show();
+                                $(".add").click(function () {
+                                    //现在显示的是添加管理操作员
+                                    $(".totalHide").hide();
+                                    $(".totalShow").show();
+                                    var data1 = localStorage.getItem("qx");
+                                    data1 = JSON.parse(data1);
+                                    qx(data1);
+                                    pl();
+                                    $(".roleSure").click(function () {
+                                        addorupdate("get.dxWeb.addManagementRole", "");
+                                    })
                                 })
-                                $(".roleSure").click(function(){
 
-                                    var inputs = document.querySelectorAll(".roleLis input");//获取所有的input标签对象
-                                    var radio = document.querySelectorAll(".status ");
+                            }
+                            //判断该用户是否有启用或禁用权限
+                            if (obj.method === "get.dxWeb.isEnableOrProhibit") {
+                                $(".qy").show();
+                                $(".jy").show();
+                                $(".qy").click(function () {
+                                    var data = judgeChoose();
+                                    if (data.length == 0) {
+                                        $(".nv91-mask").show();
+                                        $(".prompt").text("请至少选择一条数据");
+                                        $(".confirm1").show();
+                                        setTimeout(function () {
+                                            $(".nv91-mask").hide();
+                                            $(".confirm1").hide();
+
+                                        }, 2000);
+                                    } else {
+                                        open("get.dxWeb.isEnableOrProhibit", 1)
+
+                                    }
+                                })
+                                $(".jy").click(function () {
+                                    var data = judgeChoose();
+                                    if (data.length == 0) {
+                                        $(".nv91-mask").show();
+                                        $(".prompt").text("请至少选择一条数据");
+                                        $(".confirm1").show();
+                                        setTimeout(function () {
+                                            $(".nv91-mask").hide();
+                                            $(".confirm1").hide();
+
+                                        }, 2000);
+                                    } else {
+                                        open("get.dxWeb.isEnableOrProhibit", 2)
+
+                                    }
+                                })
+                            }
+                            //判断该用户是否有删除权限 
+                            if (obj.method === "get.dxWeb.deleteManagementRole") {
+
+                                $(".delete").show();
+                                $(".isDelete").show();
+                                $(".delete").click(function () {
+                                    
+                                    var value
+                                    var inputs = document.getElementsByTagName("input");//获取所有的input标签对象
                                     var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
                                     for (var i = 0; i < inputs.length; i++) {
                                         var obj = inputs[i];
-                                        if (obj.type == 'checkbox' && obj.className=='item2') {
+                                        if (obj.type == 'checkbox') {
                                             checkboxArray.push(obj);
                                         }
                                     }
-                                    var rightsIds = new Array();
+                                    value = new Array();
+                                    for (var i = 0; i < checkboxArray.length; i++) {
+                                        if (checkboxArray[i].checked)
+                                            value.push(checkboxArray[i].value);
+                                    }
+                                    if (value.length == 0) {
+                                        $(".confirm").hide();
+                                        $(".nv91-mask").show();
+                                        $(".confirm1").show();
+                                        $(".prompt").text("请至少选择一条数据");
+                                        setTimeout(function () {
+                                            $(".nv91-mask").hide();
+                                            $(".confirm1").hide();
 
-                                    for (var i = 0; i < radio.length; i++) {
-                                        if (radio[0].checked){
-                                            status = 1;
-                                        }else{
-                                            status = 2;
+                                        }, 2000);
+                                    } else {
+                                        $(".nv91-mask").show();
+                                        $(".confirm").show();
+                                        var id = $(this).attr("data-id");
+                                        url = src + "/adminInterface.dx";
+
+                                        if (value.length == 1) {
+                                            $(".confirm").show();
+                                            $(".nv91-mask").show();
+                                            par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteManagementRole&type=1&roleId=" + value;
+                                            $(".roleSur").click(function () {
+
+                                                var data = getSign(url, par);
+                                                if (data.msg.code == "200") {
+                                                    $(".confirm").hide();
+                                                    $(".nv91-mask").show();
+                                                    $(".nv1").show();
+                                                    $(".prompt").text("删除成功");
+                                                    setTimeout(function () {
+                                                        $(".nv91-mask").hide();
+                                                        $("nv1").hide();
+                                                        location.reload();
+                                                    }, 2000);
+                                                } else {
+                                                    $(".confirm").hide();
+                                                    $(".nv91-mask").show();
+                                                    $(".nv3").show();
+                                                    $(".prompt").text("删除失败");
+                                                    setTimeout(function () {
+                                                        $(".nv91-mask").hide();
+                                                        $("nv3").hide();
+
+                                                    }, 2000);
+                                                }
+                                            })
+
+                                        } else {
+                                            if (value.length == 0) {
+                                                $(".confirm").hide();
+                                                $(".nv91-mask").show();
+
+                                                par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteManagementRole&type=2&roleIdList=" + value;
+                                                $(".roleSur").click(function () {
+
+                                                    var data = getSign(url, par);
+                                                    if (data.msg.code == "200") {
+                                                        $(".confirm").hide();
+                                                        $(".nv91-mask").show();
+                                                        $(".nv1").show();
+                                                        $(".prompt").text("删除成功");
+                                                        setTimeout(function () {
+                                                            $(".nv91-mask").hide();
+                                                            $("nv1").hide();
+                                                            location.reload();
+                                                        }, 2000);
+                                                    } else {
+                                                        $(".confirm").hide();
+                                                        $(".nv91-mask").show();
+                                                        $(".nv3").show();
+                                                        $(".prompt").text("删除失败");
+                                                        setTimeout(function () {
+                                                            $(".nv91-mask").hide();
+                                                            $("nv3").hide();
+
+                                                        }, 2000);
+                                                    }
+                                                })
+                                            }
                                         }
 
                                     }
-                                    for (var i = 0; i < checkboxArray.length; i++) {
-                                        if (checkboxArray[i].checked)
-                                            rightsIds.push(checkboxArray[i].value);
+
+
+                                })
+                                $(".isDelete").click(function () {
+
+                                    $(".nv91-mask").show();
+                                    $(".confirm").show();
+                                    var id = $(this).attr("data-id");
+                                    url = src + "/adminInterface.dx";
+                                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.deleteManagementRole&type=1&roleId=" + id;
+                                    $(".roleSur").click(function () {
+
+                                        var data = getSign(url, par);
+                                        if (data.msg.code == "200") {
+                                            $(".confirm").hide();
+                                            $(".nv91-mask").show();
+                                            $(".nv1").show();
+                                            $(".prompt").text("删除成功");
+                                            setTimeout(function () {
+                                                $(".nv91-mask").hide();
+                                                $("nv1").hide();
+                                                location.reload();
+                                            }, 2000);
+                                        } else {
+                                            $(".confirm").hide();
+                                            $(".nv91-mask").show();
+                                            $(".nv3").show();
+                                            $(".prompt").text("删除失败");
+                                            setTimeout(function () {
+                                                $(".nv91-mask").hide();
+                                                $("nv3").hide();
+
+                                            }, 2000);
+                                        }
+                                    })
+
+
+
+                                })
+                            }
+                            //判断是否有查看权限
+                            if (obj.method === "get.dxWeb.roleDetailse") {
+                                $(".isEdit").show();
+                                $(".botto").hide();
+
+
+                            }
+                            //判断是否有编辑权限
+                            if (obj.method === "get.dxWeb.updateManagementRole") {
+                                $(".botto").show();
+                                $(".isEdit").show()
+                                $(".isEdit").click(function () {
+                                    
+                                    //现在显示的是添加管理操作员
+                                    $(".totalHide").hide();
+                                    $(".totalShow").show();
+                                    var id = $(this).attr("data-id");
+                                    var userid;
+                                    var url, par, rolename;
+
+                                    var val = $(this).parent().parent().find(".test").html();
+                                    rolename = $(this).parent().parent().find(".rolen").html();
+
+                                    // var sta = $(this).parent().parent().attr("data-id");
+
+                                    var roleId = id;
+                                    userid = val;
+                                    $(".role1").val(rolename)
+                                    var code = $(this).parent().parent().find(".stcode").attr('data-id');
+                                    // var id = $(".isEdit").attr("data-id");
+                                    //console.log(id);
+                                    url = src + "/adminInterface.dx";
+                                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.leftMenuAll";
+
+                                    var data1 = localStorage.getItem("qx");
+                                    data1 = JSON.parse(data1);
+                                    qx(data1);
+                                    pl();
+
+                                    par = "appsercet=" + newAppsercet + "&method=get.dxWeb.roleDetails&roleId=" + roleId;
+                                    logsgin(url, par);
+                                    var dxRoleRightsLists = window.localStorage.getItem("dxRoleRightsLists");
+                                    if (dxRoleRightsLists) {
+                                        dxRoleRightsLists = JSON.parse(dxRoleRightsLists);
+
+                                    }
+                                    //console.log(dxRoleRightsLists);
+                                    var dxRightsCategoryList = window.localStorage.getItem("userole");
+
+                                    update = JSON.parse(dxRightsCategoryList);
+                                    if (update) {
+                                        var uparr = update.dxRightsList.dxRightsCategoryList;
+                                        console.log(uparr);
                                     }
 
-                                    url = src+"/adminInterface.dx";
-                                    par = "appsercet="+newAppsercet+"&method=get.dxWeb.addManagementRole&roleName="+roleName+"&status="+status+"&rightsIds="+rightsIds;
-                                    logsgin(url,par);
-                                    location.reload()
+                                    var inputs = document.querySelectorAll(".roleLis input");//获取所有的input标签对象
+                                    var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+
+                                    for (var i = 0; i < inputs.length; i++) {
+                                        var obj = inputs[i];
+                                        if (obj.type == 'checkbox') {
+                                            checkboxArray.push(obj);
+                                        }
+                                    }
+
+                                    var item1 = document.querySelectorAll(".show");
+                                    var checkboxArray1 = [];//初始化空数组，用来存放checkbox对象。
+
+                                    for (var i = 0; i < checkboxArray.length; i++) {
+                                        var obj = checkboxArray[i];
+                                        if (dxRoleRightsLists.length > 0) {
+                                            $.each(dxRoleRightsLists, function (i, item) {
+                                               
+                                                if (obj.value == item.rights_id) {
+                                                    obj.checked = true;
+                                                }
+
+                                            })
+                                        }
+
+
+                                    }
+                                    var radio = document.querySelectorAll(".status");
+                                    var radios = [];
+                                    for (var i = 0; i < radio.length; i++) {
+                                        var obj1 = radio[i];
+                                        if (obj1.type == 'radio') {
+                                            radios.push(obj1);
+                                        }
+                                    }
+                                    for (var i = 0; i < radios.length; i++) {
+                                        var obj1 = radios[i];
+
+                                        if (obj1.value == code) {
+                                            obj1.checked = true;
+                                        }
+                                    }
+
+                                    $(".roleSure").click(function () {
+                                        console.log("111111");
+                                        
+                                        var rightsId, status, rolename;
+                                        var user1, user2, user3, user4s
+                                        rolename = $(".role1").val()
+                                        var inputs = document.querySelectorAll(".roleLis input");//获取所有的input标签对象
+                                        var radio = document.querySelectorAll(".status ");
+                                        var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+                                        for (var i = 0; i < inputs.length; i++) {
+                                            var obj = inputs[i];
+                                            if (obj.type = 'checkbox') {
+                                                checkboxArray.push(obj);
+                                            }
+                                        }
+                                        rightsId = new Array();
+                                        for (var i = 0; i < radio.length; i++) {
+                                            if (radio[0].checked) {
+                                                status = 1;
+                                            } else {
+                                                status = 2;
+                                            }
+
+                                        }
+                                        debugger
+                                        for (var i = 0; i < checkboxArray.length; i++) {
+                                            var obj1 = checkboxArray[i]
+                                            if (obj1.checked == true)
+                                                rightsId.push(obj1.value);
+                                        }
+                                        url = src + "/adminInterface.dx";
+
+                                        par = "appsercet=" + newAppsercet + "&method=get.dxWeb.updateManagementRole&roleName=" + rolename + "&status=" + status + "&rightsIds=" + rightsId + "&roleId=" + roleId;
+                                        
+                                        var data = getSign(url, par);
+
+                                        // var data = getSign(url,par);
+                                        if (data.msg.code == "200") {
+                                            
+                                            $(".confirm").hide();
+                                            $(".prompt").text("操作成功");
+                                            $(".nv91-mask").show();
+                                            $(".nv1").show();
+                                            setTimeout(function () {
+                                                $(".nv91-mask").hide();
+                                                $(".nv1").hide();
+                                                $(".totalHide").show();
+                                                $(".totalShow").hide();
+
+                                            }, 2000);
+
+                                        }
+                                    })
+                                    $(".roleRefuse").click(function () {
+                                        $(".nv91-mask").fadeOut();
+                                        $(".nv91").hide();
+                                    })
 
                                 })
-                                $(".roleRefuse").click(function(){
-                                    $(".nv91-mask").fadeOut();
-                                    $(".nv91").hide();
-                                })
-                            })
 
-                        }
-                        //判断该用户是否有启用或禁用权限
-                        if(obj.method === "get.dxWeb.isEnableOrProhibit"){
-                            $(".qy").show();
-                            $(".jy").show();
-                            $(".qy").click(function(){
-                                open("get.dxWeb.isEnableOrProhibit", 1)
-                            })
-                            $(".jy").click(function(){
-                                open("get.dxWeb.isEnableOrProhibit",2)
-                            })
-                        }
-                        //判断该用户是否有删除权限 
-                        if(obj.method === "get.dxWeb.deleteManagementRole"){
+                            }
 
-                            $(".delete").show();
-                            $(".isDelete").show();
-                            $(".delete").click(function(){
 
-                                deleteM("get.dxWeb.deleteManagementRole");
+                        })
 
-                            })
-                            $(".isDelete").click(function(){
-                                deleteM("get.dxWeb.deleteManagementRole");
-                            })
-                        }
-                        //判断是否有查看权限
-                        if(obj.method === "get.dxWeb.roleDetailse"){
-                            $(".isEdit").show()
-                            $(".botto").hide();
+                    }
+                }
+            })
 
-                            edit("get.dxWeb.roleDetails","get.dxWeb.updateManagementRole")
+        }  
+        
+     
+ //权限渲染
+ function qx(data1){
+        var qx = "";
+        $(".qx").html("");
+        if (data1.dxRightsCategoryList) {
+            $.each(data1.dxRightsCategoryList, function (i, obj) {
+                if (obj.dxRightsList.length == 0) {
+                    return
+                } else {
+                    qx += "<li class='list-group-item flex justify' style='width: 100%;' data-id='q" + obj.id + "' data-num='" + i + "'><div style='width: 100%;' class='flex roleLis'><div class='controlShow flex' style='width:100%'><div style='width: 50%;text-align: left;'><div class='checkbox checkbox-primary'><input type='checkbox' value='" + obj.id + "' id='q" + obj.id + "' class='styled styled-primary t1' aria-label='Single checkbox Two'/><label for='q" + obj.id + "' style='width:auto;line-height:20px!important;'>" + obj.name + "</label></div></div><div style='width: 50%;text-align: right;' class='position'>                <button type='button' class='btn openBtn' >展开</button> <button type='button' class='btn closeBtn1' style='display:none;'>收起</button></div></div><div class='flex show' style='width:100%;background-color:#ffffff;display:none' data-value='q" + obj.id + "'>";
 
-                        }
-                        //判断是否有编辑权限
-                        if(obj.method === "get.dxWeb.updateManagementRole"){
-                            $(".botto").show()
+                    $.each(obj.dxRightsList, function (i, item) {
 
-                        }
+                        // if(item.dxRightsTwoList.length == 0){
+                        //     return
+                        // }else{
+                        qx += "<div class='item item3' ><div class='checkbox checkbox-primary'><input type='checkbox' value='" + item.id + "' id='" + item.id + "' data-num='" + i + "' class='styled styled-primary item2' aria-label='Single checkbox Two'/><label for='" + item.id + "' style='width:auto;line-height:20px!important;'>" + item.name + "</label></div></div>"
 
+                        $.each(item.dxRightsTwoList, function (i, itemi) {
+                            qx += "<div class='flex '>";
+                            qx += "<div style='width:auto;text-align: left;' class='item3'><div class='checkbox checkbox-primary'><input type='checkbox' value='" + itemi.id + "' id='" + itemi.id + "' data-num='" + i + "' class='styled styled-primary item2' aria-label='Single checkbox Two'/><label for='" + itemi.id + "' style='width:auto;line-height:20px!important;'>" + itemi.name + "</label></div></div>";
+                            qx += "</div>";
+                        })
+
+
+                        // }
 
                     })
-
+                    qx += "</div>";
                 }
-            }
-        })
 
-        //底部页码
-        getPage();
+                qx += "</li>"
+            })
+            $(".qx").append(qx);
+            $(".openBtn").each(function (index) {
+                $(this).click(function () {
+                    $(this).hide();
+                    $(".qx li").eq(index).css({ "backgroundColor": "#fff" })
+                    $(".closeBtn1").eq(index).show();
+                    $(".show").eq(index).slideDown();
+                })
+
+            })
+            $(".closeBtn1").each(function (index) {
+
+                $(this).click(function () {
+
+                    $(this).hide();
+                    $(".openBtn").eq(index).show();
+                    $(".show").eq(index).slideUp();
+                    $(".qx li").eq(index).css({ "backgroundColor": "rgba(243,243,243,1)" })
+                })
+            })
+        }
+    }
+  
+// //批量操作
+ function pl(){
+    var inputs = document.querySelectorAll(".show");//获取所有的input标签对象
+    var li = document.querySelectorAll(".list-group-item");//获取所有的li标签
+    // $(".list-group-item .t1").unbind('click').bind("click",function(){
+        $(".list-group-item .t1").each(function (index) {
+                $(this).click(function () {
+                    var id = li[index].getAttribute("data-num");
+                    if($(this).prop("checked") == true){
+                        
+                            $(".show").eq(id).find(".item2").prop("checked", true);
+                            
+                       
+                    }else{
+                       
+                            $(".show").eq(id).find(".item2").prop("checked", false);
+                           
+                       
+                }
+                   
+                })
+            })
+        
+    
+    
+ }
+    }
+    //添加修改方法
+function addorupdate(method,id){
+    
+    var status, rightsIds, roleName
+    var appsercet = window.localStorage.getItem("appsercet");
+        appsercet = JSON.parse(appsercet);
+        var newAppsercet = appsercet.data;
+    roleName = $(".role1").val();
+    var radio = document.querySelectorAll(".status ");
+    for (var i = 0; i < radio.length; i++) {
+        if (radio[0].checked) {
+            status = 1;
+        } else {
+            status = 2;
+        }
 
     }
+    
+        var inputs = document.querySelectorAll(".item3 input");//获取所有的input标签对象
+        var radio = document.querySelectorAll(".status ");
+        var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+        for (var i = 0; i < inputs.length; i++) {
+            var obj = inputs[i];
+            if (obj.type == 'checkbox' && obj.className == 'item2') {
+                checkboxArray.push(obj);
+            }
+        }
+        var rightsIds = new Array();
+        for (var i = 0; i < radio.length; i++) {
+            if (radio[0].checked) {
+                status = 1;
+            } else {
+                status = 2;
+            }
+
+        }
+
+        for (var i = 0; i < checkboxArray.length; i++) {
+            if (checkboxArray[i].checked)
+                rightsIds.push(checkboxArray[i].value);
+        }
+        console.log(rightsIds)
+        url = src + "/adminInterface.dx";
+       
+            par = "appsercet="+newAppsercet+"&method=get.dxWeb.addManagementRole&roleName="+roleName+"&status="+status+"&rightsIds="+rightsIds;
+       
+       
+        var data = getSign(url, par);
+        // 
+        // var data = getSign(url,par);
+        if (data.msg.code == "200") {
+            $(".confirm").hide();
+            $(".prompt").text("操作成功");
+            $(".nv91-mask").show();
+            $(".nv1").show();
+            setTimeout(function () {
+                $(".nv91-mask").hide();
+                $(".nv1").hide();
+                $(".totalHide").show();
+                $(".totalShow").hide();
+                location.reload();
+            }, 2000);
+           
+        }else{
+            $(".confirm").hide();
+            $(".prompt").text(data.msg.codeMsg);
+            $(".nv91-mask").show();
+            $(".nv3").show();
+            setTimeout(function () {
+                $(".nv91-mask").hide();
+                $(".nv3").hide();
+                $(".totalHide").show();
+                $(".totalShow").hide();
+            }, 2000); 
+        }
+
+ 
+}
+//初次渲染函数
+    function render(data) {
+        if (data.roleList && data.roleList.length > 0) {
+            $("manager1").html("")
+            var role = "";
+            $.each(data.roleList, function (i, item) {
+                //console.log(item)
+                role += "<tr style='border-bottom: 1px solid #d8d8d8;' class='rolename1' data-id='" + item.id + "'>";
+                role += "<td><div class='checkbox checkbox-primary'><input type='checkbox' class='styled styled-primary t1' id='role" + i + "'" + "value='" + item.id + "' aria-label='Single checkbox Two'><label for='role" + i + "' class='rolen'>" + item.name + "</label></div></td><td>" + item.admin_num + "</td><td class='stcode' data-id='" + item.status + "'>" + item.status_code + "</td><td style='color:#48a4ea;' ><span class='isEdit' data-id='" + item.id + "' >编辑</span>&nbsp;<span class='isDelete' data-id='" + item.id + "'>删除</span></td>";
+                role += "</tr>";
+
+            })
+            $(".manager1").html(role);
+        }
+
+    }
+  
+//判断是否选中了值
+function judgeChoose() {
+    var IdList;
+    var inputs = document.querySelectorAll(".t1");//获取所有的input标签对象  
+    var IdList;
+    var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+    for (var i = 0; i < inputs.length; i++) {
+        var obj = inputs[i];
+        if (obj.type == 'checkbox') {
+            checkboxArray.push(obj);
+        }
+    }
+ IdList = new Array();
+ for (var i = 0; i < checkboxArray.length; i++) {
+     if (checkboxArray[i].checked) {
+         IdList.push(checkboxArray[i].getAttribute("data-id"));
+     }
+ }
+ return IdList;
+}
 </script>
 <script src="../js/radioAllChoose.js"></script>
 

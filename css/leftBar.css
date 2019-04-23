@@ -106,7 +106,7 @@ body {
     height: 100%;
     width: 70px;
     color: #fff;
-    background: #8A111A
+    background: #36404c
 }
 
 .nav-main {
@@ -122,11 +122,14 @@ body {
 
 .nav-box {
     position: relative;
-    perspective: 200px;
+    /* perspective: 200px; */
+    perspective: 200;
+    -webkit-perspective: 200; /* Safari 和 Chrome */
     height: 100%;
-    z-index: 99
+    z-index: 99;
+   
 }
-
+.nav-box::-webkit-scrollbar{display: none;}
 .nav-ul li {
     display: block;
     width: 70px;
@@ -217,10 +220,21 @@ body {
 }
 
 .nav-slide-o {
-    background-color: #8A111A;
+    background-color: #36404c;
     border-radius: 10px;
 }
 
 .nav-slide-o li span:hover {
-    background-color: rgba(111, 3, 0, 0.8)
+    background-color: rgba(40, 49, 59, 0.8)
+}
+.nav-slide-o li span:nth-child(1):hover {
+    background-color: rgba(40, 49, 59, 0.8);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.nav-slide-o li span:nth-last-child(1):hover {
+    
+    background-color: rgba(40, 49, 59, 0.8);
+   border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px;
 }

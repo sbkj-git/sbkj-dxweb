@@ -7,6 +7,16 @@ $(document).ready(function () {
        $(".nv91-mask").hide();
        $(".nv91").hide();
    })
+   var n = 0;
+   $("#check123").click(function(){
+        n++;
+        if(n % 2 == 1){
+            $(this).prop("checked",true);
+        }
+        if(n % 2 == 0){
+            $(this).prop("checked",false);
+        }
+   })
     //封装添加修改方法
     function addUpdate(method, id, embel) {
         var appsercet = window.localStorage.getItem("appsercet");
@@ -16,9 +26,7 @@ $(document).ready(function () {
         url = src + "/libraryInterface.dx";
         brandName = $(".filename").val();
         sourceId = $(".fileid option:checked").val();
-
         if (method === "get.dxWeb.updateFolder") {
-
             par = "appsercet=" + newAppsercet + "&method=" + method + "&id=" + id + "&brandName=" + brandName + "&sourceId=" + sourceId;
         } else if (method === "get.dxWeb.addFolder") {
             par = "appsercet=" + newAppsercet + "&method=" + method + "&brandName=" + brandName + "&sourceId=" + sourceId;
@@ -31,8 +39,6 @@ $(document).ready(function () {
         result = getSign(url, par);
         return result;
     }
-
-//
     var urlSrc1, urlId1
     var appsercet = window.localStorage.getItem("appsercet");
     appsercet = JSON.parse(appsercet);
@@ -45,14 +51,11 @@ $(document).ready(function () {
     } else {
         par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll&folderId=" + florId;
     }
-
     var list = getSign(url, par);
     render3(list);
     //添加页面点击事件渲染页面
     var urlSrc1, urlId1
-
-    $(".addPhone").click(function () {
-        
+    $(".addPhone").click(function () {    
         $(".nv91-mask").show();
         $(".nv91").show();
         $(".nv92").hide();
@@ -158,9 +161,6 @@ $(document).ready(function () {
                 })
             })
            
-
-           
-
             //进入子集目录操作
             var width = document.querySelectorAll(".w200center");
             $(".w200center").unbind('click').bind("click",function(){
@@ -268,26 +268,20 @@ $(document).ready(function () {
                     $(".reviewImg3").attr("data-id", urlId);
 
                 })
-
-
                 if (data.dximgList.length == 0 && data.dxFolderList.length == 0) {
                     $(".imgBox2").html("");
                     $(".imgBox1").html("");
                 }
-
-
             })
 
             //通过文件名称获取该名下所有文件夹
             $(".searchName").unbind('click').bind("click",function(){ 
             // $(".searchName").click(function () {
-
                 var val = $(".searchName1").val();
                 par = "appsercet=" + newAppsercet + "&method=get.dxWeb.queryFileAll&fileNmae=" + val;
                 var statu = getSign(url, par);
                 render3(statu);
                 if (statu.mag.code == "200") {
-
                     localStorage.setItem("florId", statu.mag.folderId);
                 }
             })
@@ -516,7 +510,7 @@ $(document).ready(function () {
                                     imgUrl = $(".imgHover1").eq(value).attr("src")
                                 }
                             }
-
+                            //设置水印下改变参数值水印实时改变
                             $(".watermarkImg").change(function () {
                                 var data = watermark(id);
                                 $(".water").attr("src", data.msg.imgPath);
@@ -536,8 +530,6 @@ $(document).ready(function () {
                             $(".roleSure").click(function () {
                                 //   var data = watermark1(id);
                                 //   var imgUrl = data.msg.imgUrl
-
-
                                 var waterId = localStorage.getItem("waterId");
                                 if (waterId == "undefined" || waterId == "" || waterId == null) {
                                     var form = postFormdata("get.dxWeb.addWatermark");
@@ -560,8 +552,6 @@ $(document).ready(function () {
                                 console.log(data1);
 
                             })
-
-
                         })
                     }
                 })
@@ -569,8 +559,7 @@ $(document).ready(function () {
             }
         }
     })
-   }
-    
+   } 
     //展示列表图片引入效果
     $(".imgHover").each(function (index) {
         $(this).hover(function () {
@@ -581,15 +570,15 @@ $(document).ready(function () {
         })
         $(this).dblclick(function () {
             var img = $(this).find(".imgHover1").attr("src");
+            var time = $(this).find(".imgHover1").attr("data-value");
+            var name = $(this).find(".imgHover1").attr("data-name");
             console.log(img);
-            localStorage.setItem("imgDetail",img);
+            localStorage.setItem("imgDetail",JSON.stringify({"img":img,"time":time,"name":name}));
             location.href = "../nav7/ImgReview.html"
         })
     })
     //渲染页面
     function render3(list) {
-
-        
         $(".imgBox1").html("");
         $(".imgBox2").html("");
         $(".imgBox3").html("");
@@ -600,10 +589,9 @@ $(document).ready(function () {
         var str3 = "";
         var str4 = "";
         if (list.dxFolderList && list.dxFolderList.length > 0) {
-
             $.each(list.dxFolderList, function (i, obj) {
-                str1 += '<div class="position manage12"><div class="w200center " data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p></div><img src="../image/close12.png" alt="" style="width: 20px;height:20px;" class="close12" data-id="'+obj.id+'"></div>';
-                str3 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>"' + obj.brand_name + '"</p></div>'
+                str1 += '<div class="position manage12"><div class="w200center " data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>' + obj.brand_name + '</p></div><img src="../image/close12.png" alt="" style="width: 20px;height:20px;" class="close12" data-id="'+obj.id+'"></div>';
+                str3 += '<div class="w200center position" data-id="' + obj.id + '" style="margin-right:50px"><img src="../image/file.png" alt="" class="w200h145"><p>' + obj.brand_name + '</p></div>'
             })
             $(".imgBox1").append(str1);
             $(".imgBox2").append(str3);
@@ -612,11 +600,11 @@ $(document).ready(function () {
         if (list.dximgList && list.dximgList.length > 0) {
 
             $.each(list.dximgList, function (i, obj) {
-                str += '<div class="imgHover position" data-id="' + obj.id + '" style="margin:0 40px 30px 0;overflow: visible"><div class="imgCover" ><div class="imgHover2"  data-id="' + obj.id + '"><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" style="width:80px;height:80px" class="imgHover1" data-name="'+obj.img_name+'" data-value = "'+obj.create_name+'"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99;display:block" class="close12" data-id="' + obj.id + '"/></div>';
+                str += '<div class="imgHover position" data-id="' + obj.id + '" style="margin:0 40px 30px 0;overflow: visible"><div class="imgCover" ><div class="imgHover2"  data-id="' + obj.id + '"><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" style="width:80px;height:80px" class="imgHover1" data-name="'+obj.img_name+'" data-value = "'+obj.create_time+'"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;"/><img src="../image/close12.png" alt="" style="width: 20px;height:20px;z-index:99;display:block" class="close12" data-id="' + obj.id + '"/></div>';
                 //添加那块逻辑处理补充
-                str2 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover1" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/></div>'
+                str2 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover1" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;"/></div>'
 
-                str4 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;background-color: #f3f3f3;"/></div>'
+                str4 += '<div class="imgHover position" data-id="' + obj.id + '" style="margin-right:40px;overflow: visible"><div class="imgCover" ><div class="imgHover2" data-id="' + obj.id + '" ><img src="' + obj.img_route + '" alt="" data-id="' + obj.id + '" class="imgHover1" style="width:80px;height:80px"></div><div  class="search2 position"><div class="radio" style="margin-right:10px;position:absolute;left: 0px;top: 48px;z-index:100;padding:0;"><input type="radio" class="styled styled-primary radio12" id="n' + i + '" data-name="' + i + '"  data-id="' + obj.id + '" name="radio12"><label for="n' + i + '"  style="color:#fff;outline:none;line-height: 1;"></label></div><p style="font-family:iconfont;">&#xe615;</p></div></div><input class="p" value="' + obj.img_name + '" style="width:80px;"/></div>'
             })
             $(".imgBox1").append(str);
             $(".imgBox2").append(str4);

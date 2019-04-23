@@ -9,20 +9,22 @@
     position: absolute;
     /*top: 0;*/
     left: 0;
-    height: 100%;
-    max-height: 94%;
+    height: 100vh;
+    
+    /* max-height: 94%; */
     /* width: 230px; */
     z-index: 810;
-    background-color: #8A111A;
+    background-color: #36404c;
+    overflow: auto;
 }
-
+.main-sidebar::-webkit-scrollbar{display: none;}
 .selectDown {
     color: #fff;
     display: none;
     justify-content: space-between;
     z-index: 99;
     padding: 20px 0 40px 0;
-    background: #8A111A;
+    background: #36404c;
    color: #fff;
     width: 156px;
     height: 250px;
@@ -37,7 +39,7 @@
 }
 
 .selectDown li:hover {
-    background: rgba(113, 3, 0, 0.8);
+    background: rgba(40, 49, 59, 0.8);
 }
 
 .himg {
@@ -136,11 +138,14 @@ iframe::-webkit-scrollbar {
 
 /*.ml30{margin-left: 30px;}*/
 .nhide {
-    width: 15%;
+    width: 13%;
+    height: 100vh;
+    overflow: auto;
+    
 }
-
+.nhide::-webkit-scrollbar{display: none;}
 .w18 {
-    width: 15%;
+    width: 13%;
     /*padding-top: 60px;*/
 }
 
@@ -155,7 +160,7 @@ iframe::-webkit-scrollbar {
 }
 
 .remove1 {
-    padding: 70px 0 0 70px;
+    padding-left: 70px;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -163,7 +168,7 @@ iframe::-webkit-scrollbar {
 
 .remove2 {
     /*padding:50px 0;*/
-    width: 85%;
+    width: 87%;
     height: 100%;
     box-sizing: border-box;
 }
@@ -180,9 +185,10 @@ textarea{resize:none;}
 }
 
 .show1, .show2 {
-    display: none;
+    opacity: 0;
+    height: 0;
 }
-
+.changeSelectTwo,.changeSelect{display: none;}
 .note-popover .popover-content {
     display: none;
 }
@@ -213,7 +219,7 @@ textarea{resize:none;}
 }
 
 .bgf3 {
-    background-color: #f3f3f3;
+    background-color: #eaedf1;
     width: inherit;
     box-sizing: border-box;
 }
@@ -304,7 +310,7 @@ textarea{resize:none;}
 .nv91 {
     padding: 10px;
     width: 80%;
-    background-color: #f3f3f3;
+    
 }
 
 .nv91_box {
@@ -462,8 +468,8 @@ textarea{resize:none;}
     height: 50px;
 }
 
-.color_FF5456 {
-    color: #FF5456;
+.color_48a4ea {
+    color: #48a4ea;
 }
 
 /* e 网站运营节点下管理banner节点结束 */
@@ -505,7 +511,7 @@ a {
     margin-top: 10%;
 }
 
-.footer p {
+.footer  {
     text-align: center;
 }
 
@@ -572,12 +578,12 @@ a {
 
 .btn {
     background: none;
-    border: 1px solid #d8d8d8;
-    color: #959595;
+    border: 1px solid #cccccc;
+    
 }
 
 .btn-primary {
-    background-color: #E2302B;
+    background-color: #48a4ea;
     color: #fff;
 }
 
@@ -603,7 +609,7 @@ a {
 }
 
 .colorActive {
-    background-color: #FF5456;
+    background-color: #48a4ea;
     color: #fff !important;
 }
 
@@ -637,8 +643,8 @@ a {
 }
 
 .chooseActive {
-    color: #FF5456;
-    border-bottom: 1px solid #FF5456;
+    color: #48a4ea;
+    border-bottom: 1px solid #48a4ea;
 }
 
 .addInput {
@@ -685,7 +691,7 @@ a {
 }
 
 .addColor:hover {
-    background-color: #FF5456;
+    background-color: #48a4ea;
     color: #fff;
 }
 
@@ -750,7 +756,7 @@ i {
 }
 
 .bag1 {
-    background-color: #FF5456;
+    background-color: #48a4ea;
 }
 
 .bag2 {
@@ -804,9 +810,9 @@ i {
     border-bottom: 1px dashed #E8E8E8;
 }
 
-.FF5456 {
-    color: #FF5456;
-}
+/* .48a4ea {
+    color: #48a4ea;
+} */
 
 /* s nv1网络概况 */
 

@@ -26,7 +26,7 @@
         <div class="form-group flex">
             <label for="" class="phone" style="text-align: center;line-height: 2;font-size: 18px;width: 100px;">电话:</label>
             <div class="col-sm-9">
-                <input type="text" required class="form-control phone1" placeholder="请输入电话"  />
+                <input type="text" required class="form-control phone1" placeholder="请输入电话"  maxlength="11"/>
             </div>
         </div>
         <div class="form-group flex">
@@ -64,7 +64,7 @@
 // appsercet = JSON.parse(appsercet);
 // var newAppsercet = appsercet.data;
 if(appsercet == "undefined" || appsercet == "" || appsercet == null){
-    location.href = "./login1.html";
+    location.href = "./login.html";
 }
         // 刚进入页面的时候从缓存中获取用户信息进行页面渲染
         // 定义请求地址

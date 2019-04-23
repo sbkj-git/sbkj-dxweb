@@ -8,21 +8,23 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/public.css">
     <style>
-    .blue{color: #1890FF;}
+    .blue{color: #1890FF;background: none;}
+    .xq p{line-height: 40px;}
+    #str{height:0;width: 0;}
+    .renderI img{width: 600px;height: 400px;}
     </style>
 </head>
-<body>
+<body style="height:100vh;overflow: auto;">
     
-    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="border:1px solid #FFE58F;background-color:#FFFBE6;padding: 20px;">
-        <img src="" alt="">
-       <p>文件名称：123123.jpeg</p>
-       <p>文件大小：22.64KB</p>
-       <p>文件类型：图片</p>
-       <p>创建时间：2019-02-20 09:40</p>
-       <p>下载文件：<a class="blue downL" >点击下载</a> | <span class="blue copyClick">复制地址</span></p>     
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 xq" style="border:1px solid #FFE58F;background-color:#FFFBE6;padding: 20px;">
+        <div class="details"></div> 
+        <textarea name="" id="str" ></textarea>
+        <p>下载文件：<a class="blue downL" >点击下载</a> | <button type="button" class="blue copyClick" onClick="copyUrl()">复制地址</button></p> 
     </div>
-    <input type="hidden" id="needhid" name="hiddenValue">
-    <img src="" alt="" style="width: 750px;height: auto;margin-top: 25px;" class="col-sm-6 renderImg">
+    
+   
+    <div class="renderI"></div>
+   
     <div class="nv91-mask">
             <div class="confirm">
                     <div  class="boxTotal">
@@ -41,53 +43,52 @@
     </div>
     
 </body>
+
+</html>
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/login.js"></script>
 
 <script>
     //下载方法
-    $(document).ready(function(){
-        var phone1;
-        if(phone1 == "undefined" || phone1 == null || phone1 == ""){
-
-        }else{
-            $("#needhid").val(photo1);
-            $(".renderImg").attr("src",phone1);
+    function copyUrl() {
+        var v = document.getElementById("str");
+        if (v.value.length > 0) {
+            console.log(v.value);
+            v.select();
+            document.execCommand("Copy");
+            $(".prompt ").text("复制成功");
+            $(".nv91-mask").show();
+            $(".nv1 ").show();
+            setTimeout(function () {
+                $(".nv91-mask").hide();
+                $(".nv1 ").hide();
+            }, 2000);
         }
+    }
        
-        $(".downL").click(function(){
-         
-     photo1 = localStorage.getItem("imgDetail");
-    
-    var url1 = noapi + "/downloadFile.dx";
-    var hres = url1 + "?imgPath="+photo1;
-    // var hres = photo;
+    $(document).ready(function () {
+        var photo1 = localStorage.getItem("imgDetail");
+        photo1 = JSON.parse(photo1);
+        var str = "";
+        var str1 = "";
+        $(".details").html("");
+        $(".renderI").html("");
+        str += '<p>文件名称:&nbsp;&nbsp;' + photo1.name + '</p><p>文件类型:&nbsp;&nbsp;图片</p><p>创建时间:&nbsp;&nbsp;' + photo1.time + '</p>';
+        str1+=' <img src="'+photo1.img+'" alt="" style="margin-top: 25px;" class="col-sm-6 renderImg">'
+        $(".renderI").html(str1);
+        $(".details").html(str);
+        $("#str").text(photo1.img);
+       
+        $(".downL").click(function () {
+            var url1 = noapi + "/downloadFile.dx";
+            var hres = url1 + "?imgPath=" + photo1;
+            // var hres = photo;
+            $(".downL").attr("href", hres).click();
+        })
 
-    $(".downL").attr("href",hres).click();
-})
-//复制方法
-$(".copyClick").click(function(){
-    
-    copyUrl();
-})
-
- function copyUrl(){
-    
-     var ele = document.getElementById("needhid");
-     ele.select();
-     document.execCommand("Copy");
-    $(".prompt ").text("复制成功");
-     $(".nv91-mask").show();
-     $(".nv1 ").show();
-     setTimeout(function () {
-        $(".nv91-mask").hide();
-         $(".nv1 ").hide();
-     }, 2000);
- }
     })
     
 
 
 </script>
-</html>

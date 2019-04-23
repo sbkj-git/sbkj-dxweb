@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    //鼠标引入添加图片动效
     $(".addPhone").hover(function(){
         $(".addimg").addClass("disnone").eq(1).removeClass("disnone");
     })
@@ -8,10 +9,11 @@ $(document).ready(function() {
     $(".addPhone2").hover(function(){
         $(".addimage").addClass("disnone").eq(1).removeClass("disnone");
     })
-    $(".addPhone2").hover(function(){
+    $(".addPhone2").mouseleave(function(){
         $(".addimage").addClass("disnone").eq(0).removeClass("disnone");
     })
 var i = 1 ;
+// 上传图片选择事件
 $(".wauto").click(function(){
     i = 1;
     $(".nv91-mask").hide();
@@ -51,6 +53,7 @@ $("#upload2").change(function(){
       }
 //   }
 })
+// 上传图片选择事件结束
    //上传日期插件修改
    $('#date8').daterangepicker({
     "singleDatePicker": true,
@@ -162,13 +165,11 @@ $("#upload2").change(function(){
         $(".imgBox4").html("");
     })
    
-
-    
- 
    function changeState(el) {
        if (el.readOnly) el.checked=el.readOnly=false;
        else if (!el.checked) el.readOnly=el.indeterminate=true;
    }
+   //判断当前显示的是哪个节点下的添加文章
 var url1 = localStorage.getItem("url");
 var method = localStorage.getItem("method");
 if(method === "get.dxWeb.addSkill"){
@@ -187,6 +188,7 @@ else if(method === "get.dxWeb.addNotice"){
 else if(method === "get.dxWeb.addHelp"){
     $(".color_8d").text("帮助文档");
 }
+ //判断当前显示的是哪个节点下的添加文章结束
    // 文章内容,文章标题,发布日期,来源,作者,文章摘要,文章列表缩列图 1与正文图一致 2自定义,浏览数,文章浏览器标题,文章详情页关键词,文章详情页描述,选择图片的id,是否置顶  1
    var appid = localStorage.getItem("appid");
    var appsercet = localStorage.getItem("appsercet");
@@ -201,11 +203,13 @@ else if(method === "get.dxWeb.addHelp"){
    var sign1 = data.parameter;
    var timeStamp = data.timestamp;
    console.log(url1,method); 
-var url = src + url1;
+    var url = src + url1;
     //设置分类回显
     if (method === "get.dxWeb.updateSkill" || method === "get.dxWeb.addSkill") {
-        $(".show1").show();
-        
+        $(".show1").css({"opacity":"1"});
+        $(".show1").css({"height":"auto"});
+        $(".changeSelectTwo").show();
+        $(".changeSelect").show();
         par = "appsercet=" + appsercet + "&method=get.dxWeb.cateAllList";
         var data = getSign(url, par);
         if (data.dxWebList) {
@@ -222,11 +226,13 @@ var url = src + url1;
     }
      //设置分类回显
     if (method === "get.dxWeb.addQAndA" || method === "get.dxWeb.updateQAndA") {
-
-
         $(".changeFlex").removeClass("column");
-        $(".show1").show();
-        $(".show2").show();
+        $(".show1").css({"opacity":"1"});
+        $(".show1").css({"height":"auto"});
+        $(".show2").css({"opacity":"1"});
+        $(".show2").css({"height":"auto"});
+        $(".changeSelectTwo").show();
+        $(".changeSelect").show();
         $(".changeTitle").text("问题描述:");
         $(".changeTitle1").text("对应产品:");
         var id = "";

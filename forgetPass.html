@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="./css/loginOne.css">
     <title>忘记密码</title>
     <style>
-        .btn-primary{background: #FF5456;border: #FF5456;}
-        .btn:hover{background: #FF5456;}
+        .btn-primary{background: #48a4ea;border: #48a4ea;}
+        .btn:hover{background: #48a4ea;}
     </style>
 </head>
 <body style="background-color:#f3f3f3;width: inherit;box-sizing: border-box;">
@@ -22,11 +22,11 @@
     <div class="col-sm-6" style="margin:0 auto;background: #fff;padding: 39px 196px 43px 226px;margin-top: 60px;height: 525px;max-width: 80%">
         <h1 class="col-sm-12" style="text-align: center;">找回密码</h1>
         <div class="col-sm-12 progress1 flex" style="margin-top: 10%;">
-            <div class="col-sm-3" style="padding-left: 11%;">
+            <div class="col-sm-4" style="padding-left: 11%;">
                 <span class="span bagActive">1</span>
                 <span style="margin-left: 10px;">验证手机号码</span>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <div class="line"></div>
             </div>
             <div class="col-sm-3">
@@ -74,12 +74,8 @@
 <!--</div>-->
 
 
-<footer class="footer" style="color: #000;background: #fff">
-    <p>Copyright 2017 东信在线门户运营后台 All Right Reserved 中国—东盟信息港股份有限公司北京分公司
-    </p>
-    <p>增值电信业务经营许可证：B2-20180289 涉密信息系统集成许可证：JC301700083</p>
-
-    <p>桂ICP备16005301号-7 桂公网安备45010802000099号</p>
+<footer class="footer" style="color: #000;background: #fff;text-align: center;">
+    东信在线门户运营后台
 </footer>
 <div class="nv" style="padding:10px;">
     <div class="nv91-close">X</div>
@@ -95,15 +91,12 @@
 </html>
 <script src="./js/jquery.1.11.1.js"></script>
 <script src="./js/api.js"></script>
-<script src="./js/login.js"></script>
 <script src="./js/getRequest.js"></script>
 <script>
 var appsercet = window.localStorage.getItem("appsercet");
 // appsercet = JSON.parse(appsercet);
 // var newAppsercet = appsercet.data;
-if(appsercet == "undefined" || appsercet == "" || appsercet == null){
-    location.href = "./login1.html";
-}
+
     var url,par;
     url = noapi + "/adminLoginInterface.dx";
     var appsercet = window.localStorage.getItem("appsercet");
@@ -141,7 +134,7 @@ if(appsercet == "undefined" || appsercet == "" || appsercet == null){
                                 location.reload();
 
                             }, 2000);;
-                    window.location.href = "login1.html"
+                    window.location.href = "login.html"
 
                 }
             }else{

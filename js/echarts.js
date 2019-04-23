@@ -3183,7 +3183,7 @@ function parse(colorStr, rgbaArr) {
                 return;  // Covers NaN.
             }
             setRgba(rgbaArr,
-                (iv & 0xff0000) >> 16,
+                (iv & 0x48a4ea) >> 16,
                 (iv & 0xff00) >> 8,
                 iv & 0xff,
                 1

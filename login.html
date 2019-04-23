@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>东信在线运营后台</title>
+    <link rel="stylesheet" href="./css/public.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/loginOne.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" href="./css/buind.css">
+    <link rel="shortcut icon" href="image/icon.png">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            /* mask-repeat: inherit; */
+        }
+        .checkbox label::after {
+            display: inline-block;
+            position: absolute;
+            width: 16px;
+            height: 11px;
+            left: 3px;
+            top: 4px;
+            margin-left: -21px;
+            padding-left: 1px;
+            padding-top: 0px;
+            font-size: 11px;
+            color: #555;
+        }
+        .checkbox label::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 0;
+            margin-left: -19px;
+            margin-top: 0px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #fff;
+            -webkit-transition: border .15s ease-in-out, color .15s ease-in-out;
+            -o-transition: border .15s ease-in-out, color .15s ease-in-out;
+            transition: border .15s ease-in-out, color .15s ease-in-out;
+        }
+        .footer1{position: fixed;bottom: 15px;left: 0;right: 0;margin:auto;text-align: center;color:#fff;}
+        .forgetPass{font-size: 16px;padding-top: 2px;}
+        #error3,#error1,#error{display: none;}
+    </style>
+</head>
+<script src="./js/remberPass.js"></script>
+<body id="body" onload="GetCookie();">
+<div class="banner3" style="height: 100vh;"> 
+    <div>
+        <div class="banners">
+            <div class="jx">
+                <img src="./image/l1.png" alt="">
+                
+            </div>
+            <div class="login flex justify login_p" style="padding-top: 30px;margin-right: 100px;">
+                <p>登录</p>
+
+                <div class="div">
+                    <img src="./image/l2.png" alt="" class="img p11" style="margin-left: 10px">
+                    <img src="./image/p1.png" alt="" class="img p11" style="margin-left: 10px;display: none;">
+                    <input style="padding-left:50px;margin-bottom: 5px" type="text" class="input1 user" placeholder="请输入用户名称"  id="username">
+                </div>
+                <span style="margin-left: 48px;margin-top: 0px;color: red;font-size: 16px" id="error1"></span>
+                <div class="div">
+                    <img src="./image/l3.png" alt="" class="img pa1" style="margin-left: 10px">
+                    <img src="./image/pa1.png" alt="" class="img pa1" style="margin-left: 10px;display: none;">
+                    <input style="padding-left: 50px" type="password" class="input1 pass" placeholder="请输入用户密码" id="password" onkeydown="enterLogin();"/>
+                </div>
+
+                <span style="margin-left: 48px;margin-top: 0px;color: red;font-size: 16px" id="error"></span>
+                <div style="width: 100%;" class="hide flex div">
+                    <!-- <img src="./image/l4.png" alt="" class="img" style="margin-left: 10px"> -->
+                    <input style="padding-left: 50px" type="text" placeholder="验证码" class="input2 vister"
+                           placeholder="请输入验证码">
+                    <button class="qs btn btn-default" style="margin-top: 8px;margin-right: 5px">获取验证码</button>
+                    <div onclick="copyText()">
+                            <img src="" alt="" id="qsImg" style="margin-top:10px;"  />
+
+                    </div>
+                </div>
+                <span style="margin-left: 48px;margin-top: 0px;color: red;font-size: 16px" id="error3"></span>
+                <button class="btnLogin" style="height: 50px;margin-top: 10px">登&nbsp;&nbsp;录</button>
+
+                <div class="flex remberAcount">
+                    <div class='checkbox checkbox-primary' style="margin-right:10px"><input type='checkbox' class='styled styled-primary'  id="remember_password"                                                                             aria-label='Single checkbox Two'>
+                        <label for='remember_password' class='rolen' >记住账号</label></div>
+                    <span   class="forgetPass"><a href="./forgetPass.html" class="forgetPass" >忘记密码</a></span>
+                </div>
+            </div>
+            <footer class="footer1" >
+                <p>东信在线门户运营后台 
+                </p>
+              
+            </footer>
+        </div>
+    </div>   
+</div>
+<div class="nv" style="padding:10px;">
+    <div class="nv91-close">X</div>
+    <form action="" class="form-horizontal" role="form" >
+        <div class="prompt" style="padding-bottom:30px;">
+            <p style="font-size: 20px;">警告</p>
+            <img src="" alt="" ><span>操作成功</span>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="./js/MD5.js"></script>
+<!-- <script src="js/sign.js"></script> -->
+<script src="./js/api.js"></script>
+<!-- <script src="./js/login.js"></script> -->
+
+<script src="./js/getRequest.js"></script>
+<script type="text/javascript">
+$("#username").focus(function(){
+    $(".p11").hide().eq(1).show();
+})
+$("#username").blur(function(){
+    $(".p11").hide().eq(0).show();
+})
+$("#password").focus(function(){
+    $(".pa1").hide().eq(1).show();
+})
+$("#password").blur(function(){
+    $(".pa1").hide().eq(0).show();
+})
+ function copyText(){
+            
+            $("#qsImg").attr("src","");
+            $("#qsImg").attr("src",url = noapi + "/atohCode.dx?date="+new Date())
+        }
+       
+    window.onload = function () {
+        GetCookie();
+        var height = document.documentElement.clientHeight;
+        // $("#body").height(height);
+       
+        // $(".login").height(height/1.75);
+        function changeState(el) {
+            if (el.readOnly) el.checked = el.readOnly = false;
+            else if (!el.checked) el.readOnly = el.indeterminate = true;
+        }
+
+        //提交用户信息
+        // window.localStorage.clear();
+        var par, url, visterName, username, pwd, type, methods;
+        // $(".user").focus(function(){
+        //     GetCookie();
+        // })
+        $(".user").blur(function () {
+            username = $(this).val()
+            if (username == null || username.trim() == "") {
+                $("#error1").show().text("用户名不能为空!");
+            } else {
+                $("#error1").hide();
+            }
+            
+            par = "username=" + username
+        })
+        $(".pass").blur(function () {
+            pwd = $(this).val();
+            if (username == null || username.trim() == "") {
+                $("#error1").show().text("用户名不能为空!");
+            } else {
+                $("#error1").hide();
+                if (pwd == null || pwd.trim() == "") {
+                $("#error").text("密码不能为空!");
+                } else {
+                $("#error").hide();
+                }
+            }         
+            par = "username=" + username + "&pwd=" + pwd;
+        })
+        $(".vister").blur(function () {
+            visterName = $(this).val();
+            if (visterName==null||visterName.trim()=="") {
+                $("#error3").text("验证码不能为空!");
+            }
+        })
+        $(".qs").click(function () {
+            $(".qs").hide();
+            $("#qsImg").attr("src",url = noapi + "/atohCode.dx")
+           
+        })
+        //判断是否是要验证验证码
+        var x = window.sessionStorage.getItem("n")
+        if (isNaN(x) || x == null) {
+            // 
+            window.sessionStorage.setItem("n", 0)
+            //重新判断什么时候显示验证码
+            $(".btnLogin").click(function () { 
+                pwd = $(".pass").val();
+                username = $(".user").val(); 
+                if (username==null||username.trim()=="") {
+                        $("#error1").show().text("用户名不能为空!");
+                        }else{
+                            $("#error1").hide();
+                        }
+                    if (pwd==null||pwd.trim()=="") {
+                        $("#error").text("密码不能为空!");
+                    }else{
+                        $("#error").hide(); 
+                    }
+                var n = 0;
+                //判断是第几次登陆     
+                if ($(".user").val() && $(".pass").val()) {
+                    if ($(".vister").val() == "" || $(".vister").val() == null) {
+                            type = 2;
+                            par = "username=" + username + "&pwd=" + pwd + "&type=" + type + "&method=get.dxWeb.adminLogin"
+                        } else {
+                            var atohCode = $(".vister").val();
+                            type = 1;
+                            par = "username=" + username + "&pwd=" + pwd + "&type=" + type + "&method=get.dxWeb.adminLogin&atohCode="+atohCode;
+                        }
+                    
+                    localStorage.setItem("username", username);
+                    localStorage.setItem("type", type);
+                    var data = getSign(log, par);
+                    referIndex(data);
+                    n++;
+                    window.sessionStorage.setItem("n", n);
+
+                    if (x >= 3) {
+                        $(".hide").show();
+                        x == 3;
+                    }
+                } else {
+                    return false
+                }
+                // $(".user").val("");
+                // $(".pass").val("");
+            })
+        } else {
+            if (x >= 3) {
+                x == 3;
+                $(".hide").show();
+                $(".btnLogin").click(function () {
+                    
+                    pwd = $(".pass").val();
+                username = $(".user").val();
+                if (username==null||username.trim()=="") {
+                        $("#error1").show().text("用户名不能为空!");
+                        }else{
+                            $("#error1").hide();
+                        }
+                    if (pwd==null||pwd.trim()=="") {
+                        $("#error").text("密码不能为空!");
+                    }else{
+                        $("#error").hide(); 
+                    }
+                    //判断是第几次登陆
+                    if ($(".user").val() && $(".pass").val()) {
+                        if ($(".vister").val() == "" || $(".vister").val() == null) {
+                            type = 2;
+                            par = "username=" + username + "&pwd=" + pwd + "&type=" + type + "&method=get.dxWeb.adminLogin"
+                        } else {
+                            var atohCode = $(".vister").val();
+                            type = 1;
+                            par = "username=" + username + "&pwd=" + pwd + "&type=" + type + "&method=get.dxWeb.adminLogin&atohCode="+atohCode;
+                        }
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("type", type);
+                        var data = getSign(log, par);
+                        referIndex(data);
+                    } else {
+                        return false
+                    }
+                })
+                // $(".user").val("");
+                // $(".pass").val("");
+            }
+            if (x < 3) {
+                $(".hide").hide();
+                $(".btnLogin").click(function () {
+                    
+                    pwd = $(".pass").val();
+                username = $(".user").val();
+                        if (username==null||username.trim()=="") {
+                        $("#error1").show().text("用户名不能为空!");
+                        }else{
+                            $("#error1").hide();
+                        }
+                    if (pwd==null||pwd.trim()=="") {
+                        $("#error").text("密码不能为空!");
+                    }else{
+                        $("#error").hide(); 
+                    }
+                    //判断是第几次登陆         
+                    if ($(".user").val() && $(".pass").val()) {
+                        if ($(".vister").val() == "" || $(".vister").val() == null) {
+                            type = 2;
+                            par = "username=" + username + "&pwd=" + pwd + "&type=" + type + "&method=get.dxWeb.adminLogin"
+                        } else {
+                            var atohCode = $(".vister").val();
+                            type = 1;
+                            par = "username=" + username + "&pwd=" + pwd + "&type=" + type + "&method=get.dxWeb.adminLogin&atohCode="+atohCode;
+                        }
+                        //console.log(par)
+                        localStorage.setItem("username", username);
+                        localStorage.setItem("type", type);
+                        var data = getSign(log, par);
+                        referIndex(data);
+                        x++;
+                        window.sessionStorage.setItem("n", x)
+                        if (x >= 3) {
+                            x == 3;
+                            $(".hide").show();
+                        }
+                    } else {
+                        return false
+                    }
+                    // $(".user").val("");
+                    // $(".pass").val("");
+                })
+            }
+        }
+
+    }
+
+    //处理登录成功后密钥存储到缓存
+    function referIndex(data) {
+
+        if (data.msg.code == "200") {
+            saveInfo();
+            localStorage.setItem("appsercet", JSON.stringify({"data": data.userInfo.appsercet}))
+            localStorage.setItem("appid", "dxwebf0a37ed1ae96deef")
+            window.localStorage.setItem("dxRightsList", JSON.stringify(data.userInfo.dxRightsList.dxRightsCategoryList));
+            localStorage.setItem("user_name", data.userInfo.user_name);
+            localStorage.setItem("true_name", data.userInfo.true_name);
+            // localStorage.setItem("user_phone",data.userInfo.user_phone || "");
+            localStorage.setItem("user_photo", data.userInfo.user_photo || "");
+            window.location.href = "./index.html";
+        } else if(data.msg.code == "10"){
+            $("#error3").show().text("用户名或密码错误");
+            setTimeout(function(){
+                $("#error3").hide();
+            },2000)
+        }else if(data.msg.code == "11"){
+            $("#error3").show().text("验证码错误");
+            setTimeout(function(){
+                $("#error3").hide();
+            },2000)
+        }
+    }
+    //使用回车键登录
+
+   function enterLogin (e) {
+            var oEvent = e || event;
+            if (oEvent.keyCode == '13') {
+                var val = oEvent.target.value;
+                $(".btnLogin").click();
+                
+            }
+        };
+//记住密码功能实现
+function checkInCorrect()      //判断用户名和密码是否为空
+    {
+        if (document.getElementById('username').value == "") {
+            alert('请输入用户名！')
+            document.getElementById('username').focus();
+            return false
+        }
+        if (document.getElementById('password').value == "") {
+            alert('请输入密码！')
+            document.getElementById('password').focus();
+            return false
+        }
+        else {
+            saveInfo();
+            return true;
+        }
+    }
+
+    saveInfo = function () {
+        try {
+            var isSave = document.getElementById('remember_password').checked;   //保存按键是否选中
+            if (isSave) {
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+                if (username != "" && password != "") {
+                    SetCookie(username, password);
+                }
+            } else {
+                SetCookie("", "");
+            }
+        } catch (e) {
+
+        }
+    }
+
+    function SetCookie(username, password) {
+        var Then = new Date();
+        Then.setTime(Then.getTime() + 1866240000000);
+        sessionStorage.setItem("key","username=" + username + "%%" + password + ";expires=" + Then.toGMTString());
+    }
+
+    function GetCookie() {
+        
+        var nmpsd;
+        var nm;
+        var psd;
+        var cookieString = new String(window.sessionStorage.getItem("key"));
+        var cookieHeader = "username=";
+        var beginPosition = cookieString.indexOf(cookieHeader);
+        cookieString = cookieString.substring(beginPosition);
+        var ends = cookieString.indexOf(";");
+        if (ends != -1) {
+            cookieString = cookieString.substring(0, ends);
+        }
+        if (beginPosition > -1) {
+            nmpsd = cookieString.substring(cookieHeader.length);
+            if (nmpsd != "") {
+                beginPosition = nmpsd.indexOf("%%");
+                nm = nmpsd.substring(0, beginPosition);
+                psd = nmpsd.substring(beginPosition + 2);
+                document.getElementById('username').value = nm;
+                // document.getElementById('password').value = psd;
+                if (nm != "" && psd != "") {
+                    // document.forms[0].checkbox.checked = true;
+                    document.getElementById('remember_password').checked = true;
+                }
+            }
+        }
+    }
+</script>
+ 

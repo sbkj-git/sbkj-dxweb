@@ -89,22 +89,9 @@ html, body {
 a,button,input,optgroup,select,textarea {
     -webkit-tap-highlight-color:rgba(0,0,0,0); /*去掉a、input和button点击时的蓝色外边框和灰色半透明背景*/
 }
-input::-webkit-input-placeholder {
-    color:#C0C0C0; /*修改webkit中input的planceholder样式*/
-}
-input::-ms-input-placeholder {
-    color:#C0C0C0; /*修改webkit中input的planceholder样式*/
-}
-input::-o-input-placeholder {
-    color:#C0C0C0; /*修改webkit中input的planceholder样式*/
-}
-input::-moz-input-placeholder {
-    color:#C0C0C0; /*修改webkit中input的planceholder样式*/
-}
-input:focus::-webkit-input-placeholder {
-    color:#f00; /*修改webkit中focus状态下input的planceholder样式*/
-}
-/* input:hover{border:1px solid #FF5456;} */
+
+
+/* input:hover{border:1px solid #48a4ea;} */
 a{text-decoration: none;}
 a:hover{text-decoration: none;}
 a,input,button,textarea{outline: none!important;}
@@ -154,9 +141,9 @@ input::-webkit-input-speech-button {
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         }
         .switch:checked {
-            border-color: #8A111A;
-            box-shadow: #8A111A 0 0 0 16px inset;
-            background-color: #8A111A;
+            border-color: #36404c;
+            box-shadow: #36404c 0 0 0 16px inset;
+            background-color: #36404c;
         }
         .switch:checked:before {
             left: 30px;
@@ -168,8 +155,8 @@ input::-webkit-input-speech-button {
             transition: left 0.3s;
         }
         .switch.switch-anim:checked {
-            box-shadow: #8A111A 0 0 0 16px inset;
-            background-color: #8A111A;
+            box-shadow: #36404c 0 0 0 16px inset;
+            background-color: #36404c;
             transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
         }
         .switch.switch-anim:checked:before {
@@ -200,15 +187,15 @@ input::-webkit-input-speech-button {
  button {
      outline: none;
  }
- .boxTotal{height: 120px;width: 100%;}
- .boxImg{position: absolute;margin-top: 42px;margin-left: 60px}
- .boxDelete{display: inline-block; margin-left: 105px;margin-top: 50px;}
+ .boxTotal{height: 120px;width: 100%;text-align: center;}
+ .boxImg{position: absolute;margin-top: 42px;left: 60px;}
+ .boxDelete{display: inline-block; margin-top: 50px;margin-left: 70px;}
  .roleRefu{width: 60px;height: 40px;border:1px solid #8d8d8d; background-color: #fff;color: #0f0f0f;border-radius: 10%}
  .roleSur{width: 60px;height: 40px; margin-left: 20px;border:1px solid #FF2F2F; background-color: #FF2F2F;color: #fff;border-radius: 10%;}
  .dele{height: 40px;width: 100%;display: flex;justify-content:flex-end; margin-top:15px;box-sizing: border-box;padding-right: 30px;}
  .nv1,.nv3{height: 130px;width: 250px;position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin:auto;background-color: #ffffff;display: none;}
-           .success1{position: absolute;margin-top: 47px;margin-left: 60px;width: 30px;height: 30px;}
-           .referMes{display: inline-block; margin-left: 105px;margin-top: 50px;color: rgba(255,84,86,1);}
+ .success1{position: absolute;margin-top: 47px;margin-left: 60px;width: 30px;height: 30px;}
+ .referMes{display: inline-block; margin-left: 105px;margin-top: 50px;color: rgba(255,84,86,1);}
 /* //企业认证图片展示i */
 .licencePath{width: 151px;height: 210px;overflow: hidden;}
 /* //日历插件开始 */
@@ -239,7 +226,31 @@ input[type='radio'],input[type='checkbox']{outline:none!important;}
 label{margin-bottom: 0!important;}
 iframe html div{overflow:auto!important;}
 /* //左侧菜单栏样式 */
-.activeCol{background: rgba(111, 3, 0, 0.8);}
+.activeCol{background: rgba(40, 49, 59, 0.8);}
 /* //底部页码样式 */
 .totelPag{color:#929292;font-size: 18px;padding-left: 20px;line-height: 3;color:#5A5A5A;}
-.f24{font-size: 24px;}
+.f24{font-size: 24px!important;}
+.btn{color: #0f0f0f;}
+.totalPage:hover{background: none!important;}
+/* //body定位属性 */
+.fixed2{position: fixed;width: 100%;height: 100%;top: 0;left: 0;overflow: hidden;}
+/* //改变input颜色 */
+/* WebKit browsers */
+input::-webkit-input-placeholder {color: #495057;font-size: 14px;}
+    /* Mozilla Firefox 4 to 18 */
+    input:-moz-placeholder { color: #495057;opacity: 1;font-size: 14px;}
+    /* Mozilla Firefox 19+ */
+    input::-moz-placeholder { color: #495057;opacity: 1;font-size: 14px;}
+    /* Internet Explorer 10+ */
+    input:-ms-input-placeholder {color: #495057;font-size: 14px;}
+    input:focus::-webkit-input-placeholder{color:#495057;}
+    /* Mozilla Firefox 4 to 18 */
+    input:focus:-moz-placeholder { color: #495057;opacity: 1;font-size: 14px;}
+    /* Mozilla Firefox 19+ */
+    input:focus::-moz-placeholder { color: #495057;opacity: 1;font-size: 14px;}
+    /* Internet Explorer 10+ */
+    input:focus:-ms-input-placeholder {color: #495057;font-size: 14px;}
+    /* 去除IE下input框后面的X */
+    input::-ms-clear, input::-ms-reveal{
+        display: none;
+    }
